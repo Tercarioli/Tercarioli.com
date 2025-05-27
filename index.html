@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,31 +12,6 @@
       margin: 0;
     }
 
-    .marquee-container {
-      overflow: hidden;
-      background-color: #FF6B3D;
-      height: 3rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .marquee-track {
-      display: flex;
-      width: fit-content;
-      animation: scroll 40s linear infinite;
-    }
-
-    .marquee-text {
-      flex-shrink: 0;
-      padding-right: 4rem;
-      color: #3E1104;
-      font-size: 1.5rem;
-      font-weight: 400;
-      text-transform: uppercase;
-      line-height: 0.8;
-      white-space: nowrap;
-    }
-
     @keyframes scroll {
       0% {
         transform: translateX(0%);
@@ -45,6 +19,10 @@
       100% {
         transform: translateX(-50%);
       }
+    }
+
+    .marquee-track {
+      animation: scroll 40s linear infinite;
     }
   </style>
 </head>
@@ -57,13 +35,13 @@
     </div>
   </nav>
 
-  <!-- MARQUEE -->
-  <div class="marquee-container">
-    <div class="marquee-track">
-      <div class="marquee-text">
+  <!-- MARQUEE with Tailwind -->
+  <div class="overflow-hidden bg-[#FF6B3D] h-[3rem] flex items-center">
+    <div class="flex w-fit marquee-track">
+      <div class="flex-shrink-0 pr-16 text-[#3E1104] text-[1.5rem] font-normal uppercase leading-[0.8] whitespace-nowrap">
         3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
       </div>
-      <div class="marquee-text">
+      <div class="flex-shrink-0 pr-16 text-[#3E1104] text-[1.5rem] font-normal uppercase leading-[0.8] whitespace-nowrap">
         3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
       </div>
     </div>
