@@ -1,16 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tercarioli Portfolio</title>
+  <link href="dist/tailwind.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0;
       font-family: 'Work Sans', sans-serif;
-      background-color: #FF6B3D;
-      color: #F6F8EB;
+      margin: 0;
     }
 
     .marquee-container {
@@ -48,8 +48,16 @@
     }
   </style>
 </head>
-<body>
+<body class="bg-[#FF6B3D] text-[#F6F8EB]">
 
+  <!-- NAVBAR -->
+  <nav class="bg-[#F6F8EB] text-[#FF6B3D] py-4">
+    <div class="container mx-auto text-center">
+      <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-8 mx-auto" />
+    </div>
+  </nav>
+
+  <!-- MARQUEE -->
   <div class="marquee-container">
     <div class="marquee-track">
       <div class="marquee-text">
@@ -60,6 +68,18 @@
       </div>
     </div>
   </div>
+
+  <!-- HERO SECTION -->
+  <header class="py-24 px-6">
+    <div class="mx-auto text-left max-w-[62.5rem]">
+      <h1 class="text-[3rem] md:text-[5rem] lg:text-[8rem] font-extrabold uppercase leading-[0.77]">
+        20 Years of Award-Winning Creativity
+      </h1>
+      <button class="mt-10 px-6 py-3 bg-[#F6F8EB] text-[#FF6B3D] font-semibold text-lg hover:scale-105 transition-transform">
+        Let’s Create
+      </button>
+    </div>
+  </header>
 
 </body>
 </html>
