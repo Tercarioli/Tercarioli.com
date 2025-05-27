@@ -10,9 +10,14 @@
     body {
       font-family: 'Work Sans', sans-serif;
     }
+
     @keyframes marquee {
-      0%   { transform: translateX(0%); }
-      100% { transform: translateX(-100%); }
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
     }
 
     .animate-marquee {
@@ -22,33 +27,39 @@
   </style>
 </head>
 <body class="bg-[#FF6B3D] text-[#F6F8EB]">
+
   <!-- NAVBAR -->
-<nav class="bg-[#F6F8EB] text-[#FF6B3D] py-4">
-  <div class="container mx-auto text-center">
-    <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-8 mx-auto" />
-  </div>
-</nav>
+  <nav class="bg-[#F6F8EB] text-[#FF6B3D] py-4">
+    <div class="container mx-auto text-center">
+      <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-8 mx-auto" />
+    </div>
+  </nav>
+
   <!-- MARQUEE -->
-<section class="bg-[#FF6B3D] overflow-hidden border-y border-[#F6F8EB]">
-  <div class="whitespace-nowrap animate-marquee text-[#3E1104] text-sm md:text-base font-semibold uppercase py-2">
-    <span class="inline-block px-8">
-      3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
-    </span>
-    <span class="inline-block px-8">
-      3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
-    </span>
-  </div>
-</section>
-<!-- HERO SECTION -->
-<header class="py-24 px-6">
-  <div class="mx-auto text-left max-w-[62.5rem]">
-    <h1 class="text-[3rem] md:text-[5rem] lg:text-[8rem] font-extrabold uppercase leading-[0.77]">
-      20 Years of Award-Winning Creativity
-    </h1>
-    <button class="mt-10 px-6 py-3 bg-[#F6F8EB] text-[#FF6B3D] font-semibold text-lg hover:scale-105 transition-transform">
-      Let’s Create
-    </button>
-  </div>
-</header>
+  <section class="bg-[#FF6B3D] overflow-hidden">
+    <div class="relative w-full h-full">
+      <div class="absolute whitespace-nowrap animate-marquee text-[#3E1104] text-[1.5rem] font-normal uppercase leading-[0.8] py-2">
+        <span class="inline-block px-8">
+          3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
+        </span>
+        <span class="inline-block px-8">
+          3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO SECTION -->
+  <header class="py-24 px-6">
+    <div class="mx-auto text-left max-w-[62.5rem]">
+      <h1 class="text-[3rem] md:text-[5rem] lg:text-[8rem] font-extrabold uppercase leading-[0.77]">
+        20 Years of Award-Winning Creativity
+      </h1>
+      <button class="mt-10 px-6 py-3 bg-[#F6F8EB] text-[#FF6B3D] font-semibold text-lg hover:scale-105 transition-transform">
+        Let’s Create
+      </button>
+    </div>
+  </header>
+
 </body>
 </html>
