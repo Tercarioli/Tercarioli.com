@@ -7,24 +7,23 @@
   <link href="dist/tailwind.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-  body {
-    font-family: 'Work Sans', sans-serif;
-  }
-
-  @keyframes marquee-full {
-    0% {
-      transform: translateX(0%);
+    body {
+      font-family: 'Work Sans', sans-serif;
     }
-    100% {
-      transform: translateX(-100%);
+
+    @keyframes marquee-full {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
     }
-  }
 
-  .animate-marquee-full {
-    animation: marquee-full 40s linear infinite;
-  }
-</style>
-
+    .animate-marquee-full {
+      animation: marquee-full 40s linear infinite;
+    }
+  </style>
 </head>
 <body class="bg-[#FF6B3D] text-[#F6F8EB]">
 
@@ -35,10 +34,9 @@
     </div>
   </nav>
 
-<!-- MARQUEE -->
-<section class="bg-[#FF6B3D] overflow-hidden">
-  <div class="relative w-full">
-    <div class="absolute top-0 left-0 flex animate-marquee-full whitespace-nowrap">
+  <!-- MARQUEE -->
+  <section class="bg-[#FF6B3D] overflow-hidden h-[3rem] relative">
+    <div class="flex animate-marquee-full whitespace-nowrap">
       <div class="flex-shrink-0 text-[#3E1104] text-[1.5rem] font-normal uppercase leading-[0.8] px-8 py-2">
         3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
       </div>
@@ -46,8 +44,7 @@
         3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- HERO SECTION -->
   <header class="py-24 px-6">
