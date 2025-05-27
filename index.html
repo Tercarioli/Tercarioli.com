@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,21 +23,27 @@
     }
 
     .marquee-track {
-      animation: scroll 70s linear infinite;
+      animation: scroll 60s linear infinite;
     }
   </style>
 </head>
 <body class="bg-[#FF6B3D] text-[#F6F8EB]">
 
+  <!-- GRADIENT OVERLAY FIXED -->
+  <div class="fixed top-0 left-0 w-full h-[11rem] opacity-70 z-0 pointer-events-none" style="
+    background: linear-gradient(to bottom, #f62900 100%, #FF6B3D 0%);
+    mix-blend-mode: soft-light;">
+  </div>
+
   <!-- NAVBAR -->
-  <nav class="bg-[#F6F8EB] text-[#FF6B3D] py-4 mb-2">
+  <nav class="relative z-10 bg-[#F6F8EB] text-[#FF6B3D] py-4 mb-4">
     <div class="container mx-auto text-center">
       <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-6 mx-auto" />
     </div>
   </nav>
 
-  <!-- MARQUEE with Tailwind -->
-  <div class="overflow-hidden bg-[#FF6B3D] h-[3rem] flex items-center">
+  <!-- MARQUEE -->
+  <div class="overflow-hidden bg-[#FF6B3D] h-[3rem] flex items-center mt-4 relative z-10">
     <div class="flex w-fit marquee-track">
       <div class="flex-shrink-0 pr-16 text-[#3E1104] text-[1.5rem] font-normal uppercase leading-[0.8] whitespace-nowrap">
         3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
@@ -48,7 +55,7 @@
   </div>
 
   <!-- HERO SECTION -->
-  <header class="py-24 px-6">
+  <header class="py-24 px-6 relative z-10">
     <div class="mx-auto text-left max-w-[62.5rem]">
       <h1 class="text-[3rem] md:text-[5rem] lg:text-[8rem] font-extrabold uppercase leading-[0.77]">
         20 Years of Award-Winning Creativity
