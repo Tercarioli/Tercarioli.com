@@ -1,0 +1,10 @@
+{
+  "name": "tercarioli-portfolio",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tailwindcss -i ./css/tailwind.css -o ./dist/tailwind.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
