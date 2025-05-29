@@ -37,14 +37,8 @@
   ">
   </div>
 
-  <!-- NAVBAR (fixed) -->
-<nav class="fixed top-0 w-full z-30 bg-[#F6F8EB] text-[#FF6F3D] py-4">
-  <div class="container mx-auto text-center">
-    <a href="/">
-      <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-6 mx-auto" />
-    </a>
-  </div>
-</nav>
+  <!-- NAVBAR (as component) -->
+<div id="navbar-container"></div>
 
   <!-- MARQUEE -->
   <div class="overflow-hidden bg-[#FF6B3D] h-[3rem] flex items-center mt-2 relative">
@@ -79,6 +73,15 @@
   <section class="min-h-screen bg-[#FFB88C] text-[#3E1104] flex items-center justify-center">
     <h2 class="text-4xl font-bold uppercase">Sección de prueba 2</h2>
   </section>
+
+  <!-- SCRIPT FOR FETCH NAVBAR -->
+  <script>
+  fetch('components/navbar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('navbar-container').innerHTML = data;
+    });
+</script>
 
 </body>
 </html>
