@@ -29,6 +29,9 @@
 </head>
 <body class="bg-[#FF6B3D] text-[#F6F8EB] pt-[3rem]">
 
+  <!-- NAVBAR (as component) -->
+  <div id="navbar-container"></div>
+  
   <!-- GRADIENT OVERLAY FIXED with transparency -->
   <div class="fixed top-0 left-0 w-full h-[14rem] z-20 pointer-events-none" style="
     background: linear-gradient(to bottom,
@@ -36,9 +39,6 @@
       rgba(255, 107, 61, 0.0) 95%);
   ">
   </div>
-
-  <!-- NAVBAR (as component) -->
-<div id="navbar-container"></div>
 
   <!-- MARQUEE -->
   <div class="overflow-hidden bg-[#FF6B3D] h-[3rem] flex items-center mt-2 relative">
@@ -79,7 +79,10 @@
   fetch('components/navbar.html')
     .then(response => response.text())
     .then(data => {
-      document.getElementById('navbar-container').innerHTML = data;
+      const navbarContainer = document.getElementById('navbar-container');
+      const temp = document.createElement('div');
+      temp.innerHTML = data.trim();
+      navbarContainer.replaceWith(...temp.childNodes);
     });
 </script>
 
