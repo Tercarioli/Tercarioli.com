@@ -74,13 +74,23 @@
   <section class="bg-[#FF6B3D] text-[#F6F8EB] py-32 px-6">
   <div class="max-w-[62.5rem] mx-auto text-right">
 
-    <!-- Tarjeta -->
+    <!-- Tarjeta - Contenedor general -->
+<div class="relative w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto group">
+
+  <!-- Hover wrapper: escala al 110% al hacer hover -->
+  <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+
+    <!-- Scroll wrapper: animación de scroll controlada por JS -->
     <a href="/nike.html"
-   class="parallax-card will-change-[transform] transition-transform duration-300 block w-[200px] h-[275px] md:w-[240px] md:h-[330px] rotate-[4deg] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] z-20 ml-auto"
-   data-hover="false">
-  <img src="/assets/cards/card-nike.png" alt="Nike Football Olimpia"
-       class="w-full h-full object-cover" />
-</a>
+       class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] z-20 will-change-[transform] rotate-[4deg]"
+       data-hover="false">
+      <img src="/assets/cards/card-nike.png" alt="Nike Football Olimpia"
+           class="w-full h-full object-cover" />
+    </a>
+
+  </div>
+
+</div>
 
     <!-- H2 -->
     <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
@@ -89,7 +99,6 @@
 
   </div>
 </section>
-
 
   <!-- TEST SECTION 2 -->
   <section class="min-h-screen bg-[#FFB88C] text-[#3E1104] flex items-center justify-center">
