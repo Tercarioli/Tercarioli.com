@@ -27,27 +27,25 @@
     }
   </style>
 </head>
-<body class="bg-[#FF6B3D] text-[#F6F8EB] pt-[4.5rem]">
+<body class="bg-[#FF6B3D] text-[#F6F8EB] pt-[3rem]">
 
- <!-- NAVBAR (fixed) -->
-<nav class="fixed top-0 w-full z-30 bg-[#F6F8EB] text-[#FF6F3D] py-4">
-  <div class="container mx-auto text-center">
-    <a href="/">
-      <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-6 mx-auto" />
-    </a>
+  <!-- GRADIENT OVERLAY FIXED with transparency -->
+  <div class="fixed top-0 left-0 w-full h-[14rem] z-20 pointer-events-none" style="
+    background: linear-gradient(to bottom,
+      rgba(246, 41, 0, 1) 0%,
+      rgba(255, 107, 61, 0.0) 95%);
+  ">
   </div>
-</nav>
 
-<!-- GRADIENT OVERLAY FIXED with transparency -->
-<div class="fixed top-0 left-0 w-full h-[14rem] z-20 pointer-events-none" style="
-  background: linear-gradient(to bottom,
-    rgba(246, 41, 0, 1) 0%,
-    rgba(255, 107, 61, 0.0) 95%);
-">
-</div>
+  <!-- NAVBAR (fixed) -->
+  <nav class="fixed top-0 w-full z-30 bg-[#F6F8EB] text-[#FF6F3D] py-4">
+    <div class="container mx-auto text-center">
+      <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-6 mx-auto" />
+    </div>
+  </nav>
 
   <!-- MARQUEE -->
-  <div class="overflow-hidden bg-[#FF6B3D] h-[3rem] flex items-center mt-0 relative">
+  <div class="overflow-hidden bg-[#FF6B3D] h-[3rem] flex items-center mt-2 relative">
     <div class="flex w-fit marquee-track z-10">
       <div class="flex-shrink-0 pr-16 text-[#3E1104] text-[1.5rem] font-normal uppercase leading-[0.8] whitespace-nowrap">
         3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
@@ -79,18 +77,6 @@
   <section class="min-h-screen bg-[#FFB88C] text-[#3E1104] flex items-center justify-center">
     <h2 class="text-4xl font-bold uppercase">Sección de prueba 2</h2>
   </section>
-
-  <!-- SCRIPT FOR FETCH NAVBAR -->
-  <script>
-  fetch('components/navbar.html')
-    .then(response => response.text())
-    .then(data => {
-      const navbarContainer = document.getElementById('navbar-container');
-      const temp = document.createElement('div');
-      temp.innerHTML = data.trim();
-      navbarContainer.replaceWith(...temp.childNodes);
-    });
-</script>
 
 </body>
 </html>
