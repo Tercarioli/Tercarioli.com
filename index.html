@@ -104,7 +104,7 @@
     cards.forEach(card => {
       const rect = card.getBoundingClientRect();
       const offset = rect.top / window.innerHeight;
-      const moveY = 40 - offset * 40; // controla la posición inicial y fuerza del efecto
+      const moveY = 50 - offset * 40; // controla la posición inicial y fuerza del efecto
       card.style.transform = `translateY(${moveY}px) rotate(4deg) scale(1)`; // mantiene rotación
     });
   });
