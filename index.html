@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,12 +13,8 @@
     }
 
     @keyframes scroll {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
     }
 
     .marquee-track {
@@ -29,22 +24,19 @@
 </head>
 <body class="bg-[#FF6B3D] text-[#F6F8EB] pt-[3rem]">
 
-  <!-- GRADIENT OVERLAY FIXED with transparency -->
-  <div class="fixed top-0 left-0 w-full h-[14rem] z-20 pointer-events-none" style="
-    background: linear-gradient(to bottom,
-      rgba(246, 41, 0, 1) 0%,
-      rgba(255, 107, 61, 0.0) 95%);
-  ">
+  <!-- GRADIENT OVERLAY -->
+  <div class="fixed top-0 left-0 w-full h-[14rem] z-20 pointer-events-none"
+       style="background: linear-gradient(to bottom, rgba(246, 41, 0, 1) 0%, rgba(255, 107, 61, 0.0) 95%)">
   </div>
 
-  <!-- NAVBAR (fixed) -->
-<nav class="fixed top-0 w-full z-30 bg-[#F6F8EB] text-[#FF6F3D] py-4">
-  <div class="container mx-auto text-center">
-    <a href="/">
-      <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-6 mx-auto" />
-    </a>
-  </div>
-</nav>
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full z-30 bg-[#F6F8EB] text-[#FF6F3D] py-4">
+    <div class="container mx-auto text-center">
+      <a href="/">
+        <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-6 mx-auto" />
+      </a>
+    </div>
+  </nav>
 
   <!-- MARQUEE -->
   <div class="overflow-hidden bg-[#FF6B3D] h-[3rem] flex items-center mt-2 relative">
@@ -58,9 +50,9 @@
     </div>
   </div>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <header class="pt-16 md:h-[65vh] md:flex md:items-center px-6 relative">
-  <div class="max-w-[62.5rem] mx-auto text-left">
+    <div class="max-w-[62.5rem] mx-auto text-left">
       <h1 class="text-[3rem] md:text-[5rem] lg:text-[8rem] font-extrabold uppercase leading-[0.77]">
         20 Years of Award-Winning Creativity
       </h1>
@@ -71,54 +63,47 @@
   </header>
 
   <!-- NIKE 1 -->
-<section class="bg-[#FF6B3D] text-[#F6F8EB] py-32 px-6">
-  <div class="max-w-[62.5rem] mx-auto text-right relative group">
+  <section class="bg-[#FF6B3D] text-[#F6F8EB] py-32 px-6">
+    <div class="max-w-[62.5rem] mx-auto text-right relative">
 
-    <!-- Texto que aparece en hover -->
-    <div class="hidden md:block absolute bottom-[18rem] right-[20rem] opacity-0 translate-x-[8rem] group-hover:translate-x-0 group-hover:opacity-80 transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase z-10 pointer-events-none max-w-[16em] text-right">
-  The first club campaign in the world for Nike’s new brandvoice ‘Never Done’.
-</div>
-
-    <!-- Tarjeta -->
-    <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto mr-[3rem]">
-      <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
-        <a href="/nike.html"
-           class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] z-20 will-change-[transform] rotate-[4deg]"
-           data-hover="false">
-          <img src="/assets/cards/card-nike.png" alt="Nike Football Olimpia"
-               class="w-full h-full object-cover" />
-        </a>
+      <!-- TEXTO hover (fuera del área hover real) -->
+      <div id="hover-text"
+           class="hidden md:block absolute bottom-[18rem] right-[20rem] opacity-0 translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-right z-10">
+        The first club campaign in the world for Nike’s new brandvoice ‘Never Done’.
       </div>
+
+      <!-- TARJETA -->
+      <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto mr-[3rem]"
+           onmouseenter="showHoverText()" onmouseleave="hideHoverText()">
+        <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+          <a href="/nike.html"
+             class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[4deg] will-change-[transform]">
+            <img src="/assets/cards/card-nike.png" alt="Nike Football Olimpia"
+                 class="w-full h-full object-cover" />
+          </a>
+        </div>
+      </div>
+
+      <!-- TITULAR -->
+      <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
+        1.300.000 views for Nike Football.
+      </h2>
+
     </div>
+  </section>
 
-    <!-- H2 -->
-    <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
-      1.300.000 views for Nike Football.
-    </h2>
-
-  </div>
-</section>
-
-
-
-
-  <!-- TEST SECTION 2 -->
+  <!-- TEST SECTION -->
   <section class="min-h-screen bg-[#FFB88C] text-[#3E1104] flex items-center justify-center">
     <h2 class="text-4xl font-bold uppercase">Sección de prueba 2</h2>
   </section>
-  
-<!-- SCRIPT SCROLL ANIMATION -->
-<script>
-  const cards = document.querySelectorAll('.parallax-card');
+
+  <!-- SCRIPT: SCROLL + HOVER TEXT -->
+  <script>
+    const cards = document.querySelectorAll('.parallax-card');
 
     cards.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.dataset.hover = 'true';
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.dataset.hover = 'false';
-      });
+      card.addEventListener('mouseenter', () => card.dataset.hover = 'true');
+      card.addEventListener('mouseleave', () => card.dataset.hover = 'false');
     });
 
     window.addEventListener('scroll', () => {
@@ -126,14 +111,23 @@
         const rect = card.getBoundingClientRect();
         const offset = rect.top / window.innerHeight;
         const moveY = 50 - offset * 40;
-
         const isHovered = card.dataset.hover === 'true';
         const scale = isHovered ? 1.1 : 1;
-
         card.style.transform = `translateY(${moveY}px) rotate(4deg) scale(${scale})`;
       });
     });
-</script>
-  
+
+    // Hover Text control
+    const hoverText = document.getElementById('hover-text');
+    function showHoverText() {
+      hoverText.classList.remove('opacity-0', 'translate-x-[8rem]');
+      hoverText.classList.add('opacity-90', 'translate-x-0');
+    }
+    function hideHoverText() {
+      hoverText.classList.remove('opacity-90', 'translate-x-0');
+      hoverText.classList.add('opacity-0', 'translate-x-[8rem]');
+    }
+  </script>
+
 </body>
 </html>
