@@ -72,28 +72,23 @@
 
   <!-- NIKE 1 -->
 <section class="bg-[#FF6B3D] text-[#F6F8EB] py-32 px-6">
-  <div class="max-w-[62.5rem] mx-auto text-right relative">
+  <div class="max-w-[62.5rem] mx-auto text-right relative group">
 
-    <!-- Contenedor de texto + tarjeta con group -->
-    <div class="relative group">
+    <!-- Texto que aparece en hover -->
+    <div class="hidden md:block absolute bottom-[18rem] right-[20rem] opacity-0 translate-x-[8rem] group-hover:translate-x-0 group-hover:opacity-80 transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase z-10 pointer-events-none max-w-[16em] text-right">
+  The first club campaign in the world for Nike’s new brandvoice ‘Never Done’.
+</div>
 
-      <!-- Texto que aparece en hover -->
-      <div class="hidden md:block absolute bottom-[18rem] right-[20rem] opacity-0 translate-x-[8rem] group-hover:translate-x-0 group-hover:opacity-80 transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase z-[10] pointer-events-none max-w-[16em] text-right">
-        The first club campaign in the world for Nike’s new brandvoice ‘Never Done’.
+    <!-- Tarjeta -->
+    <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto mr-[3rem]">
+      <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+        <a href="/nike.html"
+           class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] z-20 will-change-[transform] rotate-[4deg]"
+           data-hover="false">
+          <img src="/assets/cards/card-nike.png" alt="Nike Football Olimpia"
+               class="w-full h-full object-cover" />
+        </a>
       </div>
-
-      <!-- Tarjeta (área sensible al hover) -->
-      <div class="relative z-[20] w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto mr-[3rem]">
-        <div class="hover:scale-110 transition-transform duration-300 w-full h-full group-hover:pointer-events-none">
-          <a href="/nike.html"
-             class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] rotate-[4deg]"
-             data-hover="false">
-            <img src="/assets/cards/card-nike.png" alt="Nike Football Olimpia"
-                 class="w-full h-full object-cover" />
-          </a>
-        </div>
-      </div>
-
     </div>
 
     <!-- H2 -->
