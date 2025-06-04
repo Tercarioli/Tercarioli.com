@@ -100,22 +100,22 @@
   <script>
   const groups = document.querySelectorAll('.group');
 
-  groups.forEach(group => {
-    const card = group.querySelector('.parallax-card');
-    const text = group.querySelector('.hover-text');
+groups.forEach(group => {
+  const card = group.querySelector('.parallax-card');
+  const text = group.querySelector('.hover-text');
 
-    if (!card || !text) return;
+  if (!card || !text) return;
 
-    card.addEventListener('mouseenter', () => {
-      text.classList.remove('opacity-0');
-      text.classList.add('opacity-80');
-    });
-
-    card.addEventListener('mouseleave', () => {
-      text.classList.add('opacity-0');
-      text.classList.remove('opacity-80');
-    });
+  card.addEventListener('mouseenter', () => {
+    text.classList.remove('opacity-0', 'translate-x-[8rem]');
+    text.classList.add('opacity-80', 'translate-x-0');
   });
+
+  card.addEventListener('mouseleave', () => {
+    text.classList.remove('opacity-80', 'translate-x-0');
+    text.classList.add('opacity-0', 'translate-x-[8rem]');
+  });
+});
 
   // Scroll animation
   const cards = document.querySelectorAll('.parallax-card');
