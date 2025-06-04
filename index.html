@@ -95,32 +95,41 @@
   <section class="min-h-screen bg-[#FFB88C] text-[#3E1104] flex items-center justify-center">
     <h2 class="text-4xl font-bold uppercase">Sección de prueba 2</h2>
   </section>
-
-  <!-- SCRIPT: SCROLL + HOVER TEXT -->
+  
+  <!-- SCRIPT -->
   <script>
   const groups = document.querySelectorAll('.group');
 
-groups.forEach(group => {
-  const card = group.querySelector('.parallax-card');
-  const text = group.querySelector('.hover-text');
+  groups.forEach(group => {
+    const card = group.querySelector('.parallax-card');
+    const text = group.querySelector('.hover-text');
 
-  if (!card || !text) return;
+    if (!card || !text) return;
 
-  const isSlideRight = text.classList.contains('slide-right');
-  const inClass = isSlideRight ? 'translate-x-0' : 'translate-x-0';
-  const outClass = isSlideRight ? 'translate-x-[8rem]' : '-translate-x-[8rem]';
+    const isSlideRight = text.classList.contains('slide-right');
+    const inClass = isSlideRight ? 'translate-x-0' : 'translate-x-0';
+    const outClass = isSlideRight ? 'translate-x-[8rem]' : '-translate-x-[8rem]';
 
-  card.addEventListener('mouseenter', () => {
-    text.classList.remove('opacity-0', outClass);
-    text.classList.add('opacity-80', inClass);
+    card.addEventListener('mouseenter', () => {
+      text.classList.remove('opacity-0', outClass);
+      text.classList.add('opacity-80', inClass);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      text.classList.remove('opacity-80', inClass);
+      text.classList.add('opacity-0', outClass);
+    });
+
+    // SCROLL INTERACTION RESTORED
+    window.addEventListener('scroll', () => {
+      const rect = card.getBoundingClientRect();
+      const offset = rect.top / window.innerHeight;
+      const moveY = 50 - offset * 40;
+      card.style.transform = `translateY(${moveY}px) rotate(4deg)`;
+    });
   });
-
-  card.addEventListener('mouseleave', () => {
-    text.classList.remove('opacity-80', inClass);
-    text.classList.add('opacity-0', outClass);
-  });
-});
 </script>
+
 
 
 </body>
