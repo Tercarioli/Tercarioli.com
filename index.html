@@ -67,8 +67,7 @@
     <div class="max-w-[62.5rem] mx-auto text-right relative">
 
       <!-- TEXTO hover (fuera del área hover real) -->
-      <div id="hover-text"
-           class="hidden md:block absolute bottom-[18rem] right-[20rem] opacity-0 translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-right z-10">
+      <div class="hover-text hidden md:block absolute bottom-[18rem] right-[20rem] opacity-0 translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-right z-10">
         The first club campaign in the world for Nike’s new brandvoice ‘Never Done’.
       </div>
 
@@ -99,35 +98,38 @@
 
   <!-- SCRIPT: SCROLL + HOVER TEXT -->
   <script>
-    const cards = document.querySelectorAll('.parallax-card');
+  const groups = document.querySelectorAll('.group');
 
+  groups.forEach(group => {
+    const card = group.querySelector('.parallax-card');
+    const text = group.querySelector('.hover-text');
+
+    if (!card || !text) return;
+
+    card.addEventListener('mouseenter', () => {
+      text.classList.remove('opacity-0');
+      text.classList.add('opacity-80');
+    });
+
+    card.addEventListener('mouseleave', () => {
+      text.classList.add('opacity-0');
+      text.classList.remove('opacity-80');
+    });
+  });
+
+  // Scroll animation
+  const cards = document.querySelectorAll('.parallax-card');
+
+  window.addEventListener('scroll', () => {
     cards.forEach(card => {
-      card.addEventListener('mouseenter', () => card.dataset.hover = 'true');
-      card.addEventListener('mouseleave', () => card.dataset.hover = 'false');
+      const rect = card.getBoundingClientRect();
+      const offset = rect.top / window.innerHeight;
+      const moveY = 50 - offset * 40;
+      card.style.transform = `translateY(${moveY}px) rotate(4deg)`;
     });
+  });
+</script>
 
-    window.addEventListener('scroll', () => {
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const offset = rect.top / window.innerHeight;
-        const moveY = 50 - offset * 40;
-        const isHovered = card.dataset.hover === 'true';
-        const scale = isHovered ? 1.1 : 1;
-        card.style.transform = `translateY(${moveY}px) rotate(4deg) scale(${scale})`;
-      });
-    });
-
-    // Hover Text control
-    const hoverText = document.getElementById('hover-text');
-    function showHoverText() {
-      hoverText.classList.remove('opacity-0', 'translate-x-[8rem]');
-      hoverText.classList.add('opacity-90', 'translate-x-0');
-    }
-    function hideHoverText() {
-      hoverText.classList.remove('opacity-90', 'translate-x-0');
-      hoverText.classList.add('opacity-0', 'translate-x-[8rem]');
-    }
-  </script>
 
 </body>
 </html>
