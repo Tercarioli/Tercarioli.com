@@ -120,36 +120,43 @@
 
     <!-- SCRIPT -->
     <script>
-      const groups = document.querySelectorAll('.group');
+  const groups = document.querySelectorAll('.group');
 
-      groups.forEach(group => {
-        const card = group.querySelector('.parallax-card');
-        const text = group.querySelector('.hover-text');
+  groups.forEach(group => {
+    const card = group.querySelector('.parallax-card');
+    const text = group.querySelector('.hover-text');
 
-        if (!card || !text) return;
+    if (!card || !text) return;
 
-        const isSlideRight = text.classList.contains('slide-right');
-        const inClass = 'translate-x-0';
-        const outClass = isSlideRight ? 'translate-x-[8rem]' : '-translate-x-[8rem]';
+    const isSlideRight = text.classList.contains('slide-right');
+    const inClass = 'translate-x-0';
+    const outClass = isSlideRight ? 'translate-x-[8rem]' : '-translate-x-[8rem]';
 
-        card.addEventListener('mouseenter', () => {
-          text.classList.remove('opacity-0', outClass);
-          text.classList.add('opacity-70', inClass);
-        });
+    card.addEventListener('mouseenter', () => {
+      text.classList.remove('opacity-0', outClass);
+      text.classList.add('opacity-70', inClass);
+    });
 
-        card.addEventListener('mouseleave', () => {
-          text.classList.remove('opacity-70', inClass);
-          text.classList.add('opacity-0', outClass);
-        });
+    card.addEventListener('mouseleave', () => {
+      text.classList.remove('opacity-70', inClass);
+      text.classList.add('opacity-0', outClass);
+    });
 
-        // SCROLL INTERACTION RESTORED
-        window.addEventListener('scroll', () => {
-          const rect = card.getBoundingClientRect();
-          const offset = rect.top / window.innerHeight;
-          const moveY = 50 - offset * 40;
-          card.style.transform = `translateY(${moveY}px)`;
-        });
-      });
-    </script>
+    // SCROLL INTERACTION RESTORED with Tailwind-based rotation preserved
+    window.addEventListener('scroll', () => {
+      const rect = card.getBoundingClientRect();
+      const offset = rect.top / window.innerHeight;
+      const moveY = 50 - offset * 40;
+
+      // Extract rotation from Tailwind class
+      const rotationClass = Array.from(card.classList).find(cls => cls.startsWith('rotate-['));
+      const rotationMatch = rotationClass?.match(/rotate-\[(-?\d+)deg\]/);
+      const rotation = rotationMatch ? `${rotationMatch[1]}deg` : '0deg';
+
+      card.style.transform = `translateY(${moveY}px) rotate(${rotation})`;
+    });
+  });
+</script>
+
   </body>
 </html>
