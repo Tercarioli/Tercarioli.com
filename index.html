@@ -348,36 +348,41 @@
     { id: 'extra4', scrollFactor: 35 },
   ];
 
-  scrollConfigs.forEach(({ id, scrollFactor }) => {
+  function animateOnScroll(card, scrollFactor, baseRotation) {
+    const rect = card.getBoundingClientRect();
+    const offset = rect.top / window.innerHeight;
+    const moveY = 50 - offset * scrollFactor;
+    const scale = card.matches(':hover') ? 1.1 : 1;
+
+    card.style.transform = `translateY(${moveY}px) rotate(${baseRotation}) scale(${scale})`;
+  }
+
+  function setupCardScroll({ id, scrollFactor }) {
     const card = document.getElementById(id);
     if (!card) return;
 
-    let baseRotation = '0deg';
     const rotationClass = Array.from(card.classList).find(cls =>
       cls.startsWith('rotate-[') || cls.startsWith('rotate-[-')
     );
     const rotationMatch = rotationClass?.match(/rotate-\[(-?\d+)deg\]/);
-    if (rotationMatch) baseRotation = `${rotationMatch[1]}deg`;
+    const baseRotation = rotationMatch ? `${rotationMatch[1]}deg` : '0deg';
 
-    function applyScrollEffect() {
-      const rect = card.getBoundingClientRect();
-      const offset = rect.top / window.innerHeight;
-      const moveY = 50 - offset * scrollFactor;
-
-      const scale = card.matches(':hover') ? 1.1 : 1;
-      card.style.transform = `translateY(${moveY}px) rotate(${baseRotation}) scale(${scale})`;
+    function update() {
+      requestAnimationFrame(() => animateOnScroll(card, scrollFactor, baseRotation));
     }
 
-    // Inicializa posición al cargar
-    applyScrollEffect();
+    // Ejecutar al cargar
+    update();
 
-    // Aplica en scroll
-    window.addEventListener('scroll', applyScrollEffect);
+    // Ejecutar en scroll
+    window.addEventListener('scroll', update);
 
-    // Hover in/out para escalar
-    card.addEventListener('mouseenter', applyScrollEffect);
-    card.addEventListener('mouseleave', applyScrollEffect);
-  });
+    // Ejecutar en hover
+    card.addEventListener('mouseenter', update);
+    card.addEventListener('mouseleave', update);
+  }
+
+  scrollConfigs.forEach(setupCardScroll);
 </script>
 
 
