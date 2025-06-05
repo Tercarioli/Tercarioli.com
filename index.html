@@ -1,174 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tercarioli Portfolio</title>
-  <link href="dist/tailwind.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-  body {
-    font-family: 'Work Sans', sans-serif;
-    margin: 0;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tercarioli Portfolio</title>
+    <link href="dist/tailwind.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Work Sans', sans-serif;
+        margin: 0;
+      }
 
-  @keyframes scroll {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
-  }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
 
-  .marquee-track {
-    animation: scroll 60s linear infinite;
-  }
+      .marquee-track {
+        animation: scroll 60s linear infinite;
+      }
 
-  .bottom-balanced {
-    bottom: 7rem;
-  }
-</style>
+      .bottom-balanced {
+        bottom: 7rem;
+      }
+    </style>
+  </head>
 
-</head>
-<body class="bg-[#FF6B3D] text-[#F6F8EB] pt-[3rem]">
-
-  <!-- GRADIENT OVERLAY -->
-  <div class="fixed top-0 left-0 w-full h-[14rem] z-30 pointer-events-none"
-       style="background: linear-gradient(to bottom, rgba(246, 41, 0, 1) 0%, rgba(255, 107, 61, 0.0) 95%)">
-  </div>
-
-  <!-- NAVBAR -->
-  <nav class="fixed top-0 w-full z-40 bg-[#F6F8EB] text-[#FF6F3D] py-4">
-    <div class="container mx-auto text-center">
-      <a href="/">
-        <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-6 mx-auto" />
-      </a>
+  <body class="bg-[#FF6B3D] text-[#F6F8EB] pt-[3rem]">
+    <!-- GRADIENT OVERLAY -->
+    <div class="fixed top-0 left-0 w-full h-[14rem] z-30 pointer-events-none"
+      style="background: linear-gradient(to bottom, rgba(246, 41, 0, 1) 0%, rgba(255, 107, 61, 0.0) 95%)">
     </div>
-  </nav>
 
-  <!-- MARQUEE -->
-  <div class="overflow-hidden bg-[#FF6B3D] h-[3rem] flex items-center mt-2 relative">
-    <div class="flex w-fit marquee-track z-10">
-      <div class="flex-shrink-0 pr-16 text-[#3E1104] text-[1.5rem] font-normal uppercase leading-[0.8] whitespace-nowrap">
-        3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-40 bg-[#F6F8EB] text-[#FF6F3D] py-4">
+      <div class="container mx-auto text-center">
+        <a href="/">
+          <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-6 mx-auto" />
+        </a>
       </div>
-      <div class="flex-shrink-0 pr-16 text-[#3E1104] text-[1.5rem] font-normal uppercase leading-[0.8] whitespace-nowrap">
-        3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
-      </div>
-    </div>
-  </div>
+    </nav>
 
-  <!-- HERO -->
-  <header class="pt-16 md:h-[65vh] md:flex md:items-center px-6 relative">
-    <div class="max-w-[62.5rem] mx-auto text-left">
-      <h1 class="text-[3rem] md:text-[5rem] lg:text-[8rem] font-extrabold uppercase leading-[0.77]">
-        20 Years of Award-Winning Creativity
-      </h1>
-      <button class="mt-10 px-6 py-3 bg-[#F6F8EB] text-[#FF6B3D] font-semibold text-lg hover:scale-105 transition-transform">
-        Let’s Create
-      </button>
-    </div>
-  </header>
-
-  <!-- NIKE 1 -->
-<section class="bg-[#FF6B3D] text-[#F6F8EB] py-32 px-6">
-  <div class="max-w-[62.5rem] mx-auto text-right relative">
-
-    <!-- BLOQUE TARJETA + TEXTO -->
-    <div class="relative group h-[20rem]">
-
-      <!-- TEXTO hover -->
-      <div class="hover-text bottom-balanced slide-right hidden md:block absolute right-[20rem] opacity-0 translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-right z-10">
-        The first club campaign in the world for Nike’s new brandvoice ‘Never Done’.
-      </div>
-
-      <!-- TARJETA -->
-      <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto mr-[3rem]">
-        <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
-          <a href="/nike.html"
-             class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[4deg] will-change-[transform]">
-            <img src="/assets/cards/card-nike.png" alt="Nike Football Olimpia"
-                 class="w-full h-full object-cover" />
-          </a>
+    <!-- MARQUEE -->
+    <div class="overflow-hidden bg-[#FF6B3D] h-[3rem] flex items-center mt-2 relative">
+      <div class="flex w-fit marquee-track z-10">
+        <div class="flex-shrink-0 pr-16 text-[#3E1104] text-[1.5rem] font-normal uppercase leading-[0.8] whitespace-nowrap">
+          3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
+        </div>
+        <div class="flex-shrink-0 pr-16 text-[#3E1104] text-[1.5rem] font-normal uppercase leading-[0.8] whitespace-nowrap">
+          3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
         </div>
       </div>
-
     </div>
 
-    <!-- TITULAR -->
-    <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
-      1.300.000 views for Nike Football.
-    </h2>
-
-  </div>
-</section>
-
-  <!-- MCDONALDS 2 -->
-<section class="bg-[#FF6B3D] text-[#F6F8EB] py-32 px-6">
-  <div class="max-w-[62.5rem] mx-auto text-left relative">
-
-    <!-- BLOQUE TARJETA + TEXTO -->
-    <div class="relative group h-[20rem]">
-
-      <!-- TEXTO hover -->
-      <div class="hover-text bottom-balanced slide-left hidden md:block absolute left-[20rem] opacity-0 -translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-left z-10">
-        Yes, a tattoo.
+    <!-- HERO -->
+    <header class="pt-16 md:h-[65vh] md:flex md:items-center px-6 relative">
+      <div class="max-w-[62.5rem] mx-auto text-left">
+        <h1 class="text-[3rem] md:text-[5rem] lg:text-[8rem] font-extrabold uppercase leading-[0.77]">
+          20 Years of Award-Winning Creativity
+        </h1>
+        <button class="mt-10 px-6 py-3 bg-[#F6F8EB] text-[#FF6B3D] font-semibold text-lg hover:scale-105 transition-transform">
+          Let’s Create
+        </button>
       </div>
+    </header>
 
-      <!-- TARJETA -->
-      <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] mr-auto ml-[3rem]">
-        <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
-          <a href="/nike.html"
-             class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[-4deg] will-change-[transform]">
-            <img src="/assets/cards/card-mcdonalds.png" alt="Nike Football Olimpia"
-                 class="w-full h-full object-cover" />
-          </a>
+    <!-- NIKE 1 -->
+    <section class="bg-[#FF6B3D] text-[#F6F8EB] py-32 px-6">
+      <div class="max-w-[62.5rem] mx-auto text-right relative">
+        <div class="relative group h-[20rem]">
+          <div class="hover-text bottom-balanced slide-right hidden md:block absolute right-[20rem] opacity-0 translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-right z-10">
+            The first club campaign in the world for Nike’s new brandvoice ‘Never Done’.
+          </div>
+
+          <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto mr-[3rem]">
+            <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+              <a href="/nike.html"
+                class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[4deg] will-change-[transform]">
+                <img src="/assets/cards/card-nike.png" alt="Nike Football Olimpia" class="w-full h-full object-cover" />
+              </a>
+            </div>
+          </div>
         </div>
+
+        <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
+          1.300.000 views for Nike Football.
+        </h2>
       </div>
+    </section>
 
-    </div>
+    <!-- MCDONALDS 2 -->
+    <section class="bg-[#FF6B3D] text-[#F6F8EB] py-32 px-6">
+      <div class="max-w-[62.5rem] mx-auto text-left relative">
+        <div class="relative group h-[20rem]">
+          <div class="hover-text bottom-balanced slide-left hidden md:block absolute left-[20rem] opacity-0 -translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-left z-10">
+            Yes, a tattoo.
+          </div>
 
-    <!-- TITULAR -->
-    <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
-      How every illustration work should end.
-    </h2>
+          <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] mr-auto ml-[3rem]">
+            <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+              <a href="/nike.html"
+                class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[-4deg] will-change-[transform]">
+                <img src="/assets/cards/card-mcdonalds.png" alt="Nike Football Olimpia" class="w-full h-full object-cover" />
+              </a>
+            </div>
+          </div>
+        </div>
 
-  </div>
-</section>
+        <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
+          How every illustration work should end.
+        </h2>
+      </div>
+    </section>
 
-  
-  <!-- SCRIPT -->
-  <script>
-  const groups = document.querySelectorAll('.group');
+    <!-- SCRIPT -->
+    <script>
+      const groups = document.querySelectorAll('.group');
 
-  groups.forEach(group => {
-    const card = group.querySelector('.parallax-card');
-    const text = group.querySelector('.hover-text');
+      groups.forEach(group => {
+        const card = group.querySelector('.parallax-card');
+        const text = group.querySelector('.hover-text');
 
-    if (!card || !text) return;
+        if (!card || !text) return;
 
-    const isSlideRight = text.classList.contains('slide-right');
-    const inClass = isSlideRight ? 'translate-x-0' : 'translate-x-0';
-    const outClass = isSlideRight ? 'translate-x-[8rem]' : '-translate-x-[8rem]';
+        const isSlideRight = text.classList.contains('slide-right');
+        const inClass = 'translate-x-0';
+        const outClass = isSlideRight ? 'translate-x-[8rem]' : '-translate-x-[8rem]';
 
-    card.addEventListener('mouseenter', () => {
-      text.classList.remove('opacity-0', outClass);
-      text.classList.add('opacity-70', inClass);
-    });
+        card.addEventListener('mouseenter', () => {
+          text.classList.remove('opacity-0', outClass);
+          text.classList.add('opacity-70', inClass);
+        });
 
-    card.addEventListener('mouseleave', () => {
-      text.classList.remove('opacity-70', inClass);
-      text.classList.add('opacity-0', outClass);
-    });
+        card.addEventListener('mouseleave', () => {
+          text.classList.remove('opacity-70', inClass);
+          text.classList.add('opacity-0', outClass);
+        });
 
-    // SCROLL INTERACTION RESTORED
-    window.addEventListener('scroll', () => {
-      const rect = card.getBoundingClientRect();
-      const offset = rect.top / window.innerHeight;
-      const moveY = 50 - offset * 40;
-      card.style.transform = `translateY(${moveY}px) rotate(4deg)`;
-    });
-  });
-</script>
-
-
-
-</body>
+        // SCROLL INTERACTION RESTORED
+        window.addEventListener('scroll', () => {
+          const rect = card.getBoundingClientRect();
+          const offset = rect.top / window.innerHeight;
+          const moveY = 50 - offset * 40;
+          card.style.transform = `translateY(${moveY}px) rotate(4deg)`;
+        });
+      });
+    </script>
+  </body>
 </html>
