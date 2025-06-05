@@ -252,6 +252,30 @@
       </div>
     </section>
 
+    <!-- EXTRAS SECTION -->
+<section class="bg-[#FF6B3D] text-[#F6F8EB] py-16 md:py-32 px-6">
+  <div class="max-w-[62.5rem] mx-auto flex flex-col md:flex-row md:justify-between gap-10 relative">
+    
+    <div id="extra1" class="scroll-card w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[4deg] z-10">
+      <img src="/assets/cards/card-nostalgia.png" alt="Extra 1" class="w-full h-full object-cover" />
+    </div>
+
+    <div id="extra2" class="scroll-card -mt-8 md:mt-0 w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[-4deg] z-20">
+      <img src="/assets/cards/card-noname.png" alt="Extra 2" class="w-full h-full object-cover" />
+    </div>
+
+    <div id="extra3" class="scroll-card -mt-8 md:mt-0 w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[4deg] z-30">
+      <img src="/assets/cards/card-mozografos.png" alt="Extra 3" class="w-full h-full object-cover" />
+    </div>
+
+    <div id="extra4" class="scroll-card -mt-8 md:mt-0 w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[-4deg] z-40">
+      <img src="/assets/cards/card-bicentenario.png" alt="Extra 4" class="w-full h-full object-cover" />
+    </div>
+
+  </div>
+</section>
+
+
     <!-- SCRIPT -->
     <script>
   const groups = document.querySelectorAll('.group');
@@ -287,6 +311,31 @@
       const rotationMatch = rotationClass?.match(/rotate-\[(-?\d+)deg\]/);
       const rotation = rotationMatch ? `${rotationMatch[1]}deg` : '0deg';
 
+      card.style.transform = `translateY(${moveY}px) rotate(${rotation})`;
+    });
+  });
+</script>
+
+    <script>
+  const scrollConfigs = [
+    { id: 'extra1', scrollFactor: 30 },
+    { id: 'extra2', scrollFactor: 45 },
+    { id: 'extra3', scrollFactor: 60 },
+    { id: 'extra4', scrollFactor: 35 },
+  ];
+
+  scrollConfigs.forEach(({ id, scrollFactor }) => {
+    const card = document.getElementById(id);
+    if (!card) return;
+
+    const rotationClass = Array.from(card.classList).find(cls => cls.startsWith('rotate-[') || cls.startsWith('rotate-[-'));
+    const rotationMatch = rotationClass?.match(/rotate-\[(-?\d+)deg\]/);
+    const rotation = rotationMatch ? `${rotationMatch[1]}deg` : '0deg';
+
+    window.addEventListener('scroll', () => {
+      const rect = card.getBoundingClientRect();
+      const offset = rect.top / window.innerHeight;
+      const moveY = 50 - offset * scrollFactor;
       card.style.transform = `translateY(${moveY}px) rotate(${rotation})`;
     });
   });
