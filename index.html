@@ -352,18 +352,34 @@
     const card = document.getElementById(id);
     if (!card) return;
 
-    const rotationClass = Array.from(card.classList).find(cls => cls.startsWith('rotate-[') || cls.startsWith('rotate-[-'));
+    let baseRotation = '0deg';
+    const rotationClass = Array.from(card.classList).find(cls =>
+      cls.startsWith('rotate-[') || cls.startsWith('rotate-[-')
+    );
     const rotationMatch = rotationClass?.match(/rotate-\[(-?\d+)deg\]/);
-    const rotation = rotationMatch ? `${rotationMatch[1]}deg` : '0deg';
+    if (rotationMatch) baseRotation = `${rotationMatch[1]}deg`;
 
-    window.addEventListener('scroll', () => {
+    function applyScrollEffect() {
       const rect = card.getBoundingClientRect();
       const offset = rect.top / window.innerHeight;
       const moveY = 50 - offset * scrollFactor;
-      card.style.transform = `translateY(${moveY}px) rotate(${rotation})`;
-    });
+
+      const scale = card.matches(':hover') ? 1.1 : 1;
+      card.style.transform = `translateY(${moveY}px) rotate(${baseRotation}) scale(${scale})`;
+    }
+
+    // Inicializa posición al cargar
+    applyScrollEffect();
+
+    // Aplica en scroll
+    window.addEventListener('scroll', applyScrollEffect);
+
+    // Hover in/out para escalar
+    card.addEventListener('mouseenter', applyScrollEffect);
+    card.addEventListener('mouseleave', applyScrollEffect);
   });
 </script>
+
 
   </body>
 </html>
