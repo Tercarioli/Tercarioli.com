@@ -254,21 +254,21 @@
 
     <!-- EXTRAS SECTION -->
 <section class="bg-[#FF6B3D] text-[#F6F8EB] py-16 md:py-32 px-6">
-  <div class="max-w-[62.5rem] mx-auto flex flex-col md:flex-row md:justify-between gap-10 relative Z-10">
+  <div class="max-w-[62.5rem] mx-auto flex flex-col md:flex-row md:justify-between items-center gap-10 relative z-10">
     
-    <div id="extra1" class="scroll-card w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[4deg] z-10">
+    <div id="extra1" data-scroll-factor="30" class="scroll-card self-center w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[4deg] z-10">
       <img src="/assets/cards/card-nostalgia.jpg" alt="Extra 1" class="w-full h-full object-cover" />
     </div>
 
-    <div id="extra2" class="scroll-card -mt-8 md:mt-0 w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[-4deg] z-20">
+    <div id="extra2" data-scroll-factor="30" class="scroll-card self-center -mt-8 md:mt-0 w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[-4deg] z-20">
       <img src="/assets/cards/card-noname.jpg" alt="Extra 2" class="w-full h-full object-cover" />
     </div>
 
-    <div id="extra3" class="scroll-card -mt-8 md:mt-0 w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[4deg] z-30">
+    <div id="extra3" data-scroll-factor="30" class="scroll-card self-center -mt-8 md:mt-0 w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[4deg] z-30">
       <img src="/assets/cards/card-mozografos.jpg" alt="Extra 3" class="w-full h-full object-cover" />
     </div>
 
-    <div id="extra4" class="scroll-card -mt-8 md:mt-0 w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[-4deg] z-40">
+    <div id="extra4" data-scroll-factor="30" class="scroll-card self-center -mt-8 md:mt-0 w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[-4deg] z-40">
       <img src="/assets/cards/card-bicentenario.jpg" alt="Extra 4" class="w-full h-full object-cover" />
     </div>
 
@@ -342,52 +342,28 @@
 
     <!-- SCRIPT EXTRA CARDS -->
     <script>
-  const scrollConfigs = [
-    { id: 'extra1', scrollFactor: 30 },
-    { id: 'extra2', scrollFactor: 45 },
-    { id: 'extra3', scrollFactor: 60 },
-    { id: 'extra4', scrollFactor: 35 },
-  ];
+  const extras = ['extra1', 'extra2', 'extra3', 'extra4'];
 
-  function animateOnScroll(card, scrollFactor, baseRotation) {
-    const rect = card.getBoundingClientRect();
-    const offset = rect.top / window.innerHeight;
-    const moveY = 50 - offset * scrollFactor;
-    const scale = card.matches(':hover') ? 1.1 : 1;
-    card.style.transform = `translateY(${moveY}px) rotate(${baseRotation}) scale(${scale})`;
-  }
+  extras.forEach(id => {
+    const card = document.getElementById(id);
+    if (!card) return;
 
-  document.addEventListener("DOMContentLoaded", () => {
-    scrollConfigs.forEach(({ id, scrollFactor }) => {
-      const card = document.getElementById(id);
-      if (!card) return;
+    const scrollFactor = parseInt(card.dataset.scrollFactor) || 40;
 
-      const rotationClass = Array.from(card.classList).find(cls =>
-        cls.startsWith('rotate-[') || cls.startsWith('rotate-[-')
-      );
+    window.addEventListener('scroll', () => {
+      const rect = card.getBoundingClientRect();
+      const offset = rect.top / window.innerHeight;
+      const moveY = 50 - offset * scrollFactor;
+
+      // Leer la rotación desde la clase Tailwind
+      const rotationClass = Array.from(card.classList).find(cls => cls.startsWith('rotate-[') || cls.startsWith('rotate-[-'));
       const rotationMatch = rotationClass?.match(/rotate-\[(-?\d+)deg\]/);
-      const baseRotation = rotationMatch ? `${rotationMatch[1]}deg` : '0deg';
+      const rotation = rotationMatch ? `${rotationMatch[1]}deg` : '0deg';
 
-      function update() {
-        requestAnimationFrame(() =>
-          requestAnimationFrame(() => animateOnScroll(card, scrollFactor, baseRotation))
-        );
-      }
-
-      // Scroll
-      window.addEventListener('scroll', update);
-
-      // Hover
-      card.addEventListener('mouseenter', update);
-      card.addEventListener('mouseleave', update);
-
-      // Inicial
-      update();
+      card.style.transform = `translateY(${moveY}px) rotate(${rotation})`;
     });
   });
 </script>
-
-
 
   </body>
 </html>
