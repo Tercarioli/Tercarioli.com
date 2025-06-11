@@ -254,7 +254,7 @@
 
     <!-- EXTRAS SECTION -->
 <section class="bg-[#FF6B3D] text-[#F6F8EB] py-16 md:py-32 px-6">
-  <div class="max-w-[62.5rem] mx-auto flex flex-col md:flex-row md:justify-between gap-10 relative">
+  <div class="max-w-[62.5rem] mx-auto flex flex-col md:flex-row md:justify-between gap-10 relative Z-10">
     
     <div id="extra1" class="scroll-card w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] will-change-[transform] hover:scale-110 transition-transform duration-300 rotate-[4deg] z-10">
       <img src="/assets/cards/card-nostalgia.jpg" alt="Extra 1" class="w-full h-full object-cover" />
@@ -300,7 +300,7 @@
     </section>
 
 
-    <!-- SCRIPT -->
+    <!-- SCRIPT MAIN CARDS -->
     <script>
   const groups = document.querySelectorAll('.group');
 
@@ -340,6 +340,7 @@
   });
 </script>
 
+    <!-- SCRIPT EXTRA CARDS -->
     <script>
   const scrollConfigs = [
     { id: 'extra1', scrollFactor: 30 },
@@ -353,37 +354,39 @@
     const offset = rect.top / window.innerHeight;
     const moveY = 50 - offset * scrollFactor;
     const scale = card.matches(':hover') ? 1.1 : 1;
-
     card.style.transform = `translateY(${moveY}px) rotate(${baseRotation}) scale(${scale})`;
   }
 
-  function setupCardScroll({ id, scrollFactor }) {
-    const card = document.getElementById(id);
-    if (!card) return;
+  document.addEventListener("DOMContentLoaded", () => {
+    scrollConfigs.forEach(({ id, scrollFactor }) => {
+      const card = document.getElementById(id);
+      if (!card) return;
 
-    const rotationClass = Array.from(card.classList).find(cls =>
-      cls.startsWith('rotate-[') || cls.startsWith('rotate-[-')
-    );
-    const rotationMatch = rotationClass?.match(/rotate-\[(-?\d+)deg\]/);
-    const baseRotation = rotationMatch ? `${rotationMatch[1]}deg` : '0deg';
+      const rotationClass = Array.from(card.classList).find(cls =>
+        cls.startsWith('rotate-[') || cls.startsWith('rotate-[-')
+      );
+      const rotationMatch = rotationClass?.match(/rotate-\[(-?\d+)deg\]/);
+      const baseRotation = rotationMatch ? `${rotationMatch[1]}deg` : '0deg';
 
-    function update() {
-      requestAnimationFrame(() => animateOnScroll(card, scrollFactor, baseRotation));
-    }
+      function update() {
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => animateOnScroll(card, scrollFactor, baseRotation))
+        );
+      }
 
-    // Ejecutar al cargar
-    update();
+      // Scroll
+      window.addEventListener('scroll', update);
 
-    // Ejecutar en scroll
-    window.addEventListener('scroll', update);
+      // Hover
+      card.addEventListener('mouseenter', update);
+      card.addEventListener('mouseleave', update);
 
-    // Ejecutar en hover
-    card.addEventListener('mouseenter', update);
-    card.addEventListener('mouseleave', update);
-  }
-
-  scrollConfigs.forEach(setupCardScroll);
+      // Inicial
+      update();
+    });
+  });
 </script>
+
 
 
   </body>
