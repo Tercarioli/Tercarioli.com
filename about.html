@@ -11,6 +11,7 @@
         font-family: 'Work Sans', sans-serif;
         margin: 0;
       }
+
       .text-bio {
         font-size: 27px;
         line-height: 1.18;
@@ -20,10 +21,10 @@
   <body class="bg-[#FF6B3D] text-[#3E1104]">
 
     <section class="py-16 md:py-32 px-6 relative overflow-hidden">
-      <div class="max-w-[62.5rem] mx-auto relative">
+      <div class="max-w-[100rem] mx-auto relative">
 
-        <!-- TARJETA ABSOLUTA, FLOTANDO A LA DERECHA -->
-        <div class="absolute top-0 right-0 md:right-0 w-[200px] h-[275px] md:w-[240px] md:h-[330px] z-20">
+        <!-- TARJETA FLOTANTE A LA DERECHA USANDO VIEWPORT -->
+        <div class="absolute top-24 ml-[60vw] w-[200px] h-[275px] md:w-[240px] md:h-[330px] z-20">
           <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
             <div class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[4deg] will-change-[transform]">
               <img src="/assets/cards/card-tercarioli.jpg" alt="Jorge Tercarioli" class="w-full h-full object-cover" />
@@ -31,8 +32,8 @@
           </div>
         </div>
 
-        <!-- TEXTO CORRIDO, COMPACTO, A LA IZQUIERDA -->
-        <div class="mt-12 max-w-[42rem]">
+        <!-- TEXTO A LA IZQUIERDA CON PADDING DERECHO PARA RESERVAR ESPACIO -->
+        <div class="mt-12 pr-[40vw]">
           <p class="text-bio">
             Over two decades leading creative innovation, brand development, and strategic communication across Latin America and the United States.<br><br>
             Jorge is a creative director whose work has earned recognition at Cannes Lions, D&AD, El Sol, El Ojo de Iberoamérica, and FIAP — and he was named Creative Director of the Year three times in a row by Paraguay’s Creative Circle.<br><br>
