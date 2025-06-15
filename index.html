@@ -3,26 +3,391 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About – Jorge Tercarioli</title>
+    <title>Tercarioli Portfolio</title>
     <link href="dist/tailwind.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
       body {
-        margin: 0;
-        background-color: #FF6B3D;
         font-family: 'Work Sans', sans-serif;
+        margin: 0;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .marquee-track {
+        animation: scroll 60s linear infinite;
+      }
+
+      .bottom-balanced {
+        bottom: 7rem;
+      }
+
+      /* Espaciado móvil inferior para el hero */
+      @media (max-width: 767px) {
+        .mb-mobile {
+          margin-bottom: 4rem; /* equivalente a mb-16 */
+        }
+      }
+
+      @media (min-width: 768px) {
+        .mb-mobile {
+          margin-bottom: 0;
+        }
+      }
+
+      /* FOOTER ANIMATION */
+      @keyframes fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(2rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-up {
+        opacity: 0;
+        transform: translateY(2rem);
+        transition: none;
+      }
+
+      .fade-up-start {
+        animation: fade-up 0.6s ease-out both;
       }
     </style>
   </head>
-  <body>
-    <main class="bg-[#FF6B3D] text-[#3e1104] py-16 px-6">
-      <div class="max-w-[62.5rem] mx-auto text-left text-[1.7rem] leading-[1.4]">
-        Over two decades leading creative innovation, brand development, and strategic communication across Latin America and the United States.<br><br>
-        Jorge is a creative director whose work has earned recognition at Cannes Lions, D&AD, El Sol, El Ojo de Iberoamérica, and FIAP — and he was named Creative Director of the Year three times in a row by Paraguay’s Creative Circle.<br><br>
-        He has led integrated campaigns for brands like Personal, Toyota, Pilsen, UNICEF, Banco Itaú, and Meta Sports. With a focus on turning bold ideas into tangible results, his approach blends narrative design, art direction, and strategic thinking to shape culture and impact business.<br><br>
-        As a freelancer, standout projects include Nike’s entry into Paraguay with Club Olimpia — featured globally by @nikefootball — where he led copy, art, and creative direction; Pilsen’s anniversary campaign, where he crafted both concept and TV script; and the full brand launch of Santo Tomás.<br><br>
-        He has served on international juries, taught at creative schools, and now advises companies from Italy — helping brands evolve, tell better stories, and navigate the digital landscape.
+  <body class="bg-[#FF6B3D] text-[#F6F8EB] pt-[3rem]">
+      <!-- GRADIENT OVERLAY -->
+    <div class="fixed top-0 left-0 w-full h-[14rem] z-30 pointer-events-none"
+      style="background: linear-gradient(to bottom, rgba(246, 41, 0, 1) 0%, rgba(255, 107, 61, 0.0) 95%)">
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-50 bg-[#F6F8EB] text-[#FF6F3D] py-4">
+      <div class="container mx-auto text-center">
+        <a href="/">
+          <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-6 mx-auto" />
+        </a>
       </div>
-    </main>
+    </nav>
+
+    <!-- MARQUEE -->
+    <div class="overflow-hidden bg-[#FF6B3D] h-[3rem] flex items-center mt-2 relative">
+      <div class="flex w-fit marquee-track z-10">
+        <div class="flex-shrink-0 pr-16 text-[#3E1104] text-[1.5rem] font-normal uppercase leading-[0.8] whitespace-nowrap">
+          3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
+        </div>
+        <div class="flex-shrink-0 pr-16 text-[#3E1104] text-[1.5rem] font-normal uppercase leading-[0.8] whitespace-nowrap">
+          3X Creative Director of the Year. Created for Nike & Featured Globally. Awarded at Cannes, D&AD, El Ojo & Wave Festival. Won two Grand Prix at local festivals. Judged El Ojo & El Sol de Bilbao. Freelancing since the pandemic. Led 2023's Best Integrated Campaign. Moved to Italy with my family, and kept creating.
+        </div>
+      </div>
+    </div>
+
+   <!-- HERO -->
+<header class="pt-16 md:h-[65vh] md:flex md:items-center px-6 relative mb-mobile">
+  <div class="mx-auto text-left max-w-[62.5rem] flex flex-col gap-10">
+    <h1 class="text-[3rem] md:text-[5rem] lg:text-[8rem] font-extrabold uppercase leading-[0.77]">
+      20 Years of Award-Winning Creativity
+    </h1>
+
+    <!-- Botones agrupados -->
+    <div class="flex gap-4">
+      <!-- Botón principal -->
+      <a href="/services" class="w-fit px-6 py-3 bg-[#F6F8EB] text-[#FF6B3D] font-semibold text-lg transition-all duration-300 hover:scale-110 hover:shadow-[10px_10px_9px_rgba(246,41,0,0.6)]">
+        Let’s Work
+      </a>
+
+      <!-- Botón secundario sin sombra -->
+      <a href="/about" class="w-fit px-6 py-3 bg-[#FF6B3D] text-[#F6F8EB] font-semibold text-lg transition-all duration-300 hover:scale-110">
+        About
+      </a>
+    </div>
+  </div>
+</header>
+
+    <!-- NIKE R -->
+    <section class="bg-[#FF6B3D] text-[#F6F8EB] py-16 md:py-32 px-6">
+      <div class="max-w-[62.5rem] mx-auto text-right relative">
+        <div class="relative group h-auto md:h-[20rem]">
+          <div class="hover-text bottom-balanced slide-right hidden md:block absolute right-[20rem] opacity-0 translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-right z-10">
+            The first club campaign in the world for Nike’s new brandvoice ‘Never Done’.
+          </div>
+
+          <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto mr-[3rem]">
+            <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+              <a href="/nike.html"
+                class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[4deg] will-change-[transform]">
+                <img src="/assets/cards/card-nike.jpg" alt="Nike Football Olimpia" class="w-full h-full object-cover" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
+          1.300.000 views for Nike Football.
+        </h2>
+      </div>
+    </section>
+
+    <!-- MCDONALDS L -->
+    <section class="bg-[#FF6B3D] text-[#F6F8EB] py-16 md:py-32 px-6">
+      <div class="max-w-[62.5rem] mx-auto text-left relative">
+        <div class="relative group h-auto md:h-[20rem]">
+          <div class="hover-text bottom-balanced slide-left hidden md:block absolute left-[20rem] opacity-0 -translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-left z-10">
+            Yes, a tattoo.
+          </div>
+
+          <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] mr-auto ml-[3rem]">
+            <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+              <a href="/nike.html"
+                class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[-4deg] will-change-[transform]">
+                <img src="/assets/cards/card-mcdonalds.jpg" alt="McDonalds Illustrations" class="w-full h-full object-cover" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
+          How every illustration work should end.
+        </h2>
+      </div>
+    </section>
+
+    <!-- UNICEF R -->
+    <section class="bg-[#FF6B3D] text-[#F6F8EB] py-16 md:py-32 px-6">
+      <div class="max-w-[62.5rem] mx-auto text-right relative">
+        <div class="relative group h-auto md:h-[20rem]">
+          <div class="hover-text bottom-balanced slide-right hidden md:block absolute right-[20rem] opacity-0 translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-right z-10">
+            Disruptive mindset pays off in creativity.
+          </div>
+
+          <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto mr-[3rem]">
+            <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+              <a href="/nike.html"
+                class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[4deg] will-change-[transform]">
+                <img src="/assets/cards/card-toys.jpg" alt="Toys in mourning" class="w-full h-full object-cover" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
+          The toys that led us to cannes.
+        </h2>
+      </div>
+    </section>
+
+    <!-- MGD L -->
+    <section class="bg-[#FF6B3D] text-[#F6F8EB] py-16 md:py-32 px-6">
+      <div class="max-w-[62.5rem] mx-auto text-left relative">
+        <div class="relative group h-auto md:h-[20rem]">
+          <div class="hover-text bottom-balanced slide-left hidden md:block absolute left-[20rem] opacity-0 -translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-left z-10">
+            Unlocking freshness with a tee collection.
+          </div>
+
+          <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] mr-auto ml-[3rem]">
+            <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+              <a href="/nike.html"
+                class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[-4deg] will-change-[transform]">
+                <img src="/assets/cards/card-mgd.jpg" alt="MGD Illustrations" class="w-full h-full object-cover" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
+          Forging bonds with music culture.
+        </h2>
+      </div>
+    </section>
+
+        <!-- PILSEN R -->
+    <section class="bg-[#FF6B3D] text-[#F6F8EB] py-16 md:py-32 px-6">
+      <div class="max-w-[62.5rem] mx-auto text-right relative">
+        <div class="relative group h-auto md:h-[20rem]">
+          <div class="hover-text bottom-balanced slide-right hidden md:block absolute right-[20rem] opacity-0 translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-right z-10">
+            Gratitude is a powerful way to foster fresh connections.
+          </div>
+
+          <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto mr-[3rem]">
+            <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+              <a href="/nike.html"
+                class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[4deg] will-change-[transform]">
+                <img src="/assets/cards/card-pilsen.jpg" alt="Gracias por estar" class="w-full h-full object-cover" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
+          How to  write a modern manifesto for an iconic beer.
+        </h2>
+      </div>
+    </section>
+
+        <!-- SANTO TOMAS L -->
+    <section class="bg-[#FF6B3D] text-[#F6F8EB] py-16 md:py-32 px-6">
+      <div class="max-w-[62.5rem] mx-auto text-left relative">
+        <div class="relative group h-auto md:h-[20rem]">
+          <div class="hover-text bottom-balanced slide-left hidden md:block absolute left-[20rem] opacity-0 -translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-left z-10">
+            Culturally driven storytelling drives a brand's hit launch.
+          </div>
+
+          <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] mr-auto ml-[3rem]">
+            <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+              <a href="/nike.html"
+                class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[-4deg] will-change-[transform]">
+                <img src="/assets/cards/card-stomas.jpg" alt="Santo Tomás" class="w-full h-full object-cover" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
+          Saint in pursuit: 2023's best campaign.
+        </h2>
+      </div>
+    </section>
+
+    <!-- META R -->
+    <section class="bg-[#FF6B3D] text-[#F6F8EB] py-16 md:py-32 px-6">
+      <div class="max-w-[62.5rem] mx-auto text-right relative">
+        <div class="relative group h-auto md:h-[20rem]">
+          <div class="hover-text bottom-balanced slide-right hidden md:block absolute right-[20rem] opacity-0 translate-x-[8rem] transition-all duration-500 text-[1rem] leading-[0.9] font-normal text-[#3E1104] uppercase pointer-events-none max-w-[16em] text-right z-10">
+            How embracing darkness lit up a brand.
+          </div>
+
+          <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto mr-[3rem]">
+            <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+              <a href="/nike.html"
+                class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[4deg] will-change-[transform]">
+                <img src="/assets/cards/card-meta.jpg" alt="Gracias por estar" class="w-full h-full object-cover" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="mt-12 text-[2.5rem] md:text-[4rem] lg:text-[5rem] leading-[0.8] font-extrabold text-[#F6F8EB] uppercase max-w-full md:max-w-[112em]">
+          Hacking client’s site drew thousands to store.
+        </h2>
+      </div>
+    </section>
+
+    <!-- EXTRAS SECTION -->
+<section class="bg-[#FF6B3D] text-[#F6F8EB] py-16 md:py-32 px-6">
+  <div class="w-full px-6 md:px-12 flex flex-wrap justify-center items-start gap-14 relative z-10">
+    
+    <div class="self-center w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] hover:scale-110 transition-transform duration-300 rotate-[-4deg] z-10">
+      <img src="/assets/cards/card-nostalgia.jpg" alt="Extra 1" class="w-full h-full object-cover" />
+    </div>
+
+    <div class="self-center md:mb-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] hover:scale-110 transition-transform duration-300 z-20">
+      <img src="/assets/cards/card-noname.jpg" alt="Extra 2" class="w-full h-full object-cover" />
+    </div>
+
+    <div class="self-center md:mt-16 w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] hover:scale-110 transition-transform duration-300 rotate-[4deg] z-30">
+      <img src="/assets/cards/card-mozografos.jpg" alt="Extra 3" class="w-full h-full object-cover" />
+    </div>
+
+    <div class="self-center w-[200px] h-[275px] md:w-[240px] md:h-[330px] shadow-[10px_10px_9px_rgba(246,41,0,0.6)] hover:scale-110 transition-transform duration-300 rotate-[-4deg] z-40">
+      <img src="/assets/cards/card-bicentenario.jpg" alt="Extra 4" class="w-full h-full object-cover" />
+    </div>
+
+  </div>
+</section>
+    <!-- FOOTER SECTION -->
+    <section class="bg-[#FF6B3D] text-[rgba(62,17,4,0.3)] py-24 px-6 md:px-12">
+      <div class="max-w-[62.5rem] mx-auto">
+
+        <!-- Services Block with fade-up -->
+        <p class="text-[2.5rem] md:text-[4.5rem] font-bold leading-[0.9] tracking-tight uppercase text-left animate-fade-up" style="animation-delay: 0s">
+          BRANDING SYSTEMS & NARRATIVES. MOTION & VISUAL STORYTELLING. WEBSITES & SOCIAL CONTENT. COPY THAT SELLS. COPY THAT STICKS. CUSTOM ILLUSTRATION. BENCHMARKS & INSIGHTS.
+        </p>
+
+        <!-- CTA Block with staggered animation -->
+        <div class="mt-16 max-w-[62.5rem] mx-auto flex flex-col md:flex-row items-start md:items-center gap-6 text-left animate-fade-up" style="animation-delay: 0.3s">
+          <!-- Botón -->
+          <a href="/services" class="w-fit px-6 py-3 bg-[#F6F8EB] text-[#FF6B3D] font-semibold text-lg transition-all duration-300 hover:scale-110 hover:shadow-[10px_10px_9px_rgba(246,41,0,0.6)]">
+            Let’s Work
+          </a>
+
+          <!-- Texto -->
+          <p class="text-lg md:text-xl text-[rgba(62,17,4,0.5)]">
+            Subscribe for creative work delivered daily. One flat rate.<br />
+            Or <a href="mailto:jorge@tercarioli.com" class="underline underline-offset-4 hover:opacity-80">
+              get in touch
+            </a> for custom work.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SCRIPT MAIN CARDS -->
+    <script>
+      const groups = document.querySelectorAll('.group');
+
+      groups.forEach(group => {
+        const card = group.querySelector('.parallax-card');
+        const text = group.querySelector('.hover-text');
+
+        if (!card || !text) return;
+
+        const isSlideRight = text.classList.contains('slide-right');
+        const inClass = 'translate-x-0';
+        const outClass = isSlideRight ? 'translate-x-[8rem]' : '-translate-x-[8rem]';
+
+        card.addEventListener('mouseenter', () => {
+          text.classList.remove('opacity-0', outClass);
+          text.classList.add('opacity-70', inClass);
+        });
+
+        card.addEventListener('mouseleave', () => {
+          text.classList.remove('opacity-70', inClass);
+          text.classList.add('opacity-0', outClass);
+        });
+
+        // SCROLL INTERACTION RESTORED with Tailwind-based rotation preserved
+        window.addEventListener('scroll', () => {
+          const rect = card.getBoundingClientRect();
+          const offset = rect.top / window.innerHeight;
+          const moveY = 50 - offset * 40;
+
+          // Extract rotation from Tailwind class
+          const rotationClass = Array.from(card.classList).find(cls => cls.startsWith('rotate-['));
+          const rotationMatch = rotationClass?.match(/rotate-\[(-?\d+)deg\]/);
+          const rotation = rotationMatch ? `${rotationMatch[1]}deg` : '0deg';
+
+          card.style.transform = `translateY(${moveY}px) rotate(${rotation})`;
+        });
+      });
+    </script>
+
+    <!-- SCRIPT: Trigger fade-up when in viewport -->
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-up-start');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.animate-fade-up').forEach(el => {
+        observer.observe(el);
+      });
+    </script>
   </body>
 </html>
