@@ -11,50 +11,55 @@
         font-family: 'Work Sans', sans-serif;
         margin: 0;
       }
+
+      .text-custom {
+        font-size: 1.7rem;
+        line-height: 1.18;
+      }
     </style>
   </head>
+  <body class="bg-[#FF6B3D] text-[#3E1104]">
 
-    <section class="bg-[#FF6B3D] text-[#F6F8EB] py-16 md:py-32 px-6">
-  <div class="max-w-[62.5rem] mx-auto text-right relative">
-    
-    <!-- GRUPO TARJETA -->
-    <div class="relative group h-auto md:h-[20rem]">
-      <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto mr-[3rem]">
-        <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
-          <div class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[4deg] will-change-[transform]">
-            <img src="/assets/cards/card-tercarioli.jpg" alt="Jorge Tercarioli" class="w-full h-full object-cover" />
+    <section class="py-16 md:py-32 px-6">
+      <div class="max-w-[62.5rem] mx-auto relative text-left">
+
+        <!-- CONTENEDOR RELATIVO PARA POSICIONAR LA TARJETA -->
+        <div class="relative min-h-[20rem]">
+          <!-- TARJETA ABSOLUTA -->
+          <div class="absolute top-0 right-0 w-[200px] h-[275px] md:w-[240px] md:h-[330px] z-20 mr-[3rem]">
+            <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
+              <div class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[4deg] will-change-[transform]">
+                <img src="/assets/cards/card-tercarioli.jpg" alt="Jorge Tercarioli" class="w-full h-full object-cover" />
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- TEXTO CORRIDO -->
+        <p class="mt-12 text-custom max-w-[50rem]">
+          Over two decades leading creative innovation, brand development, and strategic communication across Latin America and the United States.<br><br>
+          Jorge is a creative director whose work has earned recognition at Cannes Lions, D&AD, El Sol, El Ojo de Iberoamérica, and FIAP — and he was named Creative Director of the Year three times in a row by Paraguay’s Creative Circle.<br><br>
+          He has led integrated campaigns for brands like Personal, Toyota, Pilsen, UNICEF, Banco Itaú, and Meta Sports. With a focus on turning bold ideas into tangible results, his approach blends narrative design, art direction, and strategic thinking to shape culture and impact business.<br><br>
+          As a freelancer, standout projects include Nike’s entry into Paraguay with Club Olimpia — featured globally by @nikefootball — where he led copy, art, and creative direction; Pilsen’s anniversary campaign, where he crafted both concept and TV script; and the full brand launch of Santo Tomás.<br><br>
+          He has served on international juries, taught at creative schools, and now advises companies from Italy — helping brands evolve, tell better stories, and navigate the digital landscape.
+        </p>
+
       </div>
-    </div>
+    </section>
 
-    <!-- TEXTO PRINCIPAL -->
-    <p class="mt-12 text-[1.7rem] leading-[1.18] text-left text-[#3E1104] max-w-[50rem]">
-      Over two decades leading creative innovation, brand development, and strategic communication across Latin America and the United States.<br><br>
-      Jorge is a creative director whose work has earned recognition at Cannes Lions, D&AD, El Sol, El Ojo de Iberoamérica, and FIAP — and he was named Creative Director of the Year three times in a row by Paraguay’s Creative Circle.<br><br>
-      He has led integrated campaigns for brands like Personal, Toyota, Pilsen, UNICEF, Banco Itaú, and Meta Sports. With a focus on turning bold ideas into tangible results, his approach blends narrative design, art direction, and strategic thinking to shape culture and impact business.<br><br>
-      As a freelancer, standout projects include Nike’s entry into Paraguay with Club Olimpia — featured globally by @nikefootball — where he led copy, art, and creative direction; Pilsen’s anniversary campaign, where he crafted both concept and TV script; and the full brand launch of Santo Tomás.<br><br>
-      He has served on international juries, taught at creative schools, and now advises companies from Italy — helping brands evolve, tell better stories, and navigate the digital landscape.
-    </p>
+    <!-- SCROLL ANIMATION -->
+    <script>
+      const cards = document.querySelectorAll('.parallax-card');
 
-  </div>
-</section>
-
-<!-- SCROLL ANIMATION -->
-<script>
-  const cards = document.querySelectorAll('.parallax-card');
-
-  window.addEventListener('scroll', () => {
-    cards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      const offset = rect.top / window.innerHeight;
-      const moveY = 50 - offset * 40;
-      card.style.transform = `translateY(${moveY}px) rotate(4deg)`;
-    });
-  });
-</script>
-
-
+      window.addEventListener('scroll', () => {
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          const offset = rect.top / window.innerHeight;
+          const moveY = 50 - offset * 40;
+          card.style.transform = `translateY(${moveY}px) rotate(4deg)`;
+        });
+      });
+    </script>
 
   </body>
 </html>
