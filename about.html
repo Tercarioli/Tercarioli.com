@@ -7,30 +7,36 @@
     <link href="dist/tailwind.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet" />
     <style>
-      /* GLOBAL STYLES */
+      /* GLOBAL */
       body {
         font-family: 'Work Sans', sans-serif;
         margin: 0;
-        background-color: #FF6B3D; /* fondo naranja */
-        display: flex;
-        justify-content: center;
+        background-color: #FF6B3D;
       }
 
-      /* BLOQUE DE TEXTO */
-      .text-container {
-        width: 60vw;             /* 60% del viewport */
+      /* CONTAINER QUE LIMITA EL ANCHO GENERAL */
+      .main-container {
+        max-width: 112em;      /* mismo valor que en index.html */
+        margin: 0 auto;
         padding: 4rem 2rem;
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      /* BLOQUE DE TEXTO A LA IZQUIERDA */
+      .text-container {
+        width: 60vw;           /* ocupa 60% del viewport */
       }
 
       .about-text {
         font-size: 1.7rem;
         color: #3e1104;
-        line-height: 1.4;        /* interlineado más compacto */
+        line-height: 1.4;
       }
     </style>
   </head>
   <body>
-    <main>
+    <main class="main-container">
       <div class="text-container about-text">
         Over two decades leading creative innovation, brand development, and strategic communication across Latin America and the United States.<br><br>
         Jorge is a creative director whose work has earned recognition at Cannes Lions, D&AD, El Sol, El Ojo de Iberoamérica, and FIAP — and he was named Creative Director of the Year three times in a row by Paraguay’s Creative Circle.<br><br>
