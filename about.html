@@ -21,10 +21,26 @@
       }
     </style>
   </head>
-  <body>
-    <main class="bg-[#FF6B3D] text-[#3e1104] py-16 px-6">
-  <div class="max-w-[62.5rem] mx-auto">
-    <div class="w-full md:w-[70%] text-left text-[1.05rem] sm:text-[1.3rem] md:text-[1.7rem] leading-[1.4]">
+  <body class="relative bg-[#FF6B3D] text-[#3e1104] font-['Work_Sans']">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full z-50 bg-[#F6F8EB] text-[#FF6F3D] py-4">
+    <div class="container mx-auto text-center">
+      <a href="/">
+        <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-6 mx-auto" />
+      </a>
+    </div>
+  </nav>
+
+  <!-- GRADIENT OVERLAY -->
+  <div class="fixed top-0 left-0 w-full h-[14rem] z-30 pointer-events-none"
+    style="background: linear-gradient(to bottom, rgba(246, 41, 0, 1) 0%, rgba(255, 107, 61, 0.0) 95%)">
+  </div>
+
+  <!-- TEXTO ABOUT -->
+  <main class="relative z-10 py-32 px-6"> <!-- usamos py-32 para compensar navbar + overlay -->
+    <div class="max-w-[62.5rem] mx-auto">
+      <div class="w-full md:w-[70%] text-left text-[1.05rem] sm:text-[1.3rem] md:text-[1.7rem] leading-[1.4]">
         Over two decades leading creative innovation, brand development, and strategic communication across Latin America and the United States.<br><br>
         Jorge is a creative director whose work has earned recognition at Cannes Lions, D&AD, El Sol, El Ojo de Iberoamérica, and FIAP — and he was named Creative Director of the Year three times in a row by Paraguay’s Creative Circle.<br><br>
         He has led integrated campaigns for brands like Personal, Toyota, Pilsen, UNICEF, Banco Itaú, and Meta Sports. With a focus on turning bold ideas into tangible results, his approach blends narrative design, art direction, and strategic thinking to shape culture and impact business.<br><br>
@@ -32,6 +48,6 @@
         He has served on international juries, taught at creative schools, and now advises companies from Italy — helping brands evolve, tell better stories, and navigate the digital landscape.
       </div>
     </div>
-    </main>
-  </body>
+  </main>
+</body>
 </html>
