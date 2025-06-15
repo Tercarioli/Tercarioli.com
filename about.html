@@ -26,15 +26,13 @@
   </head>
   <body class="bg-[#FF6B3D] text-[#F6F8EB]">
 
-    <!-- ABOUT SECTION -->
-<section class="bg-[#FF6B3D] text-[#3E1104] py-16 md:py-32 px-6">
+    <section class="bg-[#FF6B3D] py-16 md:py-32 px-6">
   <div class="max-w-[62.5rem] mx-auto text-left relative">
 
-    <!-- CONTENEDOR FLEX COMO EN HOME -->
     <div class="relative group h-auto md:h-[20rem] flex flex-col-reverse md:flex-row items-start justify-between">
 
-      <!-- TEXTO BIO -->
-      <div class="text-[1.7rem] leading-[1.18] max-w-[32rem] relative z-0">
+      <!-- BIO TEXT -->
+      <div class="text-[1.125rem] md:text-[1.25rem] leading-[1.5] text-[#3E1104] max-w-[32rem]">
         <p>
           Over two decades leading creative innovation, brand development, and strategic communication across Latin America and the United States.<br><br>
           Jorge is a creative director whose work has earned recognition at Cannes Lions, D&AD, El Sol, El Ojo de Iberoamérica, and FIAP — and he was named Creative Director of the Year three times in a row by Paraguay’s Creative Circle.<br><br>
@@ -44,18 +42,19 @@
         </p>
       </div>
 
-      <!-- TARJETA CORRECTA COMO EN HOME -->
+      <!-- CARD -->
       <div class="relative z-20 w-[200px] h-[275px] md:w-[240px] md:h-[330px] ml-auto mr-[3rem] mb-10 md:mb-0">
         <div class="hover:scale-110 transition-transform duration-300 w-full h-full">
-          <div class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[4deg] will-change-[transform]">
+          <a class="parallax-card block w-full h-full shadow-[10px_10px_9px_rgba(246,41,0,0.6)] rotate-[4deg] will-change-[transform]">
             <img src="/assets/cards/card-tercarioli.jpg" alt="Jorge Tercarioli" class="w-full h-full object-cover" />
-          </div>
+          </a>
         </div>
       </div>
+
     </div>
 
-    <!-- BOTONES -->
-    <div class="flex flex-wrap justify-start gap-6 mt-24">
+    <!-- BOTONES (SECCIÓN PROPIA) -->
+    <div class="mt-16 flex flex-wrap gap-6">
       <a href="/services.html" class="bg-[#F6F8EB] text-[#FF6B3D] text-base font-semibold py-3 px-6 rounded-full hover:scale-105 transition-transform duration-200">
         Let’s Work
       </a>
@@ -66,22 +65,10 @@
         Back
       </a>
     </div>
+
   </div>
 </section>
 
-<!-- SCROLL ANIMATION -->
-<script>
-  const cards = document.querySelectorAll('.parallax-card');
-
-  window.addEventListener('scroll', () => {
-    cards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      const offset = rect.top / window.innerHeight;
-      const moveY = 50 - offset * 40;
-      card.style.transform = `translateY(${moveY}px) rotate(4deg)`;
-    });
-  });
-</script>
 
   </body>
 </html>
