@@ -51,10 +51,12 @@
 <!-- SECCIÓN 1: Texto + video alineados -->
 <section class="mt-16 px-6">
   <div class="max-w-[62.5rem] mx-auto">
-    <div class="flex flex-col md:flex-row gap-8 items-start">
+
+    <!-- Contenedor desktop: texto + video en fila -->
+    <div class="hidden md:flex flex-row gap-8 items-start">
       
       <!-- Texto izquierda -->
-      <div class="md:w-1/2 text-[1.05rem] sm:text-[1.3rem] md:text-[1.7rem] leading-[1.4] text-[#3e1104]">
+      <div class="w-1/2 text-[1.05rem] sm:text-[1.3rem] md:text-[1.7rem] leading-[1.4] text-[#3e1104]">
         <p class="mb-4 font-semibold">We kind of nailed it.</p>
         <p class="mb-4">
           Forget the view count for a second — getting featured on NikeFootball’s global Instagram is already a win for any market. Even more so when the entire thing — from script to screen — was crafted 100% locally.
@@ -64,19 +66,49 @@
         </p>
       </div>
 
-      <!-- Video derecha alineado y full-width en mobile -->
-<div class="w-full md:w-1/2 h-[320px] md:h-[480px]">
-  <iframe
-    src="https://player.vimeo.com/video/1076003468"
-    class="w-full h-full"
-    frameborder="0"
-    allowfullscreen>
-  </iframe>
-</div>
+      <!-- Video derecha solo visible en desktop -->
+      <div class="w-1/2 h-[480px]">
+        <iframe
+          src="https://player.vimeo.com/video/1076003468"
+          class="w-full h-full"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
+      </div>
 
     </div>
+
+    <!-- Contenedor mobile: texto y video apilados -->
+    <div class="block md:hidden">
+      
+      <!-- Texto -->
+      <div class="text-[1.05rem] sm:text-[1.3rem] leading-[1.4] text-[#3e1104]">
+        <p class="mb-4 font-semibold">We kind of nailed it.</p>
+        <p class="mb-4">
+          Forget the view count for a second — getting featured on NikeFootball’s global Instagram is already a win for any market. Even more so when the entire thing — from script to screen — was crafted 100% locally.
+        </p>
+        <p>
+          At the time, Nike had just shifted its global brand voice to <em>Never Done</em>. We translated it to <em>Nunca Para</em> — not quite the same punch as the original, but the best cultural fit. The real challenge? Making that platform feel meaningful for a club that’s literally <em>done it all</em>.
+        </p>
+      </div>
+
+      <!-- Video vertical full-width con padding lateral -->
+      <div class="w-full mt-8">
+        <div class="w-full aspect-[9/16]">
+          <iframe
+            src="https://player.vimeo.com/video/1076003468"
+            class="w-full h-full"
+            frameborder="0"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </section>
+
 
 
     <!-- SECCIÓN 2: Video horizontal -->
