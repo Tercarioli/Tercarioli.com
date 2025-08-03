@@ -71,7 +71,7 @@
      class="absolute z-[9999] pointer-events-none"
      style="
         bottom: clamp(4px, 1vh, 80px);
-        right: clamp(8px, 4vw, 100px);
+        right: clamp(8px, 3vw, 80px);
         width: clamp(655px, 52vw, 990px);
      " />
 
@@ -91,11 +91,11 @@ let latestScroll = 0;
 
 function updateParallax() {
   // Fondo (más rápido)
-  const offsetBg = latestScroll * 0.35;
+  const offsetBg = latestScroll * 0.45;
   heroBg.style.transform = `translateY(${offsetBg}px)`;
 
   // Mano (más lenta)
-  const offsetHand = latestScroll * 0.45;
+  const offsetHand = latestScroll * 0.35;
   hand.style.transform = `translateY(${offsetHand}px)`;
 
   requestAnimationFrame(updateParallax);
