@@ -37,7 +37,7 @@
     <div class="hero-bg z-10"></div>
 
     <!-- CONTENEDOR SCROLL -->
-    <div class="relative z-30 h-[150vh]"> <!-- controla duración sticky -->
+    <div class="relative z-30 h-[250vh]"> <!-- controla duración sticky -->
 
       <!-- HERO MAIN DIV sticky -->
       <div class="sticky top-[80px] max-w-[1440px] pl-[32px] flex flex-col items-start text-left">
@@ -83,7 +83,7 @@
     const heroBg = document.querySelector('.hero-bg');
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY;
-      heroBg.style.transform = `translateY(${scrolled * 0.15}px)`; // velocidad reducida
+      heroBg.style.transform = `translateY(${scrolled * 0.25}px)`; // velocidad reducida
     });
   </script>
 
