@@ -64,51 +64,48 @@
 
     </div>
 
-    <!-- HAND COMPONENT -->
-<img src="assets/fullhand.png" 
-     alt="Hand" 
-     id="hand"
-     class="absolute z-[9999] pointer-events-none"
-     style="
-        bottom: clamp(4px, 1vh, 80px);
-        right: clamp(8px, 3vw, 80px);
-        width: clamp(655px, 52vw, 990px);
-     " />
-
-
   </header>
 
   <!-- NEXT SECTION -->
-<section class="relative z-0 bg-[#F6F8EB] text-black min-h-screen flex items-center justify-center">
-  <h2 class="text-4xl font-bold">Next Section Content</h2>
-</section>
+  <section class="relative z-0 bg-[#F6F8EB] text-black min-h-screen flex items-center justify-center">
+    <h2 class="text-4xl font-bold">Next Section Content</h2>
+  </section>
+
+  <!-- MANO FUERA DEL HERO -->
+  <img src="assets/fullhand.png" 
+       alt="Hand" 
+       id="hand"
+       class="fixed z-[9999] pointer-events-none"
+       style="
+          bottom: clamp(4px, 1vh, 80px);
+          right: clamp(8px, 3vw, 80px);
+          width: clamp(655px, 52vw, 990px);
+       " />
 
   <!-- SCRIPT: Parallax fondo y mano -->
   <script>
-const heroBg = document.querySelector('.hero-bg');
-const hand = document.querySelector('#hand');
-let latestScroll = 0;
+  const heroBg = document.querySelector('.hero-bg');
+  const hand = document.querySelector('#hand');
+  let latestScroll = 0;
 
-function updateParallax() {
-  // Fondo (más rápido)
-  const offsetBg = latestScroll * 0.45;
-  heroBg.style.transform = `translateY(${offsetBg}px)`;
+  function updateParallax() {
+    // Fondo (más rápido)
+    const offsetBg = latestScroll * 0.45;
+    heroBg.style.transform = `translateY(${offsetBg}px)`;
 
-  // Mano (más lenta)
-  const offsetHand = latestScroll * 0.35;
-  hand.style.transform = `translateY(${offsetHand}px)`;
+    // Mano fija (parallax más lento)
+    const offsetHand = latestScroll * 0.35;
+    hand.style.transform = `translateY(${offsetHand}px)`;
 
-  requestAnimationFrame(updateParallax);
-}
+    requestAnimationFrame(updateParallax);
+  }
 
-window.addEventListener('scroll', () => {
-  latestScroll = window.scrollY;
-});
+  window.addEventListener('scroll', () => {
+    latestScroll = window.scrollY;
+  });
 
-updateParallax();
-</script>
-
-
+  updateParallax();
+  </script>
 
 </body>
 </html>
