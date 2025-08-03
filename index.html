@@ -64,14 +64,11 @@
 
     </div>
 
-    <!-- HAND COMPONENT -->
-    <!-- HAND COMPONENT -->
-<div id="hand" class="absolute top-0 left-0 w-[100vw] h-[100vh] z-40 pointer-events-none">
-  <img src="assets/hand1.png" alt="" class="absolute top-0 left-0 hand-piece w-full h-auto" id="hand1" />
-  <img src="assets/hand2.png" alt="" class="absolute top-0 left-0 hand-piece w-full h-auto" id="hand2" />
-  <img src="assets/hand3.png" alt="" class="absolute top-0 left-0 hand-piece w-full h-auto" id="hand3" />
-  <img src="assets/hand4.png" alt="" class="absolute top-0 left-0 hand-piece w-full h-auto" id="hand4" />
-</div>
+    <!-- HAND COMPONENT (única imagen) -->
+<img src="assets/fullhand.png" 
+     alt="Marble Hand" 
+     class="absolute top-0 right-0 z-40 pointer-events-none hand-piece w-auto max-w-[50vw] h-auto" 
+     id="fullHand" />
 
   </header>
 
@@ -98,28 +95,31 @@
     updateParallax();
   </script>
 
-  <!-- SCRIPT: Mano con delay y separación -->
+  <!-- SCRIPT: Mano única -->
   <script>
-    const hand = document.getElementById('hand');
-    const h2 = document.getElementById('hand2');
-    const h3 = document.getElementById('hand3');
-    const h4 = document.getElementById('hand4');
+  const heroBg = document.querySelector('.hero-bg');
+  const fullHand = document.getElementById('fullHand');
+  let latestScroll = 0;
 
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const vh = window.innerHeight;
+  function updateParallax() {
+    // Fondo
+    const offsetBg = latestScroll * 0.35; 
+    heroBg.style.transform = `translateY(${offsetBg}px)`;
 
-      // Parallax delay más lento que el fondo
-      const handOffset = scrollY * 0.45; 
-      hand.style.transform = `translateY(${handOffset}px)`;
+    // Mano (más lenta que el fondo)
+    const offsetHand = latestScroll * 0.45; 
+    fullHand.style.transform = `translateY(${offsetHand}px)`;
 
-      // Separación suave
-      const separationFactor = Math.min(scrollY / vh, 1) * 20;
-      h2.style.transform = `translate(${separationFactor}px, ${separationFactor}px)`;
-      h3.style.transform = `translate(${separationFactor * 1.2}px, ${-separationFactor}px)`;
-      h4.style.transform = `translate(${separationFactor * 0.8}px, ${separationFactor * 1.5}px)`;
-    });
-  </script>
+    requestAnimationFrame(updateParallax);
+  }
+
+  window.addEventListener('scroll', () => {
+    latestScroll = window.scrollY;
+  });
+
+  updateParallax();
+</script>
+
 
 </body>
 </html>
