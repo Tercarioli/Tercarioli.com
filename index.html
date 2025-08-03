@@ -66,6 +66,34 @@
 
   </header>
 
+  <!-- CREATIVE CLARITY SECTION -->
+<section class="relative z-20 bg-[#F6F8EB] min-h-screen overflow-hidden">
+  
+  <!-- Texto grande Creative Clarity -->
+  <h2 id="creative-text" 
+      class="absolute top-[180px] right-0 max-w-[70vw] font-extrabold uppercase text-[#FF6B3D] leading-[0.9] z-[5] text-[clamp(3rem,8vw,8rem)]">
+    Creative <br /> Clarity.
+  </h2>
+
+  <!-- Contenedor columnas -->
+  <div class="relative max-w-[1440px] mx-auto pl-[32px] pr-[32px] grid grid-cols-4 gap-[18px] min-h-screen">
+    
+    <!-- Flecha -->
+    <div class="self-start mt-[180px] text-[20px] font-normal text-[#171717] tracking-[-0.04em] leading-[147%]">
+      →
+    </div>
+
+    <!-- Columna vacía -->
+    <div></div>
+
+    <!-- Párrafo alineado abajo -->
+    <div class="self-end mb-[180px] text-[20px] font-normal text-[#171717] tracking-[-0.04em] leading-[147%] max-w-[28ch]">
+      Tercarioli blends narrative design, art direction, and strategic thinking to tackle creative challenges at every level — from global brand campaigns to positioning strategies for growing companies.
+    </div>
+  </div>
+</section>
+
+
   <!-- NEXT SECTION -->
   <section class="relative z-0 bg-[#F6F8EB] text-black min-h-screen flex items-center justify-center">
     <h2 class="text-4xl font-bold">Next Section Content</h2>
@@ -96,6 +124,11 @@
     // Mano fija (parallax más lento)
     const offsetHand = latestScroll * -0.70;
     hand.style.transform = `translateY(${offsetHand}px)`;
+
+    // Creative Clarity (parallax)
+    const creativeText = document.querySelector('#creative-text');
+const offsetText = latestScroll * -0.40;
+creativeText.style.transform = `translateY(${offsetText}px)`;
 
     requestAnimationFrame(updateParallax);
   }
