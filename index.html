@@ -94,7 +94,7 @@
     heroBg.style.transform = `translateY(${offsetBg}px)`;
 
     // Mano fija (parallax más lento)
-    const offsetHand = latestScroll * -0.15;
+    const offsetHand = latestScroll * -0.95;
     hand.style.transform = `translateY(${offsetHand}px)`;
 
     requestAnimationFrame(updateParallax);
