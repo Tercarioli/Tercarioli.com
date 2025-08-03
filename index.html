@@ -17,28 +17,27 @@
       background-image: url('assets/heroback.jpg');
       background-size: cover;
       background-position: center;
-      position: absolute;
+      position: absolute; /* dentro del hero */
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       will-change: transform;
-      z-index: 10;
+    }
+    .hand-piece {
+      will-change: transform;
     }
   </style>
 </head>
 <body class="text-[#F6F8EB]">
 
   <!-- HERO -->
-<header class="relative min-h-screen overflow-hidden">
-  <!-- Fondo hero -->
-  <div class="hero-bg"></div>
+  <header class="relative min-h-screen overflow-hidden">
+    <!-- Fondo hero -->
+    <div class="hero-bg z-10"></div>
 
-  <!-- WRAPPER que define el área alta para el sticky -->
-  <div class="relative z-30" style="height:200vh;"> <!-- altura grande para dar espacio -->
-    
-    <!-- HERO MAIN DIV sticky -->
-    <div class="sticky top-[180px] max-w-[1440px] pl-[32px] flex flex-col items-start text-left">
+    <!-- HERO MAIN DIV -->
+    <div class="relative z-30 max-w-[1440px] pl-[32px] mt-[180px] flex flex-col items-start text-left">
       
       <!-- HERO HEADER DIV -->
       <div class="flex flex-col items-start gap-[32px]">
@@ -57,27 +56,40 @@
           <a href="#about" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">About</a>
           <a href="#work" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">Work</a>
           <a href="#start" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">Start now</a>
-          <div></div>
+          <div></div> <!-- columna vacía -->
         </div>
       </nav>
 
     </div>
-  </div>
 
-  <!-- HAND COMPONENT - reservado para siguiente paso -->
-  <div id="hand" class="absolute top-0 right-0 z-40 pointer-events-none">
-    <!-- Las 4 imágenes de la mano se agregarán aquí -->
-  </div>
-</header>
+    <!-- HAND COMPONENT - reservado para siguiente paso -->
+    <div id="hand" class="absolute top-0 right-0 z-40 pointer-events-none">
+      <!-- Las 4 imágenes de la mano se agregarán aquí -->
+    </div>
+  </header>
 
-<script>
-  // Parallax
-  const heroBg = document.querySelector('.hero-bg');
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    heroBg.style.transform = `translateY(${scrolled * 0.4}px)`; // velocidad ajustable
-  });
-</script>
+  <!-- NEXT SECTION -->
+  <section class="relative z-20 bg-[#F6F8EB] text-black min-h-screen flex items-center justify-center">
+    <h2 class="text-4xl font-bold">Next Section Content</h2>
+  </section>
+
+  <!-- SCRIPT: Parallax suave para fondo -->
+  <script>
+    const heroBg = document.querySelector('.hero-bg');
+    let latestScroll = 0;
+
+    function updateParallax() {
+      const offset = latestScroll * 0.35; // velocidad suave
+      heroBg.style.transform = `translateY(${offset}px)`;
+      requestAnimationFrame(updateParallax);
+    }
+
+    window.addEventListener('scroll', () => {
+      latestScroll = window.scrollY;
+    });
+
+    updateParallax();
+  </script>
 
 </body>
 </html>
