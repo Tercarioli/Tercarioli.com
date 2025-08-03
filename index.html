@@ -70,9 +70,9 @@
      id="hand"
      class="absolute z-[9999] pointer-events-none"
      style="
-        bottom: clamp(10px, 2vh, 1640px);
+        bottom: clamp(4px, 1vh, 80px);
         right: clamp(8px, 4vw, 100px);
-        width: clamp(675px, 56vw, 1010px);
+        width: clamp(655px, 52vw, 990px);
      " />
 
 
@@ -95,7 +95,7 @@ function updateParallax() {
   heroBg.style.transform = `translateY(${offsetBg}px)`;
 
   // Mano (más lenta)
-  const offsetHand = latestScroll * 0.55;
+  const offsetHand = latestScroll * 0.45;
   hand.style.transform = `translateY(${offsetHand}px)`;
 
   requestAnimationFrame(updateParallax);
