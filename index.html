@@ -72,9 +72,9 @@
         bottom: clamp(40px, 8vh, 160px);
         right: clamp(8px, 4vw, 100px);
         width: clamp(750px, 62vw, 1125px);
-        transform: rotate(-35deg);
      " 
      id="hand" />
+
 
   </header>
 
@@ -85,34 +85,17 @@
 
   <!-- SCRIPT: Parallax fondo -->
   <script>
-    const heroBg = document.querySelector('.hero-bg');
-    let latestScroll = 0;
-
-    function updateParallax() {
-      const offset = latestScroll * 0.35; // velocidad del fondo
-      heroBg.style.transform = `translateY(${offset}px)`;
-      requestAnimationFrame(updateParallax);
-    }
-
-    window.addEventListener('scroll', () => {
-      latestScroll = window.scrollY;
-    });
-
-    updateParallax();
-  </script>
-
-  <script>
 const heroBg = document.querySelector('.hero-bg');
 const hand = document.querySelector('#hand');
 let latestScroll = 0;
 
 function updateParallax() {
-  // Fondo (más rápido que la mano)
+  // Fondo (más rápido)
   const offsetBg = latestScroll * 0.35;
   heroBg.style.transform = `translateY(${offsetBg}px)`;
 
   // Mano (más lenta)
-  const offsetHand = latestScroll * 0.55;
+  const offsetHand = latestScroll * 0.25;
   hand.style.transform = `translateY(${offsetHand}px) rotate(-35deg)`;
 
   requestAnimationFrame(updateParallax);
@@ -124,6 +107,7 @@ window.addEventListener('scroll', () => {
 
 updateParallax();
 </script>
+
 
 </body>
 </html>
