@@ -23,9 +23,11 @@
       width: 100%;
       height: 100%;
       will-change: transform;
+      z-index: 10;
     }
     .hand-piece {
       will-change: transform;
+      transition: transform 0.1s linear;
     }
   </style>
 </head>
@@ -34,7 +36,7 @@
   <!-- HERO -->
   <header class="relative min-h-screen overflow-hidden">
     <!-- Fondo hero -->
-    <div class="hero-bg z-10"></div>
+    <div class="hero-bg"></div>
 
     <!-- HERO MAIN DIV -->
     <div class="relative z-30 max-w-[1440px] pl-[32px] mt-[180px] flex flex-col items-start text-left">
@@ -62,9 +64,12 @@
 
     </div>
 
-    <!-- HAND COMPONENT - reservado para siguiente paso -->
+    <!-- HAND COMPONENT -->
     <div id="hand" class="absolute top-0 right-0 z-40 pointer-events-none">
-      <!-- Las 4 imágenes de la mano se agregarán aquí -->
+      <img src="assets/hand1.png" alt="" class="absolute top-0 left-0 hand-piece w-auto max-w-none" id="hand1" />
+      <img src="assets/hand2.png" alt="" class="absolute top-0 left-0 hand-piece w-auto max-w-none" id="hand2" />
+      <img src="assets/hand3.png" alt="" class="absolute top-0 left-0 hand-piece w-auto max-w-none" id="hand3" />
+      <img src="assets/hand4.png" alt="" class="absolute top-0 left-0 hand-piece w-auto max-w-none" id="hand4" />
     </div>
   </header>
 
@@ -73,13 +78,13 @@
     <h2 class="text-4xl font-bold">Next Section Content</h2>
   </section>
 
-  <!-- SCRIPT: Parallax suave para fondo -->
+  <!-- SCRIPT: Parallax fondo -->
   <script>
     const heroBg = document.querySelector('.hero-bg');
     let latestScroll = 0;
 
     function updateParallax() {
-      const offset = latestScroll * 0.35; // velocidad suave
+      const offset = latestScroll * 0.35; // velocidad del fondo
       heroBg.style.transform = `translateY(${offset}px)`;
       requestAnimationFrame(updateParallax);
     }
@@ -89,6 +94,29 @@
     });
 
     updateParallax();
+  </script>
+
+  <!-- SCRIPT: Mano con delay y separación -->
+  <script>
+    const hand = document.getElementById('hand');
+    const h2 = document.getElementById('hand2');
+    const h3 = document.getElementById('hand3');
+    const h4 = document.getElementById('hand4');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const vh = window.innerHeight;
+
+      // Parallax delay más lento que el fondo
+      const handOffset = scrollY * 0.45; 
+      hand.style.transform = `translateY(${handOffset}px)`;
+
+      // Separación suave
+      const separationFactor = Math.min(scrollY / vh, 1) * 20;
+      h2.style.transform = `translate(${separationFactor}px, ${separationFactor}px)`;
+      h3.style.transform = `translate(${separationFactor * 1.2}px, ${-separationFactor}px)`;
+      h4.style.transform = `translate(${separationFactor * 0.8}px, ${separationFactor * 1.5}px)`;
+    });
   </script>
 
 </body>
