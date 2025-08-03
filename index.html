@@ -79,7 +79,7 @@
     let latestScroll = 0;
 
     function updateParallax() {
-      const offset = latestScroll * 0.05; // velocidad suave
+      const offset = latestScroll * 0.35; // velocidad suave
       heroBg.style.transform = `translateY(${offset}px)`;
       requestAnimationFrame(updateParallax);
     }
