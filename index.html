@@ -68,7 +68,7 @@
 <img src="assets/fullhand.png" 
      alt="Hand" 
      id="hand"
-     class="fixed z-[999] pointer-events-none"
+     class="absolute z-[9999] pointer-events-none"
      style="
         bottom: clamp(40px, 8vh, 160px);
         right: clamp(8px, 4vw, 100px);
@@ -82,7 +82,7 @@
     <h2 class="text-4xl font-bold">Next Section Content</h2>
   </section>
 
-  <!-- SCRIPT: Parallax fondo -->
+  <!-- SCRIPT: Parallax fondo y mano -->
   <script>
 const heroBg = document.querySelector('.hero-bg');
 const hand = document.querySelector('#hand');
@@ -95,7 +95,7 @@ function updateParallax() {
 
   // Mano (más lenta)
   const offsetHand = latestScroll * 0.25;
-  hand.style.transform = `translateY(${offsetHand}px) rotate(-35deg)`;
+  hand.style.transform = `translateY(${offsetHand}px)`;
 
   requestAnimationFrame(updateParallax);
 }
@@ -106,6 +106,7 @@ window.addEventListener('scroll', () => {
 
 updateParallax();
 </script>
+
 
 
 </body>
