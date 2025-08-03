@@ -71,7 +71,8 @@
   
   <!-- Texto grande Creative Clarity -->
   <h2 id="creative-text" 
-      class="absolute top-[180px] right-0 max-w-[70vw] font-extrabold uppercase text-[#FF6B3D] leading-[0.9] z-[5] text-[clamp(3rem,8vw,8rem)]">
+      class="absolute top-[180px] left-[32px] max-w-[70vw] font-extrabold uppercase text-[#FF6B3D] leading-[0.73] tracking-[-0.04em] z-[5] text-[clamp(3rem,8vw,8rem)]"
+      style="font-family: 'Work Sans', sans-serif;">
     Creative <br /> Clarity.
   </h2>
 
@@ -92,6 +93,7 @@
     </div>
   </div>
 </section>
+
 
 
   <!-- NEXT SECTION -->
@@ -127,7 +129,7 @@
 
     // Creative Clarity (parallax)
     const creativeText = document.querySelector('#creative-text');
-const offsetText = latestScroll * -0.40;
+const offsetText = latestScroll * 0.40;
 creativeText.style.transform = `translateY(${offsetText}px)`;
 
     requestAnimationFrame(updateParallax);
