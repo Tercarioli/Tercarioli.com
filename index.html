@@ -30,54 +30,54 @@
 <body class="text-[#F6F8EB]">
 
   <!-- HERO -->
-  <header class="relative min-h-screen overflow-hidden">
-    <!-- Fondo hero -->
-    <div class="hero-bg"></div>
+<header class="relative min-h-screen overflow-hidden">
+  <!-- Fondo hero -->
+  <div class="hero-bg"></div>
 
-    <!-- CONTENEDOR SCROLL -->
-    <div class="relative z-30 h-[150vh]">
+  <!-- WRAPPER que define el área alta para el sticky -->
+  <div class="relative z-30" style="height:200vh;"> <!-- altura grande para dar espacio -->
+    
+    <!-- HERO MAIN DIV sticky -->
+    <div class="sticky top-[180px] max-w-[1440px] pl-[32px] flex flex-col items-start text-left">
       
-      <!-- HERO MAIN DIV sticky -->
-      <div class="sticky top-[180px] max-w-[1440px] pl-[32px] flex flex-col items-start text-left">
-        
-        <!-- HERO HEADER DIV -->
-        <div class="flex flex-col items-start gap-[32px]">
-          <img src="assets/logoheroterca.png" alt="Tercarioli" class="max-w-[80%] h-auto" />
-          <p class="max-w-[60vw] font-medium text-[clamp(18px,2vw,28px)]">
-            Plug and play senior-level creative vision and zero friction.
-          </p>
-        </div>
-
-        <!-- GAP entre header y nav -->
-        <div class="h-[180px]"></div>
-
-        <!-- NAV DIV -->
-        <nav class="w-full max-w-[1440px]">
-          <div class="grid grid-cols-4 gap-[18px] text-[20px] font-medium">
-            <a href="#about" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">About</a>
-            <a href="#work" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">Work</a>
-            <a href="#start" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">Start now</a>
-            <div></div>
-          </div>
-        </nav>
-
+      <!-- HERO HEADER DIV -->
+      <div class="flex flex-col items-start gap-[32px]">
+        <img src="assets/logoheroterca.png" alt="Tercarioli" class="max-w-[80%] h-auto" />
+        <p class="max-w-[60vw] font-medium text-[clamp(18px,2vw,28px)]">
+          Plug and play senior-level creative vision and zero friction.
+        </p>
       </div>
-    </div>
 
-    <!-- HAND COMPONENT - reservado para siguiente paso -->
-    <div id="hand" class="absolute top-0 right-0 z-40 pointer-events-none">
-      <!-- Las 4 imágenes de la mano se agregarán aquí -->
-    </div>
-  </header>
+      <!-- GAP entre header y nav -->
+      <div class="h-[180px]"></div>
 
-  <script>
-    // Parallax con velocidad alta como al inicio
-    const heroBg = document.querySelector('.hero-bg');
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      heroBg.style.transform = `translateY(${scrolled * 0.4}px)`; // Ajusta aquí si quieres más/menos
-    });
-  </script>
+      <!-- NAV DIV -->
+      <nav class="w-full max-w-[1440px]">
+        <div class="grid grid-cols-4 gap-[18px] text-[20px] font-medium">
+          <a href="#about" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">About</a>
+          <a href="#work" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">Work</a>
+          <a href="#start" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">Start now</a>
+          <div></div>
+        </div>
+      </nav>
+
+    </div>
+  </div>
+
+  <!-- HAND COMPONENT - reservado para siguiente paso -->
+  <div id="hand" class="absolute top-0 right-0 z-40 pointer-events-none">
+    <!-- Las 4 imágenes de la mano se agregarán aquí -->
+  </div>
+</header>
+
+<script>
+  // Parallax
+  const heroBg = document.querySelector('.hero-bg');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    heroBg.style.transform = `translateY(${scrolled * 0.4}px)`; // velocidad ajustable
+  });
+</script>
 
 </body>
 </html>
