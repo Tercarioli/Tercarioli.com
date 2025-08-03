@@ -67,13 +67,14 @@
     <!-- HAND COMPONENT -->
 <img src="assets/fullhand.png" 
      alt="Hand" 
-     class="absolute z-40 pointer-events-none"
+     class="absolute z-[999] pointer-events-none"
      style="
         bottom: clamp(40px, 8vh, 160px);
         right: clamp(8px, 4vw, 100px);
         width: clamp(750px, 62vw, 1125px);
         transform: rotate(-35deg);
-     " />
+     " 
+     id="hand" />
 
   </header>
 
@@ -100,31 +101,29 @@
     updateParallax();
   </script>
 
-  <!-- SCRIPT: Mano única -->
   <script>
-  const heroBg = document.querySelector('.hero-bg');
-  const fullHand = document.getElementById('fullHand');
-  let latestScroll = 0;
+const heroBg = document.querySelector('.hero-bg');
+const hand = document.querySelector('#hand');
+let latestScroll = 0;
 
-  function updateParallax() {
-    // Fondo
-    const offsetBg = latestScroll * 0.35; 
-    heroBg.style.transform = `translateY(${offsetBg}px)`;
+function updateParallax() {
+  // Fondo (más rápido que la mano)
+  const offsetBg = latestScroll * 0.35;
+  heroBg.style.transform = `translateY(${offsetBg}px)`;
 
-    // Mano (más lenta que el fondo)
-    const offsetHand = latestScroll * 0.45; 
-    fullHand.style.transform = `translateY(${offsetHand}px)`;
+  // Mano (más lenta)
+  const offsetHand = latestScroll * 0.55;
+  hand.style.transform = `translateY(${offsetHand}px) rotate(-35deg)`;
 
-    requestAnimationFrame(updateParallax);
-  }
+  requestAnimationFrame(updateParallax);
+}
 
-  window.addEventListener('scroll', () => {
-    latestScroll = window.scrollY;
-  });
+window.addEventListener('scroll', () => {
+  latestScroll = window.scrollY;
+});
 
-  updateParallax();
+updateParallax();
 </script>
-
 
 </body>
 </html>
