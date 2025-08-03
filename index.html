@@ -12,10 +12,20 @@
       margin: 0;
       background-color: #F6F8EB;
     }
+    /* Fondo hero para parallax */
     .hero-bg {
       background-image: url('assets/heroback.jpg');
       background-size: cover;
       background-position: center;
+      position: absolute; /* dentro del hero */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      will-change: transform;
+    }
+    .hand-piece {
+      will-change: transform;
     }
   </style>
 </head>
@@ -23,8 +33,8 @@
 
   <!-- HERO -->
   <header class="relative min-h-screen overflow-hidden">
-    <!-- Background -->
-    <div class="absolute inset-0 hero-bg z-10"></div>
+    <!-- Fondo hero -->
+    <div class="hero-bg z-10"></div>
 
     <!-- HERO MAIN DIV -->
     <div class="relative z-30 max-w-[1440px] pl-[32px] mt-[180px] flex flex-col items-start text-left">
@@ -32,7 +42,9 @@
       <!-- HERO HEADER DIV -->
       <div class="flex flex-col items-start gap-[32px]">
         <img src="assets/logoheroterca.png" alt="Tercarioli" class="max-w-[80%] h-auto" />
-        <p class="max-w-[60vw] font-medium text-[clamp(18px,2vw,28px)]">Plug and play senior-level creative vision and zero friction.</p>
+        <p class="max-w-[60vw] font-medium text-[clamp(18px,2vw,28px)]">
+          Plug and play senior-level creative vision and zero friction.
+        </p>
       </div>
 
       <!-- GAP entre header y nav -->
@@ -40,15 +52,19 @@
 
       <!-- NAV DIV -->
       <nav class="w-full max-w-[1440px]">
-  <div class="grid grid-cols-4 gap-[18px] text-[20px] font-medium">
-    <a href="#about" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">About</a>
-    <a href="#work" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">Work</a>
-    <a href="#start" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">Start now</a>
-    <div></div> <!-- columna vacía -->
-  </div>
-</nav>
+        <div class="grid grid-cols-4 gap-[18px] text-[20px] font-medium">
+          <a href="#about" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">About</a>
+          <a href="#work" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">Work</a>
+          <a href="#start" class="w-fit transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">Start now</a>
+          <div></div> <!-- columna vacía -->
+        </div>
+      </nav>
 
+    </div>
 
+    <!-- HAND COMPONENT - reservado para siguiente paso -->
+    <div id="hand" class="absolute top-0 right-0 z-40 pointer-events-none">
+      <!-- Las 4 imágenes de la mano se agregarán aquí -->
     </div>
   </header>
 
@@ -56,6 +72,24 @@
   <section class="relative z-20 bg-[#F6F8EB] text-black min-h-screen flex items-center justify-center">
     <h2 class="text-4xl font-bold">Next Section Content</h2>
   </section>
+
+  <!-- SCRIPT: Parallax suave para fondo -->
+  <script>
+    const heroBg = document.querySelector('.hero-bg');
+    let latestScroll = 0;
+
+    function updateParallax() {
+      const offset = latestScroll * 0.15; // velocidad suave
+      heroBg.style.transform = `translateY(${offset}px)`;
+      requestAnimationFrame(updateParallax);
+    }
+
+    window.addEventListener('scroll', () => {
+      latestScroll = window.scrollY;
+    });
+
+    updateParallax();
+  </script>
 
 </body>
 </html>
