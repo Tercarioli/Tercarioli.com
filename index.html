@@ -12,6 +12,7 @@
       margin: 0;
       background-color: #F6F8EB;
     }
+
     /* Fondo hero para parallax */
     .hero-bg {
       background-image: url('assets/heroback.jpg');
@@ -25,9 +26,28 @@
       will-change: transform;
       z-index: 10;
     }
+
+    /* Animación mano (pieza) si la usas */
     .hand-piece {
       will-change: transform;
       transition: transform 0.1s linear;
+    }
+
+    /* Estilos de la mano floating */
+    #hand {
+      position: fixed;
+      bottom: clamp(4px, 1vh, 80px);
+      right: clamp(8px, 3vw, 80px);
+      width: clamp(655px, 52vw, 990px);
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    @media (max-width: 640px) {
+      #hand {
+        /* en móvil puro la movemos 20px fuera del borde */
+        right: -20px;
+      }
     }
   </style>
 </head>
@@ -238,15 +258,11 @@
 </section>
 
   <!-- MANO FUERA DEL HERO -->
-  <img src="assets/fullhand.png" 
-       alt="Hand" 
-       id="hand"
-       class="fixed z-[9999] pointer-events-none"
-       style="
-          bottom: clamp(4px, 1vh, 80px);
-          right: clamp(8px, 3vw, 80px);
-          width: clamp(655px, 52vw, 990px);
-       " />
+  <img
+    src="assets/fullhand.png"
+    alt="Hand"
+    id="hand"
+  />
 
   <!-- SCRIPT: Parallax fondo y mano -->
   <script>
