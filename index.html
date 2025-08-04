@@ -38,10 +38,13 @@
   <!-- Fondo hero -->
   <div class="hero-bg"></div>
 
-  <!-- CONTENEDOR PRINCIPAL: ancho full menos 32px a los lados, con dos hijos y gap de 180px -->
-  <div class="relative z-30 w-full px-[32px] flex flex-col gap-[180px] mt-[180px]">
-    
-    <!-- 1) Logo + copy: flow vertical, gap 18px, alineado arriba a la izquierda -->
+  <!-- CONTENEDOR PRINCIPAL: ancho full menos 32px a los lados -->
+  <div
+    class="relative z-30 w-full px-[32px]
+           mt-[80px] gap-[80px] flex flex-col
+           md:mt-[180px] md:gap-[180px]"
+  >
+    <!-- 1) Logo + copy -->
     <div class="flex flex-col items-start gap-[18px]">
       <img
         src="assets/logoheroterca.png"
@@ -53,41 +56,58 @@
       </p>
     </div>
 
-    <!-- 2) Navegación: grid de 4 columnas, gap 18px, ocupa full width del padre -->
-    <nav>
-  <div
-    class="grid grid-cols-4 gap-[18px] w-full text-[20px] font-medium justify-items-start"
-  >
-    <a
-      href="#start"
-      class="col-start-1 transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4"
-    >
-      Start now
-    </a>
+    <!-- 2) Navegación -->
+    <nav class="w-full">
+      <!-- MOBILE: stack de 3 links -->
+      <div class="grid grid-cols-1 gap-[12px] text-[18px] font-medium md:hidden">
+        <a
+          href="#start"
+          class="block text-left transition-transform duration-200 hover:-translate-y-[3px] hover:underline underline-offset-4"
+        >
+          Start now
+        </a>
+        <a
+          href="#work"
+          class="block text-left transition-transform duration-200 hover:-translate-y-[3px] hover:underline underline-offset-4"
+        >
+          Work
+        </a>
+        <a
+          href="#about"
+          class="block text-left transition-transform duration-200 hover:-translate-y-[3px] hover:underline underline-offset-4"
+        >
+          About
+        </a>
+      </div>
 
-    <a
-      href="#work"
-      class="col-start-2 transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4"
-    >
-      Work
-    </a>
-
-    <!-- columna 3 vacía -->
-
-    <a
-      href="#about"
-      class="col-start-4 transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4"
-    >
-      About
-    </a>
-  </div>
-</nav>
-
-
-
+      <!-- DESKTOP: grid de 4 columnas con hueco en la 3 -->
+      <div
+        class="hidden md:grid md:grid-cols-4 md:gap-[18px]
+               w-full text-[20px] font-medium justify-items-start"
+      >
+        <a
+          href="#start"
+          class="col-start-1 transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4"
+        >
+          Start now
+        </a>
+        <a
+          href="#work"
+          class="col-start-2 transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4"
+        >
+          Work
+        </a>
+        <!-- columna 3 vacía -->
+        <a
+          href="#about"
+          class="col-start-4 transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4"
+        >
+          About
+        </a>
+      </div>
+    </nav>
   </div>
 </header>
-
 
 
   <!-- CREATIVE CLARITY SECTION -->
