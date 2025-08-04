@@ -91,21 +91,36 @@
 
 
   <!-- CREATIVE CLARITY SECTION -->
-<section class="relative z-20 bg-[#F6F8EB] min-h-screen overflow-hidden">
+<section class="relative z-20 bg-[#F6F8EB] overflow-hidden">
 
   <!-- Texto “Creative Clarity” flotando -->
   <h2
     id="creative-text"
-    class="absolute top-[40px] right-[32px] text-[#FF6B3D] font-extrabold leading-[0.73] tracking-[-0.04em] text-[11vw] max-w-[75vw] z-0 text-right pointer-events-none"
+    class="absolute top-[40px] right-[32px] text-[#FF6B3D] font-extrabold leading-[0.73]
+           tracking-[-0.04em] text-[11vw] max-w-[75vw] z-0 text-right pointer-events-none"
   >
     CREATIVE<br>
     <span class="inline-block mr-[1.5em]">CLARITY.</span>
   </h2>
 
-  <!-- Grid de 4 columnas: padding 32px, margen 180px arriba/abajo -->
+  <!-- ── MOBILE LAYOUT: solo párrafo centrado al 60% del ancho -->
   <div
-    class="relative w-full px-[32px] grid grid-cols-4 gap-[18px]
-           mt-[180px] mb-[180px] min-h-[calc(100vh-360px)] z-10"
+    class="grid grid-cols-1 gap-6 px-4 mt-[180px] mb-[180px] md:hidden"
+  >
+    <p
+      class="text-[18px] font-normal text-[#171717] tracking-[-0.04em]
+             leading-[147%] w-[60vw] mx-auto"
+    >
+      Tercarioli blends narrative design, art direction, and strategic
+      thinking to tackle creative challenges at every level — from global
+      brand campaigns to positioning strategies for growing companies.
+    </p>
+  </div>
+
+  <!-- ── DESKTOP LAYOUT: grid de 4 columnas con flecha y párrafo -->
+  <div
+    class="hidden md:grid md:w-full md:px-[32px] md:grid-cols-4 md:gap-[18px]
+           md:mt-[180px] md:mb-[180px] md:min-h-[calc(100vh-360px)] z-10"
   >
     <!-- 1ª columna: flecha arriba -->
     <div
@@ -122,14 +137,16 @@
       class="col-start-3 self-end text-[20px] font-normal text-[#171717]
              tracking-[-0.04em] leading-[147%] max-w-[28ch]"
     >
-      Tercarioli blends narrative design, art direction, and strategic thinking
-      to tackle creative challenges at every level — from global brand campaigns
-      to positioning strategies for growing companies.
+      Tercarioli blends narrative design, art direction, and strategic
+      thinking to tackle creative challenges at every level — from global
+      brand campaigns to positioning strategies for growing companies.
     </div>
 
     <!-- 4ª columna vacía -->
   </div>
+
 </section>
+
 
 <!-- WORK 01 SECTION -->
 <section id="work-01" class="w-full px-[32px] mb-[180px]">
