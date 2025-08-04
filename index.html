@@ -136,7 +136,9 @@
   <!-- Texto “Creative Clarity” flotando -->
   <h2
     id="creative-text"
-    class="absolute top-[40px]
+    class="absolute
+          top-[20px]      /* móvil: más arriba que antes */
+          md:top-[40px]   /* desktop: conserva 40px */
            left-[32px] right-[32px]      /* full‐width minus margins en mobile */
            md:left-auto md:right-[32px] /* vuelve a posicionarse solo desde la derecha en desktop */
            text-[#FF6B3D] font-extrabold leading-[0.73]
