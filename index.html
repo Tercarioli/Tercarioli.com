@@ -110,6 +110,32 @@
     font-size: 11vw;
   }
 }
+
+/* PRICING layers */
+#pricing { 
+  isolation: isolate;             /* para controlar el blend del overlay */
+}
+
+#pricing-bg {
+  position: absolute;
+  inset: 0;
+  background: url('assets/pricingback.jpg') center/cover no-repeat;
+  will-change: transform;
+  z-index: 10;                    /* fondo */
+}
+
+#screen-orange {
+  position: absolute;
+  inset: 0;
+  background: url('assets/screenorange.jpg') center/cover no-repeat;
+  mix-blend-mode: screen;         /* glow */
+  opacity: 0.9;                   /* ajusta a gusto */
+  will-change: transform;
+  z-index: 25;                    /* encima de flores (cuando las agreguemos), debajo de cards */
+  pointer-events: none;
+}
+
+    
   </style>
 </head>
 <body class="text-[#F6F8EB]">
@@ -307,6 +333,28 @@
 
 </section>
 
+<!-- PRICING -->
+<section id="pricing" class="relative min-h-screen overflow-hidden px-[32px]">
+
+  <!-- capas parallax -->
+  <div id="pricing-bg"></div>
+  <div id="screen-orange"></div>
+
+  <!-- grid 4 columnas (por ahora sin tarjetas) -->
+  <div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-end py-[48px]">
+    <div class="col-start-2"></div>
+    <div class="col-start-3"></div>
+    <div class="col-start-4"></div>
+  </div>
+
+  <!-- mobile placeholder (vacío por ahora) -->
+  <div class="relative z-40 md:hidden min-h-screen"></div>
+</section>
+
+<!-- FOOTER (vacío por ahora) -->
+<section id="footer" class="relative w-full min-h-screen px-[32px] bg-[#F6F8EB]">
+</section>
+
 
   <!-- HAND outside hero -->
   <img src="assets/fullhand.png" alt="Hand" id="hand" />
@@ -319,6 +367,8 @@
   const agencyText     = document.querySelector('#agency-text');
   const contractsText  = document.querySelector('#contracts-text');
   const overheadText   = document.querySelector('#overhead-text');
+  const pricingBg      = document.querySelector('#pricing-bg');
+  const screenOrange   = document.querySelector('#screen-orange');
   let latestScroll     = 0;
 
   function updateParallax() {
@@ -333,6 +383,11 @@
     agencyText.style.transform     = `translateY(${offsetText}px)`;
     contractsText.style.transform  = `translateY(${offsetText}px)`;
     overheadText.style.transform   = `translateY(${offsetText}px)`;
+    
+    const offsetPricingBg  = latestScroll * 0.35;   // más lento que hero
+    const offsetScreen     = latestScroll * 0.45;   // ligeramente distinto para “parallax suave”
+    pricingBg.style.transform    = `translateY(${offsetPricingBg}px)`;
+    screenOrange.style.transform = `translateY(${offsetScreen}px)`;
 
     requestAnimationFrame(updateParallax);
   }
