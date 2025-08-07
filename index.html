@@ -357,27 +357,35 @@
   const agencyText     = document.querySelector('#agency-text');
   const contractsText  = document.querySelector('#contracts-text');
   const overheadText   = document.querySelector('#overhead-text');
+
+  // PRICING
+  const pricing        = document.querySelector('#pricing');
   const pricingBg      = document.querySelector('#pricing-bg');
   const screenOrange   = document.querySelector('#screen-orange');
+
   let latestScroll     = 0;
+  let pricingStart     = pricing ? pricing.offsetTop : 0;
 
   function updateParallax() {
-    const offsetBg     = latestScroll * 0.55;
-    heroBg.style.transform        = `translateY(${offsetBg}px)`;
-    
-    const offsetHand   = latestScroll * -0.70;
-    hand.style.transform           = `translateY(${offsetHand}px)`;
+    // HERO + textos
+    const offsetBg   = latestScroll * 0.55;
+    heroBg.style.transform = `translateY(${offsetBg}px)`;
 
-    const offsetText   = latestScroll * 0.15;
-    creativeText.style.transform   = `translateY(${offsetText}px)`;
-    agencyText.style.transform     = `translateY(${offsetText}px)`;
-    contractsText.style.transform  = `translateY(${offsetText}px)`;
-    overheadText.style.transform   = `translateY(${offsetText}px)`;
-    
-    const offsetPricingBg  = latestScroll * 0.35;   // más lento que hero
-    const offsetScreen     = latestScroll * 0.45;   // ligeramente distinto para “parallax suave”
-    pricingBg.style.transform    = `translateY(${offsetPricingBg}px)`;
-    screenOrange.style.transform = `translateY(${offsetScreen}px)`;
+    const offsetHand = latestScroll * -0.70;
+    hand.style.transform = `translateY(${offsetHand}px)`;
+
+    const offsetText = latestScroll * 0.15;
+    creativeText.style.transform  = `translateY(${offsetText}px)`;
+    agencyText.style.transform    = `translateY(${offsetText}px)`;
+    contractsText.style.transform = `translateY(${offsetText}px)`;
+    overheadText.style.transform  = `translateY(${offsetText}px)`;
+
+    // PRICING: parallax relativo a su propia sección
+    if (pricingBg && screenOrange) {
+      const pricingScroll = Math.max(0, latestScroll - pricingStart);
+      pricingBg.style.transform    = `translateY(${pricingScroll * 0.35}px)`;
+      screenOrange.style.transform = `translateY(${pricingScroll * 0.45}px)`;
+    }
 
     requestAnimationFrame(updateParallax);
   }
@@ -386,8 +394,17 @@
     latestScroll = window.scrollY;
   });
 
+  // Recalcular el inicio de la sección si cambia el layout
+  window.addEventListener('resize', () => {
+    if (pricing) pricingStart = pricing.offsetTop;
+  });
+  window.addEventListener('load', () => {
+    if (pricing) pricingStart = pricing.offsetTop;
+  });
+
   updateParallax();
 </script>
+
 
 
 
