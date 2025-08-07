@@ -11,14 +11,15 @@
       font-family: 'Work Sans', sans-serif;
       margin: 0;
       background-color: #F6F8EB;
+      /* El color de texto por defecto (#F6F8EB) debe sobrescribirse en secciones con fondo claro */
     }
 
-    /* Fondo hero para parallax */
+    /* HERO BACKGROUND for parallax */
     .hero-bg {
       background-image: url('assets/heroback.jpg');
       background-size: cover;
       background-position: center;
-      position: absolute; /* dentro del hero */
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
@@ -27,13 +28,7 @@
       z-index: 10;
     }
 
-    /* Animación mano (pieza) si la usas */
-    .hand-piece {
-      will-change: transform;
-      transition: transform 0.1s linear;
-    }
-
-    /* Estilos de la mano floating */
+    /* HAND floating */
     #hand {
       position: fixed;
       bottom: clamp(4px, 1vh, 80px);
@@ -42,480 +37,170 @@
       z-index: 9999;
       pointer-events: none;
     }
-
     @media (max-width: 640px) {
-      #hand {
-        /* en móvil puro la movemos 50px fuera del borde */
-        right: -50px;
-      }
+      #hand { right: -50px; }
     }
   </style>
 </head>
 <body class="text-[#F6F8EB]">
 
   <!-- HERO -->
-<header class="relative min-h-screen overflow-hidden">
-  <!-- Fondo hero -->
-  <div class="hero-bg"></div>
-
-  <!-- CONTENEDOR PRINCIPAL: ancho full menos 32px a los lados -->
-  <div
-    class="relative z-30 w-full px-[32px]
-           mt-[80px] gap-[80px] flex flex-col
-           md:mt-[180px] md:gap-[180px]"
-  >
-    <!-- 1) Logo + copy -->
-    <div class="flex flex-col items-start gap-[18px]">
-      <img
-        src="assets/logoheroterca.png"
-        alt="Tercarioli"
-        class="w-[70vw] max-w-none h-auto"
-      />
-      <p class="max-w-[60vw] font-medium text-[clamp(18px,2vw,28px)]">
-        Plug and play senior-level creative vision and zero friction.
-      </p>
+  <header class="relative min-h-screen overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="relative z-30 w-full px-[32px] mt-[80px] gap-[80px] flex flex-col md:mt-[180px] md:gap-[180px]">
+      <div class="flex flex-col items-start gap-[18px]">
+        <img src="assets/logoheroterca.png" alt="Tercarioli" class="w-[70vw] max-w-none h-auto" />
+        <p class="max-w-[60vw] font-medium text-[clamp(18px,2vw,28px)] text-[#171717]">
+          Plug and play senior-level creative vision and zero friction.
+        </p>
+      </div>
+      <nav class="w-full">
+        <div class="grid grid-cols-1 gap-[12px] text-[18px] font-medium md:hidden text-[#171717]">
+          <a href="#start" class="block transition-transform duration-200 hover:-translate-y-[3px] hover:underline underline-offset-4">Start now</a>
+          <a href="#work" class="block transition-transform duration-200 hover:-translate-y-[3px] hover:underline underline-offset-4">Work</a>
+          <a href="#about" class="block transition-transform duration-200 hover:-translate-y-[3px] hover:underline underline-offset-4">About</a>
+        </div>
+        <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] w-full text-[20px] font-medium justify-items-start text-[#171717]">
+          <a href="#start" class="col-start-1 transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">Start now</a>
+          <a href="#work" class="col-start-2 transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">Work</a>
+          <a href="#about" class="col-start-4 transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">About</a>
+        </div>
+      </nav>
     </div>
-
-    <!-- 2) Navegación -->
-    <nav class="w-full">
-      <!-- MOBILE: stack de 3 links -->
-      <div class="grid grid-cols-1 gap-[12px] text-[18px] font-medium md:hidden">
-        <a
-          href="#start"
-          class="block text-left transition-transform duration-200 hover:-translate-y-[3px] hover:underline underline-offset-4"
-        >
-          Start now
-        </a>
-        <a
-          href="#work"
-          class="block text-left transition-transform duration-200 hover:-translate-y-[3px] hover:underline underline-offset-4"
-        >
-          Work
-        </a>
-        <a
-          href="#about"
-          class="block text-left transition-transform duration-200 hover:-translate-y-[3px] hover:underline underline-offset-4"
-        >
-          About
-        </a>
-      </div>
-
-      <!-- DESKTOP: grid de 4 columnas con hueco en la 3 -->
-      <div
-        class="hidden md:grid md:grid-cols-4 md:gap-[18px]
-               w-full text-[20px] font-medium justify-items-start"
-      >
-        <a
-          href="#start"
-          class="col-start-1 transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4"
-        >
-          Start now
-        </a>
-        <a
-          href="#work"
-          class="col-start-2 transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4"
-        >
-          Work
-        </a>
-        <!-- columna 3 vacía -->
-        <a
-          href="#about"
-          class="col-start-4 transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4"
-        >
-          About
-        </a>
-      </div>
-    </nav>
-  </div>
-</header>
-
+  </header>
 
   <!-- CREATIVE CLARITY SECTION -->
-<section class="relative z-20 bg-[#F6F8EB] overflow-hidden">
-  
-  <!-- Texto “Creative Clarity” flotando -->
-  <h2
-    id="creative-text"
-    class="absolute
-          top-[20px]      /* móvil: más arriba que antes */
-          md:top-[40px]   /* desktop: conserva 40px */
-           left-[32px] right-[32px]      /* full‐width minus margins en mobile */
-           md:left-auto md:right-[32px] /* vuelve a posicionarse solo desde la derecha en desktop */
-           text-[#FF6B3D] font-extrabold leading-[0.73]
-           tracking-[-0.04em]
-           text-[18vw] md:text-[11vw]                   /* tamaño responsivo */
-           max-w-full md:max-w-[75vw]    /* quita el límite en mobile, lo recupera en desktop */
-           z-0
-           text-left md:text-right       /* alineación: izquierda en mobile, derecha en desktop */
-           pointer-events-none"
-  >
-    CREATIVE<br>
-    <span class="inline-block mr-[1.5em]">CLARITY.</span>
-  </h2>
-
-  <!-- ── MOBILE LAYOUT: solo párrafo centrado al 60% del ancho y alineado a la izquierda -->
-  <div
-    class="grid grid-cols-1 gap-6
-           px-[32px]            /* margen lateral igual al resto */
-           mt-[280px] mb-[180px]
-           md:hidden            /* oculto en desktop */
-           relative z-10"       /* por encima del h2 */
-  >
-    <p
-      class="text-[18px] font-normal text-[#171717]
-             tracking-[-0.04em] leading-[147%]
-             w-[60vw]             /* ocupa ~60% del viewport */
-             text-left"          /* alineado a la izquierda */
-    >
-      Tercarioli blends narrative design, art direction, and strategic thinking to tackle creative challenges at every level — from global brand campaigns to positioning strategies for growing companies.
-    </p>
-  </div>
-
-  <!-- ── DESKTOP LAYOUT: grid de 4 columnas con flecha y párrafo -->
-  <div
-    class="hidden md:grid
-           w-full px-[32px]
-           grid-cols-4 gap-[18px]
-           mt-[180px] mb-[180px]
-           min-h-[calc(100vh-360px)]
-           relative z-10"       /* por encima del h2 */
-  >
-    <!-- 1ª columna: flecha -->
-    <div
-      class="col-start-1 self-start
-             text-[20px] font-normal text-[#171717]
-             tracking-[-0.04em] leading-[147%]"
-    >
-      →
+  <section class="relative z-20 bg-[#F6F8EB] overflow-hidden">
+    <h2 id="creative-text" class="absolute top-[20px] md:top-[40px] left-[32px] right-[32px] md:left-auto md:right-[32px] text-[#FF6B3D] font-extrabold leading-[0.73] tracking-[-0.04em] text-[18vw] md:text-[11vw] max-w-full md:max-w-[75vw] z-0 text-left md:text-right pointer-events-none">
+      CREATIVE<br><span class="inline-block mr-[1.5em]">CLARITY.</span>
+    </h2>
+    <div class="grid grid-cols-1 gap-6 px-[32px] mt-[280px] mb-[180px] md:hidden relative z-10">
+      <p class="text-[18px] font-normal text-[#171717] tracking-[-0.04em] leading-[147%] w-[60vw] text-left">
+        Tercarioli blends narrative design, art direction, and strategic thinking to tackle creative challenges at every level — from global brand campaigns to positioning strategies for growing companies.
+      </p>
     </div>
-
-    <!-- 2ª columna vacía -->
-
-    <!-- 3ª columna: párrafo abajo -->
-    <div
-      class="col-start-3 self-end
-             text-[20px] font-normal text-[#171717]
-             tracking-[-0.04em] leading-[147%]
-             max-w-[28ch]"
-    >
-      Tercarioli blends narrative design, art direction, and strategic thinking to tackle creative challenges at every level — from global brand campaigns to positioning strategies for growing companies.
+    <div class="hidden md:grid w-full px-[32px] grid-cols-4 gap-[18px] mt-[180px] mb-[180px] min-h-[calc(100vh-360px)] relative z-10">
+      <div class="col-start-1 self-start text-[20px] font-normal tracking-[-0.04em] leading-[147%] text-[#171717]">→</div>
+      <div class="col-start-3 self-end text-[20px] font-normal tracking-[-0.04em] leading-[147%] max-w-[28ch] text-[#171717]">
+        Tercarioli blends narrative design, art direction, and strategic thinking to tackle creative challenges at every level — from global brand campaigns to positioning strategies for growing companies.
+      </div>
     </div>
+  </section>
 
-    <!-- 4ª columna vacía -->
-  </div>
+  <!-- WORK SECTIONS -->
 
-</section>
+  <!-- WORK 01 -->
+  <section id="work-01" class="w-full px-[32px] mb-[180px]">
+    <div class="grid grid-cols-1 gap-6 items-start md:hidden">
+      <div class="w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-nike.jpg" alt="Proyecto Nike" class="w-full h-full object-cover" /></div>
+      <p class="text-[18px] font-normal text-[#171717]">Local craft for a 46 million audience</p>
+    </div>
+    <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start text-[#171717]">
+      <div class="col-start-1 text-[20px] font-normal">.01</div>
+      <div class="col-start-2 text-[20px] font-normal">Nike</div>
+      <div class="col-start-3 w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-nike.jpg" alt="Proyecto Nike" class="w-full h-full object-cover" /></div>
+      <div class="col-start-4 w-full text-[20px] font-normal max-w-[50%]">Local craft for a 46 million audience</div>
+    </div>
+  </section>
 
+  <!-- WORK 02 -->
+  <section id="work-02" class="w-full px-[32px] mb-[180px]">
+    <div class="grid grid-cols-1 gap-6 items-start md:hidden">
+      <div class="w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-meta.jpg" alt="Proyecto Meta Sports" class="w-full h-full object-cover" /></div>
+      <p class="text-[18px] font-normal text-[#171717]">Hacking client’s site drew thousands to store</p>
+    </div>
+    <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start text-[#171717]">
+      <div class="col-start-1 text-[20px] font-normal">.02</div>
+      <div class="col-start-2 text-[20px] font-normal">Meta Sports</div>
+      <div class="col-start-3 w-full text-[20px] font-normal max-w-[50%]">Hacking client’s site drew thousands to store</div>
+      <div class="col-start-4 w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-meta.jpg" alt="Proyecto Meta Sports" class="w-full h-full object-cover" /></div>
+    </div>
+  </section>
 
-<!-- WORK 01 SECTION -->
-<section id="work-01" class="w-full px-[32px] mb-[180px]">
+  <!-- WORK 03 -->
+  <section id="work-03" class="w-full px-[32px] mb-[180px]">
+    <div class="grid grid-cols-1 gap-6 items-start md:hidden">
+      <div class="w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-toys.jpg" alt="Toys in Mourning" class="w-full h-full object-cover" /></div>
+      <p class="text-[18px] font-normal text-[#171717]">The toys that led us to Cannes.</p>
+    </div>
+    <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start text-[#171717]">
+      <div class="col-start-1 text-[20px] font-normal">.03</div>
+      <div class="col-start-2 w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-toys.jpg" alt="Toys in Mourning" class="w-full h-full object-cover" /></div>
+      <div class="col-start-3 text-[20px] font-normal">Unicef</div>
+      <div class="col-start-4 text-[20px] font-normal max-w-[50%]">The toys that led us to Cannes.</div>
+    </div>
+  </section>
 
-  <!-- ── MOBILE LAYOUT (solo imagen + párrafo) -->
-  <div class="grid grid-cols-1 gap-6 items-start md:hidden">
-    <!-- Tarjeta -->
-    <div class="w-full" style="aspect-ratio:1/1.3;">
-      <img
-        src="/assets/cards/card-nike.jpg"
-        alt="Proyecto Nike"
-        class="w-full h-full object-cover"
-      />
+  <!-- WORK 04 -->
+  <section id="work-04" class="w-full px-[32px] mb-[180px]">
+    <div class="grid grid-cols-1 gap-6 items-start md:hidden">
+      <div class="w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-stomas.jpg" alt="Santo Tomás" class="w-full h-full object-cover" /></div>
+      <p class="text-[18px] font-normal text-[#171717]">Saint in pursuit: 2023's best campaign.</p>
     </div>
-    <!-- Párrafo -->
-    <p class="text-[18px] font-normal text-[#171717]">
-      Local craft for a 46 million audience
-    </p>
-  </div>
+    <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start text-[#171717]">
+      <div class="col-start-1 text-[20px] font-normal">.04</div>
+      <div class="col-start-2 text-[20px] font-normal">Santo Tomás</div>
+      <div class="col-start-3 w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-stomas.jpg" alt="Saint in pursuit" class="w-full h-full object-cover" /></div>
+      <div class="col-start-4 w-full text-[20px] font-normal max-w-[50%]">Saint in pursuit: 2023's best campaign.</div>
+    </div>
+  </section>
 
-  <!-- ── DESKTOP LAYOUT (grid 4 columnas reorganizado) -->
-  <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start">
-    <!-- 1ª col: .01 -->
-    <div class="col-start-1 text-left text-[20px] font-normal text-[#171717]">
-      .01
+  <!-- WORK 05 -->
+  <section id="work-05" class="w-full px-[32px] mb-[180px]">
+    <div class="grid grid-cols-1 gap-6 items-start md:hidden">
+      <div class="w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-pilsen.jpg" alt="Manifiesto Pilsen" class="w-full h-full object-cover" /></div>
+      <p class="text-[18px] font-normal text-[#171717]">A modern manifesto for an iconic brew.</p>
     </div>
-    <!-- 2ª col: Nike -->
-    <div class="col-start-2 text-left text-[20px] font-normal text-[#171717]">
-      Nike
+    <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start text-[#171717]">
+      <div class="col-start-1 w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-pilsen.jpg" alt="Manifiesto Pilsen" class="w-full h-full object-cover" /></div>
+      <div class="col-start-2 text-[20px] font-normal">.05</div>
+      <div class="col-start-3 text-[20px] font-normal">Pilsen</div>
+      <div class="col-start-4 w-full text-[20px] font-normal max-w-[50%]">A modern manifesto for an iconic brew.</div>
     </div>
-    <!-- 3ª col: tarjeta de imagen -->
-    <div class="col-start-3 w-full" style="aspect-ratio:1/1.3;">
-      <img
-        src="/assets/cards/card-nike.jpg"
-        alt="Proyecto Nike"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    <!-- 4ª col: párrafo (50% ancho) -->
-    <div class="col-start-4 w-full text-left text-[20px] font-normal text-[#171717] max-w-[50%]">
-      Local craft for a 46 million audience
-    </div>
-  </div>
+  </section>
 
-</section>
+  <!-- WORK 06 -->
+  <section id="work-06" class="w-full px-[32px] mb-[180px]">
+    <div class="grid grid-cols-1 gap-6 items-start md:hidden">
+      <div class="w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-bicentenario.jpg" alt="Personal Bicentenario" class="w-full h-full object-cover" /></div>
+      <p class="text-[18px] font-normal text-[#171717]">How to think for crafting a powerful message.</p>
+    </div>
+    <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start text-[#171717]">
+      <div class="col-start-1 text-[20px] font-normal">.06</div>
+      <div class="col-start-2 w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-bicentenario.jpg" alt="Personal Bicentenario" class="w-full h-full object-cover" /></div>
+      <div class="col-start-3 text-[20px] font-normal">Personal</div>
+      <div class="col-start-4 w-full text-[20px] font-normal max-w-[50%]">How to think for crafting a powerful message.</div>
+    </div>
+  </section>
 
+  <!-- HAND outside hero -->
+  <img src="assets/fullhand.png" alt="Hand" id="hand" />
 
-<!-- WORK 02 SECTION -->
-<section id="work-02" class="w-full px-[32px] mb-[180px]">
-
-  <!-- MOBILE LAYOUT: imagen + párrafo -->
-  <div class="grid grid-cols-1 gap-6 items-start md:hidden">
-    <!-- Tarjeta -->
-    <div class="w-full" style="aspect-ratio:1/1.3;">
-      <img
-        src="assets/cards/card-meta.jpg"
-        alt="Proyecto Meta Sports"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    <!-- Párrafo -->
-    <p class="text-[18px] font-normal text-[#171717]">
-      Hacking client’s site drew thousands to store
-    </p>
-  </div>
-
-  <!-- DESKTOP LAYOUT: grid de 4 columnas, párrafo en col 3 y tarjeta en col 4 -->
-  <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start">
-    <!-- 1ª columna: “.02” -->
-    <div class="col-start-1 text-left text-[20px] font-normal text-[#171717]">
-      .02
-    </div>
-    <!-- 2ª columna: “Meta Sports” -->
-    <div class="col-start-2 text-left text-[20px] font-normal text-[#171717]">
-      Meta Sports
-    </div>
-    <!-- 3ª columna: párrafo (50% ancho) -->
-    <div class="col-start-3 w-full text-left text-[20px] font-normal text-[#171717] max-w-[50%]">
-      Hacking client’s site drew thousands to store
-    </div>
-    <!-- 4ª columna: tarjeta de imagen -->
-    <div class="col-start-4 w-full" style="aspect-ratio:1/1.3;">
-      <img
-        src="assets/cards/card-meta.jpg"
-        alt="Proyecto Meta Sports"
-        class="w-full h-full object-cover"
-      />
-    </div>
-  </div>
-
-</section>
-
-  <!-- WORK 03 SECTION -->
-<section id="work-03" class="w-full px-[32px] mb-[180px]">
-
-  <!-- MOBILE LAYOUT: imagen + párrafo -->
-  <div class="grid grid-cols-1 gap-6 items-start md:hidden">
-    <!-- Tarjeta -->
-    <div class="w-full" style="aspect-ratio:1/1.3;">
-      <img
-        src="assets/cards/card-toys.jpg"
-        alt="Toys in Mourning"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    <!-- Párrafo -->
-    <p class="text-[18px] font-normal text-[#171717]">
-      The toys that led us to Cannes.
-    </p>
-  </div>
-
-  <!-- DESKTOP LAYOUT: grid de 4 columnas -->
-  <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start">
-    <!-- 1ª columna: “.03” -->
-    <div class="col-start-1 text-left text-[20px] font-normal text-[#171717]">
-      .03
-    </div>
-    <!-- 2ª columna: tarjeta de imagen -->
-    <div class="col-start-2 w-full" style="aspect-ratio:1/1.3;">
-      <img
-        src="assets/cards/card-toys.jpg"
-        alt="Toys in Mourning"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    <!-- 3ª columna: “Unicef” -->
-    <div class="col-start-3 text-left text-[20px] font-normal text-[#171717]">
-      Unicef
-    </div>
-    <!-- 4ª columna: párrafo -->
-    <div class="col-start-4 text-left text-[20px] font-normal text-[#171717] max-w-[50%]">
-      The toys that led us to Cannes.
-    </div>
-  </div>
-
-</section>
-
-
-     <!-- WORK 04 SECTION -->
-<section id="work-04" class="w-full px-[32px] mb-[180px]">
-
-  <!-- ── MOBILE LAYOUT (solo imagen + párrafo) -->
-  <div class="grid grid-cols-1 gap-6 items-start md:hidden">
-    <!-- Tarjeta -->
-    <div class="w-full" style="aspect-ratio:1/1.3;">
-      <img
-        src="/assets/cards/card-stomas.jpg"
-        alt="Saint in pursuit"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    <!-- Párrafo -->
-    <p class="text-[18px] font-normal text-[#171717]">
-      Saint in pursuit: 2023's best campaign.
-    </p>
-  </div>
-
-  <!-- ── DESKTOP LAYOUT (grid 4 columnas reorganizado) -->
-  <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start">
-    <!-- 1ª col: .04 -->
-    <div class="col-start-1 text-left text-[20px] font-normal text-[#171717]">
-      .04
-    </div>
-    <!-- 2ª col: Santo Tomás -->
-    <div class="col-start-2 text-left text-[20px] font-normal text-[#171717]">
-      Santo Tomás
-    </div>
-    <!-- 3ª col: tarjeta de imagen -->
-    <div class="col-start-3 w-full" style="aspect-ratio:1/1.3;">
-      <img
-        src="/assets/cards/card-stomas.jpg"
-        alt="Saint in pursuit"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    <!-- 4ª col: párrafo (50% ancho) -->
-    <div class="col-start-4 w-full text-left text-[20px] font-normal text-[#171717] max-w-[50%]">
-      Saint in pursuit: 2023's best campaign.
-    </div>
-  </div>
-
-</section>
-  
-<!-- WORK 05 SECTION -->
-<section id="work-05" class="w-full px-[32px] mb-[180px]">
-
-  <!-- MOBILE LAYOUT: imagen + párrafo -->
-  <div class="grid grid-cols-1 gap-6 items-start md:hidden">
-    <!-- Tarjeta -->
-    <div class="w-full" style="aspect-ratio:1/1.3;">
-      <img
-        src="assets/cards/card-pilsen.jpg"
-        alt="Manifiesto Pilsen"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    <!-- Párrafo -->
-    <p class="text-[18px] font-normal text-[#171717]">
-      A modern manifesto for an iconic brew.
-    </p>
-  </div>
-
-  <!-- DESKTOP LAYOUT: grid de 4 columnas -->
-  <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start">
-    <!-- 1ª columna: tarjeta de imagen -->
-    <div class="col-start-1 w-full" style="aspect-ratio:1/1.3;">
-      <img
-        src="assets/cards/card-pilsen.jpg"
-        alt="Manifiesto Pilsen"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    <!-- 2ª columna: “.05” -->
-    <div class="col-start-2 text-left text-[20px] font-normal text-[#171717]">
-      .05
-    </div>
-    <!-- 3ª columna: “Pilsen” -->
-    <div class="col-start-3 text-left text-[20px] font-normal text-[#171717]">
-      Pilsen
-    </div>
-    <!-- 4ª columna: párrafo (50% ancho) -->
-    <div class="col-start-4 w-full text-left text-[20px] font-normal text-[#171717] max-w-[50%]">
-      A modern manifesto for an iconic brew.
-    </div>
-  </div>
-
-</section>
-
-  
-  <!-- WORK 06 SECTION -->
-<section id="work-06" class="w-full px-[32px] mb-[180px]">
-
-  <!-- MOBILE LAYOUT: imagen + párrafo -->
-  <div class="grid grid-cols-1 gap-6 items-start md:hidden">
-    <!-- Tarjeta -->
-    <div class="w-full" style="aspect-ratio:1/1.3;">
-      <img
-        src="assets/cards/card-bicentenario.jpg"
-        alt="Personal Bicentenario"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    <!-- Párrafo -->
-    <p class="text-[18px] font-normal text-[#171717]">
-      How to think for crafting a powerful message.
-    </p>
-  </div>
-
-  <!-- DESKTOP LAYOUT: grid de 4 columnas -->
-  <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start">
-    <!-- 1ª columna: “.06” -->
-    <div class="col-start-1 text-left text-[20px] font-normal text-[#171717]">
-      .06
-    </div>
-    <!-- 2ª columna: tarjeta de imagen -->
-    <div class="col-start-2 w-full" style="aspect-ratio:1/1.3;">
-      <img
-        src="assets/cards/card-bicentenario.jpg"
-        alt="Personal Bicentenario"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    <!-- 3ª columna: “Personal” -->
-    <div class="col-start-3 text-left text-[20px] font-normal text-[#171717]">
-      Personal
-    </div>
-    <!-- 4ª columna: párrafo -->
-    <div class="col-start-4 text-left text-[20px] font-normal text-[#171717] max-w-[50%]">
-       How to think for crafting a powerful message.
-    </div>
-  </div>
-
-</section>
-
-  <!-- MANO FUERA DEL HERO -->
-  <img
-    src="assets/fullhand.png"
-    alt="Hand"
-    id="hand"
-  />
-
-  <!-- SCRIPT: Parallax fondo y mano -->
+  <!-- Parallax Script -->
   <script>
-  const heroBg = document.querySelector('.hero-bg');
-  const hand = document.querySelector('#hand');
-  let latestScroll = 0;
-
-  function updateParallax() {
-    // Fondo (más rápido)
-    const offsetBg = latestScroll * 0.55;
-    heroBg.style.transform = `translateY(${offsetBg}px)`;
-
-    // Mano fija (parallax más lento)
-    const offsetHand = latestScroll * -0.70;
-    hand.style.transform = `translateY(${offsetHand}px)`;
-
-    // Creative Clarity (parallax)
+    const heroBg = document.querySelector('.hero-bg');
+    const hand = document.querySelector('#hand');
     const creativeText = document.querySelector('#creative-text');
-const offsetText = latestScroll * 0.15;
-creativeText.style.transform = `translateY(${offsetText}px)`;
+    let latestScroll = 0;
 
-    requestAnimationFrame(updateParallax);
-  }
+    function updateParallax() {
+      const offsetBg = latestScroll * 0.55;
+      heroBg.style.transform = `translateY(${offsetBg}px)`;
 
-  window.addEventListener('scroll', () => {
-    latestScroll = window.scrollY;
-  });
+      const offsetHand = latestScroll * -0.70;
+      hand.style.transform = `translateY(${offsetHand}px)`;
 
-  updateParallax();
+      const offsetText = latestScroll * 0.15;
+      creativeText.style.transform = `translateY(${offsetText}px)`;
+
+      requestAnimationFrame(updateParallax);
+    }
+
+    window.addEventListener('scroll', () => {
+      latestScroll = window.scrollY;
+    });
+
+    updateParallax();
   </script>
-
 </body>
 </html>
