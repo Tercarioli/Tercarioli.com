@@ -90,7 +90,8 @@
   position: absolute;
   top: -20px;                     /* móvil */
   right: 32px;                    /* alineado a la derecha */
-  width: calc(100% - 64px);       /* respeta márgenes de 32px */
+  max-width: calc(100% - 64px);       /* respeta márgenes de 32px */
+  width: auto;
   font-size: 18vw;                /* mismo que Creative Clarity */
   color: #FF6B3D;
   font-weight: 800;
@@ -105,7 +106,7 @@
 
 @media (min-width: 768px) {
   #overhead-text {
-    top: -180px;                   /* sweet spot desktop */
+    top: -20px;                   /* sweet spot desktop */
     font-size: 11vw;
   }
 }
