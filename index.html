@@ -58,7 +58,7 @@
     #agency-text {
       top: -40px;
       font-size: 11vw;
-      -index: -1;
+      z-index: -1;
     }
   }
 
@@ -114,25 +114,6 @@
 /* PRICING layers */
 #pricing { 
   isolation: isolate;             /* para controlar el blend del overlay */
-}
-
-#pricing-bg {
-  position: absolute;
-  inset: 0;
-  background: url('assets/pricingback.jpg') center/cover no-repeat;
-  will-change: transform;
-  z-index: 10;                    /* fondo */
-}
-
-#screen-orange {
-  position: absolute;
-  inset: 0;
-  background: url('assets/screenorange.jpg') center/cover no-repeat;
-  mix-blend-mode: screen;         /* glow */
-  opacity: 0.9;                   /* ajusta a gusto */
-  will-change: transform;
-  z-index: 25;                    /* encima de flores (cuando las agreguemos), debajo de cards */
-  pointer-events: none;
 }
 
     
@@ -337,8 +318,17 @@
 <section id="pricing" class="relative min-h-screen overflow-hidden px-[32px]">
 
   <!-- capas parallax -->
-  <div id="pricing-bg"></div>
-  <div id="screen-orange"></div>
+<img id="pricing-bg"
+     src="assets/pricingback.jpg"
+     alt=""
+     class="absolute inset-0 w-full h-full object-cover z-10 will-change-transform" />
+
+<img id="screen-orange"
+     src="assets/screenorange.png"
+     alt=""
+     class="absolute inset-0 w-full h-full object-cover z-25 will-change-transform pointer-events-none"
+     style="mix-blend-mode: screen; opacity: 0.9;" />
+
 
   <!-- grid 4 columnas (por ahora sin tarjetas) -->
   <div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-end py-[48px]">
