@@ -64,9 +64,12 @@
 
     #contracts-text {
   position: absolute;
-  top: 20px;                      /* posición base en mobile */
+  top: -20px;                      /* posición base en mobile */
   left: 32px;
   width: calc(100% - 64px);       /* respeta márgenes de 32px */
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
   font-size: 18vw;                /* mismo que Creative Clarity */
   color: #FF6B3D;
   font-weight: 800;
@@ -78,7 +81,7 @@
 
 @media (min-width: 768px) {
   #contracts-text {
-    top: -40px;                   /* “sweet spot” en desktop */
+    top: -90px;                   /* “sweet spot” en desktop */
     font-size: 11vw;
   }
 }
