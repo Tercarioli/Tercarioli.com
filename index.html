@@ -40,6 +40,25 @@
     @media (max-width: 640px) {
       #hand { right: -50px; }
     }
+
+    #agency-text {
+    position: absolute;
+    top: 20px;
+    left: 32px;
+    font-size: 18vw;            /* mismo que Creative Clarity */
+    color: #FF6B3D;
+    font-weight: 800;
+    line-height: 0.73;
+    letter-spacing: -0.04em;
+    z-index: 0;
+    pointer-events: none;
+  }
+  @media (min-width: 768px) {
+    #agency-text {
+      top: 40px;
+      font-size: 11vw;
+    }
+  }
   </style>
 </head>
 <body class="text-[#F6F8EB]">
@@ -103,19 +122,49 @@
     </div>
   </section>
 
-  <!-- WORK 02 -->
-  <section id="work-02" class="w-full px-[32px] mb-[180px]">
-    <div class="grid grid-cols-1 gap-6 items-start md:hidden">
-      <div class="w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-meta.jpg" alt="Proyecto Meta Sports" class="w-full h-full object-cover" /></div>
-      <p class="text-[18px] font-normal text-[#171717]">Hacking client’s site drew thousands to store</p>
+<!-- WORK 02 -->
+<section id="work-02" class="relative w-full px-[32px] mb-[180px]">
+
+  <!-- elemento “de fondo” -->
+  <h2 id="agency-text">
+    <span class="inline-block ml-[1.5em]">WITHOUT</span><br>
+    THE <span class="line-through">AGENCY</span><br>
+    NOISE.
+  </h2>
+
+  <!-- móvil: copia de Creative Clarity -->
+  <div class="grid grid-cols-1 gap-6 px-[32px] mt-[280px] mb-[180px] md:hidden relative z-10">
+    <p class="text-[18px] font-normal text-[#171717]
+               tracking-[-0.04em] leading-[147%]
+               w-[60vw] text-left">
+      WITHOUT THE <span class="line-through">AGENCY</span> NOISE.
+    </p>
+  </div>
+
+  <!-- tarjeta original de Work 02 (móvil) -->
+  <div class="grid grid-cols-1 gap-6 items-start md:hidden">
+    <div class="w-full" style="aspect-ratio:1/1.3;">
+      <img src="assets/cards/card-meta.jpg" alt="Proyecto Meta Sports" class="w-full h-full object-cover" />
     </div>
-    <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start text-[#171717]">
-      <div class="col-start-1 text-[20px] font-normal">.02</div>
-      <div class="col-start-2 text-[20px] font-normal">Meta Sports</div>
-      <div class="col-start-3 w-full text-[20px] font-normal max-w-[50%]">Hacking client’s site drew thousands to store</div>
-      <div class="col-start-4 w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-meta.jpg" alt="Proyecto Meta Sports" class="w-full h-full object-cover" /></div>
+    <p class="text-[18px] font-normal text-[#171717]">
+      Hacking client’s site drew thousands to store
+    </p>
+  </div>
+
+  <!-- versión desktop de Work 02 -->
+  <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start text-[#171717] relative z-10">
+    <div class="col-start-1 text-[20px] font-normal">.02</div>
+    <div class="col-start-2 text-[20px] font-normal">Meta Sports</div>
+    <div class="col-start-3 w-full text-[20px] font-normal max-w-[50%]">
+      Hacking client’s site drew thousands to store
     </div>
-  </section>
+    <div class="col-start-4 w-full" style="aspect-ratio:1/1.3;">
+      <img src="assets/cards/card-meta.jpg" alt="Proyecto Meta Sports" class="w-full h-full object-cover" />
+    </div>
+  </div>
+
+</section>
+
 
   <!-- WORK 03 -->
   <section id="work-03" class="w-full px-[32px] mb-[180px]">
@@ -176,31 +225,35 @@
   <!-- HAND outside hero -->
   <img src="assets/fullhand.png" alt="Hand" id="hand" />
 
-  <!-- Parallax Script -->
-  <script>
-    const heroBg = document.querySelector('.hero-bg');
-    const hand = document.querySelector('#hand');
-    const creativeText = document.querySelector('#creative-text');
-    let latestScroll = 0;
+<!-- Parallax Script -->
+<script>
+  const heroBg        = document.querySelector('.hero-bg');
+  const hand          = document.querySelector('#hand');
+  const creativeText  = document.querySelector('#creative-text');
+  const agencyText    = document.querySelector('#agency-text');
+  let latestScroll    = 0;
 
-    function updateParallax() {
-      const offsetBg = latestScroll * 0.55;
-      heroBg.style.transform = `translateY(${offsetBg}px)`;
+  function updateParallax() {
+    const offsetBg    = latestScroll * 0.55;
+    heroBg.style.transform       = `translateY(${offsetBg}px)`;
+    
+    const offsetHand  = latestScroll * -0.70;
+    hand.style.transform          = `translateY(${offsetHand}px)`;
 
-      const offsetHand = latestScroll * -0.70;
-      hand.style.transform = `translateY(${offsetHand}px)`;
+    const offsetText  = latestScroll * 0.15;
+    creativeText.style.transform  = `translateY(${offsetText}px)`;
+    
+    agencyText.style.transform    = `translateY(${offsetText}px)`;
 
-      const offsetText = latestScroll * 0.15;
-      creativeText.style.transform = `translateY(${offsetText}px)`;
+    requestAnimationFrame(updateParallax);
+  }
 
-      requestAnimationFrame(updateParallax);
-    }
+  window.addEventListener('scroll', () => {
+    latestScroll = window.scrollY;
+  });
 
-    window.addEventListener('scroll', () => {
-      latestScroll = window.scrollY;
-    });
+  updateParallax();
+</script>
 
-    updateParallax();
-  </script>
 </body>
 </html>
