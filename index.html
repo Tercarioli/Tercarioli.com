@@ -375,30 +375,25 @@
     contractsText.style.transform = `translateY(${offsetText}px)`;
     overheadText.style.transform  = `translateY(${offsetText}px)`;
 
-// PRICING: telón + overscan (bg con drift, overlay fijo)
-if (pricingBg && screenOrange) {
-  const curtainStart = pricingStart - window.innerHeight;
-  const curtainEnd   = footerStart ? (footerStart - window.innerHeight) : Infinity;
+    // PRICING: telón + overscan (bg con drift, overlay fijo)
+    if (pricingBg && screenOrange) {
+      const curtainStart = pricingStart - window.innerHeight;
+      const curtainEnd   = (footerStart ?? Infinity) - window.innerHeight;
 
-  // “pegado” al viewport (parece ya estar detrás)
-  const lockToViewport = latestScroll - pricingStart;
+      // pegado al viewport (parece estar ya detrás)
+      const lockToViewport = latestScroll - pricingStart;
 
-  // progreso dentro de la ventana de revelado (clamp)
-  const progress   = Math.max(0, Math.min(latestScroll, curtainEnd) - curtainStart);
+      // progreso dentro de la ventana de revelado
+      const progress = Math.max(0, Math.min(latestScroll, curtainEnd) - curtainStart);
 
-  // drift sutil y CLAMP a tu overscan (20vh)
-  const driftMax   = window.innerHeight * 0.20;   // 20vh
-  const bgDrift    = Math.min(progress * 0.10, driftMax);
+      // drift sutil y tope al overscan (20vh)
+      const driftMax = window.innerHeight * 0.20;   // 20vh
+      const bgDrift  = Math.min(progress * 0.10, driftMax);
 
-  // fondo: pegado + drift
-  pricingBg.style.transform    = `translateY(${lockToViewport + bgDrift}px)`;
-  // overlay: solo pegado (sin drift para que no se “revele” al final)
-  screenOrange.style.transform = `translateY(${lockToViewport}px)`;
-}
-
-      // asegúrate de que sigan por debajo de Work 06 (z-20)
-      pricingBg.style.zIndex    = '10';
-      screenOrange.style.zIndex = '-30';
+      // fondo: pegado + drift
+      pricingBg.style.transform    = `translateY(${lockToViewport + bgDrift}px)`;
+      // overlay: solo pegado (sin drift)
+      screenOrange.style.transform = `translateY(${lockToViewport}px)`;
     }
 
     requestAnimationFrame(updateParallax);
@@ -408,6 +403,7 @@ if (pricingBg && screenOrange) {
     latestScroll = window.scrollY;
   });
 
+  // offsets (soporta cualquier -mt / layout)
   const recalcOffsets = () => {
     if (pricing) {
       const r = pricing.getBoundingClientRect();
@@ -425,6 +421,7 @@ if (pricingBg && screenOrange) {
   recalcOffsets();
   updateParallax();
 </script>
+
 
 
 </body>
