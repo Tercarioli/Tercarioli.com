@@ -366,6 +366,38 @@
        left: calc(45vw - (calc(28vw * 1.8) / 2)); /* antes estaba en 35vw */
      " />
 
+  <!-- Fragmento 01: arriba a la izquierda -->
+<img id="fragmento-01" src="assets/fragmento-01.png"
+     class="absolute z-20"
+     style="
+       width: 6vw;
+       max-width: none;
+       top: 15vh;
+       left: 8vw;
+     " />
+
+<!-- Fragmento 02: arriba al centro -->
+<img id="fragmento-02" src="assets/fragmento-02.png"
+     class="absolute z-20"
+     style="
+       width: 8vw;
+       max-width: none;
+       top: 10vh;
+       left: 50%;
+       transform: translateX(-50%);
+     " />
+
+<!-- Fragmento 03: arriba a la derecha -->
+<img id="fragmento-03" src="assets/fragmento-03.png"
+     class="absolute z-20"
+     style="
+       width: 4vw;
+       max-width: none;
+       top: 18vh;
+       right: 10vw;
+     " />
+
+
 
   <!-- wrapper con padding para el contenido -->
   <div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-end py-[48px] px-[32px]">
@@ -396,6 +428,9 @@
   const flor01 = document.querySelector('#flor-01');
   const flor02 = document.querySelector('#flor-02');
   const flor03 = document.querySelector('#flor-03');
+  const frag01 = document.querySelector('#fragmento-01');
+  const frag02 = document.querySelector('#fragmento-02');
+  const frag03 = document.querySelector('#fragmento-03');
 
   // PRICING
   const pricing   = document.querySelector('#pricing');
@@ -436,6 +471,9 @@
       if (flor01) flor01.style.transform = `translateY(${Math.round(lockToViewport * 0.40)}px)`;
       if (flor02) flor02.style.transform = `translateY(${Math.round(lockToViewport * 0.60)}px)`;
       if (flor03) flor03.style.transform = `translateY(${Math.round(lockToViewport * 0.50)}px)`;
+      if (frag01) frag01.style.transform = `translateY(${Math.round(lockToViewport * 0.2)}px)`;
+      if (frag02) frag02.style.transform = `translateY(${Math.round(lockToViewport * 0.15)}px)`;
+      if (frag03) frag03.style.transform = `translateY(${Math.round(lockToViewport * 0.25)}px)`;
     }
 
     // MUY IMPORTANTE: liberar el flag
