@@ -339,12 +339,33 @@
        class="absolute left-0 top-[-20vh] w-[100vw] h-[140vh] max-w-none object-cover z-10" />
 
   <!-- flores -->
-  <img id="flor-01" src="assets/flor-01.png"
-       class="absolute z-20 w-[25vw] max-w-[420px]" style="top:10%; left:0%;" />
-  <img id="flor-02" src="assets/flor-02.png"
-       class="absolute z-20 w-[18vw] max-w-[320px]" style="top:5%; right:0%;" />
-  <img id="flor-03" src="assets/flor-03.png"
-       class="absolute z-20 w-[28vw] max-w-[460px]" style="bottom:-5%; right:15%;" />
+<img id="flor-01" src="assets/flor-01.png"
+     class="absolute z-20"
+     style="
+       width: calc(25vw * 1.7); /* +70% del tamaño actual */
+       max-width: none;
+       top: calc(50vh - (calc(25vw * 1.7) / 2)); /* centrada al 50% altura */
+       left: calc(10vw - (calc(25vw * 1.7) / 2)); /* centro al 10% del ancho */
+     " />
+
+<img id="flor-02" src="assets/flor-02.png"
+     class="absolute z-20"
+     style="
+       width: calc(18vw * 1.25); /* +25% del tamaño actual */
+       max-width: none;
+       top: calc(5vh - (calc(18vw * 1.25) / 2)); /* centro 5% abajo desde top */
+       right: calc(5vw - (calc(18vw * 1.25) / 2)); /* centro 5% dentro desde right */
+     " />
+
+<img id="flor-03" src="assets/flor-03.png"
+     class="absolute z-20"
+     style="
+       width: calc(28vw * 1.8); /* +80% del tamaño actual */
+       max-width: none;
+       bottom: calc(0vh - (calc(28vw * 1.8) / 2)); /* centro en el límite inferior (50% fuera) */
+       left: calc(25vw - (calc(28vw * 1.8) / 2)); /* centro al 25% del ancho */
+     " />
+
 
   <!-- wrapper con padding para el contenido -->
   <div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-end py-[48px] px-[32px]">
