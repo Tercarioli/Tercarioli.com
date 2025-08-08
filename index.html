@@ -326,7 +326,7 @@
 <img id="screen-orange"
      src="assets/screenorange.png"
      alt=""
-     class="absolute inset-0 w-full h-full object-cover z-25 will-change-transform pointer-events-none"
+     class="absolute inset-0 w-full h-full object-cover z-30 will-change-transform pointer-events-none"
      style="mix-blend-mode: screen; opacity: 0.9;" />
 
 
@@ -383,7 +383,7 @@
     // PRICING: parallax relativo a su propia sección
     if (pricingBg && screenOrange) {
       const pricingScroll = Math.max(0, latestScroll - pricingStart);
-      pricingBg.style.transform    = `translateY(${pricingScroll * 0.55}px)`;
+      pricingBg.style.transform    = `translateY(${pricingScroll * 0.95}px)`;
       screenOrange.style.transform = `translateY(${pricingScroll * 0.45}px)`;
     }
 
