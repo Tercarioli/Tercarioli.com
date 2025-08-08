@@ -313,20 +313,19 @@
 </section>
 
 <!-- PRICING -->
-<section id="pricing" class="relative z-0 min-h-screen overflow-hidden px-[32px]">
+<section id="pricing" class="relative z-0 -mt-[100vh] pt-[100vh] min-h-screen overflow-hidden px-[32px]">
 
   <!-- capas parallax -->
 <img id="pricing-bg"
      src="assets/pricingback.jpg"
      alt=""
-     class="absolute inset-0 w-full h-full object-cover z-10 will-change-transform" />
+     class="sticky top-0 w-full h-screen object-cover z-10 will-change-transform" />
 
 <img id="screen-orange"
      src="assets/screenorange.png"
      alt=""
-     class="absolute inset-0 w-full h-full object-cover z-30 will-change-transform pointer-events-none"
+     class="sticky top-0 w-full h-screen object-cover z-30 will-change-transform pointer-events-none"
      style="mix-blend-mode: screen; opacity: 0.9;" />
-
 
   <!-- grid 4 columnas (por ahora sin tarjetas) -->
   <div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-end py-[48px]">
@@ -378,12 +377,13 @@
     contractsText.style.transform = `translateY(${offsetText}px)`;
     overheadText.style.transform  = `translateY(${offsetText}px)`;
 
-    // PRICING: parallax relativo a su propia sección
-    if (pricingBg && screenOrange) {
-      const pricingScroll = Math.max(0, latestScroll - pricingStart);
-      pricingBg.style.transform    = `translateY(${pricingScroll * 0.85}px)`;
-      screenOrange.style.transform = `translateY(${pricingScroll * 0.90}px)`;
-    }
+// PRICING: parallax relativo a su propia sección (capas sticky)
+if (pricingBg && screenOrange) {
+  const pricingScroll = Math.max(0, latestScroll - pricingStart);
+  pricingBg.style.transform    = `translateY(${pricingScroll * 0.12}px)`;
+  screenOrange.style.transform = `translateY(${pricingScroll * 0.18}px)`;
+}
+
 
     requestAnimationFrame(updateParallax);
   }
