@@ -331,22 +331,30 @@
 
   </section>
 
-  <!-- PRICING (sin padding lateral en el section) -->
-  <section id="pricing" class="relative z-0 min-h-screen overflow-hidden px-0">
-    <!-- capas fondo + overlay -->
-    <img id="pricing-bg"
-         src="assets/pricingback.jpg"
-         alt=""
-         class="absolute left-0 right-0 top-[-20vh] w-[100vw] h-[140vh] max-w-none object-cover z-10" />
+<section id="pricing" class="relative z-0 min-h-screen overflow-hidden px-0">
+  <!-- fondo -->
+  <img id="pricing-bg"
+       src="assets/pricingback.jpg"
+       alt=""
+       class="absolute left-0 top-[-20vh] w-[100vw] h-[140vh] max-w-none object-cover z-10" />
 
-    <!-- wrapper con padding para el contenido -->
-    <div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-end py-[48px] px-[32px]">
-      <div class="col-start-2"></div>
-      <div class="col-start-3"></div>
-      <div class="col-start-4"></div>
-    </div>
-    <div class="relative z-40 md:hidden min-h-screen px-[32px]"></div>
-  </section>
+  <!-- flores -->
+  <img id="flor-01" src="assets/flor-01.png"
+       class="absolute z-20 w-[25vw] max-w-[420px]" style="top:10%; left:0%;" />
+  <img id="flor-02" src="assets/flor-02.png"
+       class="absolute z-20 w-[18vw] max-w-[320px]" style="top:5%; right:0%;" />
+  <img id="flor-03" src="assets/flor-03.png"
+       class="absolute z-20 w-[28vw] max-w-[460px]" style="bottom:-5%; right:15%;" />
+
+  <!-- wrapper con padding para el contenido -->
+  <div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-end py-[48px] px-[32px]">
+    <div class="col-start-2"></div>
+    <div class="col-start-3"></div>
+    <div class="col-start-4"></div>
+  </div>
+  <div class="relative z-40 md:hidden min-h-screen px-[32px]"></div>
+</section>
+
 
   <!-- FOOTER (vacío por ahora) -->
   <section id="footer" class="relative z-30 w-full min-h-screen px-[32px] bg-[#F6F8EB]"></section>
@@ -355,78 +363,88 @@
   <img src="assets/fullhand.png" alt="Hand" id="hand" />
 
   <!-- Parallax Script (rAF bajo demanda + redondeo) -->
-  <script>
-    const heroBg         = document.querySelector('.hero-bg');
-    const hand           = document.querySelector('#hand');
-    const creativeText   = document.querySelector('#creative-text');
-    const agencyText     = document.querySelector('#agency-text');
-    const contractsText  = document.querySelector('#contracts-text');
-    const overheadText   = document.querySelector('#overhead-text');
+<script>
+  const heroBg       = document.querySelector('.hero-bg');
+  const hand         = document.querySelector('#hand');
+  const creativeText = document.querySelector('#creative-text');
+  const agencyText   = document.querySelector('#agency-text');
+  const contractsText= document.querySelector('#contracts-text');
+  const overheadText = document.querySelector('#overhead-text');
 
-    // PRICING
-    const pricing        = document.querySelector('#pricing');
-    const pricingBg      = document.querySelector('#pricing-bg');
-    const footer         = document.querySelector('#footer');
+  // Flores (pueden no estar aún)
+  const flor01 = document.querySelector('#flor-01');
+  const flor02 = document.querySelector('#flor-02');
+  const flor03 = document.querySelector('#flor-03');
 
-    let latestScroll = 0;
-    let pricingStart = 0;
-    let footerStart  = Infinity;
-    let ticking      = false;
+  // PRICING
+  const pricing   = document.querySelector('#pricing');
+  const pricingBg = document.querySelector('#pricing-bg');
+  const footer    = document.querySelector('#footer');
 
-    function updateParallaxOnce() {
-      // --- HERO + textos ---
-      const offsetBg   = Math.round(latestScroll * 0.55);
-      const offsetHand = Math.round(latestScroll * -0.70);
-      const offsetText = Math.round(latestScroll * 0.15);
+  let latestScroll = 0;
+  let pricingStart = 0;
+  let footerStart  = Infinity;
+  let ticking      = false;
 
-      heroBg.style.transform        = `translateY(${offsetBg}px)`;
-      hand.style.transform          = `translateY(${offsetHand}px)`;
-      creativeText.style.transform  = `translateY(${offsetText}px)`;
-      agencyText.style.transform    = `translateY(${offsetText}px)`;
-      contractsText.style.transform = `translateY(${offsetText}px)`;
-      overheadText.style.transform  = `translateY(${offsetText}px)`;
+  function updateParallaxOnce() {
+    // --- HERO + textos ---
+    const offsetBg   = Math.round(latestScroll * 0.55);
+    const offsetHand = Math.round(latestScroll * -0.70);
+    const offsetText = Math.round(latestScroll * 0.15);
 
-      // --- PRICING: telón + drift del fondo (overlay no se mueve en JS) ---
-      if (pricingBg) {
-        const curtainStart = pricingStart - window.innerHeight;
-        const curtainEnd   = (footerStart ?? Infinity) - window.innerHeight;
+    if (heroBg)       heroBg.style.transform        = `translateY(${offsetBg}px)`;
+    if (hand)         hand.style.transform          = `translateY(${offsetHand}px)`;
+    if (creativeText) creativeText.style.transform  = `translateY(${offsetText}px)`;
+    if (agencyText)   agencyText.style.transform    = `translateY(${offsetText}px)`;
+    if (contractsText)contractsText.style.transform = `translateY(${offsetText}px)`;
+    if (overheadText) overheadText.style.transform  = `translateY(${offsetText}px)`;
 
-        const lockToViewport = latestScroll - pricingStart;
-        const progress = Math.max(0, Math.min(latestScroll, curtainEnd) - curtainStart);
+    // --- PRICING: telón + drift del fondo ---
+    if (pricingBg) {
+      const curtainStart   = pricingStart - window.innerHeight;
+      const curtainEnd     = (footerStart ?? Infinity) - window.innerHeight;
+      const lockToViewport = latestScroll - pricingStart;
+      const progress       = Math.max(0, Math.min(latestScroll, curtainEnd) - curtainStart);
+      const driftMax       = Math.round(window.innerHeight * 0.20); // 20vh
+      const bgDrift        = Math.min(Math.round(progress * 0.10), driftMax);
 
-        const driftMax = Math.round(window.innerHeight * 0.20); // 20vh
-        const bgDrift  = Math.min(Math.round(progress * 0.10), driftMax);
+      // fondo
+      pricingBg.style.transform = `translateY(${Math.round(lockToViewport + bgDrift)}px)`;
 
-        const tBg = Math.round(lockToViewport + bgDrift);
-        pricingBg.style.transform = `translateY(${tBg}px)`;
-      }
-
-      ticking = false;
+      // flores (si existen) con diferentes factores
+      if (flor01) flor01.style.transform = `translateY(${Math.round(lockToViewport * 0.40)}px)`;
+      if (flor02) flor02.style.transform = `translateY(${Math.round(lockToViewport * 0.60)}px)`;
+      if (flor03) flor03.style.transform = `translateY(${Math.round(lockToViewport * 0.50)}px)`;
     }
 
-    function onScroll() {
-      latestScroll = window.scrollY || window.pageYOffset || 0;
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(updateParallaxOnce);
-      }
+    // MUY IMPORTANTE: liberar el flag
+    ticking = false;
+  } // <-- cierre de la función
+
+  function onScroll() {
+    latestScroll = window.scrollY || window.pageYOffset || 0;
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateParallaxOnce);
     }
+  }
 
-    // offsets (soporta cualquier -mt / layout)
-    const recalcOffsets = () => {
-      if (pricing) {
-        const r = pricing.getBoundingClientRect();
-        pricingStart = r.top + (window.scrollY || window.pageYOffset || 0);
-      }
-      if (footer) {
-        const f = footer.getBoundingClientRect();
-        footerStart = f.top + (window.scrollY || window.pageYOffset || 0);
-      }
-    };
+  // offsets (soporta cualquier -mt / layout)
+  const recalcOffsets = () => {
+    if (pricing) {
+      const r = pricing.getBoundingClientRect();
+      pricingStart = r.top + (window.scrollY || window.pageYOffset || 0);
+    }
+    if (footer) {
+      const f = footer.getBoundingClientRect();
+      footerStart = f.top + (window.scrollY || window.pageYOffset || 0);
+    }
+  };
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', () => { recalcOffsets(); onScroll(); });
-    window.addEventListener('load',   () => { recalcOffsets(); onScroll(); });
-  </script>
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => { recalcOffsets(); onScroll(); });
+  window.addEventListener('load',   () => { recalcOffsets(); onScroll(); });
+</script>
+
 </body>
 </html>
