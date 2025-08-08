@@ -135,11 +135,17 @@
       backface-visibility: hidden;
       contain: paint;
     }
-
+    
     #screen-orange {
-  will-change: transform;
-  transform: translate(-50%, -50%) translateZ(0);
-  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  pointer-events: none;
 }
 
   </style>
@@ -350,16 +356,14 @@
      src="assets/screenorange.png"
      class="absolute z-[30] pointer-events-none"
      style="
-       top: 50%;
-       left: 50%;
-       width: 140vw;
-       height: auto;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
        max-width: none;
-       transform: translate(-50%, -50%) translateZ(0);
        mix-blend-mode: screen;
        opacity: 0.9;
-       will-change: transform;
-       backface-visibility: hidden;
+       object-fit: cover;
      " />
 
   <!-- flores -->
