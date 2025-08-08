@@ -136,22 +136,6 @@
       contain: paint;
     }
 
-    /* Overlay naranja pegado al viewport (sin transform en JS) */
-    #screen-orange {
-      position: sticky;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      mix-blend-mode: screen;
-      opacity: 0.9; /* pediste mantener esto */
-      z-index: 30;
-      pointer-events: none;
-      will-change: transform; /* por seguridad, aunque no lo animamos */
-      transform: translateZ(0);
-      backface-visibility: hidden;
-    }
   </style>
 </head>
 <body class="text-[#F6F8EB]">
@@ -355,11 +339,6 @@
          alt=""
          class="absolute left-0 right-0 top-[-20vh] w-[100vw] h-[140vh] max-w-none object-cover z-10" />
 
-    <img id="screen-orange"
-         src="assets/screenorange.png"
-         alt=""
-         class="inset-0 w-[100vw] h-[100vh] max-w-none object-cover" />
-
     <!-- wrapper con padding para el contenido -->
     <div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-end py-[48px] px-[32px]">
       <div class="col-start-2"></div>
@@ -387,7 +366,6 @@
     // PRICING
     const pricing        = document.querySelector('#pricing');
     const pricingBg      = document.querySelector('#pricing-bg');
-    const screenOrange   = document.querySelector('#screen-orange');
     const footer         = document.querySelector('#footer');
 
     let latestScroll = 0;
