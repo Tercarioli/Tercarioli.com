@@ -413,22 +413,13 @@
     const pricing = document.querySelector('#pricing');
     const footer = document.querySelector('#footer');
 
-    // Mapeo de elementos parallax y sus factores de desplazamiento
-    const parallaxElements = [
-      { element: heroBg, factor: 0.55 },
-      { element: hand, factor: -0.70 },
-      { element: creativeText, factor: 0.15 },
-      { element: agencyText, factor: 0.15 },
-      { element: contractsText, factor: 0.15 },
-      { element: overheadText, factor: 0.15 },
-      // Flores y fragmentos con sus propios factores
-      { element: document.querySelector('#flor-01'), factor: 0.40 },
-      { element: document.querySelector('#flor-02'), factor: 0.60 },
-      { element: document.querySelector('#flor-03'), factor: 0.50 },
-      { element: document.querySelector('#fragmento-01'), factor: 0.2 },
-      { element: document.querySelector('#fragmento-02'), factor: 0.15, isCentered: true },
-      { element: document.querySelector('#fragmento-03'), factor: 0.25 },
-    ];
+    // Referencias a los elementos que faltaban
+    const flor01 = document.querySelector('#flor-01');
+    const flor02 = document.querySelector('#flor-02');
+    const flor03 = document.querySelector('#flor-03');
+    const frag01 = document.querySelector('#fragmento-01');
+    const frag02 = document.querySelector('#fragmento-02');
+    const frag03 = document.querySelector('#fragmento-03');
 
     let latestScroll = 0;
     let pricingStart = 0;
@@ -438,18 +429,18 @@
     // Función de actualización de parallax
     function updateParallaxOnce() {
       // Movimiento general para todos los elementos
-      parallaxElements.forEach(({ element, factor, isCentered }) => {
-        if (element) {
-          const offset = Math.round(latestScroll * factor);
-          if (isCentered) {
-            element.style.transform = `translate(-50%, ${offset}px) translateZ(0)`;
-          } else {
-            element.style.transform = `translateY(${offset}px) translateZ(0)`;
-          }
-        }
-      });
+      const offsetBg = Math.round(latestScroll * 0.55);
+      const offsetHand = Math.round(latestScroll * -0.70);
+      const offsetText = Math.round(latestScroll * 0.15);
 
-      // Lógica específica para el fondo de pricing
+      if (heroBg)       heroBg.style.transform        = `translateY(${offsetBg}px) translateZ(0)`;
+      if (hand)         hand.style.transform          = `translateY(${offsetHand}px) translateZ(0)`;
+      if (creativeText) creativeText.style.transform  = `translateY(${offsetText}px) translateZ(0)`;
+      if (agencyText)   agencyText.style.transform    = `translateY(${offsetText}px) translateZ(0)`;
+      if (contractsText)contractsText.style.transform = `translateY(${offsetText}px) translateZ(0)`;
+      if (overheadText) overheadText.style.transform  = `translateY(${offsetText}px) translateZ(0)`;
+
+      // Lógica específica para el fondo y las flores de pricing
       if (pricingBg) {
         const curtainStart = pricingStart - window.innerHeight;
         const curtainEnd = (footerStart ?? Infinity) - window.innerHeight;
@@ -459,6 +450,14 @@
         const bgDrift = Math.min(Math.round(progress * 0.10), driftMax);
         
         pricingBg.style.transform = `translateY(${Math.round(lockToViewport + bgDrift)}px) translateZ(0)`;
+
+        // Movimiento de las flores y fragmentos
+        if (flor01) flor01.style.transform = `translateY(${Math.round(lockToViewport * 0.40)}px) translateZ(0)`;
+        if (flor02) flor02.style.transform = `translateY(${Math.round(lockToViewport * 0.60)}px) translateZ(0)`;
+        if (flor03) flor03.style.transform = `translateY(${Math.round(lockToViewport * 0.50)}px) translateZ(0)`;
+        if (frag01) frag01.style.transform = `translateY(${Math.round(lockToViewport * 0.2)}px) translateZ(0)`;
+        if (frag02) frag02.style.transform = `translate(-50%, ${Math.round(lockToViewport * 0.15)}px) translateZ(0)`;
+        if (frag03) frag03.style.transform = `translateY(${Math.round(lockToViewport * 0.25)}px) translateZ(0)`;
       }
 
       ticking = false;
