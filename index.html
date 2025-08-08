@@ -116,13 +116,6 @@
   isolation: isolate;             /* para controlar el blend del overlay */
 }
 
-    /* fija la capa al viewport mientras está activa */
-.fixed-layer {
-  position: fixed !important;
-  top: 0; left: 0;
-  width: 100%; height: 100vh;
-}
-    
   </style>
 </head>
 <body class="text-[#F6F8EB]">
@@ -368,11 +361,9 @@
   const pricing        = document.querySelector('#pricing');
   const pricingBg      = document.querySelector('#pricing-bg');
   const screenOrange   = document.querySelector('#screen-orange');
-  const footer         = document.querySelector('#footer');
 
   let latestScroll     = 0;
   let pricingStart     = pricing ? pricing.offsetTop : 0;
-  let footerStart      = footer  ? footer.offsetTop  : Number.POSITIVE_INFINITY;
 
   function updateParallax() {
     // HERO + textos
@@ -388,33 +379,11 @@
     contractsText.style.transform = `translateY(${offsetText}px)`;
     overheadText.style.transform  = `translateY(${offsetText}px)`;
 
-    // ===== PRICING: telón fijo detrás de Work 06 =====
+    // PRICING: parallax relativo a su propia sección
     if (pricingBg && screenOrange) {
-      // ventana en la que las capas deben quedar fijas detrás
-      const inPricingWindow =
-        latestScroll + window.innerHeight > pricingStart &&  // el fondo ya puede asomar
-        latestScroll < footerStart;                          // hasta que llegue el footer
-
-      if (inPricingWindow) {
-        // fija capas al viewport (quedan “ya ahí” detrás)
-        pricingBg.classList.add('fixed-layer');
-        screenOrange.classList.add('fixed-layer');
-
-        // sutil parallax mientras están fijas
-        const pricingScroll = Math.max(0, latestScroll - pricingStart);
-        pricingBg.style.transform    = `translateY(${pricingScroll * 0.12}px)`;   // lento
-        screenOrange.style.transform = `translateY(${pricingScroll * 0.16}px)`;   // un poco + rápido
-
-        // asegúrate de que queden por debajo de Work 06
-        pricingBg.style.zIndex    = '0';
-        screenOrange.style.zIndex = '1';
-      } else {
-        // restituye a posicionamiento normal cuando no toca mostrarlas
-        pricingBg.classList.remove('fixed-layer');
-        screenOrange.classList.remove('fixed-layer');
-        pricingBg.style.transform = '';
-        screenOrange.style.transform = '';
-      }
+      const pricingScroll = Math.max(0, latestScroll - pricingStart);
+      pricingBg.style.transform    = `translateY(${pricingScroll * 0.85}px)`;
+      screenOrange.style.transform = `translateY(${pricingScroll * 0.90}px)`;
     }
 
     requestAnimationFrame(updateParallax);
@@ -424,18 +393,13 @@
     latestScroll = window.scrollY;
   });
 
-  const recalcOffsets = () => {
-    if (pricing) pricingStart = pricing.offsetTop;
-    if (footer)  footerStart  = footer.offsetTop;
-  };
-  window.addEventListener('resize', recalcOffsets);
-  window.addEventListener('load',   recalcOffsets);
+  // recalcular offsets si cambia el layout
+  const recalcPricingStart = () => { if (pricing) pricingStart = pricing.offsetTop; };
+  window.addEventListener('resize', recalcPricingStart);
+  window.addEventListener('load', recalcPricingStart);
 
   updateParallax();
 </script>
-
-
-
 
 
 </body>
