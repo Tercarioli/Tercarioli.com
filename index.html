@@ -380,11 +380,11 @@
 <img id="fragmento-02" src="assets/fragmento-02.png"
      class="absolute z-20"
      style="
-       width: 8vw;
+       width: 12vw;      /* antes: 8vw */
        max-width: none;
        top: 10vh;
        left: 50%;
-       transform: translateX(-50%);
+       transform: translateX(-50%); /* centrado base */
      " />
 
 <!-- Fragmento 03: arriba a la derecha -->
@@ -472,7 +472,7 @@
       if (flor02) flor02.style.transform = `translateY(${Math.round(lockToViewport * 0.60)}px)`;
       if (flor03) flor03.style.transform = `translateY(${Math.round(lockToViewport * 0.50)}px)`;
       if (frag01) frag01.style.transform = `translateY(${Math.round(lockToViewport * 0.2)}px)`;
-      if (frag02) frag02.style.transform = `translateY(${Math.round(lockToViewport * 0.15)}px)`;
+      if (frag02) frag02.style.transform = `translate(-50%, ${Math.round(lockToViewport * 0.15)}px)`;
       if (frag03) frag03.style.transform = `translateY(${Math.round(lockToViewport * 0.25)}px)`;
     }
 
