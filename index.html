@@ -11,10 +11,8 @@
       font-family: 'Work Sans', sans-serif;
       margin: 0;
       background-color: #F6F8EB;
-      /* El color de texto por defecto (#F6F8EB) debe sobrescribirse en secciones con fondo claro */
     }
 
-    /* HERO BACKGROUND for parallax */
     .hero-bg {
       background-image: url('assets/heroback.jpg');
       background-size: cover;
@@ -30,7 +28,6 @@
       z-index: 10;
     }
 
-    /* HAND floating */
     #hand {
       position: fixed;
       bottom: clamp(4px, 1vh, 80px);
@@ -46,6 +43,12 @@
       #hand { right: -50px; }
     }
 
+    #agency-text, #contracts-text, #overhead-text, #creative-text {
+      will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      pointer-events: none;
+    }
     #agency-text {
       position: absolute;
       top: -420px;
@@ -57,17 +60,9 @@
       line-height: 0.73;
       letter-spacing: -0.04em;
       z-index: -1;
-      pointer-events: none;
-      will-change: transform;
-      transform: translateZ(0);
-      backface-visibility: hidden;
     }
     @media (min-width: 768px) {
-      #agency-text {
-        top: -40px;
-        font-size: 11vw;
-        z-index: -1;
-      }
+      #agency-text { top: -40px; font-size: 11vw; }
     }
 
     #contracts-text {
@@ -84,16 +79,9 @@
       line-height: 0.73;
       letter-spacing: -0.04em;
       z-index: -1;
-      pointer-events: none;
-      will-change: transform;
-      transform: translateZ(0);
-      backface-visibility: hidden;
     }
     @media (min-width: 768px) {
-      #contracts-text {
-        top: -180px;
-        font-size: 11vw;
-      }
+      #contracts-text { top: -180px; font-size: 11vw; }
     }
 
     #overhead-text {
@@ -111,24 +99,14 @@
       overflow-wrap: break-word;
       word-break: break-word;
       z-index: -1;
-      pointer-events: none;
-      will-change: transform;
-      transform: translateZ(0);
-      backface-visibility: hidden;
     }
     @media (min-width: 768px) {
-      #overhead-text {
-        top: -380px;
-        font-size: 11vw;
-      }
+      #overhead-text { top: -380px; font-size: 11vw; }
     }
 
-    /* PRICING layers */
     #pricing { 
-      isolation: isolate; /* controlar el blend del overlay */
+      isolation: isolate;
     }
-
-    /* Fondo que se mueve en PRICING: forzar composición y evitar subpíxeles */
     #pricing-bg {
       will-change: transform;
       transform: translateZ(0);
@@ -137,22 +115,28 @@
     }
     
     #screen-orange {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  mix-blend-mode: screen;
-  opacity: 0.9;
-  pointer-events: none;
-}
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      mix-blend-mode: screen;
+      opacity: 0.9;
+      pointer-events: none;
+      object-fit: cover;
+    }
+
+    #flor-01, #flor-02, #flor-03, #fragmento-01, #fragmento-02, #fragmento-03 {
+      will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
 
   </style>
 </head>
 <body class="text-[#F6F8EB]">
 
-  <!-- HERO -->
   <header class="relative min-h-screen overflow-hidden">
     <div class="hero-bg"></div>
     <div class="relative z-30 w-full px-[32px] mt-[80px] gap-[80px] flex flex-col md:mt-[180px] md:gap-[180px]">
@@ -177,7 +161,6 @@
     </div>
   </header>
 
-  <!-- CREATIVE CLARITY SECTION -->
   <section class="relative z-20 bg-[#F6F8EB] overflow-hidden">
     <h2 id="creative-text" class="absolute top-[20px] md:top-[40px] left-[32px] right-[32px] md:left-auto md:right-[32px] text-[#FF6B3D] font-extrabold leading-[0.73] tracking-[-0.04em] text-[14vw] md:text-[11vw] max-w-full md:max-w-[75vw] z-0 text-left md:text-right pointer-events-none">
       CREATIVE<br><span class="inline-block mr-[1.5em]">CLARITY.</span>
@@ -195,9 +178,6 @@
     </div>
   </section>
 
-  <!-- WORK SECTIONS -->
-
-  <!-- WORK 01 -->
   <section id="work-01" class="w-full px-[32px] mb-[180px]">
     <div class="grid grid-cols-1 gap-6 items-start md:hidden">
       <div class="w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-nike.jpg" alt="Proyecto Nike" class="w-full h-full object-cover" /></div>
@@ -211,17 +191,12 @@
     </div>
   </section>
 
-  <!-- WORK 02 -->
   <section id="work-02" class="relative w-full px-[32px] mb-[180px]">
-
-    <!-- elemento “de fondo” -->
-    <h2 id="agency-text">
+    <h2 id="agency-text" aria-hidden="true">
       <span class="inline-block ml-0 md:ml-[1.5em]">WITHOUT</span><br>
       THE <span class="line-through">AGENCY</span><br>
       NOISE.
     </h2>
-
-    <!-- tarjeta original de Work 02 (móvil) -->
     <div class="grid grid-cols-1 gap-6 items-start md:hidden">
       <div class="w-full" style="aspect-ratio:1/1.3;">
         <img src="assets/cards/card-meta.jpg" alt="Proyecto Meta Sports" class="w-full h-full object-cover" />
@@ -230,8 +205,6 @@
         Hacking client’s site drew thousands to store
       </p>
     </div>
-
-    <!-- versión desktop de Work 02 -->
     <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start text-[#171717] relative z-10">
       <div class="col-start-1 text-[20px] font-normal">.02</div>
       <div class="col-start-2 text-[20px] font-normal">Meta Sports</div>
@@ -242,10 +215,8 @@
         <img src="assets/cards/card-meta.jpg" alt="Proyecto Meta Sports" class="w-full h-full object-cover" />
       </div>
     </div>
-
   </section>
 
-  <!-- WORK 03 -->
   <section id="work-03" class="w-full px-[32px] mb-[180px]">
     <div class="grid grid-cols-1 gap-6 items-start md:hidden">
       <div class="w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-toys.jpg" alt="Toys in Mourning" class="w-full h-full object-cover" /></div>
@@ -259,16 +230,11 @@
     </div>
   </section>
 
-  <!-- WORK 04 -->
   <section id="work-04" class="relative w-full px-[32px] mb-[200px] md:mb-[180px]">
-
-    <!-- elemento “de fondo” -->
-    <h2 id="contracts-text">
+    <h2 id="contracts-text" aria-hidden="true">
       <span class="inline-block ml-0 md:ml-[1.5em]">NO</span><br>
       CONTRACTS.
     </h2>
-
-    <!-- tarjeta original de Work 04 (mobile) -->
     <div class="grid grid-cols-1 gap-6 items-start md:hidden">
       <div class="w-full" style="aspect-ratio:1/1.3;">
         <img src="assets/cards/card-stomas.jpg" alt="Santo Tomás" class="w-full h-full object-cover" />
@@ -277,8 +243,6 @@
         Saint in pursuit: 2023's best campaign.
       </p>
     </div>
-
-    <!-- versión desktop de Work 04 -->
     <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start text-[#171717] relative z-10">
       <div class="col-start-1 text-[20px] font-normal">.04</div>
       <div class="col-start-2 text-[20px] font-normal">Santo Tomás</div>
@@ -289,10 +253,8 @@
         Saint in pursuit: 2023's best campaign.
       </div>
     </div>
-
   </section>
 
-  <!-- WORK 05 -->
   <section id="work-05" class="w-full px-[32px] mb-[180px]">
     <div class="grid grid-cols-1 gap-6 items-start md:hidden">
       <div class="w-full" style="aspect-ratio:1/1.3;"><img src="assets/cards/card-pilsen.jpg" alt="Manifiesto Pilsen" class="w-full h-full object-cover" /></div>
@@ -306,16 +268,11 @@
     </div>
   </section>
 
-  <!-- WORK 06 -->
   <section id="work-06" class="relative z-20 overflow-hidden w-full px-[32px] pb-[220px] mb-0">
-
-    <!-- elemento “de fondo” -->
-    <h2 id="overhead-text">
+    <h2 id="overhead-text" aria-hidden="true">
       <span class="inline-block ml-0 md:ml-[1.5em]">NO</span><br>
       OVERHEAD.
     </h2>
-
-    <!-- tarjeta original de Work 06 (mobile) -->
     <div class="grid grid-cols-1 gap-6 items-start md:hidden">
       <div class="w-full" style="aspect-ratio:1/1.3;">
         <img src="assets/cards/card-bicentenario.jpg"
@@ -326,8 +283,6 @@
         How to think for crafting a powerful message.
       </p>
     </div>
-
-    <!-- versión desktop de Work 06 -->
     <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] md:items-start text-[#171717] relative z-10">
       <div class="col-start-1 text-[20px] font-normal">.06</div>
       <div class="col-start-2 w-full" style="aspect-ratio:1/1.3;">
@@ -340,256 +295,213 @@
         How to think for crafting a powerful message.
       </div>
     </div>
-
   </section>
   
-    <!-- PRICING -->
-<section id="pricing" class="relative z-0 min-h-screen overflow-hidden px-0">
-  <!-- fondo -->
-  <img id="pricing-bg"
-       src="assets/pricingback.jpg"
-       alt=""
-       class="absolute left-0 top-[-20vh] w-[100vw] h-[140vh] max-w-none object-cover z-10" />
+  <section id="pricing" class="relative z-0 min-h-screen overflow-hidden px-0">
+    <img id="pricing-bg"
+         src="assets/pricingback.jpg"
+         alt=""
+         class="absolute left-0 top-[-20vh] w-[100vw] h-[140vh] max-w-none object-cover z-10" />
 
-  <!-- Glow overlay -->
-<img id="screen-orange"
-     src="assets/screenorange.png"
-     class="absolute z-[30] pointer-events-none"
-     style="
-       top: 0;
-       left: 0;
-       width: 100%;
-       height: 100%;
-       max-width: none;
-       mix-blend-mode: screen;
-       opacity: 0.9;
-       object-fit: cover;
-     " />
+    <img id="screen-orange"
+         src="assets/screenorange.png"
+         class="absolute z-[30] pointer-events-none"
+         style="
+           top: 0; left: 0; width: 100%; height: 100%; max-width: none;
+           mix-blend-mode: screen; opacity: 0.9; object-fit: cover;
+         " />
 
-  <!-- flores -->
-<img id="flor-01" src="assets/flor-01.png"
-     class="absolute z-20"
-     style="
-       width: calc(25vw * 1.7);
-       max-width: none;
-       top: calc(55vh - (calc(25vw * 1.7) / 2)); /* bajar un poco más */
-       left: calc(5vw - (calc(25vw * 1.7) / 2)); /* empujar más fuera */
-     " />
+    <img id="flor-01" src="assets/flor-01.png"
+         class="absolute z-20"
+         style="
+           width: calc(25vw * 1.7); max-width: none;
+           top: calc(55vh - (calc(25vw * 1.7) / 2));
+           left: calc(5vw - (calc(25vw * 1.7) / 2));
+         " />
 
-<img id="flor-02" src="assets/flor-02.png"
-     class="absolute z-20"
-     style="
-       width: calc(18vw * 1.25);
-       max-width: none;
-       top: calc(10vh - (calc(18vw * 1.25) / 2)); /* antes estaba en 8vh */
-       right: calc(5vw - (calc(18vw * 1.25) / 2));
-     " />
+    <img id="flor-02" src="assets/flor-02.png"
+         class="absolute z-20"
+         style="
+           width: calc(18vw * 1.25); max-width: none;
+           top: calc(10vh - (calc(18vw * 1.25) / 2));
+           right: calc(5vw - (calc(18vw * 1.25) / 2));
+         " />
 
-<img id="flor-03" src="assets/flor-03.png"
-     class="absolute z-20"
-     style="
-       width: calc(28vw * 1.8);
-       max-width: none;
-       bottom: calc(0vh - (calc(28vw * 1.8) / 2));
-       left: calc(45vw - (calc(28vw * 1.8) / 2)); /* antes estaba en 35vw */
-     " />
+    <img id="flor-03" src="assets/flor-03.png"
+         class="absolute z-20"
+         style="
+           width: calc(28vw * 1.8); max-width: none;
+           bottom: calc(0vh - (calc(28vw * 1.8) / 2));
+           left: calc(45vw - (calc(28vw * 1.8) / 2));
+         " />
 
-  <!-- Fragmento 01: arriba a la izquierda -->
-<img id="fragmento-01" src="assets/fragmento-01.png"
-     class="absolute z-20"
-     style="
-       width: 6vw;
-       max-width: none;
-       top: 15vh;
-       left: 8vw;
-     " />
+    <img id="fragmento-01" src="assets/fragmento-01.png"
+         class="absolute z-20"
+         style="width: 6vw; max-width: none; top: 15vh; left: 8vw;" />
 
-<!-- Fragmento 02: arriba al centro -->
-<img id="fragmento-02" src="assets/fragmento-02.png"
-     class="absolute z-20"
-     style="
-       width: 12vw;      /* antes: 8vw */
-       max-width: none;
-       top: 10vh;
-       left: 50%;
-       transform: translateX(-50%); /* centrado base */
-     " />
+    <img id="fragmento-02" src="assets/fragmento-02.png"
+         class="absolute z-20"
+         style="width: 12vw; max-width: none; top: 10vh; left: 50%; transform: translateX(-50%);" />
 
-<!-- Fragmento 03: arriba a la derecha -->
-<img id="fragmento-03" src="assets/fragmento-03.png"
-     class="absolute z-20"
-     style="
-       width: 4vw;
-       max-width: none;
-       top: 18vh;
-       right: 10vw;
-     " />
+    <img id="fragmento-03" src="assets/fragmento-03.png"
+         class="absolute z-20"
+         style="width: 4vw; max-width: none; top: 18vh; right: 10vw;" />
 
-<!-- wrapper con padding para el contenido -->
-<div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-center py-[48px] px-[32px]">
-
-  <!-- CARD FOCUS -->
-<div class="col-start-2 relative flex justify-center items-center">
-  <!-- Frase flotante -->
-  <p class="absolute w-full text-center italic font-medium"
-     style="top:-48px; font-size:24px; letter-spacing:-0.04em; color:#F6F8EB;">
-    “I need creative distinction”
-  </p>
-
-  <!-- Contenedor de la tarjeta -->
-<article class="bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden flex"
-         style="aspect-ratio:1/1.1; min-height:540px;">
-  <div class="flex flex-col justify-between h-full w-full p-6 md:p-8">
-
-    <!-- TOP GROUP -->
-    <div class="flex flex-col pb-1">
-      <div class="flex flex-col gap-[2px]">
-        <h3 class="font-extrabold leading-[0.95] m-0"
-            style="font-size:70px; letter-spacing:-0.04em; color:#171717;">
-          FOCUS
-        </h3>
-        <div class="flex items-baseline gap-[3px]">
-          <span class="font-normal m-0 leading-none"
-                style="font-size:60px; letter-spacing:-0.12em; color:#505050;">$999</span>
-          <span class="font-normal m-0 leading-none"
-                style="font-size:46px; letter-spacing:-0.12em; color:#505050;">/m</span>
-        </div>
+    <div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-center py-[48px] px-[32px]">
+      <div class="col-start-2 relative flex justify-center items-center">
+        <p class="absolute w-full text-center italic font-medium"
+           style="top:-48px; font-size:24px; letter-spacing:-0.04em; color:#F6F8EB;">
+          “I need creative distinction”
+        </p>
+        <article class="bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden flex"
+                 style="aspect-ratio:1/1.1; min-height:540px;">
+          <div class="flex flex-col justify-between h-full w-full p-6 md:p-8">
+            <div class="flex flex-col pb-1">
+              <div class="flex flex-col gap-[2px]">
+                <h3 class="font-extrabold leading-[0.95] m-0"
+                    style="font-size:70px; letter-spacing:-0.04em; color:#171717;">
+                  FOCUS
+                </h3>
+                <div class="flex items-baseline gap-[3px]">
+                  <span class="font-normal m-0 leading-none"
+                        style="font-size:60px; letter-spacing:-0.12em; color:#505050;">$999</span>
+                  <span class="font-normal m-0 leading-none"
+                        style="font-size:46px; letter-spacing:-0.12em; color:#505050;">/m</span>
+                </div>
+              </div>
+              <p class="max-w-[28ch] font-normal"
+                 style="margin-top:10px; font-size:38px; letter-spacing:-0.04em; color:#505050; line-height:0.99;">
+                I improve the creative output of your projects.
+              </p>
+            </div>
+            <div class="flex flex-col gap-3">
+              <p class="m-0 font-normal"
+                 style="font-size:18px; letter-spacing:-0.04em; color:#FF6B3D;">
+                <span class="mr-2">✦</span>
+                Plug–and–play creative direction in your async dashboard.
+              </p>
+              <a href="#start"
+                 class="block text-center font-semibold py-[16px] border transition-colors duration-200"
+                 style="font-size:24px; color:#FF6B3D; border-color:#FF6B3D; border-radius:1px;"
+                 onmouseover="this.style.backgroundColor='#FF6B3D'; this.style.color='#F6F8EB';"
+                 onmouseout="this.style.backgroundColor='transparent'; this.style.color='#FF6B3D';">
+                Start now
+              </a>
+            </div>
+          </div>
+        </article>
       </div>
-
-      <!-- Párrafo: baja un poco + no empuja el bloque inferior -->
-      <p class="max-w-[28ch] font-normal"
-         style="margin-top:10px; font-size:38px; letter-spacing:-0.04em; color:#505050; line-height:0.99;">
-        I improve the creative output of your projects.
-      </p>
+      <div class="col-start-3"></div>
+      <div class="col-start-4"></div>
     </div>
+    <div class="relative z-40 md:hidden min-h-screen px-[32px]"></div>
+  </section>
 
-    <!-- BOTTOM GROUP -->
-    <div class="flex flex-col gap-3">
-      <p class="m-0 font-normal"
-         style="font-size:18px; letter-spacing:-0.04em; color:#FF6B3D;">
-        <span class="mr-2">✦</span>
-        Plug–and–play creative direction in your async dashboard.
-      </p>
-
-      <a href="#start"
-         class="block text-center font-semibold py-[16px] border transition-colors duration-200"
-         style="font-size:24px; color:#FF6B3D; border-color:#FF6B3D; border-radius:1px;"
-         onmouseover="this.style.backgroundColor='#FF6B3D'; this.style.color='#F6F8EB';"
-         onmouseout="this.style.backgroundColor='transparent'; this.style.color='#FF6B3D';">
-        Start now
-      </a>
-    </div>
-
-  </div>
-</article>
-
-
-</div>
-
-
-  <div class="col-start-3"></div>
-  <div class="col-start-4"></div>
-</div>
-
-  <div class="relative z-40 md:hidden min-h-screen px-[32px]"></div>
-</section>
-
-
-  <!-- FOOTER (vacío por ahora) -->
   <section id="footer" class="relative z-30 w-full min-h-screen px-[32px] bg-[#F6F8EB]"></section>
 
-  <!-- HAND outside hero -->
   <img src="assets/fullhand.png" alt="Hand" id="hand" />
 
-  <!-- Parallax Script (rAF bajo demanda + redondeo) -->
-<script>
-  const heroBg       = document.querySelector('.hero-bg');
-  const hand         = document.querySelector('#hand');
-  const creativeText = document.querySelector('#creative-text');
-  const agencyText   = document.querySelector('#agency-text');
-  const contractsText= document.querySelector('#contracts-text');
-  const overheadText = document.querySelector('#overhead-text');
+  <script>
+    // Referencias a los elementos
+    const heroBg = document.querySelector('.hero-bg');
+    const hand = document.querySelector('#hand');
+    const creativeText = document.querySelector('#creative-text');
+    const agencyText = document.querySelector('#agency-text');
+    const contractsText = document.querySelector('#contracts-text');
+    const overheadText = document.querySelector('#overhead-text');
+    const pricingBg = document.querySelector('#pricing-bg');
+    const pricing = document.querySelector('#pricing');
+    const footer = document.querySelector('#footer');
 
-  // Flores (pueden no estar aún)
-  const flor01 = document.querySelector('#flor-01');
-  const flor02 = document.querySelector('#flor-02');
-  const flor03 = document.querySelector('#flor-03');
-  const frag01 = document.querySelector('#fragmento-01');
-  const frag02 = document.querySelector('#fragmento-02');
-  const frag03 = document.querySelector('#fragmento-03');
+    // Mapeo de elementos parallax y sus factores de desplazamiento
+    const parallaxElements = [
+      { element: heroBg, factor: 0.55 },
+      { element: hand, factor: -0.70 },
+      { element: creativeText, factor: 0.15 },
+      { element: agencyText, factor: 0.15 },
+      { element: contractsText, factor: 0.15 },
+      { element: overheadText, factor: 0.15 },
+      // Flores y fragmentos con sus propios factores
+      { element: document.querySelector('#flor-01'), factor: 0.40 },
+      { element: document.querySelector('#flor-02'), factor: 0.60 },
+      { element: document.querySelector('#flor-03'), factor: 0.50 },
+      { element: document.querySelector('#fragmento-01'), factor: 0.2 },
+      { element: document.querySelector('#fragmento-02'), factor: 0.15, isCentered: true },
+      { element: document.querySelector('#fragmento-03'), factor: 0.25 },
+    ];
 
-  // PRICING
-  const pricing   = document.querySelector('#pricing');
-  const pricingBg = document.querySelector('#pricing-bg');
-  const footer    = document.querySelector('#footer');
+    let latestScroll = 0;
+    let pricingStart = 0;
+    let footerStart = Infinity;
+    let ticking = false;
 
-  let latestScroll = 0;
-  let pricingStart = 0;
-  let footerStart  = Infinity;
-  let ticking      = false;
+    // Función de actualización de parallax
+    function updateParallaxOnce() {
+      // Movimiento general para todos los elementos
+      parallaxElements.forEach(({ element, factor, isCentered }) => {
+        if (element) {
+          const offset = Math.round(latestScroll * factor);
+          if (isCentered) {
+            element.style.transform = `translate(-50%, ${offset}px) translateZ(0)`;
+          } else {
+            element.style.transform = `translateY(${offset}px) translateZ(0)`;
+          }
+        }
+      });
 
-  function updateParallaxOnce() {
-    // --- HERO + textos ---
-    const offsetBg   = Math.round(latestScroll * 0.55);
-    const offsetHand = Math.round(latestScroll * -0.70);
-    const offsetText = Math.round(latestScroll * 0.15);
+      // Lógica específica para el fondo de pricing
+      if (pricingBg) {
+        const curtainStart = pricingStart - window.innerHeight;
+        const curtainEnd = (footerStart ?? Infinity) - window.innerHeight;
+        const lockToViewport = latestScroll - pricingStart;
+        const progress = Math.max(0, Math.min(latestScroll, curtainEnd) - curtainStart);
+        const driftMax = Math.round(window.innerHeight * 0.20);
+        const bgDrift = Math.min(Math.round(progress * 0.10), driftMax);
+        
+        pricingBg.style.transform = `translateY(${Math.round(lockToViewport + bgDrift)}px) translateZ(0)`;
+      }
 
-    if (heroBg)       heroBg.style.transform        = `translateY(${offsetBg}px)`;
-    if (hand)         hand.style.transform          = `translateY(${offsetHand}px)`;
-    if (creativeText) creativeText.style.transform  = `translateY(${offsetText}px)`;
-    if (agencyText)   agencyText.style.transform    = `translateY(${offsetText}px)`;
-    if (contractsText)contractsText.style.transform = `translateY(${offsetText}px)`;
-    if (overheadText) overheadText.style.transform  = `translateY(${offsetText}px)`;
-
-    // --- PRICING: telón + drift del fondo ---
-    if (pricingBg) {
-      const curtainStart   = pricingStart - window.innerHeight;
-      const curtainEnd     = (footerStart ?? Infinity) - window.innerHeight;
-      const lockToViewport = latestScroll - pricingStart;
-      const progress       = Math.max(0, Math.min(latestScroll, curtainEnd) - curtainStart);
-      const driftMax       = Math.round(window.innerHeight * 0.20); // 20vh
-      const bgDrift        = Math.min(Math.round(progress * 0.10), driftMax);
-
-      // fondo
-      pricingBg.style.transform = `translateY(${Math.round(lockToViewport + bgDrift)}px)`;
-
-      // flores (si existen) con diferentes factores
-      if (flor01) flor01.style.transform = `translateY(${Math.round(lockToViewport * 0.40)}px)`;
-      if (flor02) flor02.style.transform = `translateY(${Math.round(lockToViewport * 0.60)}px)`;
-      if (flor03) flor03.style.transform = `translateY(${Math.round(lockToViewport * 0.50)}px)`;
-      if (frag01) frag01.style.transform = `translateY(${Math.round(lockToViewport * 0.2)}px)`;
-      if (frag02) frag02.style.transform = `translate(-50%, ${Math.round(lockToViewport * 0.15)}px)`;
-      if (frag03) frag03.style.transform = `translateY(${Math.round(lockToViewport * 0.25)}px)`;
+      ticking = false;
     }
 
-    // MUY IMPORTANTE: liberar el flag
-    ticking = false;
-  } // <-- cierre de la función
-
-  function onScroll() {
-    latestScroll = window.scrollY || window.pageYOffset || 0;
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(updateParallaxOnce);
+    // Manejador del evento de scroll
+    function onScroll() {
+      latestScroll = window.scrollY || window.pageYOffset || 0;
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateParallaxOnce);
+      }
     }
-  }
 
-  // offsets (soporta cualquier -mt / layout)
-  const recalcOffsets = () => {
-    if (pricing) {
-      const r = pricing.getBoundingClientRect();
-      pricingStart = r.top + (window.scrollY || window.pageYOffset || 0);
+    // Calcula los offsets para el "curtain"
+    function recalcOffsets() {
+      if (pricing) {
+        const r = pricing.getBoundingClientRect();
+        pricingStart = r.top + (window.scrollY || window.pageYOffset || 0);
+      }
+      if (footer) {
+        const f = footer.getBoundingClientRect();
+        footerStart = f.top + (window.scrollY || window.pageYOffset || 0);
+      }
+      console.log('Offsets recalculated');
     }
-    if (footer) {
-      const f = footer.getBoundingClientRect();
-      footerStart = f.top + (window.scrollY || window.pageYOffset || 0);
-    }
-  };
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', () => { recalcOffsets(); onScroll(); });
-  window.addEventListener('load',   () => { recalcOffsets(); onScroll(); });
-</script>
+    // Debounce para el evento resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        recalcOffsets();
+        onScroll();
+      }, 250);
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('load', () => {
+      recalcOffsets();
+      onScroll();
+    });
+  </script>
 
 </body>
 </html>
