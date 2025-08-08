@@ -313,35 +313,30 @@
 </section>
 
 <!-- PRICING -->
-<section id="pricing" class="relative z-0 -mt-[100vh] pt-[100vh] min-h-screen overflow-hidden px-[32px]">
+<section id="pricing" class="relative z-0 -mt-[100vh] overflow-hidden px-[32px]">
+  <!-- capas sticky detrás -->
+  <img id="pricing-bg"
+       src="assets/pricingback.jpg"
+       alt=""
+       class="sticky top-0 w-full h-screen object-cover z-10 will-change-transform" />
 
-  <!-- capas parallax -->
-<img id="pricing-bg"
-     src="assets/pricingback.jpg"
-     alt=""
-     class="sticky top-0 w-full h-screen object-cover z-10 will-change-transform" />
+  <img id="screen-orange"
+       src="assets/screenorange.png"
+       alt=""
+       class="sticky top-0 w-full h-screen object-cover z-30 will-change-transform pointer-events-none"
+       style="mix-blend-mode: screen; opacity: 0.9;" />
 
-<img id="screen-orange"
-     src="assets/screenorange.png"
-     alt=""
-     class="sticky top-0 w-full h-screen object-cover z-30 will-change-transform pointer-events-none"
-     style="mix-blend-mode: screen; opacity: 0.9;" />
-
-  <!-- grid 4 columnas (por ahora sin tarjetas) -->
-  <div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-end py-[48px]">
-    <div class="col-start-2"></div>
-    <div class="col-start-3"></div>
-    <div class="col-start-4"></div>
+  <!-- contenido (tarjetas) desplazado 100vh para que aparezca después del telón -->
+  <div class="relative z-40 pt-[100vh] min-h-screen">
+    <!-- grid 4 columnas (por ahora placeholders vacíos) -->
+    <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-end py-[48px]">
+      <div class="col-start-2"></div>
+      <div class="col-start-3"></div>
+      <div class="col-start-4"></div>
+    </div>
+    <div class="md:hidden min-h-screen"></div>
   </div>
-
-  <!-- mobile placeholder (vacío por ahora) -->
-  <div class="relative z-40 md:hidden min-h-screen"></div>
 </section>
-
-<!-- FOOTER (vacío por ahora) -->
-<section id="footer" class="relative z-30 w-full min-h-screen px-[32px] bg-[#F6F8EB]">
-</section>
-
 
   <!-- HAND outside hero -->
   <img src="assets/fullhand.png" alt="Hand" id="hand" />
@@ -360,8 +355,8 @@
   const pricingBg      = document.querySelector('#pricing-bg');
   const screenOrange   = document.querySelector('#screen-orange');
 
-  let latestScroll     = 0;
-  let pricingStart     = pricing ? pricing.offsetTop : 0;
+  let latestScroll = 0;
+  let pricingStart = 0; // ← mejor dejarlo en 0 y recalcular luego
 
   function updateParallax() {
     // HERO + textos
@@ -377,13 +372,12 @@
     contractsText.style.transform = `translateY(${offsetText}px)`;
     overheadText.style.transform  = `translateY(${offsetText}px)`;
 
-// PRICING: parallax relativo a su propia sección (capas sticky)
-if (pricingBg && screenOrange) {
-  const pricingScroll = Math.max(0, latestScroll - pricingStart);
-  pricingBg.style.transform    = `translateY(${pricingScroll * 0.12}px)`;
-  screenOrange.style.transform = `translateY(${pricingScroll * 0.18}px)`;
-}
-
+    // PRICING: parallax relativo a su propia sección (capas sticky)
+    if (pricingBg && screenOrange) {
+      const pricingScroll = Math.max(0, latestScroll - pricingStart);
+      pricingBg.style.transform    = `translateY(${pricingScroll * 0.12}px)`;
+      screenOrange.style.transform = `translateY(${pricingScroll * 0.18}px)`;
+    }
 
     requestAnimationFrame(updateParallax);
   }
@@ -392,14 +386,21 @@ if (pricingBg && screenOrange) {
     latestScroll = window.scrollY;
   });
 
-  // recalcular offsets si cambia el layout
-  const recalcPricingStart = () => { if (pricing) pricingStart = pricing.offsetTop; };
-  window.addEventListener('resize', recalcPricingStart);
-  window.addEventListener('load', recalcPricingStart);
+  // recalcular offsets si cambia el layout (soporta -mt-[100vh])
+  const recalcPricingStart = () => {
+    if (pricing) {
+      const rect = pricing.getBoundingClientRect();
+      pricingStart = rect.top + window.scrollY;
+    }
+  };
 
+  window.addEventListener('resize', recalcPricingStart);
+  window.addEventListener('load',   recalcPricingStart);
+
+  // llamada inicial
+  recalcPricingStart();
   updateParallax();
 </script>
-
 
 </body>
 </html>
