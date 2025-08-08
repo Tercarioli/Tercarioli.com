@@ -116,6 +116,12 @@
   isolation: isolate;             /* para controlar el blend del overlay */
 }
 
+    /* fija la capa al viewport mientras está activa */
+.fixed-layer {
+  position: fixed !important;
+  top: 0; left: 0;
+  width: 100%; height: 100vh;
+}
     
   </style>
 </head>
@@ -278,7 +284,7 @@
   </section>
 
 <!-- WORK 06 -->
-<section id="work-06" class="relative z-20 w-full px-[32px] mb-[200px] md:mb-[180px]">
+<section id="work-06" class="relative z-20 overflow-hidden w-full px-[32px] mb-[200px] md:mb-[180px]">
 
   <!-- elemento “de fondo” -->
   <h2 id="overhead-text">
@@ -362,9 +368,11 @@
   const pricing        = document.querySelector('#pricing');
   const pricingBg      = document.querySelector('#pricing-bg');
   const screenOrange   = document.querySelector('#screen-orange');
+  const footer         = document.querySelector('#footer');
 
   let latestScroll     = 0;
   let pricingStart     = pricing ? pricing.offsetTop : 0;
+  let footerStart      = footer  ? footer.offsetTop  : Number.POSITIVE_INFINITY;
 
   function updateParallax() {
     // HERO + textos
@@ -380,11 +388,33 @@
     contractsText.style.transform = `translateY(${offsetText}px)`;
     overheadText.style.transform  = `translateY(${offsetText}px)`;
 
-    // PRICING: parallax relativo a su propia sección
+    // ===== PRICING: telón fijo detrás de Work 06 =====
     if (pricingBg && screenOrange) {
-      const pricingScroll = Math.max(0, latestScroll - pricingStart);
-      pricingBg.style.transform    = `translateY(${pricingScroll * 0.95}px)`;
-      screenOrange.style.transform = `translateY(${pricingScroll * 0.45}px)`;
+      // ventana en la que las capas deben quedar fijas detrás
+      const inPricingWindow =
+        latestScroll + window.innerHeight > pricingStart &&  // el fondo ya puede asomar
+        latestScroll < footerStart;                          // hasta que llegue el footer
+
+      if (inPricingWindow) {
+        // fija capas al viewport (quedan “ya ahí” detrás)
+        pricingBg.classList.add('fixed-layer');
+        screenOrange.classList.add('fixed-layer');
+
+        // sutil parallax mientras están fijas
+        const pricingScroll = Math.max(0, latestScroll - pricingStart);
+        pricingBg.style.transform    = `translateY(${pricingScroll * 0.12}px)`;   // lento
+        screenOrange.style.transform = `translateY(${pricingScroll * 0.16}px)`;   // un poco + rápido
+
+        // asegúrate de que queden por debajo de Work 06
+        pricingBg.style.zIndex    = '0';
+        screenOrange.style.zIndex = '1';
+      } else {
+        // restituye a posicionamiento normal cuando no toca mostrarlas
+        pricingBg.classList.remove('fixed-layer');
+        screenOrange.classList.remove('fixed-layer');
+        pricingBg.style.transform = '';
+        screenOrange.style.transform = '';
+      }
     }
 
     requestAnimationFrame(updateParallax);
@@ -394,16 +424,16 @@
     latestScroll = window.scrollY;
   });
 
-  // Recalcular el inicio de la sección si cambia el layout
-  window.addEventListener('resize', () => {
+  const recalcOffsets = () => {
     if (pricing) pricingStart = pricing.offsetTop;
-  });
-  window.addEventListener('load', () => {
-    if (pricing) pricingStart = pricing.offsetTop;
-  });
+    if (footer)  footerStart  = footer.offsetTop;
+  };
+  window.addEventListener('resize', recalcOffsets);
+  window.addEventListener('load',   recalcOffsets);
 
   updateParallax();
 </script>
+
 
 
 
