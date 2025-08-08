@@ -437,50 +437,53 @@
   </p>
 
   <!-- Contenedor de la tarjeta -->
-  <article class="bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden flex flex-col"
-           style="aspect-ratio:1/1.1; max-height:85%;">
-    <div class="flex flex-col h-full p-6 md:p-8 gap-5">
+<article class="bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden flex"
+         style="aspect-ratio:1/1.1; max-height:85%;">
+  <div class="flex flex-col justify-between h-full w-full p-6 md:p-8">
 
-      <!-- Título -->
-      <h3 class="font-extrabold leading-[0.95]"
-          style="font-size:70px; letter-spacing:-0.04em; color:#171717;">
-        FOCUS
-      </h3>
-
-      <!-- Precio -->
-      <div class="mt-1 flex items-baseline gap-[6px]">
-        <span class="font-normal"
-              style="font-size:60px; letter-spacing:-0.12em; color:#505050;">$999</span>
-        <span class="font-normal"
-              style="font-size:46px; letter-spacing:-0.12em; color:#505050;">/m</span>
+    <!-- TOP GROUP: (Focus + Price) + Paragraph -->
+    <div class="flex flex-col">
+      <!-- Focus + Price -->
+      <div class="flex flex-col gap-[6px]">
+        <h3 class="font-extrabold leading-[0.95]"
+            style="font-size:70px; letter-spacing:-0.04em; color:#171717;">
+          FOCUS
+        </h3>
+        <div class="flex items-baseline gap-[6px]">
+          <span class="font-normal"
+                style="font-size:60px; letter-spacing:-0.12em; color:#505050;">$999</span>
+          <span class="font-normal"
+                style="font-size:46px; letter-spacing:-0.12em; color:#505050;">/m</span>
+        </div>
       </div>
 
-      <!-- Párrafo -->
+      <!-- Paragraph (más pegado) -->
       <p class="mt-3 max-w-[28ch] font-normal"
          style="font-size:38px; letter-spacing:-0.04em; color:#505050; line-height:1.25;">
         I improve the creative output of your projects.
       </p>
+    </div>
 
-      <!-- Bullet -->
-      <p class="mt-2 font-normal"
+    <!-- BOTTOM GROUP: Bullet + CTA -->
+    <div class="flex flex-col gap-4">
+      <p class="font-normal"
          style="font-size:18px; letter-spacing:-0.04em; color:#FF6B3D;">
         <span class="mr-2">✦</span>
         Plug–and–play creative direction in your async dashboard.
       </p>
 
-      <!-- CTA -->
-      <div class="mt-auto pt-4">
-        <a href="#start"
-           class="block text-center font-semibold py-[16px] border transition-colors duration-200"
-           style="font-size:24px; color:#FF6B3D; border-color:#FF6B3D; border-radius:1px;"
-           onmouseover="this.style.backgroundColor='#FF6B3D'; this.style.color='#F6F8EB';"
-           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#FF6B3D';">
-          Start now
-        </a>
-      </div>
-
+      <a href="#start"
+         class="block text-center font-semibold py-[16px] border transition-colors duration-200"
+         style="font-size:24px; color:#FF6B3D; border-color:#FF6B3D; border-radius:1px;"
+         onmouseover="this.style.backgroundColor='#FF6B3D'; this.style.color='#F6F8EB';"
+         onmouseout="this.style.backgroundColor='transparent'; this.style.color='#FF6B3D';">
+        Start now
+      </a>
     </div>
-  </article>
+
+  </div>
+</article>
+
 </div>
 
 
