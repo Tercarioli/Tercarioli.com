@@ -355,9 +355,11 @@
   const pricing        = document.querySelector('#pricing');
   const pricingBg      = document.querySelector('#pricing-bg');
   const screenOrange   = document.querySelector('#screen-orange');
+  const footer         = document.querySelector('#footer');
 
   let latestScroll = 0;
-  let pricingStart = 0; // ← mejor dejarlo en 0 y recalcular luego
+  let pricingStart = 0;
+  let footerStart  = Infinity;
 
   function updateParallax() {
     // HERO + textos
@@ -373,11 +375,25 @@
     contractsText.style.transform = `translateY(${offsetText}px)`;
     overheadText.style.transform  = `translateY(${offsetText}px)`;
 
-    // PRICING: parallax relativo a su propia sección (capas sticky)
+    // ===== PRICING: “telón” =====
     if (pricingBg && screenOrange) {
-      const pricingScroll = Math.max(0, latestScroll - pricingStart);
-      pricingBg.style.transform    = `translateY(${pricingScroll * 0.12}px)`;
-      screenOrange.style.transform = `translateY(${pricingScroll * 0.18}px)`;
+      // cuando el borde inferior del viewport alcanza el inicio de pricing
+      const curtainStart = pricingStart - window.innerHeight;
+
+      // base: fija el fondo al viewport (parece estar “ya detrás”)
+      const lockToViewport = latestScroll - pricingStart;
+
+      // drift sutil solo una vez que empezó la revelación
+      const driftPhase = Math.max(0, latestScroll - curtainStart); // 0 antes del telón
+      const bgDrift    = driftPhase * 0.30;
+      const scrDrift   = driftPhase * 0.14;
+
+      pricingBg.style.transform    = `translateY(${lockToViewport + bgDrift}px)`;
+      screenOrange.style.transform = `translateY(${lockToViewport + scrDrift}px)`;
+
+      // asegúrate de que sigan por debajo de Work 06 (z-20)
+      pricingBg.style.zIndex    = '10';
+      screenOrange.style.zIndex = '30';
     }
 
     requestAnimationFrame(updateParallax);
@@ -387,21 +403,24 @@
     latestScroll = window.scrollY;
   });
 
-  // recalcular offsets si cambia el layout (soporta -mt-[100vh])
-  const recalcPricingStart = () => {
+  const recalcOffsets = () => {
     if (pricing) {
-      const rect = pricing.getBoundingClientRect();
-      pricingStart = rect.top + window.scrollY;
+      const r = pricing.getBoundingClientRect();
+      pricingStart = r.top + window.scrollY;
+    }
+    if (footer) {
+      const f = footer.getBoundingClientRect();
+      footerStart = f.top + window.scrollY;
     }
   };
 
-  window.addEventListener('resize', recalcPricingStart);
-  window.addEventListener('load',   recalcPricingStart);
+  window.addEventListener('resize', recalcOffsets);
+  window.addEventListener('load',   recalcOffsets);
 
-  // llamada inicial
-  recalcPricingStart();
+  recalcOffsets();
   updateParallax();
 </script>
+
 
 </body>
 </html>
