@@ -315,16 +315,16 @@
 <!-- PRICING (sin padding lateral en el section) -->
 <section id="pricing" class="relative z-0 min-h-screen overflow-hidden px-0">
   <!-- capas fondo + overlay -->
-  <img id="pricing-bg"
-       src="assets/pricingback.jpg"
-       alt=""
-       class="absolute inset-0 w-full h-full object-cover z-10 will-change-transform" />
+<img id="pricing-bg"
+     src="assets/pricingback.jpg"
+     alt=""
+     class="absolute left-0 right-0 top-[-20vh] w-[100vw] h-[140vh] max-w-none object-cover z-10 will-change-transform" />
 
-  <img id="screen-orange"
-       src="assets/screenorange.png"
-       alt=""
-       class="absolute inset-0 w-full h-full object-cover z-30 will-change-transform pointer-events-none"
-       style="mix-blend-mode: screen; opacity: 0.9;" />
+<img id="screen-orange"
+     src="assets/screenorange.png"
+     alt=""
+     class="absolute inset-0 w-[100vw] h-[100vh] max-w-none object-cover z-30 pointer-events-none"
+     style="mix-blend-mode: screen; opacity: 0.9;" />
 
   <!-- wrapper con padding para el contenido -->
   <div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-end py-[48px] px-[32px]">
@@ -375,21 +375,26 @@
     contractsText.style.transform = `translateY(${offsetText}px)`;
     overheadText.style.transform  = `translateY(${offsetText}px)`;
 
-    // ===== PRICING: “telón” =====
-    if (pricingBg && screenOrange) {
-      // cuando el borde inferior del viewport alcanza el inicio de pricing
-      const curtainStart = pricingStart - window.innerHeight;
+// PRICING: telón + overscan (bg con drift, overlay fijo)
+if (pricingBg && screenOrange) {
+  const curtainStart = pricingStart - window.innerHeight;
+  const curtainEnd   = footerStart ? (footerStart - window.innerHeight) : Infinity;
 
-      // base: fija el fondo al viewport (parece estar “ya detrás”)
-      const lockToViewport = latestScroll - pricingStart;
+  // “pegado” al viewport (parece ya estar detrás)
+  const lockToViewport = latestScroll - pricingStart;
 
-      // drift sutil solo una vez que empezó la revelación
-      const driftPhase = Math.max(0, latestScroll - curtainStart); // 0 antes del telón
-      const bgDrift    = driftPhase * -0.10;
-      const scrDrift   = driftPhase * -0.14;
+  // progreso dentro de la ventana de revelado (clamp)
+  const progress   = Math.max(0, Math.min(latestScroll, curtainEnd) - curtainStart);
 
-      pricingBg.style.transform    = `translateY(${lockToViewport + bgDrift}px)`;
-      screenOrange.style.transform = `translateY(${lockToViewport + scrDrift}px)`;
+  // drift sutil y CLAMP a tu overscan (20vh)
+  const driftMax   = window.innerHeight * 0.20;   // 20vh
+  const bgDrift    = Math.min(progress * 0.10, driftMax);
+
+  // fondo: pegado + drift
+  pricingBg.style.transform    = `translateY(${lockToViewport + bgDrift}px)`;
+  // overlay: solo pegado (sin drift para que no se “revele” al final)
+  screenOrange.style.transform = `translateY(${lockToViewport}px)`;
+}
 
       // asegúrate de que sigan por debajo de Work 06 (z-20)
       pricingBg.style.zIndex    = '10';
