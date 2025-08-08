@@ -136,6 +136,12 @@
       contain: paint;
     }
 
+    #screen-orange {
+  will-change: transform;
+  transform: translate(-50%, -50%) translateZ(0);
+  backface-visibility: hidden;
+}
+
   </style>
 </head>
 <body class="text-[#F6F8EB]">
@@ -330,7 +336,8 @@
     </div>
 
   </section>
-
+  
+    <!-- PRICING -->
 <section id="pricing" class="relative z-0 min-h-screen overflow-hidden px-0">
   <!-- fondo -->
   <img id="pricing-bg"
@@ -341,16 +348,18 @@
   <!-- Glow overlay -->
 <img id="screen-orange"
      src="assets/screenorange.png"
-     class="absolute z-[15] pointer-events-none"
+     class="absolute z-[30] pointer-events-none"
      style="
        top: 50%;
        left: 50%;
-       width: 140vw;       /* ancho mayor que el viewport para evitar cortes */
+       width: 140vw;
        height: auto;
        max-width: none;
-       transform: translate(-50%, -50%);
+       transform: translate(-50%, -50%) translateZ(0);
        mix-blend-mode: screen;
        opacity: 0.9;
+       will-change: transform;
+       backface-visibility: hidden;
      " />
 
   <!-- flores -->
@@ -411,7 +420,6 @@
        top: 18vh;
        right: 10vw;
      " />
-
 
   <!-- wrapper con padding para el contenido -->
   <div class="relative z-40 hidden md:grid md:grid-cols-4 md:gap-[18px] min-h-screen items-end py-[48px] px-[32px]">
