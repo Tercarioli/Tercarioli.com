@@ -385,15 +385,15 @@
 
       // drift sutil solo una vez que empezó la revelación
       const driftPhase = Math.max(0, latestScroll - curtainStart); // 0 antes del telón
-      const bgDrift    = driftPhase * 0.30;
-      const scrDrift   = driftPhase * 0.14;
+      const bgDrift    = driftPhase * -0.10;
+      const scrDrift   = driftPhase * -0.14;
 
       pricingBg.style.transform    = `translateY(${lockToViewport + bgDrift}px)`;
       screenOrange.style.transform = `translateY(${lockToViewport + scrDrift}px)`;
 
       // asegúrate de que sigan por debajo de Work 06 (z-20)
       pricingBg.style.zIndex    = '10';
-      screenOrange.style.zIndex = '30';
+      screenOrange.style.zIndex = '-30';
     }
 
     requestAnimationFrame(updateParallax);
