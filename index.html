@@ -338,6 +338,21 @@
        alt=""
        class="absolute left-0 top-[-20vh] w-[100vw] h-[140vh] max-w-none object-cover z-10" />
 
+  <!-- Glow overlay -->
+<img id="screen-orange"
+     src="assets/screenorange.png"
+     class="absolute z-[15] pointer-events-none"
+     style="
+       top: 50%;
+       left: 50%;
+       width: 140vw;       /* ancho mayor que el viewport para evitar cortes */
+       height: auto;
+       max-width: none;
+       transform: translate(-50%, -50%);
+       mix-blend-mode: screen;
+       opacity: 0.9;
+     " />
+
   <!-- flores -->
 <img id="flor-01" src="assets/flor-01.png"
      class="absolute z-20"
@@ -396,7 +411,6 @@
        top: 18vh;
        right: 10vw;
      " />
-
 
 
   <!-- wrapper con padding para el contenido -->
