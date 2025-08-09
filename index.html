@@ -567,7 +567,7 @@
         const lockToViewport = latestScroll - pricingStart;
         const progress = Math.max(0, Math.min(latestScroll, curtainEnd) - curtainStart);
         const driftMax = Math.round(window.innerHeight * 0.20);
-        const bgDrift = Math.min(Math.round(progress * -0.10), driftMax);
+        const bgDrift = Math.min(Math.round(progress * -0.20), driftMax);
         
         pricingBg.style.transform = `translateY(${Math.round(lockToViewport + bgDrift)}px) translateZ(0)`;
 
