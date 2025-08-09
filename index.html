@@ -373,18 +373,18 @@
                 style="font-size:46px; letter-spacing:-0.12em; color:#505050;">/m</span>
         </div>
         <div class="flex items-start">
-          <p class="m-0 font-normal ml-2"
+          <p class="m-0 font-normal"
              style="font-size:38px; letter-spacing:-0.04em; color:#505050; line-height:0.9;">
             I elevate the creative output of your projects.
           </p>
         </div>
       </div>
 
-      <div class="flex items-start">
+      <div class="flex items-start" style="min-height: 60px;">
         <span class="font-normal text-[#FF6B3D] leading-none"
               style="font-size:22px; letter-spacing:-0.04em; transform: translateY(2px);">✦</span>
         <p class="m-0 font-normal ml-2"
-           style="max-width: 50%; font-size:18px; letter-spacing:-0.04em; color:#FF6B3D; line-height:1.15">
+           style="max-width: 260px; font-size:18px; letter-spacing:-0.04em; color:#FF6B3D; line-height: 1.15;">
           Plug–and–play creative direction in your async dashboard.
         </p>
       </div>
@@ -393,9 +393,20 @@
 
   <a href="#start"
      class="block text-center font-semibold py-[12px] border transition-colors duration-200 mx-6 md:mx-8 mb-6 md:mb-8"
-     style="font-size:24px; color:#FF6B3D; border-color:#FF6B3D; border-radius:1px;"
-     onmouseover="this.style.backgroundColor='#FF6B3D'; this.style.color='#F6F8EB';"
-     onmouseout="this.style.backgroundColor='transparent'; this.style.color='#FF6B3D';">
+     style="
+       font-size:24px; color:#FF6B3D; border-color:#FF6B3D; border-radius:1px;
+       transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+     "
+     onmouseover="
+       this.style.transform = 'translateY(-2px)';
+       this.style.backgroundColor='#FF6B3D';
+       this.style.color='#F6F8EB';
+     "
+     onmouseout="
+       this.style.transform = 'translateY(0)';
+       this.style.backgroundColor='transparent';
+       this.style.color='#FF6B3D';
+     ">
     Start now
   </a>
 </article>
@@ -407,7 +418,7 @@
        style="top:-48px; font-size:24px; letter-spacing:-0.04em; color:#F6F8EB;">
       “I want my team to grow”
     </p>
-    <article class="bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden flex flex-col justify-between"
+   <article class="bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden flex flex-col justify-between"
              style="aspect-ratio:1/1.1; min-height:540px;">
       <div class="flex flex-col h-full w-full p-6 md:p-8">
         <div class="flex flex-col pb-1">
@@ -446,9 +457,20 @@
 
       <a href="#start"
          class="block text-center font-semibold py-[12px] transition-colors duration-200 mx-6 md:mx-8 mb-6 md:mb-8"
-         style="font-size:24px; color:#F6F8EB; background-color:#505050; border:1px solid #505050; border-radius:1px;"
-         onmouseover="this.style.backgroundColor='#F6F8EB'; this.style.color='#505050';"
-         onmouseout="this.style.backgroundColor='#505050'; this.style.color='#F6F8EB';">
+         style="
+           font-size:24px; color:#F6F8EB; background-color:#505050; border:1px solid #505050; border-radius:1px;
+           transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+         "
+         onmouseover="
+           this.style.transform = 'translateY(-2px)';
+           this.style.backgroundColor='#F6F8EB';
+           this.style.color='#505050';
+         "
+         onmouseout="
+           this.style.transform = 'translateY(0)';
+           this.style.backgroundColor='#505050';
+           this.style.color='#F6F8EB';
+         ">
         Start now
       </a>
     </article>
