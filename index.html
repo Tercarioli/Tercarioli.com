@@ -43,13 +43,13 @@
       #hand { right: -50px; }
     }
 
-    #agency-text, #contracts-text, #overhead-text, #creative-text {
+    #zero-friction, #contracts-text, #overhead-text, #creative-text {
       will-change: transform;
       transform: translateZ(0);
       backface-visibility: hidden;
       pointer-events: none;
     }
-    #agency-text {
+    #zero-friction {
       position: absolute;
       top: -420px;
       left: 32px;
@@ -62,7 +62,7 @@
       z-index: -1;
     }
     @media (min-width: 768px) {
-      #agency-text { top: -40px; font-size: 11vw; }
+      #zero-friction { top: -40px; font-size: 11vw; }
     }
 
     #contracts-text {
@@ -192,7 +192,7 @@
   </section>
 
   <section id="work-02" class="relative w-full px-[32px] mb-[180px]">
-    <h2 id="agency-text" aria-hidden="true">
+    <h2 id="zero-friction" aria-hidden="true">
   <span class="inline-block ml-0 md:ml-[1.5em]">WITH</span><br>
   ZERO<br>
   FRICTION.
@@ -552,7 +552,7 @@
   </section>
 
   <!-- FOOTER -->
-<section class="h-[80vh] grid grid-cols-4 px-6 md:px-8 py-16" id="footer" style="background-color: #F6F8EB;">
+<section class="h-[80vh] grid grid-cols-4 px-6 md:px-8 py-16" id="footer" style="background-color: #F6F8EB; position: relative;">
   <div class="col-start-4 flex flex-col items-start gap-4">
     <img src="assets/tercarioli-black.png" alt="Tercarioli Logo" class="w-[156px]">
 
@@ -581,11 +581,9 @@
     </div>
   </div>
 
-  <div class="absolute bottom-8 left-8" style="transform: rotate(-90deg) translateX(-100%); transform-origin: left bottom;">
-    <h2 class="m-0 font-extrabold text-right leading-[0.73] tracking-[-0.04em]" style="font-size: 140px; color: #FF6B3D;">
-      <span class="inline-block mr-[1.5em]">JUST</span><br>CREATIVE<br>FRESHNESS
-    </h2>
-  </div>
+  <h2 id="footer-text" class="absolute bottom-[32px] left-[32px] text-[#FF6B3D] font-extrabold leading-[0.73] tracking-[-0.04em] text-[14vw] md:text-[11vw] max-w-full md:max-w-[75vw] z-0 text-left pointer-events-none">
+    <span class="inline-block mr-[1.5em]">JUST</span><br>CREATIVE<br>FRESHNESS
+  </h2>
 </section>
   
   <img src="assets/fullhand.png" alt="Hand" id="hand" />
