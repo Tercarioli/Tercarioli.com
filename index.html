@@ -497,20 +497,27 @@
       </div>
     </div>
 
-    <a href="#start"
-       class="block text-center font-semibold py-[12px] transition-colors duration-200 mx-6 md:mx-8 mb-6 md:mb-8"
-       style="
-         font-size:24px; color:#F6F8EB; border:1px solid transparent; border-radius:1px;
-         background: linear-gradient(180deg, #FF6B3D 0%, #FF2D00 100%);
-         box-shadow:
-           0px 2px 0.6px rgba(221, 52, 0, 0.11),
-           0px 4px 7.7px rgba(221, 52, 0, 0.39),
-           inset 0px -4px 25.5px 3px rgba(255, 107, 61, 1),
-           inset 0px 2px 0.6px rgba(221, 52, 0, 0.11),
-           inset 0px 4px 7.7px rgba(221, 52, 0, 0.39);
-       ">
-      Start now
-    </a>
+<a href="#start"
+   class="block text-center font-semibold py-[12px] transition-colors duration-200 mx-6 md:mx-8 mb-6 md:mb-8"
+   style="
+     font-size:24px; color:#F6F8EB; border:1px solid transparent; border-radius:1px;
+     background: linear-gradient(180deg, #FF6B3D 0%, #FF2D00 100%);
+     box-shadow:
+       /* EXTERIORES */
+       0px 2px 0.6px rgba(221, 52, 0, 0.11),
+       0px 4px 7.7px rgba(221, 52, 0, 0.39),
+       /* INTERIORES */
+       inset 0px -4px 25.5px 3px rgba(255, 107, 61, 1),
+       inset 0px 2px 0.6px rgba(221, 52, 0, 0.11),
+       inset 0px 4px 7.7px rgba(221, 52, 0, 0.39);
+     transition: box-shadow 0.2s ease;
+   "
+   onmouseover="this.style.boxShadow = 'inset 0px -6px 20px 4px rgba(255, 107, 61, 1), inset 0px 4px 10px rgba(221, 52, 0, 0.2), 0px 1px 0.4px rgba(221, 52, 0, 0.05), 0px 2px 5px rgba(221, 52, 0, 0.15)';"
+   onmouseout="this.style.boxShadow = '0px 2px 0.6px rgba(221, 52, 0, 0.11), 0px 4px 7.7px rgba(221, 52, 0, 0.39), inset 0px -4px 25.5px 3px rgba(255, 107, 61, 1), inset 0px 2px 0.6px rgba(221, 52, 0, 0.11), inset 0px 4px 7.7px rgba(221, 52, 0, 0.39)';"
+>
+  Start now
+</a>
+    
   </article>
 </div>
 
