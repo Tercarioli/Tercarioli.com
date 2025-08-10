@@ -43,28 +43,30 @@
       #hand { right: -50px; }
     }
 
-    #hand-frag {
+ #hand-frag {
   position: absolute;
-  /* Posición inicial: cerca de la mano, ajustable */
   bottom: clamp(140px, 18vh, 300px);
-  right: clamp(180px, 16vw, 320px);
 
-  /* Tamaño adaptable */
-  width: clamp(120px, 12vw, 220px);
+  /* Moverlo más cerca del borde derecho */
+  right: clamp(40px, 10vw, 120px);
 
-  z-index: 999;              /* sobre el fondo del hero pero debajo de la mano fixed */
+  /* Reducir tamaño a la mitad */
+  width: clamp(60px, 6vw, 110px);
+
+  z-index: 999;
   pointer-events: none;
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
+
 @media (max-width: 640px) {
   #hand-frag {
-    right: clamp(80px, 14vw, 160px);
-    bottom: clamp(100px, 14vh, 220px);
-    width: clamp(90px, 22vw, 160px);
+    right: clamp(20px, 8vw, 80px);
+    width: clamp(45px, 11vw, 80px);
   }
 }
+
 
 
     #zero-friction, #contracts-text, #overhead-text, #creative-text {
