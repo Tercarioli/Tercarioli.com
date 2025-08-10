@@ -302,7 +302,14 @@
   <style>
     /* Todas las columnas de pricing son contenedores */
     .pricing-column { container-type: inline-size; }
-    .pricing-card   { container-type: inline-size; min-height: 540px; }
+    .pricing-card{
+  container-type: inline-size;
+  /* Alto proporcional a su propio ancho, con límites sanos */
+  min-height: clamp(420px, 62cqw, 640px);
+  /* Opcional: asegura “forma de tarjeta” aun con poco contenido */
+  aspect-ratio: 4 / 5;
+}
+
 
     @media (max-width: 768px) {
       .pricing-card { min-height: 460px; }
