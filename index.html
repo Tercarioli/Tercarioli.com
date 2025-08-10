@@ -43,6 +43,30 @@
       #hand { right: -50px; }
     }
 
+    #hand-frag {
+  position: absolute;
+  /* Posición inicial: cerca de la mano, ajustable */
+  bottom: clamp(140px, 18vh, 300px);
+  right: clamp(180px, 16vw, 320px);
+
+  /* Tamaño adaptable */
+  width: clamp(120px, 12vw, 220px);
+
+  z-index: 999;              /* sobre el fondo del hero pero debajo de la mano fixed */
+  pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+@media (max-width: 640px) {
+  #hand-frag {
+    right: clamp(80px, 14vw, 160px);
+    bottom: clamp(100px, 14vh, 220px);
+    width: clamp(90px, 22vw, 160px);
+  }
+}
+
+
     #zero-friction, #contracts-text, #overhead-text, #creative-text {
       will-change: transform;
       transform: translateZ(0);
@@ -180,6 +204,12 @@
         </div>
       </nav>
     </div>
+    <!-- Fragmento mano (hero) -->
+<img
+  id="hand-frag"
+  src="assets/fragmento-mano.png"
+  alt=""
+/>
   </header>
 
   <section class="relative z-20 bg-[#F6F8EB] overflow-hidden">
@@ -624,6 +654,7 @@
     const pricingBg = document.querySelector('#pricing-bg');
     const pricing = document.querySelector('#pricing');
     const footer = document.querySelector('#footer');
+    const handFrag = document.querySelector('#hand-frag');
 
     // Referencias a los elementos que faltaban
     const flor01 = document.querySelector('#flor-01');
@@ -644,6 +675,7 @@
       const offsetBg = Math.round(latestScroll * 0.55);
       const offsetHand = Math.round(latestScroll * -0.70);
       const offsetText = Math.round(latestScroll * 0.15);
+      const offsetFrag = Math.round(latestScroll * -0.45); // más lento que la mano (-0.70)
 
       if (heroBg)       heroBg.style.transform        = `translateY(${offsetBg}px) translateZ(0)`;
       if (hand)         hand.style.transform          = `translateY(${offsetHand}px) translateZ(0)`;
@@ -651,6 +683,8 @@
       if (agencyText)   agencyText.style.transform    = `translateY(${offsetText}px) translateZ(0)`;
       if (contractsText)contractsText.style.transform = `translateY(${offsetText}px) translateZ(0)`;
       if (overheadText) overheadText.style.transform  = `translateY(${offsetText}px) translateZ(0)`;
+      if (handFrag) handFrag.style.transform = `translateY(${offsetFrag}px) translateZ(0)`;
+      
 
       // Lógica específica para el fondo y las flores de pricing
       if (pricingBg) {
