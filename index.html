@@ -298,65 +298,75 @@
   </section>
   
 <!-- PRICING -->
-<section id="pricing" class="relative z-0 overflow-hidden">
-  <img id="pricing-bg"
-       src="assets/pricingback.jpg"
-       alt=""
+<section id="pricing" class="relative z-0 min-h-screen overflow-hidden">
+  <style>
+    /* Container queries para escalar textos por ancho de tarjeta */
+    .pricing-card { container-type: inline-size; }
+
+    /* Tamaños base (parecidos al original, sin “20% menos”) */
+    .scale-xxl { font-size: clamp(34px, 4.8vw, 58px); letter-spacing:-0.04em; }
+    .scale-xl  { font-size: clamp(24px, 3.2vw, 36px); letter-spacing:-0.04em; }
+    .scale-lg  { font-size: clamp(18px, 2.6vw, 28px); letter-spacing:-0.04em; }
+    .scale-md  { font-size: clamp(14px, 1.6vw, 18px); letter-spacing:-0.04em; }
+    .scale-sm  { font-size: clamp(12px, 1.2vw, 16px); }
+
+    /* Cuando la tarjeta es angosta, reducimos suavemente con cqw */
+    @container (max-width: 520px) {
+      .scale-xxl { font-size: clamp(28px, 6cqw, 40px); }
+      .scale-xl  { font-size: clamp(20px, 5.5cqw, 28px); }
+      .scale-lg  { font-size: clamp(16px, 5cqw, 24px); }
+      .scale-md  { font-size: clamp(13px, 4.5cqw, 16px); }
+      .scale-sm  { font-size: clamp(11px, 4cqw, 14px); }
+    }
+  </style>
+
+  <!-- BG + decor -->
+  <img id="pricing-bg" src="assets/pricingback.jpg" alt=""
        class="absolute left-0 top-[-20vh] w-[100vw] h-[140vh] max-w-none object-cover z-10" />
-
-  <img id="screen-orange"
-       src="assets/screenorange.png"
-       class="absolute z-[30] pointer-events-none"
-       style="top:0; left:0; width:100%; height:100%; max-width:none; mix-blend-mode:screen; opacity:.9; object-fit:cover;" />
-
+  <img id="screen-orange" src="assets/screenorange.png" class="absolute z-[30] pointer-events-none"
+       style="top:0;left:0;width:100%;height:100%;max-width:none;mix-blend-mode:screen;opacity:.9;object-fit:cover;" />
   <img id="flor-01" src="assets/flor-01.png" class="absolute z-20"
        style="width:calc(25vw * 1.7);max-width:none;top:calc(55vh - (calc(25vw * 1.7)/2));left:calc(5vw - (calc(25vw * 1.7)/2));" />
   <img id="flor-02" src="assets/flor-02.png" class="absolute z-20"
        style="width:calc(18vw * 1.25);max-width:none;top:calc(10vh - (calc(18vw * 1.25)/2));right:calc(5vw - (calc(18vw * 1.25)/2));" />
   <img id="flor-03" src="assets/flor-03.png" class="absolute z-20"
        style="width:calc(28vw * 1.8);max-width:none;bottom:calc(0vh - (calc(28vw * 1.8)/2));left:calc(45vw - (calc(28vw * 1.8)/2));" />
-  <img id="fragmento-01" src="assets/fragmento-01.png" class="absolute z-20" style="width:6vw;max-width:none;top:15vh;left:8vw;" />
-  <img id="fragmento-02" src="assets/fragmento-02.png" class="absolute z-20" style="width:12vw;max-width:none;top:10vh;left:50%;transform:translateX(-50%);" />
-  <img id="fragmento-03" src="assets/fragmento-03.png" class="absolute z-20" style="width:4vw;max-width:none;top:18vh;right:10vw;" />
+  <img id="fragmento-01" src="assets/fragmento-01.png" class="absolute z-20" style="width:6vw;top:15vh;left:8vw;" />
+  <img id="fragmento-02" src="assets/fragmento-02.png" class="absolute z-20"
+       style="width:12vw;top:10vh;left:50%;transform:translateX(-50%);" />
+  <img id="fragmento-03" src="assets/fragmento-03.png" class="absolute z-20" style="width:4vw;top:18vh;right:10vw;" />
 
-  <!-- BLOQUE CENTRADO VERTICALMENTE -->
-  <div class="relative z-40 flex justify-center items-center min-h-[100svh] py-24 px-8">
-    <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
+  <!-- CONTENIDO -->
+  <div class="relative z-40 flex items-center justify-center min-h-screen py-24">
+    <!-- Grid 4 columnas (como el resto del sitio) -->
+    <div class="w-full px-[32px] grid grid-cols-1 md:grid-cols-4 gap-[18px]">
 
       <!-- CARD 1 -->
-      <div class="relative flex flex-col">
+      <div class="relative flex flex-col md:col-start-2">
         <p class="w-full text-center italic font-medium text-2xl tracking-tight text-[#F6F8EB] mb-4">
           “I need creative distinction”
         </p>
-        <article class="bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden flex flex-col justify-between w-full h-full p-6 lg:p-8 min-h-[448px]">
+        <article
+          class="pricing-card bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden
+                 flex flex-col justify-between w-full h-full p-6 lg:p-8 min-h-[448px]">
           <div class="flex flex-col">
-            <!-- Título x2 -->
-            <h3 class="font-extrabold leading-none m-0 mb-4"
-                style="font-size: clamp(72px, 10vw, 120px); letter-spacing:-0.04em; color:#171717;">
-              FOCUS
-            </h3>
+            <h3 class="font-extrabold leading-none m-0 mb-4 scale-xxl" style="color:#171717;">FOCUS</h3>
 
             <div class="flex flex-col gap-6">
               <div class="flex flex-col">
                 <div class="flex items-baseline gap-1">
-                  <!-- Precio +80% -->
-                  <span class="font-normal m-0 leading-none"
-                        style="font-size: clamp(65px, 9vw, 108px); letter-spacing:-0.12em; color:#505050;">$999</span>
-                  <span class="font-normal m-0 leading-none"
-                        style="font-size: clamp(50px, 7.2vw, 83px); letter-spacing:-0.12em; color:#505050;">/m</span>
+                  <span class="font-normal m-0 leading-none scale-xxl" style="color:#505050;">$999</span>
+                  <span class="font-normal m-0 leading-none scale-xl"  style="color:#505050;">/m</span>
                 </div>
-                <!-- Párrafo principal +50% -->
-                <p class="m-0 font-normal"
-                   style="font-size: clamp(36px, 5.25vw, 57px); letter-spacing:-0.04em; color:#505050; line-height:1;">
+                <p class="m-0 font-normal scale-lg" style="color:#505050; line-height:1;">
                   I elevate the creative output of your projects.
                 </p>
               </div>
 
-              <!-- Párrafo secundario +10% y máx 50% -->
+              <!-- Bullet con ancho máx 50% en desktop -->
               <div class="flex items-start text-[#FF6B3D]">
-                <span class="leading-none" style="font-size: clamp(17.6px, 2.2vw, 24px);">✦</span>
-                <p class="m-0 font-normal ml-2 md:max-w-[50%]"
-                   style="font-size: clamp(16.5px, 1.65vw, 20px); letter-spacing:-0.04em; line-height:1.2;">
+                <span class="leading-none scale-sm">✦</span>
+                <p class="m-0 font-normal ml-2 md:max-w-[50%] scale-md" style="line-height:1.2;">
                   Plug–and–play creative direction in your async dashboard.
                 </p>
               </div>
@@ -364,8 +374,8 @@
           </div>
 
           <a href="#start"
-             class="block text-center font-semibold mt-8 py-2.5 border rounded-[1px] transition-all duration-200"
-             style="font-size: clamp(18px, 2vw, 24px); color:#FF6B3D; border-color:#FF6B3D;"
+             class="block text-center font-semibold mt-8 py-2.5 border rounded-[1px] transition-all duration-200 scale-md"
+             style="color:#FF6B3D; border-color:#FF6B3D;"
              onmouseover="this.style.transform='translateY(-2px)'; this.style.backgroundColor='#FF6B3D'; this.style.color='#F6F8EB';"
              onmouseout="this.style.transform='translateY(0)'; this.style.backgroundColor='transparent'; this.style.color='#FF6B3D';">
             Start now
@@ -374,35 +384,30 @@
       </div>
 
       <!-- CARD 2 -->
-      <div class="relative flex flex-col">
+      <div class="relative flex flex-col md:col-start-3">
         <p class="w-full text-center italic font-medium text-2xl tracking-tight text-[#F6F8EB] mb-4">
           “I want my team to grow”
         </p>
-        <article class="bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden flex flex-col justify-between w-full h-full p-6 lg:p-8 min-h-[448px]">
+        <article
+          class="pricing-card bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden
+                 flex flex-col justify-between w-full h-full p-6 lg:p-8 min-h-[448px]">
           <div class="flex flex-col">
-            <h3 class="font-extrabold leading-none m-0 mb-4"
-                style="font-size: clamp(72px, 10vw, 120px); letter-spacing:-0.04em; color:#171717;">
-              GROWTH
-            </h3>
+            <h3 class="font-extrabold leading-none m-0 mb-4 scale-xxl" style="color:#171717;">GROWTH</h3>
 
             <div class="flex flex-col gap-6">
               <div class="flex flex-col">
                 <div class="flex items-baseline gap-1">
-                  <span class="font-normal m-0 leading-none"
-                        style="font-size: clamp(65px, 9vw, 108px); letter-spacing:-0.12em; color:#505050;">$1,490</span>
-                  <span class="font-normal m-0 leading-none"
-                        style="font-size: clamp(50px, 7.2vw, 83px); letter-spacing:-0.12em; color:#505050;">/m</span>
+                  <span class="font-normal m-0 leading-none scale-xxl" style="color:#505050;">$1,490</span>
+                  <span class="font-normal m-0 leading-none scale-xl"  style="color:#505050;">/m</span>
                 </div>
-                <p class="m-0 font-normal"
-                   style="font-size: clamp(36px, 5.25vw, 57px); letter-spacing:-0.04em; color:#505050; line-height:1;">
+                <p class="m-0 font-normal scale-lg" style="color:#505050; line-height:1;">
                   I coach your team to think more creatively.
                 </p>
               </div>
 
               <div class="flex items-start text-[#FF6B3D]">
-                <span class="leading-none" style="font-size: clamp(17.6px, 2.2vw, 24px);">✦</span>
-                <p class="m-0 font-normal ml-2 md:max-w-[50%]"
-                   style="font-size: clamp(16.5px, 1.65vw, 20px); letter-spacing:-0.04em; line-height:1.2;">
+                <span class="leading-none scale-sm">✦</span>
+                <p class="m-0 font-normal ml-2 md:max-w-[50%] scale-md" style="line-height:1.2;">
                   Plug–and–play direction + 2 mentorship sessions per month.
                 </p>
               </div>
@@ -410,8 +415,8 @@
           </div>
 
           <a href="#start"
-             class="block text-center font-semibold mt-8 py-2.5 border rounded-[1px] transition-all duration-200"
-             style="font-size: clamp(18px, 2vw, 24px); color:#F6F8EB; background-color:#505050; border-color:#505050;"
+             class="block text-center font-semibold mt-8 py-2.5 border rounded-[1px] transition-all duration-200 scale-md"
+             style="color:#F6F8EB;background-color:#505050;border-color:#505050;"
              onmouseover="this.style.transform='translateY(-2px)'; this.style.backgroundColor='#F6F8EB'; this.style.color='#505050';"
              onmouseout="this.style.transform='translateY(0)'; this.style.backgroundColor='#505050'; this.style.color='#F6F8EB';">
             Start now
@@ -420,35 +425,30 @@
       </div>
 
       <!-- CARD 3 -->
-      <div class="relative flex flex-col">
+      <div class="relative flex flex-col md:col-start-4">
         <p class="w-full text-center italic font-medium text-2xl tracking-tight text-[#F6F8EB] mb-4">
           “I want you to handle it”
         </p>
-        <article class="bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden flex flex-col justify-between w-full h-full p-6 lg:p-8 min-h-[448px]">
+        <article
+          class="pricing-card bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden
+                 flex flex-col justify-between w-full h-full p-6 lg:p-8 min-h-[448px]">
           <div class="flex flex-col">
-            <h3 class="font-extrabold leading-none m-0 mb-4"
-                style="font-size: clamp(72px, 10vw, 120px); letter-spacing:-0.04em; color:#171717;">
-              PARTNER
-            </h3>
+            <h3 class="font-extrabold leading-none m-0 mb-4 scale-xxl" style="color:#171717;">PARTNER</h3>
 
             <div class="flex flex-col gap-6">
               <div class="flex flex-col">
                 <div class="flex items-baseline gap-1">
-                  <span class="font-normal m-0 leading-none"
-                        style="font-size: clamp(65px, 9vw, 108px); letter-spacing:-0.12em; color:#505050;">$2,490</span>
-                  <span class="font-normal m-0 leading-none"
-                        style="font-size: clamp(50px, 7.2vw, 83px); letter-spacing:-0.12em; color:#505050;">/m</span>
+                  <span class="font-normal m-0 leading-none scale-xxl" style="color:#505050;">$2,490</span>
+                  <span class="font-normal m-0 leading-none scale-xl"  style="color:#505050;">/m</span>
                 </div>
-                <p class="m-0 font-normal"
-                   style="font-size: clamp(36px, 5.25vw, 57px); letter-spacing:-0.04em; color:#505050; line-height:1;">
+                <p class="m-0 font-normal scale-lg" style="color:#505050; line-height:1;">
                   I deliver fast-paced copy and design on demand.
                 </p>
               </div>
 
               <div class="flex items-start text-[#FF6B3D]">
-                <span class="leading-none" style="font-size: clamp(17.6px, 2.2vw, 24px);">✦</span>
-                <p class="m-0 font-normal ml-2 md:max-w-[50%]"
-                   style="font-size: clamp(16.5px, 1.65vw, 20px); letter-spacing:-0.04em; line-height:1.2;">
+                <span class="leading-none scale-sm">✦</span>
+                <p class="m-0 font-normal ml-2 md:max-w-[50%] scale-md" style="line-height:1.2;">
                   Unlimited requests + pause/resume feature whenever you want.
                 </p>
               </div>
@@ -456,10 +456,10 @@
           </div>
 
           <a href="#start"
-             class="block text-center font-semibold mt-8 py-2.5 rounded-[1px] transition-all duration-200"
-             style="font-size: clamp(18px, 2vw, 24px); color:#F6F8EB; border:1px solid transparent; background: linear-gradient(180deg, #FF6B3D 0%, #FF2D00 100%); box-shadow: 0px 2px 0.6px rgba(221, 52, 0, 0.11), 0px 4px 7.7px rgba(221, 52, 0, 0.39), inset 0px -4px 25.5px 3px rgba(255, 107, 61, 1), inset 0px 2px 0.6px rgba(221, 52, 0, 0.11), inset 0px 4px 7.7px rgba(221, 52, 0, 0.39);"
-             onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0px 4px 10px rgba(221, 52, 0, 0.5), inset 0px -4px 25.5px 3px rgba(255, 107, 61, 1), inset 0px 2px 0.6px rgba(221, 52, 0, 0.11), inset 0px 4px 7.7px rgba(221, 52, 0, 0.39)';"
-             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0px 2px 0.6px rgba(221, 52, 0, 0.11), 0px 4px 7.7px rgba(221, 52, 0, 0.39), inset 0px -4px 25.5px 3px rgba(255, 107, 61, 1), inset 0px 2px 0.6px rgba(221, 52, 0, 0.11), inset 0px 4px 7.7px rgba(221, 52, 0, 0.39)';">
+             class="block text-center font-semibold mt-8 py-2.5 rounded-[1px] transition-all duration-200 scale-md"
+             style="color:#F6F8EB; border:1px solid transparent; background:linear-gradient(180deg,#FF6B3D 0%,#FF2D00 100%); box-shadow:0 2px .6px rgba(221,52,0,.11),0 4px 7.7px rgba(221,52,0,.39), inset 0 -4px 25.5px 3px rgba(255,107,61,1), inset 0 2px .6px rgba(221,52,0,.11), inset 0 4px 7.7px rgba(221,52,0,.39);"
+             onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 4px 10px rgba(221,52,0,.5), inset 0 -4px 25.5px 3px rgba(255,107,61,1), inset 0 2px .6px rgba(221,52,0,.11), inset 0 4px 7.7px rgba(221,52,0,.39)';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px .6px rgba(221,52,0,.11),0 4px 7.7px rgba(221,52,0,.39), inset 0 -4px 25.5px 3px rgba(255,107,61,1), inset 0 2px .6px rgba(221,52,0,.11), inset 0 4px 7.7px rgba(221,52,0,.39)';">
             Start now
           </a>
         </article>
