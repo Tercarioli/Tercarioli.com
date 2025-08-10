@@ -154,6 +154,48 @@
   }
 }
 
+    .work-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.work-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40px; /* parte fuera a la izquierda */
+  width: 60px;
+  background: linear-gradient(to right, rgba(255,107,61,0.4), transparent);
+  opacity: 0;
+  transition: all 0.4s ease;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.work-card:hover::after {
+  left: 0; /* entra ligeramente en la imagen */
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .work-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+
   </style>
 </head>
 <body class="text-[#F6F8EB]">
@@ -211,7 +253,9 @@
         />
       </a>
     </div>
-    <p class="text-[18px] font-normal text-[#171717]">Local craft for a 46 million audience</p>
+    <p class="text-[18px] font-normal text-[#171717]">
+      Local craft for a 46 million audience
+    </p>
   </div>
 
   <!-- DESKTOP -->
@@ -232,6 +276,7 @@
     </div>
   </div>
 </section>
+
 
 
   <section id="work-02" class="relative w-full px-[32px] mb-[180px]">
