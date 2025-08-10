@@ -43,14 +43,16 @@
       #hand { right: -50px; }
     }
 
- #hand-frag {
+#hand-frag {
   position: absolute;
-  bottom: clamp(140px, 18vh, 300px);
 
-  /* Moverlo más cerca del borde derecho */
+  /* Más arriba: mitad de la pantalla aprox. */
+  bottom: 50vh;
+
+  /* Más cerca del borde derecho */
   right: clamp(40px, 10vw, 120px);
 
-  /* Reducir tamaño a la mitad */
+  /* Tamaño reducido al 50% */
   width: clamp(60px, 6vw, 110px);
 
   z-index: 999;
@@ -62,6 +64,7 @@
 
 @media (max-width: 640px) {
   #hand-frag {
+    bottom: 48vh; /* ligeramente más bajo en mobile */
     right: clamp(20px, 8vw, 80px);
     width: clamp(45px, 11vw, 80px);
   }
@@ -677,7 +680,7 @@
       const offsetBg = Math.round(latestScroll * 0.55);
       const offsetHand = Math.round(latestScroll * -0.70);
       const offsetText = Math.round(latestScroll * 0.15);
-      const offsetFrag = Math.round(latestScroll * -0.45); // más lento que la mano (-0.70)
+      const offsetFrag = Math.round(latestScroll * -0.25); // más lento que la mano (-0.70)
 
       if (heroBg)       heroBg.style.transform        = `translateY(${offsetBg}px) translateZ(0)`;
       if (hand)         hand.style.transform          = `translateY(${offsetHand}px) translateZ(0)`;
