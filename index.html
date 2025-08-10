@@ -300,15 +300,19 @@
 <!-- PRICING -->
 <section id="pricing" class="relative z-0 min-h-screen overflow-hidden">
   <style>
-    /* Todas las columnas y tarjetas de pricing son contenedores */
+    /* Todas las columnas de pricing son contenedores */
     .pricing-column { container-type: inline-size; }
-    .pricing-card   { container-type: inline-size; }
+    .pricing-card   { container-type: inline-size; min-height: 540px; }
+
+    @media (max-width: 768px) {
+      .pricing-card { min-height: 460px; }
+    }
 
     /* Escalado de textos usando cqw */
     .title-text   { font-size: clamp(28px, 14cqw, 58px); letter-spacing: -0.04em; }
     .price-big    { font-size: clamp(24px, 12cqw, 48px); letter-spacing: -0.04em; }
     .price-small  { font-size: clamp(16px, 10cqw, 24px); letter-spacing: -0.04em; }
-    .paragraph    { font-size: clamp(14px, 9cqw, 30px); letter-spacing: -0.015em; line-height: 1.1; margin-top: 0.2em; }
+    .paragraph    { font-size: clamp(14px, 9cqw, 30px); letter-spacing: -0.015em; line-height: 1.1; margin-top: 0.4em; }
     .bullet-text  { font-size: clamp(13px, 4cqw, 18px); }
     .floating-text{ font-size: clamp(18px, 5cqw, 28px); }
   </style>
@@ -341,16 +345,16 @@
         </p>
         <article
           class="pricing-card bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden
-                 flex flex-col justify-between w-full h-full p-6 lg:p-8 min-h-[448px]">
+                 flex flex-col justify-between w-full h-full p-6 lg:p-8">
           <div class="flex flex-col">
-            <h3 class="font-extrabold leading-none m-0 mb-4 title-text" style="color:#171717;">FOCUS</h3>
+            <h3 class="font-extrabold leading-none m-0 mb-4 title-text">FOCUS</h3>
             <div class="flex flex-col gap-6">
               <div class="flex flex-col">
                 <div class="flex items-baseline gap-1">
-                  <span class="font-normal m-0 leading-none price-big" style="color:#505050;">$999</span>
-                  <span class="font-normal m-0 leading-none price-small" style="color:#505050;">/m</span>
+                  <span class="font-normal m-0 leading-none price-big text-[#505050]">$999</span>
+                  <span class="font-normal m-0 leading-none price-small text-[#505050]">/m</span>
                 </div>
-                <p class="m-0 font-normal paragraph" style="color:#505050;">
+                <p class="m-0 font-normal paragraph text-[#505050]">
                   I elevate the creative output of your projects.
                 </p>
               </div>
@@ -379,16 +383,16 @@
         </p>
         <article
           class="pricing-card bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden
-                 flex flex-col justify-between w-full h-full p-6 lg:p-8 min-h-[448px]">
+                 flex flex-col justify-between w-full h-full p-6 lg:p-8">
           <div class="flex flex-col">
-            <h3 class="font-extrabold leading-none m-0 mb-4 title-text" style="color:#171717;">GROWTH</h3>
+            <h3 class="font-extrabold leading-none m-0 mb-4 title-text">GROWTH</h3>
             <div class="flex flex-col gap-6">
               <div class="flex flex-col">
                 <div class="flex items-baseline gap-1">
-                  <span class="font-normal m-0 leading-none price-big" style="color:#505050;">$1,490</span>
-                  <span class="font-normal m-0 leading-none price-small" style="color:#505050;">/m</span>
+                  <span class="font-normal m-0 leading-none price-big text-[#505050]">$1,490</span>
+                  <span class="font-normal m-0 leading-none price-small text-[#505050]">/m</span>
                 </div>
-                <p class="m-0 font-normal paragraph" style="color:#505050;">
+                <p class="m-0 font-normal paragraph text-[#505050]">
                   I coach your team to think more creatively.
                 </p>
               </div>
@@ -417,16 +421,16 @@
         </p>
         <article
           class="pricing-card bg-[#F6F8EB] text-[#171717] border border-[#E9E6DE] overflow-hidden
-                 flex flex-col justify-between w-full h-full p-6 lg:p-8 min-h-[448px]">
+                 flex flex-col justify-between w-full h-full p-6 lg:p-8">
           <div class="flex flex-col">
-            <h3 class="font-extrabold leading-none m-0 mb-4 title-text" style="color:#171717;">PARTNER</h3>
+            <h3 class="font-extrabold leading-none m-0 mb-4 title-text">PARTNER</h3>
             <div class="flex flex-col gap-6">
               <div class="flex flex-col">
                 <div class="flex items-baseline gap-1">
-                  <span class="font-normal m-0 leading-none price-big" style="color:#505050;">$2,490</span>
-                  <span class="font-normal m-0 leading-none price-small" style="color:#505050;">/m</span>
+                  <span class="font-normal m-0 leading-none price-big text-[#505050]">$2,490</span>
+                  <span class="font-normal m-0 leading-none price-small text-[#505050]">/m</span>
                 </div>
-                <p class="m-0 font-normal paragraph" style="color:#505050;">
+                <p class="m-0 font-normal paragraph text-[#505050]">
                   I deliver fast-paced copy and design on demand.
                 </p>
               </div>
@@ -451,7 +455,6 @@
     </div>
   </div>
 </section>
-
 
 
 
