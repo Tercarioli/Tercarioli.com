@@ -141,75 +141,77 @@
   <!-- /OUTER -->
 
   <!-- UTILIDADES VIDEO -->
-  <script>
-    (function(){
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const videos = Array.from(document.querySelectorAll('video.js-autovid'));
+  <!-- UTILIDADES VIDEO -->
+<script>
+  (function(){
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const videos = Array.from(document.querySelectorAll('video.js-autovid'));
 
-      // AUTOPÓSTER por convención (solo si no hay poster manual)
-      videos.forEach(v => {
-        if (!v.getAttribute('poster')) {
-          const raw = v.dataset.src || v.getAttribute('src') || '';
-          if (raw) {
-            // videos/foo.mp4 -> posters/foo.jpg
-            // assets/videos/foo.mp4 -> assets/posters/foo.jpg
-            let poster = raw
-              .replace('videos/', 'posters/')
-              .replace('assets/videos/', 'assets/posters/')
-              .replace(/\.mp4(\?.*)?$/i, '.jpg');
-            v.setAttribute('poster', poster);
-          }
+    // === Config ===
+    const PLAY_VISIBILITY = 0.15;          // antes 0.60; prueba 0.10–0.20 según gusto
+    const LAZY_ROOT_MARGIN = '800px 0px';  // carga el src antes de entrar en pantalla
+
+    // AUTOPÓSTER por convención (solo si no hay poster manual)
+    videos.forEach(v => {
+      if (!v.getAttribute('poster')) {
+        const raw = v.dataset.src || v.getAttribute('src') || '';
+        if (raw) {
+          // videos/foo.mp4 -> posters/foo.jpg
+          // assets/videos/foo.mp4 -> assets/posters/foo.jpg
+          let poster = raw
+            .replace('videos/', 'posters/')
+            .replace('assets/videos/', 'assets/posters/')
+            .replace(/\.mp4(\?.*)?$/i, '.jpg');
+          v.setAttribute('poster', poster);
+        }
+      }
+    });
+
+    // Si reduce motion está activo, quitamos autoplay/loop,
+    // PERO mantenemos el lazy-load y el poster.
+    if (prefersReduced) {
+      videos.forEach(v => { v.removeAttribute('autoplay'); v.removeAttribute('loop'); });
+    }
+
+    // Lazy-load del src desde data-src (usa constante)
+    const lazyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const v = entry.target;
+        if (entry.isIntersecting && !v.src && v.dataset.src) v.src = v.dataset.src;
+      });
+    }, { rootMargin: LAZY_ROOT_MARGIN, threshold: 0 });
+
+    // Play/Pause por visibilidad (umbral configurable)
+    const playObserver = new IntersectionObserver((entries) => {
+      entries.forEach(async (entry) => {
+        const v = entry.target;
+        if (entry.intersectionRatio >= PLAY_VISIBILITY) {
+          v.muted = true; v.playsInline = true;
+          try { await v.play(); } catch(e) {}
+        } else {
+          v.pause();
         }
       });
+    }, { threshold: [0, PLAY_VISIBILITY, 1] });
 
-      // Si reduce motion está activo, quitamos autoplay/loop,
-      // PERO mantenemos el lazy-load y el poster.
-      if (prefersReduced) {
-        videos.forEach(v => { v.removeAttribute('autoplay'); v.removeAttribute('loop'); });
+    videos.forEach(v => { lazyObserver.observe(v); playObserver.observe(v); });
+
+    // Pausar/Reanudar por cambio de pestaña (usa el mismo umbral)
+    document.addEventListener('visibilitychange', () => {
+      if (prefersReduced) return;
+      if (document.hidden) {
+        videos.forEach(v => v.pause());
+      } else {
+        videos.forEach(v => {
+          const r = v.getBoundingClientRect();
+          const visibleY = Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, 0));
+          const ratio = r.height ? (visibleY / r.height) : 0;
+          if (ratio >= PLAY_VISIBILITY) v.play().catch(()=>{});
+        });
       }
+    }, { passive:true });
+  })();
+</script>
 
-      // Lazy-load del src desde data-src (más “ansioso”)
-const lazyObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    const v = entry.target;
-    if (entry.isIntersecting && !v.src && v.dataset.src) {
-      v.src = v.dataset.src;
-      // console.log('src asignado por lazy:', v.src); // debug opcional
-    }
-  });
-}, { rootMargin: '800px 0px', threshold: 0 });
-
-
-      // Play/Pause por visibilidad (si no reduce motion)
-      const playObserver = new IntersectionObserver((entries) => {
-  entries.forEach(async (entry) => {
-    const v = entry.target;
-    if (entry.isIntersecting) {
-      v.muted = true; 
-      v.playsInline = true;
-      try { await v.play(); } catch(e) {}
-    } else {
-      v.pause();
-    }
-  });
-}, { threshold: [0, 0.15, 1] }); // antes era [0, 0.6, 1]
-
-      videos.forEach(v => { lazyObserver.observe(v); playObserver.observe(v); });
-
-      // Pausar/Reanudar por cambio de pestaña
-      document.addEventListener('visibilitychange', () => {
-        if (prefersReduced) return;
-        if (document.hidden) {
-          videos.forEach(v => v.pause());
-        } else {
-          videos.forEach(v => {
-            const r = v.getBoundingClientRect();
-            const visibleY = Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, 0));
-            if (visibleY / r.height >= 0.6) v.play().catch(()=>{});
-          });
-        }
-      }, { passive:true });
-    })();
-  </script>
 </body>
 </html>
