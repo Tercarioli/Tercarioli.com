@@ -1,0 +1,51 @@
+name: Generate posters
+on:
+  push:
+    paths:
+      - "videos/**/*.mp4"
+      - "assets/videos/**/*.mp4"
+      - ".github/workflows/generate-posters.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Generate posters
+        shell: bash
+        run: |
+          set -e
+          mkdir -p posters assets/posters
+
+          shopt -s nullglob
+          for f in videos/*.mp4; do
+            bn="${f##*/}"; bn="${bn%.*}"
+            ffmpeg -y -ss 0.5 -i "$f" -frames:v 1 -q:v 3 "posters/${bn}.jpg"
+          done
+
+          for f in assets/videos/*.mp4; do
+            bn="${f##*/}"; bn="${bn%.*}"
+            ffmpeg -y -ss 0.5 -i "$f" -frames:v 1 -q:v 3 "assets/posters/${bn}.jpg"
+          done
+
+      - name: Commit posters (if any)
+        run: |
+          if [ -n "$(git status --porcelain posters assets/posters 2>/dev/null)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add posters assets/posters
+            git commit -m "chore: auto-generate posters"
+            git push
+          else
+            echo "No new posters to commit."
+          fi
