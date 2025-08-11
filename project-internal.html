@@ -8,255 +8,191 @@
   <!-- Work Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;800&display=swap" rel="stylesheet">
 
-  <!-- Tailwind (CDN para prototipado) -->
+  <!-- Tailwind CDN (para prototipo) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root { --bg:#171717; --fg:#F6F8EB; }
     html,body{ background:var(--bg); color:var(--fg); }
     body{ font-family:"Work Sans",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; }
-    .gallery-box{ aspect-ratio:16/10; } /* Ajusta a la relación de tus tarjetas del home si difiere */
-    a { color: var(--fg); }
+    .gallery-box{ aspect-ratio:16/10; } /* ajusta si tu tarjeta usa otra relación */
+    a{ color:var(--fg); }
   </style>
 </head>
 <body class="antialiased">
-  <!-- WRAPPER -->
-  <div class="mx-auto max-w-[1440px] px-[32px]">
+
+  <!-- OUTER: ancho completo con margen lateral de 32px (como en INDEX) -->
+  <div class="px-[32px]">
 
     <!-- NAVBAR -->
     <!-- DESKTOP -->
-    <nav class="py-[90px] flex items-center justify-between">
+    <nav class="py-[90px] flex items-center justify-between max-w-[1440px] mx-auto">
       <!-- IZQ: back home -->
       <a href="/" class="inline-flex items-center gap-2 hover:opacity-80 transition" aria-label="Back to Home">
-        <!-- Flecha izquierda -->
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M15 6l-6 6 6 6" stroke="#F6F8EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
-
       <!-- DER: next work -->
-      <a href="/next" class="text-sm tracking-wide uppercase hover:opacity-80 transition">
-        Next Work
-      </a>
+      <a href="/next" class="text-sm tracking-wide uppercase hover:opacity-80 transition">Next Work</a>
     </nav>
 
-    <!-- H1 -->
+    <!-- H1 (ignora columnas, alinea a la derecha de la PÁGINA) -->
     <!-- DESKTOP -->
     <header class="mb-[90px]">
       <h1
         class="ml-auto text-right w-[75vw] font-extrabold leading-[0.8]"
         style="font-size:clamp(2.5rem, 8.8vw, 8rem);"
       >
-        CRAFTING FOR<br />A 46 MILLION<br />AUDIENCE
+        CRAFTING FOR<br/>A 46 MILLION<br/>AUDIENCE
       </h1>
     </header>
 
-    <!-- GALERÍA (VIDEO) -->
-    <!-- DESKTOP -->
-    <section aria-label="Moving gallery (videos)" class="space-y-4">
-      <!-- FILA 1 -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4">
-        <div class="md:col-span-2 mb-4 md:mb-0">
-          <div class="gallery-box overflow-hidden">
-            <video
-              class="w-full h-full object-cover js-autovid"
-              autoplay loop muted playsinline preload="metadata"
-              poster="/assets/posters/sample-01.jpg"
-              data-src="/assets/videos/sample-01.mp4"
-            ></video>
+    <!-- CONTAINER INTERNO: grid 4 columnas, max 1440 (como en INDEX) -->
+    <main class="max-w-[1440px] mx-auto">
+
+      <!-- GALERÍA (VIDEO) -->
+      <!-- DESKTOP -->
+      <section aria-label="Moving gallery (videos)" class="space-y-4">
+        <!-- FILA 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4">
+          <div class="md:col-span-2 mb-4 md:mb-0">
+            <div class="gallery-box overflow-hidden">
+              <video class="w-full h-full object-cover js-autovid"
+                     autoplay loop muted playsinline preload="metadata"
+                     poster="/assets/posters/sample-01.jpg"
+                     data-src="/assets/videos/sample-01.mp4"></video>
+            </div>
+          </div>
+          <div class="md:col-span-2">
+            <div class="gallery-box overflow-hidden">
+              <video class="w-full h-full object-cover js-autovid"
+                     autoplay loop muted playsinline preload="metadata"
+                     poster="/assets/posters/sample-02.jpg"
+                     data-src="/assets/videos/sample-02.mp4"></video>
+            </div>
           </div>
         </div>
-        <div class="md:col-span-2">
-          <div class="gallery-box overflow-hidden">
-            <video
-              class="w-full h-full object-cover js-autovid"
-              autoplay loop muted playsinline preload="metadata"
-              poster="/assets/posters/sample-02.jpg"
-              data-src="/assets/videos/sample-02.mp4"
-            ></video>
+
+        <!-- FILA 2 -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4">
+          <div class="md:col-span-2 mb-4 md:mb-0">
+            <div class="gallery-box overflow-hidden">
+              <video class="w-full h-full object-cover js-autovid"
+                     autoplay loop muted playsinline preload="metadata"
+                     poster="/assets/posters/sample-03.jpg"
+                     data-src="/assets/videos/sample-03.mp4"></video>
+            </div>
+          </div>
+          <div class="md:col-span-2">
+            <div class="gallery-box overflow-hidden">
+              <video class="w-full h-full object-cover js-autovid"
+                     autoplay loop muted playsinline preload="metadata"
+                     poster="/assets/posters/sample-04.jpg"
+                     data-src="/assets/videos/sample-04.mp4"></video>
+            </div>
           </div>
         </div>
-      </div>
+        <!-- duplica filas según necesites -->
+      </section>
 
-      <!-- FILA 2 -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4">
-        <div class="md:col-span-2 mb-4 md:mb-0">
-          <div class="gallery-box overflow-hidden">
-            <video
-              class="w-full h-full object-cover js-autovid"
-              autoplay loop muted playsinline preload="metadata"
-              poster="/assets/posters/sample-03.jpg"
-              data-src="/assets/videos/sample-03.mp4"
-            ></video>
+      <!-- PÁRRAFO EN TERCERA COLUMNA (74px para total 90 con gap 16) -->
+      <!-- DESKTOP -->
+      <section class="mt-[74px] grid grid-cols-1 md:grid-cols-4">
+        <p class="md:col-start-3 md:col-span-1 text-base leading-relaxed">
+          Tercarioli blends narrative design, art direction, and strategic thinking to tackle creative challenges
+          at every level — from global brand campaigns to positioning strategies for growing companies.
+        </p>
+      </section>
+
+      <!-- GALERÍA (IMÁGENES — ALTERNATIVA) -->
+      <!-- ⚠️ DESACTIVADA por defecto para que no “salte” antes del párrafo -->
+      <!--
+      <section aria-label="Static gallery (images)" class="mt-10 space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4">
+          <div class="md:col-span-2 mb-4 md:mb-0">
+            <div class="gallery-box overflow-hidden">
+              <img src="/assets/images/sample-01.jpg" alt="Project still 01"
+                   class="w-full h-full object-cover" loading="lazy" />
+            </div>
+          </div>
+          <div class="md:col-span-2">
+            <div class="gallery-box overflow-hidden">
+              <img src="/assets/images/sample-02.jpg" alt="Project still 02"
+                   class="w-full h-full object-cover" loading="lazy" />
+            </div>
           </div>
         </div>
-        <div class="md:col-span-2">
-          <div class="gallery-box overflow-hidden">
-            <video
-              class="w-full h-full object-cover js-autovid"
-              autoplay loop muted playsinline preload="metadata"
-              poster="/assets/posters/sample-04.jpg"
-              data-src="/assets/videos/sample-04.mp4"
-            ></video>
+      </section>
+      -->
+
+      <!-- FOOTER (estructura como INDEX; bloque derecho agrupado en col 4) -->
+      <!-- DESKTOP -->
+      <footer class="my-[90px] grid grid-cols-1 md:grid-cols-4 gap-y-6">
+        <!-- Col 1: Logo -->
+        <div class="md:col-span-1">
+          <img src="/assets/logoheroterca.png" alt="Tercarioli" class="h-8 w-auto" />
+        </div>
+
+        <!-- Col 2: Roles -->
+        <div class="md:col-span-1">
+          <div class="space-y-1">
+            <div>✦ Creative Director</div>
+            <div>✦ Brand Consultant</div>
           </div>
         </div>
-      </div>
-      <!-- Duplica filas según necesites -->
-    </section>
 
-    <!-- PÁRRAFO EN TERCERA COLUMNA -->
-    <!-- DESKTOP -->
-    <section class="mt-[74px] grid grid-cols-1 md:grid-cols-4">
-      <p class="md:col-start-3 md:col-span-1 text-base leading-relaxed">
-        Tercarioli blends narrative design, art direction, and strategic thinking to tackle creative challenges
-        at every level — from global brand campaigns to positioning strategies for growing companies.
-      </p>
-    </section>
+        <!-- Col 3: (espaciador) -->
+        <div class="hidden md:block md:col-span-1"></div>
 
-    <!-- GALERÍA (IMÁGENES — ALTERNATIVA) -->
-    <!-- DESKTOP -->
-    <section aria-label="Static gallery (images)" class="mt-10 space-y-4">
-      <!-- FILA 1 -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4">
-        <div class="md:col-span-2 mb-4 md:mb-0">
-          <div class="gallery-box overflow-hidden">
-            <img
-              src="/assets/images/sample-01.jpg"
-              alt="Project still 01"
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
+        <!-- Col 4: Grupo entero dentro de un DIV (como en index) -->
+        <div class="md:col-span-1">
+          <div class="space-y-1">
+            <nav class="space-y-1">
+              <a href="/about" class="block hover:opacity-80 transition">About</a>
+              <a href="/work" class="block hover:opacity-80 transition">More work</a>
+              <a href="/contact" class="block hover:opacity-80 transition">Contact</a>
+            </nav>
           </div>
         </div>
-        <div class="md:col-span-2">
-          <div class="gallery-box overflow-hidden">
-            <img
-              src="/assets/images/sample-02.jpg"
-              alt="Project still 02"
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- FILA 2 -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4">
-        <div class="md:col-span-2 mb-4 md:mb-0">
-          <div class="gallery-box overflow-hidden">
-            <img
-              src="/assets/images/sample-03.jpg"
-              alt="Project still 03"
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
-        <div class="md:col-span-2">
-          <div class="gallery-box overflow-hidden">
-            <img
-              src="/assets/images/sample-04.jpg"
-              alt="Project still 04"
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-      <!-- Duplica filas según necesites -->
-    </section>
-
-    <!-- FOOTER (VARIANTE CLARA) -->
-    <!-- DESKTOP -->
-    <footer class="my-[90px] grid grid-cols-1 md:grid-cols-4 gap-y-6">
-      <!-- Logo -->
-      <div class="md:col-span-1">
-        <img src="/assets/logoheroterca.png" alt="Tercarioli" class="h-8 w-auto" />
-      </div>
-
-      <!-- Bloque de roles -->
-      <div class="md:col-span-1">
-        <div class="space-y-1">
-          <div>✦ Creative Director</div>
-          <div>✦ Brand Consultant</div>
-        </div>
-      </div>
-
-      <!-- Spacer -->
-      <div class="hidden md:block md:col-span-1"></div>
-
-      <!-- Nav -->
-      <nav class="md:col-span-1 space-y-1">
-        <a href="/about" class="block hover:opacity-80 transition">About</a>
-        <a href="/work" class="block hover:opacity-80 transition">More work</a>
-        <a href="/contact" class="block hover:opacity-80 transition">Contact</a>
-      </nav>
-    </footer>
+      </footer>
+    </main>
   </div>
-  <!-- /WRAPPER -->
+  <!-- /OUTER -->
 
   <!-- UTILIDADES JS -->
   <script>
     (function(){
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const videos = Array.from(document.querySelectorAll('video.js-autovid'));
-
-      // Si el usuario prefiere menos movimiento, desactivamos autoplay y loop
       if (prefersReduced) {
-        videos.forEach(v => {
-          v.removeAttribute('autoplay');
-          v.removeAttribute('loop');
-        });
-        return; // No montamos observers
+        videos.forEach(v => { v.removeAttribute('autoplay'); v.removeAttribute('loop'); });
+        return;
       }
-
-      // Lazy-load: set src desde data-src cuando entre al viewport
       const lazyObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           const v = entry.target;
-          if (entry.isIntersecting) {
-            if (!v.src && v.dataset.src) {
-              v.src = v.dataset.src;
-            }
-          }
+          if (entry.isIntersecting && !v.src && v.dataset.src) v.src = v.dataset.src;
         });
-      }, { root: null, rootMargin: '200px 0px', threshold: 0 });
+      }, { rootMargin: '200px 0px', threshold: 0 });
 
-      // Play/Pause por visibilidad en viewport (60%)
       const playObserver = new IntersectionObserver((entries) => {
         entries.forEach(async (entry) => {
           const v = entry.target;
-          if (entry.intersectionRatio >= 0.6) {
-            try {
-              // Asegura mute y playsinline
-              v.muted = true; v.playsInline = true;
-              await v.play();
-            } catch (e) {
-              /* silencioso */
-            }
-          } else {
-            v.pause();
-          }
+          if (entry.intersectionRatio >= 0.6) { v.muted = true; v.playsInline = true; try{ await v.play(); }catch{} }
+          else v.pause();
         });
-      }, { threshold: [0, 0.6, 1] });
+      }, { threshold: [0,0.6,1] });
 
-      // Suscribir videos a ambos observers
       videos.forEach(v => { lazyObserver.observe(v); playObserver.observe(v); });
 
-      // Pausar/Reanudar por visibilidad de la pestaña
       document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          videos.forEach(v => v.pause());
-        } else {
-          videos.forEach(v => {
-            const rect = v.getBoundingClientRect();
-            const visibleY = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
-            const ratio = visibleY / rect.height;
-            if (ratio >= 0.6) {
-              v.play().catch(()=>{});
-            }
-          });
-        }
-      }, { passive: true });
+        if (document.hidden) videos.forEach(v => v.pause());
+        else videos.forEach(v => {
+          const r = v.getBoundingClientRect();
+          const visibleY = Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, 0));
+          if (visibleY / r.height >= 0.6) v.play().catch(()=>{});
+        });
+      }, { passive:true });
     })();
   </script>
 </body>
