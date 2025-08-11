@@ -20,7 +20,7 @@
   <div class="px-[32px]">
 
     <!-- NAVBAR -->
-    <nav class="py-[90px] flex items-center justify-between w-full">
+    <nav class="pt-[32px] pb-[90px] flex items-center justify-between w-full">
       <!-- IZQ: back home -->
       <a href="index.html" aria-label="Back to Home"
          class="text-[20px] leading-none hover:opacity-80 transition">
@@ -182,17 +182,17 @@ const lazyObserver = new IntersectionObserver((entries) => {
 
       // Play/Pause por visibilidad (si no reduce motion)
       const playObserver = new IntersectionObserver((entries) => {
-        entries.forEach(async (entry) => {
-          const v = entry.target;
-          if (prefersReduced) return;
-          if (entry.intersectionRatio >= 0.6) {
-            v.muted = true; v.playsInline = true;
-            try { await v.play(); } catch(e) {}
-          } else {
-            v.pause();
-          }
-        });
-      }, { threshold: [0, 0.6, 1] });
+  entries.forEach(async (entry) => {
+    const v = entry.target;
+    if (entry.isIntersecting) {
+      v.muted = true; 
+      v.playsInline = true;
+      try { await v.play(); } catch(e) {}
+    } else {
+      v.pause();
+    }
+  });
+}, { threshold: [0, 0.15, 1] }); // antes era [0, 0.6, 1]
 
       videos.forEach(v => { lazyObserver.observe(v); playObserver.observe(v); });
 
