@@ -187,13 +187,17 @@
         videos.forEach(v => { v.removeAttribute('autoplay'); v.removeAttribute('loop'); });
       }
 
-      // Lazy-load del src desde data-src
-      const lazyObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const v = entry.target;
-          if (entry.isIntersecting && !v.src && v.dataset.src) v.src = v.dataset.src;
-        });
-      }, { rootMargin: '200px 0px', threshold: 0 });
+      // Lazy-load del src desde data-src (más “ansioso”)
+const lazyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const v = entry.target;
+    if (entry.isIntersecting && !v.src && v.dataset.src) {
+      v.src = v.dataset.src;
+      // console.log('src asignado por lazy:', v.src); // debug opcional
+    }
+  });
+}, { rootMargin: '800px 0px', threshold: 0 });
+
 
       // Play/Pause por visibilidad (si no reduce motion)
       const playObserver = new IntersectionObserver((entries) => {
