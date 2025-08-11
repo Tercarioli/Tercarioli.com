@@ -21,13 +21,16 @@
 
     <!-- NAVBAR (full width, sin max-w) -->
     <!-- DESKTOP -->
-    <nav class="py-[90px] flex items-center justify-between w-full">
-  <!-- IZQ: back home (carácter ←) -->
-  <a href="/" aria-label="Back to Home"
-     class="text-[20px] leading-none hover:opacity-80 transition">←</a>
+<!-- NAVBAR -->
+<nav class="py-[90px] flex items-center justify-between w-full">
+  <!-- IZQ: back home -->
+  <a href="/index.html" aria-label="Back to Home"
+     class="text-[20px] leading-none hover:opacity-80 transition">
+    ←
+  </a>
 
-  <!-- DER: Next work (mayúscula solo inicial + hover como navbar del home) -->
-  <a href="/next"
+  <!-- DER: next work (link por proyecto) -->
+  <a href="/next-work.html"
      class="text-[20px] font-medium transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">
     Next work
   </a>
@@ -119,36 +122,48 @@
 
     <!-- FOOTER (clonado del index: todo el bloque en col 4) -->
     <!-- DESKTOP -->
-    <footer class="mt-[90px] mb-[180px] w-full">
-      <div class="grid grid-cols-1 md:grid-cols-4 md:gap-[18px]">
-        <!-- Col 4: bloque agrupado -->
-        <div class="md:col-start-4 flex flex-col items-start">
-          <!-- Bloque 1: Logo + títulos -->
-          <div class="flex flex-col items-start gap-4">
-            <img src="/assets/logoheroterca.png" alt="Tercarioli Logo" class="w-[156px]">
-            <div class="flex flex-col">
-              <p class="m-0 font-normal" style="font-size:12px;letter-spacing:-0.04em;line-height:1.15;">✦ Creative Director</p>
-              <p class="m-0 font-normal" style="font-size:12px;letter-spacing:-0.04em;line-height:1.15;">✦ Brand Consultant</p>
-            </div>
-          </div>
-          <!-- Bloque 2: Navbar footer -->
-          <div class="flex flex-col gap-2 mt-8" style="font-size:12px;">
-            <a href="/about" class="font-normal no-underline transition-transform duration-200"
-               style="letter-spacing:-0.04em;"
-               onmouseover="this.style.transform='translateY(-2px)';this.style.textDecoration='underline';"
-               onmouseout="this.style.transform='translateY(0)';this.style.textDecoration='none';">About</a>
-            <a href="/work" class="font-normal no-underline transition-transform duration-200"
-               style="letter-spacing:-0.04em;"
-               onmouseover="this.style.transform='translateY(-2px)';this.style.textDecoration='underline';"
-               onmouseout="this.style.transform='translateY(0)';this.style.textDecoration='none';">More Work</a>
-            <a href="/contact" class="font-normal no-underline transition-transform duration-200"
-               style="letter-spacing:-0.04em;"
-               onmouseover="this.style.transform='translateY(-2px)';this.style.textDecoration='underline';"
-               onmouseout="this.style.transform='translateY(0)';this.style.textDecoration='none';">Contact</a>
-          </div>
+    <!-- FOOTER -->
+<footer class="mt-[90px] mb-[180px] w-full">
+  <div class="grid grid-cols-1 md:grid-cols-4 md:gap-[18px]">
+    <!-- Col 4: bloque agrupado -->
+    <div class="md:col-start-4 flex flex-col items-start">
+      <!-- Bloque 1: Logo + títulos -->
+      <div class="flex flex-col items-start gap-4">
+        <img src="/assets/logoheroterca.png" alt="Tercarioli Logo" class="w-[156px]">
+        <div class="flex flex-col text-[#F6F8EB]">
+          <p class="m-0 font-normal" style="font-size: 12px; letter-spacing: -0.04em; line-height: 1.15;">
+            ✦ Creative Director
+          </p>
+          <p class="m-0 font-normal" style="font-size: 12px; letter-spacing: -0.04em; line-height: 1.15;">
+            ✦ Brand Consultant
+          </p>
         </div>
       </div>
-    </footer>
+
+      <!-- Bloque 2: Navbar footer -->
+      <div class="flex flex-col gap-2 mt-8" style="font-size: 18px;">
+        <a href="/index.html" class="font-normal no-underline transition-transform duration-200"
+           style="letter-spacing: -0.04em;"
+           onmouseover="this.style.transform='translateY(-2px)'; this.style.textDecoration='underline';"
+           onmouseout="this.style.transform='translateY(0)'; this.style.textDecoration='none';">
+          Home
+        </a>
+        <a href="/more-work.html" class="font-normal no-underline transition-transform duration-200"
+           style="letter-spacing: -0.04em;"
+           onmouseover="this.style.transform='translateY(-2px)'; this.style.textDecoration='underline';"
+           onmouseout="this.style.transform='translateY(0)'; this.style.textDecoration='none';">
+          More Work
+        </a>
+        <a href="mailto:jorge@tercarioli.com" class="font-normal no-underline transition-transform duration-200"
+           style="letter-spacing: -0.04em;"
+           onmouseover="this.style.transform='translateY(-2px)'; this.style.textDecoration='underline';"
+           onmouseout="this.style.transform='translateY(0)'; this.style.textDecoration='none';">
+          Contact
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
 
   </div>
   <!-- /OUTER -->
