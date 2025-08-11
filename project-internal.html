@@ -4,162 +4,153 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Proyecto Interno — Tercarioli</title>
-
-  <!-- Work Sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;800&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CDN (para prototipo) -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
     :root { --bg:#171717; --fg:#F6F8EB; }
     html,body{ background:var(--bg); color:var(--fg); }
     body{ font-family:"Work Sans",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; }
-    .gallery-box{ aspect-ratio:16/10; } /* ajusta si tu tarjeta usa otra relación */
+    .gallery-box{ aspect-ratio:16/10; } /* iguala la altura visual de las tarjetas */
     a{ color:var(--fg); }
   </style>
 </head>
 <body class="antialiased">
 
-  <!-- OUTER: ancho completo con margen lateral de 32px (como en INDEX) -->
+  <!-- OUTER: como en el index, todo full width con px-[32px] -->
   <div class="px-[32px]">
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR (full width, sin max-w) -->
     <!-- DESKTOP -->
-    <nav class="py-[90px] flex items-center justify-between max-w-[1440px] mx-auto">
-      <!-- IZQ: back home -->
+    <nav class="py-[90px] flex items-center justify-between w-full">
       <a href="/" class="inline-flex items-center gap-2 hover:opacity-80 transition" aria-label="Back to Home">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M15 6l-6 6 6 6" stroke="#F6F8EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
-      <!-- DER: next work -->
       <a href="/next" class="text-sm tracking-wide uppercase hover:opacity-80 transition">Next Work</a>
     </nav>
 
-    <!-- H1 (ignora columnas, alinea a la derecha de la PÁGINA) -->
+    <!-- H1 (ocupa 75vw y alinea a la derecha de la página) -->
     <!-- DESKTOP -->
     <header class="mb-[90px]">
-      <h1
-        class="ml-auto text-right w-[75vw] font-extrabold leading-[0.8]"
-        style="font-size:clamp(2.5rem, 8.8vw, 8rem);"
-      >
+      <h1 class="ml-auto text-right w-[75vw] font-extrabold leading-[0.8]"
+          style="font-size:clamp(2.5rem, 8.8vw, 8rem);">
         CRAFTING FOR<br/>A 46 MILLION<br/>AUDIENCE
       </h1>
     </header>
 
-    <!-- CONTAINER INTERNO: grid 4 columnas, max 1440 (como en INDEX) -->
-    <main class="max-w-[1440px] mx-auto">
+    <!-- MAIN (secciones como en el index: grid 4 col + gap 18) -->
 
-      <!-- GALERÍA (VIDEO) -->
-      <!-- DESKTOP -->
-      <section aria-label="Moving gallery (videos)" class="space-y-4">
-        <!-- FILA 1 -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4">
-          <div class="md:col-span-2 mb-4 md:mb-0">
-            <div class="gallery-box overflow-hidden">
-              <video class="w-full h-full object-cover js-autovid"
-                     autoplay loop muted playsinline preload="metadata"
-                     poster="/assets/posters/sample-01.jpg"
-                     data-src="/assets/videos/sample-01.mp4"></video>
-            </div>
-          </div>
-          <div class="md:col-span-2">
-            <div class="gallery-box overflow-hidden">
-              <video class="w-full h-full object-cover js-autovid"
-                     autoplay loop muted playsinline preload="metadata"
-                     poster="/assets/posters/sample-02.jpg"
-                     data-src="/assets/videos/sample-02.mp4"></video>
-            </div>
+    <!-- GALERÍA (VIDEO) -->
+    <!-- DESKTOP -->
+    <section aria-label="Moving gallery (videos)" class="space-y-4 w-full">
+      <!-- FILA 1 -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-[18px]">
+        <div class="md:col-span-2 mb-4 md:mb-0">
+          <div class="gallery-box overflow-hidden">
+            <video class="w-full h-full object-cover js-autovid"
+                   autoplay loop muted playsinline preload="metadata"
+                   poster="/assets/posters/sample-01.jpg"
+                   data-src="/assets/videos/sample-01.mp4"></video>
           </div>
         </div>
+        <div class="md:col-span-2">
+          <div class="gallery-box overflow-hidden">
+            <video class="w-full h-full object-cover js-autovid"
+                   autoplay loop muted playsinline preload="metadata"
+                   poster="/assets/posters/sample-02.jpg"
+                   data-src="/assets/videos/sample-02.mp4"></video>
+          </div>
+        </div>
+      </div>
 
-        <!-- FILA 2 -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4">
-          <div class="md:col-span-2 mb-4 md:mb-0">
-            <div class="gallery-box overflow-hidden">
-              <video class="w-full h-full object-cover js-autovid"
-                     autoplay loop muted playsinline preload="metadata"
-                     poster="/assets/posters/sample-03.jpg"
-                     data-src="/assets/videos/sample-03.mp4"></video>
+      <!-- FILA 2 -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-[18px]">
+        <div class="md:col-span-2 mb-4 md:mb-0">
+          <div class="gallery-box overflow-hidden">
+            <video class="w-full h-full object-cover js-autovid"
+                   autoplay loop muted playsinline preload="metadata"
+                   poster="/assets/posters/sample-03.jpg"
+                   data-src="/assets/videos/sample-03.mp4"></video>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <div class="gallery-box overflow-hidden">
+            <video class="w-full h-full object-cover js-autovid"
+                   autoplay loop muted playsinline preload="metadata"
+                   poster="/assets/posters/sample-04.jpg"
+                   data-src="/assets/videos/sample-04.mp4"></video>
+          </div>
+        </div>
+      </div>
+      <!-- duplica filas según necesites -->
+    </section>
+
+    <!-- PÁRRAFO EN TERCERA COLUMNA (después de la galería) -->
+    <!-- DESKTOP -->
+    <section class="mt-[74px] grid grid-cols-1 md:grid-cols-4">
+      <p class="md:col-start-3 md:col-span-1 text-base leading-relaxed">
+        Tercarioli blends narrative design, art direction, and strategic thinking to tackle creative challenges
+        at every level — from global brand campaigns to positioning strategies for growing companies.
+      </p>
+    </section>
+
+    <!-- GALERÍA (IMÁGENES — OPCIONAL, MISMA ESTRUCTURA) -->
+    <!-- Copia/pega filas cuando el proyecto sea estático -->
+    <!--
+    <section aria-label="Static gallery (images)" class="mt-10 space-y-4 w-full">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-[18px]">
+        <div class="md:col-span-2 mb-4 md:mb-0">
+          <div class="gallery-box overflow-hidden">
+            <img src="/assets/images/sample-01.jpg" alt="Still 01" class="w-full h-full object-cover" loading="lazy"/>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <div class="gallery-box overflow-hidden">
+            <img src="/assets/images/sample-02.jpg" alt="Still 02" class="w-full h-full object-cover" loading="lazy"/>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+
+    <!-- FOOTER (clonado del index: todo el bloque en col 4) -->
+    <!-- DESKTOP -->
+    <footer class="my-[90px] w-full">
+      <div class="grid grid-cols-1 md:grid-cols-4 md:gap-[18px]">
+        <!-- Col 4: bloque agrupado -->
+        <div class="md:col-start-4 flex flex-col items-start">
+          <!-- Bloque 1: Logo + títulos -->
+          <div class="flex flex-col items-start gap-4">
+            <img src="/assets/logoheroterca.png" alt="Tercarioli Logo" class="w-[156px]">
+            <div class="flex flex-col">
+              <p class="m-0 font-normal" style="font-size:18px;letter-spacing:-0.04em;line-height:1.15;">✦ Creative Director</p>
+              <p class="m-0 font-normal" style="font-size:18px;letter-spacing:-0.04em;line-height:1.15;">✦ Brand Consultant</p>
             </div>
           </div>
-          <div class="md:col-span-2">
-            <div class="gallery-box overflow-hidden">
-              <video class="w-full h-full object-cover js-autovid"
-                     autoplay loop muted playsinline preload="metadata"
-                     poster="/assets/posters/sample-04.jpg"
-                     data-src="/assets/videos/sample-04.mp4"></video>
-            </div>
+          <!-- Bloque 2: Navbar footer -->
+          <div class="flex flex-col gap-2 mt-8" style="font-size:18px;">
+            <a href="/about" class="font-normal no-underline transition-transform duration-200"
+               style="letter-spacing:-0.04em;"
+               onmouseover="this.style.transform='translateY(-2px)';this.style.textDecoration='underline';"
+               onmouseout="this.style.transform='translateY(0)';this.style.textDecoration='none';">About</a>
+            <a href="/work" class="font-normal no-underline transition-transform duration-200"
+               style="letter-spacing:-0.04em;"
+               onmouseover="this.style.transform='translateY(-2px)';this.style.textDecoration='underline';"
+               onmouseout="this.style.transform='translateY(0)';this.style.textDecoration='none';">More Work</a>
+            <a href="/contact" class="font-normal no-underline transition-transform duration-200"
+               style="letter-spacing:-0.04em;"
+               onmouseover="this.style.transform='translateY(-2px)';this.style.textDecoration='underline';"
+               onmouseout="this.style.transform='translateY(0)';this.style.textDecoration='none';">Contact</a>
           </div>
         </div>
-        <!-- duplica filas según necesites -->
-      </section>
+      </div>
+    </footer>
 
-      <!-- PÁRRAFO EN TERCERA COLUMNA (74px para total 90 con gap 16) -->
-      <!-- DESKTOP -->
-      <section class="mt-[74px] grid grid-cols-1 md:grid-cols-4">
-        <p class="md:col-start-3 md:col-span-1 text-base leading-relaxed">
-          Tercarioli blends narrative design, art direction, and strategic thinking to tackle creative challenges
-          at every level — from global brand campaigns to positioning strategies for growing companies.
-        </p>
-      </section>
-
-      <!-- GALERÍA (IMÁGENES — ALTERNATIVA) -->
-      <!-- ⚠️ DESACTIVADA por defecto para que no “salte” antes del párrafo -->
-      <!--
-      <section aria-label="Static gallery (images)" class="mt-10 space-y-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4">
-          <div class="md:col-span-2 mb-4 md:mb-0">
-            <div class="gallery-box overflow-hidden">
-              <img src="/assets/images/sample-01.jpg" alt="Project still 01"
-                   class="w-full h-full object-cover" loading="lazy" />
-            </div>
-          </div>
-          <div class="md:col-span-2">
-            <div class="gallery-box overflow-hidden">
-              <img src="/assets/images/sample-02.jpg" alt="Project still 02"
-                   class="w-full h-full object-cover" loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </section>
-      -->
-
-      <!-- FOOTER (estructura como INDEX; bloque derecho agrupado en col 4) -->
-      <!-- DESKTOP -->
-      <footer class="my-[90px] grid grid-cols-1 md:grid-cols-4 gap-y-6">
-        <!-- Col 1: Logo -->
-        <div class="md:col-span-1">
-          <img src="/assets/logoheroterca.png" alt="Tercarioli" class="h-8 w-auto" />
-        </div>
-
-        <!-- Col 2: Roles -->
-        <div class="md:col-span-1">
-          <div class="space-y-1">
-            <div>✦ Creative Director</div>
-            <div>✦ Brand Consultant</div>
-          </div>
-        </div>
-
-        <!-- Col 3: (espaciador) -->
-        <div class="hidden md:block md:col-span-1"></div>
-
-        <!-- Col 4: Grupo entero dentro de un DIV (como en index) -->
-        <div class="md:col-span-1">
-          <div class="space-y-1">
-            <nav class="space-y-1">
-              <a href="/about" class="block hover:opacity-80 transition">About</a>
-              <a href="/work" class="block hover:opacity-80 transition">More work</a>
-              <a href="/contact" class="block hover:opacity-80 transition">Contact</a>
-            </nav>
-          </div>
-        </div>
-      </footer>
-    </main>
   </div>
   <!-- /OUTER -->
 
-  <!-- UTILIDADES JS -->
+  <!-- UTILIDADES VIDEO (sin cambios) -->
   <script>
     (function(){
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
