@@ -1,0 +1,19 @@
+{
+  "name": "Tercarioli",
+  "short_name": "Tercarioli",
+  "icons": [
+    {
+      "src": "/assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#FF6B3D",
+  "background_color": "#F6F8EB",
+  "display": "standalone"
+}
