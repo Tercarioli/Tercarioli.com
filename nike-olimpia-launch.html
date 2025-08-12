@@ -1,192 +1,276 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nike x Olimpia Launch – Creative Direction | Tercarioli</title>
-    <meta name="description" content="Creative direction for Nike’s launch with Club Olimpia, bringing global brand storytelling to Paraguayan football.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {},
-        }
-      }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet" />
-    <style>
-      body {
-        margin: 0;
-        background-color: #FF6B3D;
-        font-family: 'Work Sans', sans-serif;
-      }
-    </style>
-  </head>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nike x Olimpia launch — Tercarioli</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#171717; --fg:#F6F8EB; }
+    html,body{ background:var(--bg); color:var(--fg); }
+    body{ font-family:"Work Sans",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; }
+    .gallery-box{ aspect-ratio:16/10; } /* iguala la altura visual de las tarjetas */
+    a{ color:var(--fg); }
+  </style>
+</head>
+<body class="antialiased">
 
-  <body class="relative text-[#F6F8EB]">
+  <!-- OUTER -->
+  <div class="px-[32px]">
 
     <!-- NAVBAR -->
-    <nav class="fixed top-0 w-full z-50 bg-[#F6F8EB] text-[#FF6F3D] py-4">
-      <div class="container mx-auto text-center">
-        <a href="/">
-          <img src="assets/logotercarioli.png" alt="Tercarioli logo" class="h-6 mx-auto" />
-        </a>
-      </div>
+    <nav class="pt-[32px] pb-[90px] flex items-center justify-between w-full">
+      <!-- IZQ: back home -->
+      <a href="index.html" aria-label="Back to Home"
+         class="text-[20px] leading-none hover:opacity-80 transition">
+        ←
+      </a>
+
+      <!-- DER: next work (link por proyecto) -->
+      <a href="next-work.html"
+         class="text-[20px] font-medium transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">
+        Next work
+      </a>
     </nav>
 
-    <!-- GRADIENT OVERLAY -->
-    <div class="fixed top-0 left-0 w-full h-[14rem] z-30 pointer-events-none"
-      style="background: linear-gradient(to bottom, rgba(246, 41, 0, 1) 0%, rgba(255, 107, 61, 0.0) 95%)">
-    </div>
+    <!-- H1 -->
+    <header class="mb-[90px]">
+      <h1 class="ml-auto text-right w-[75vw] font-extrabold leading-[0.8]"
+          style="font-size:clamp(2.5rem, 8.8vw, 8rem);">
+        CRAFTING FOR<br/>A 46 MILLION<br/>AUDIENCE
+      </h1>
+    </header>
 
-    <!-- TITULAR PRINCIPAL -->
-<header class="pt-28 md:pt-[10rem] px-6">
-  <div class="max-w-[62.5rem] mx-auto">
-    <h1 class="text-[2.5rem] md:text-[4.5rem] font-extrabold leading-[0.8] text-[#F6F8EB] uppercase">
-      THE YEAR PARAGUAYAN FOOTBALL MET NIKE'S VOICE
-    </h1>
+    <!-- GALERÍA 1 (VIDEO) -->
+<section aria-label="Moving gallery (videos) — 1" class="space-y-4 w-full">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-[18px]">
+    <div class="md:col-span-2 mb-4 md:mb-0">
+      <div class="gallery-box overflow-hidden">
+        <video
+          class="w-full h-full object-cover js-autovid"
+          autoplay loop muted playsinline preload="metadata"
+          data-src="videos/nike-gal01.mp4">
+        </video>
+      </div>
+    </div>
+    <div class="md:col-span-2">
+      <div class="gallery-box overflow-hidden">
+        <video
+          class="w-full h-full object-cover js-autovid"
+          autoplay loop muted playsinline preload="metadata"
+          data-src="videos/nike-gal05.mp4">
+        </video>
+      </div>
+    </div>
   </div>
-</header>
+</section>
 
-<!-- SECCIÓN 1: Texto + video alineados -->
-<section class="mt-16 px-6">
-  <div class="max-w-[62.5rem] mx-auto">
-
-    <!-- Contenedor desktop: texto + video en fila -->
-    <div class="hidden md:flex flex-row gap-8 items-start">
-      
-      <!-- Texto izquierda -->
-      <div class="w-1/2 text-[1.05rem] sm:text-[1.3rem] md:text-[1.7rem] leading-[1.4] text-[#3e1104]">
-        <p class="mb-4 font-semibold">We kind of nailed it.</p>
-        <p class="mb-4">
-          Forget the view count for a second — getting featured on NikeFootball’s global Instagram is already a win for any market. Even more so when the entire thing — from script to screen — was crafted 100% locally.
-        </p>
-        <p>
-          At the time, Nike had just shifted its global brand voice to <em>Never Done</em>. We translated it to <em>Nunca Para</em> — not quite the same punch as the original, but the best cultural fit. The real challenge? Making that platform feel meaningful for a club that’s literally <em>done it all</em>.
-        </p>
+<!-- GALERÍA 2 (VIDEO) -->
+<section aria-label="Moving gallery (videos) — 2" class="space-y-4 w-full">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-[18px]">
+    <div class="md:col-span-2 mb-4 md:mb-0">
+      <div class="gallery-box overflow-hidden">
+        <video
+          class="w-full h-full object-cover js-autovid"
+          autoplay loop muted playsinline preload="metadata"
+          data-src="videos/nike-gal03.mp4">
+        </video>
       </div>
-
-      <!-- Video derecha solo visible en desktop -->
-      <div class="w-1/2 h-[480px]">
-        <iframe
-          src="https://player.vimeo.com/video/1076003468"
-          class="w-full h-full"
-          frameborder="0"
-          allowfullscreen>
-        </iframe>
-      </div>
-
     </div>
-
-    <!-- Contenedor mobile: texto y video apilados -->
-    <div class="block md:hidden mb-8">
-      
-      <!-- Texto -->
-      <div class="text-[1.05rem] sm:text-[1.3rem] leading-[1.4] text-[#3e1104]">
-        <p class="mb-4 font-semibold">We kind of nailed it.</p>
-        <p class="mb-4">
-          Forget the view count for a second — getting featured on NikeFootball’s global Instagram is already a win for any market. Even more so when the entire thing — from script to screen — was crafted 100% locally.
-        </p>
-        <p>
-          At the time, Nike had just shifted its global brand voice to <em>Never Done</em>. We translated it to <em>Nunca Para</em> — not quite the same punch as the original, but the best cultural fit. The real challenge? Making that platform feel meaningful for a club that’s literally <em>done it all</em>.
-        </p>
+    <div class="md:col-span-2">
+      <div class="gallery-box overflow-hidden">
+        <video
+          class="w-full h-full object-cover js-autovid"
+          autoplay loop muted playsinline preload="metadata"
+          data-src="videos/nike-gal02.mp4">
+        </video>
       </div>
-
-      <!-- Video vertical full-width con padding lateral -->
-      <div class="w-full mt-4">
-        <div class="w-full aspect-[9/16]">
-          <iframe
-            src="https://player.vimeo.com/video/1076003468"
-            class="w-full h-full"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
     </div>
+  </div>
+</section>
 
+<!-- GALERÍA 3 (VIDEO) -->
+<section aria-label="Moving gallery (videos) — 3" class="space-y-4 w-full">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-[18px]">
+    <div class="md:col-span-2 mb-4 md:mb-0">
+      <div class="gallery-box overflow-hidden">
+        <video
+          class="w-full h-full object-cover js-autovid"
+          autoplay loop muted playsinline preload="metadata"
+          data-src="videos/nike-gal04.mp4">
+        </video>
+      </div>
+    </div>
+    <div class="md:col-span-2">
+      <div class="gallery-box overflow-hidden">
+        <video
+          class="w-full h-full object-cover js-autovid"
+          autoplay loop muted playsinline preload="metadata"
+          data-src="videos/nike-gal06.mp4">
+        </video>
+      </div>
+    </div>
   </div>
 </section>
 
 
 
-    <!-- SECCIÓN 2: Video horizontal + párrafo compacto -->
-<section class="mt-8 md:mt-16 px-6">
-  <div class="max-w-[62.5rem] mx-auto">
-
-    <!-- Video horizontal -->
-    <iframe
-      src="https://player.vimeo.com/video/1076667372"
-      class="w-full h-[300px] md:h-[600px]"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
-
-    <!-- Párrafo compacto -->
-    <div class="mt-8 md:w-1/2 text-[1.05rem] sm:text-[1.3rem] md:text-[1.7rem] leading-[1.4] text-[#3e1104]">
-      <p>
-        So the first thing we did was a big “hello, Nike is here” moment. On the team’s first training of the year, we surprised players with fans cheering for the whole session. It was satisfactory to see that big Just Do It on the field.
-      </p>
-    </div>
-
-  </div>
+    <!-- PÁRRAFO EN TERCERA COLUMNA -->
+<section class="mt-[74px] grid grid-cols-1 md:grid-cols-4">
+  <p class="md:col-start-3 md:col-span-1 text-base leading-relaxed">
+    Forget views. A NikeFootball global feature is a win. Especially when everything’s made 100% local. With Nike shifting to Never Done, we went with Nunca Para. Less literal punch, better cultural fit. The task: make it matter for a club that’s done it all.
+  </p>
+  <p class="md:col-start-3 md:col-span-1 text-base leading-relaxed mt-4">
+    First move: a “Nike is here” moment. At the year’s first training, players were met by fans cheering non-stop; a huge Just Do It on the pitch said the rest.
+  </p>
+  <p class="md:col-start-3 md:col-span-1 text-base leading-relaxed mt-4">
+    Next came the kit launch: after the Matías Almeida film on 
+    <a href="https://www.instagram.com/tv/CaC5nOpJNc_/?igsh=bXFsZjA5a3BmdTVx" target="_blank" rel="noopener">@nikefootball</a>, 
+    our manifesto dropped on 
+    <a href="https://www.instagram.com/reel/CZQW6vnMhx2/" target="_blank" rel="noopener">Olimpia’s feed</a>. 
+    OOH, print, store windows, and activations completed the launch.
+  </p>
 </section>
 
 
-    <!-- SECCIÓN 3: Párrafo compacto -->
-    <section class="mt-10 md:mt-16 px-6">
-      <div class="max-w-[62.5rem] mx-auto">
-        <div class="md:w-1/2 text-[1.1rem] leading-[1.5]">
-          <!-- contenido texto -->
+    <!-- (Opcional) GALERÍA DE IMÁGENES -->
+    <!--
+    <section aria-label="Static gallery (images)" class="mt-10 space-y-4 w-full">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-[18px]">
+        <div class="md:col-span-2 mb-4 md:mb-0">
+          <div class="gallery-box overflow-hidden">
+            <img src="assets/images/sample-01.jpg" alt="Still 01" class="w-full h-full object-cover" loading="lazy"/>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <div class="gallery-box overflow-hidden">
+            <img src="assets/images/sample-02.jpg" alt="Still 02" class="w-full h-full object-cover" loading="lazy"/>
+          </div>
         </div>
       </div>
     </section>
+    -->
 
-    <!-- SECCIÓN 4: Carrusel horizontal de imágenes -->
-    <section class="mt-16 px-6 overflow-x-auto">
-      <div class="max-w-[62.5rem] mx-auto">
-        <div class="flex gap-6 w-max">
-          <img src="assets/nike/img1.jpg" alt="Nike 1" class="h-auto w-[400px] object-cover" />
-          <img src="assets/nike/img2.jpg" alt="Nike 2" class="h-auto w-[400px] object-cover" />
-          <img src="assets/nike/img3.jpg" alt="Nike 3" class="h-auto w-[400px] object-cover" />
-          <img src="assets/nike/img4.jpg" alt="Nike 4" class="h-auto w-[400px] object-cover" />
+    <!-- FOOTER -->
+    <footer class="mt-[90px] mb-[180px] w-full">
+      <div class="grid grid-cols-1 md:grid-cols-4 md:gap-[18px]">
+        <!-- Col 4: bloque agrupado -->
+        <div class="md:col-start-4 flex flex-col items-start">
+          <!-- Bloque 1: Logo + títulos -->
+          <div class="flex flex-col items-start gap-4">
+            <img src="assets/logoheroterca.png" alt="Tercarioli Logo" class="w-[156px]">
+            <div class="flex flex-col text-[#F6F8EB]">
+              <p class="m-0 font-normal" style="font-size: 12px; letter-spacing: -0.04em; line-height: 1.15;">
+                ✦ Creative Director
+              </p>
+              <p class="m-0 font-normal" style="font-size: 12px; letter-spacing: -0.04em; line-height: 1.15;">
+                ✦ Brand Consultant
+              </p>
+            </div>
+          </div>
+
+          <!-- Bloque 2: Navbar footer -->
+          <div class="flex flex-col gap-2 mt-8" style="font-size: 18px;">
+            <a href="index.html" class="font-normal no-underline transition-transform duration-200"
+               style="letter-spacing: -0.04em;"
+               onmouseover="this.style.transform='translateY(-2px)'; this.style.textDecoration='underline';"
+               onmouseout="this.style.transform='translateY(0)'; this.style.textDecoration='none';">
+              Home
+            </a>
+            <a href="more-work.html" class="font-normal no-underline transition-transform duration-200"
+               style="letter-spacing: -0.04em;"
+               onmouseover="this.style.transform='translateY(-2px)'; this.style.textDecoration='underline';"
+               onmouseout="this.style.transform='translateY(0)'; this.style.textDecoration='none';">
+              More Work
+            </a>
+            <a href="mailto:jorge@tercarioli.com" class="font-normal no-underline transition-transform duration-200"
+               style="letter-spacing: -0.04em;"
+               onmouseover="this.style.transform='translateY(-2px)'; this.style.textDecoration='underline';"
+               onmouseout="this.style.transform='translateY(0)'; this.style.textDecoration='none';">
+              Contact
+            </a>
+          </div>
         </div>
       </div>
-    </section>
+    </footer>
 
-    <!-- SECCIÓN 5: Texto + video -->
-    <section class="mt-16 px-6">
-      <div class="max-w-[62.5rem] mx-auto flex flex-col md:flex-row gap-8 items-start">
-        <!-- Texto izquierda -->
-        <div class="md:w-1/2 text-[1.1rem] leading-[1.5]">
-          <!-- contenido texto -->
-        </div>
-        <!-- Video derecha -->
-        <div class="md:w-1/2">
-          <iframe src="https://player.vimeo.com/video/..." width="100%" height="480" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </section>
+  </div>
+  <!-- /OUTER -->
 
-    <!-- SECCIÓN 6: Imagen horizontal -->
-    <section class="mt-16 px-6">
-      <div class="max-w-[62.5rem] mx-auto">
-        <img src="assets/nike/banner.jpg" alt="Banner horizontal" class="w-full h-auto object-cover" />
-      </div>
-    </section>
+  <!-- UTILIDADES VIDEO -->
+  <!-- UTILIDADES VIDEO -->
+<script>
+  (function(){
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const videos = Array.from(document.querySelectorAll('video.js-autovid'));
 
-    <!-- SECCIÓN 7: Botones Back / Next -->
-    <section class="mt-16 mb-20 px-6">
-      <div class="max-w-[62.5rem] mx-auto flex gap-4">
-        <a href="/" class="w-fit px-6 py-3 bg-[#FF6B3D] text-[#F6F8EB] font-semibold text-lg transition-all duration-300 hover:scale-110">
-          Back
-        </a>
-        <a href="/next-project.html" class="w-fit px-6 py-3 bg-[#FF6B3D] text-[#F6F8EB] font-semibold text-lg transition-all duration-300 hover:scale-110">
-          Next Story
-        </a>
-      </div>
-    </section>
+    // === Config ===
+    const PLAY_VISIBILITY = 0.15;          // antes 0.60; prueba 0.10–0.20 según gusto
+    const LAZY_ROOT_MARGIN = '800px 0px';  // carga el src antes de entrar en pantalla
 
-  </body>
+    // AUTOPÓSTER por convención (solo si no hay poster manual)
+    videos.forEach(v => {
+      if (!v.getAttribute('poster')) {
+        const raw = v.dataset.src || v.getAttribute('src') || '';
+        if (raw) {
+          // videos/foo.mp4 -> posters/foo.jpg
+          // assets/videos/foo.mp4 -> assets/posters/foo.jpg
+          let poster = raw
+            .replace('videos/', 'posters/')
+            .replace('assets/videos/', 'assets/posters/')
+            .replace(/\.mp4(\?.*)?$/i, '.jpg');
+          v.setAttribute('poster', poster);
+        }
+      }
+    });
+
+    // Si reduce motion está activo, quitamos autoplay/loop,
+    // PERO mantenemos el lazy-load y el poster.
+    if (prefersReduced) {
+      videos.forEach(v => { v.removeAttribute('autoplay'); v.removeAttribute('loop'); });
+    }
+
+    // Lazy-load del src desde data-src (usa constante)
+    const lazyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const v = entry.target;
+        if (entry.isIntersecting && !v.src && v.dataset.src) v.src = v.dataset.src;
+      });
+    }, { rootMargin: LAZY_ROOT_MARGIN, threshold: 0 });
+
+    // Play/Pause por visibilidad (umbral configurable)
+    const playObserver = new IntersectionObserver((entries) => {
+      entries.forEach(async (entry) => {
+        const v = entry.target;
+        if (entry.intersectionRatio >= PLAY_VISIBILITY) {
+          v.muted = true; v.playsInline = true;
+          try { await v.play(); } catch(e) {}
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: [0, PLAY_VISIBILITY, 1] });
+
+    videos.forEach(v => { lazyObserver.observe(v); playObserver.observe(v); });
+
+    // Pausar/Reanudar por cambio de pestaña (usa el mismo umbral)
+    document.addEventListener('visibilitychange', () => {
+      if (prefersReduced) return;
+      if (document.hidden) {
+        videos.forEach(v => v.pause());
+      } else {
+        videos.forEach(v => {
+          const r = v.getBoundingClientRect();
+          const visibleY = Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, 0));
+          const ratio = r.height ? (visibleY / r.height) : 0;
+          if (ratio >= PLAY_VISIBILITY) v.play().catch(()=>{});
+        });
+      }
+    }, { passive:true });
+  })();
+</script>
+
+</body>
 </html>
+
