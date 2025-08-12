@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.tercarioli.com/sitemap.xml
+Sitemap: https://tercarioli.com/sitemap.xml
