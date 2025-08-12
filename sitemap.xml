@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.tercarioli.com/</loc>
+    <loc>https://tercarioli.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <url><loc>https://www.tercarioli.com/project-internal.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tercarioli.com/project-internal.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Work pages -->
-  <url><loc>https://www.tercarioli.com/nike-olimpia-launch.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.tercarioli.com/meta-sports.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.tercarioli.com/toys-in-mourning.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.tercarioli.com/santo-tomas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.tercarioli.com/pilsen.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.tercarioli.com/personal-bicentenario.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://tercarioli.com/nike-olimpia-launch.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tercarioli.com/meta-sports.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://tercarioli.com/toys-in-mourning.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://tercarioli.com/santo-tomas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://tercarioli.com/pilsen.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://tercarioli.com/personal-bicentenario.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
