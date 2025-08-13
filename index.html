@@ -38,7 +38,7 @@
 
   // Analítica permitida por defecto (ads siguen denegados)
   gtag('consent', 'default', {
-    analytics_storage: 'granted',
+    analytics_storage: 'denied',
     ad_user_data: 'denied',
     ad_personalization: 'denied',
     ad_storage: 'denied'
@@ -730,5 +730,38 @@
   document.getElementById('cta-growth')?.addEventListener('click', ()=> trackGA('GROWTH', 1490));
   document.getElementById('cta-partner')?.addEventListener('click',()=> trackGA('PARTNER',2490));
 })();
-</script></body>
+</script>
+
+<!-- Consent banner -->
+<div id="consent-banner" style="position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;background:#171717;color:#F6F8EB;border:1px solid #E9E6DE;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.35);padding:14px 16px;display:none;">
+  <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;">
+    <p style="margin:0;flex:1;min-width:220px;font-size:14px;line-height:1.45;">
+      Usamos cookies de analítica para mejorar la experiencia. <a href="/privacy.html" style="color:#FF6B3D;text-decoration:underline;">Más info</a>.
+    </p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button id="consent-accept" style="background:#FF6B3D;color:#F6F8EB;border:0;border-radius:8px;padding:8px 12px;cursor:pointer;">Aceptar</button>
+      <button id="consent-reject" style="background:transparent;color:#F6F8EB;border:1px solid #F6F8EB;border-radius:8px;padding:8px 12px;cursor:pointer;">Rechazar</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  const KEY='consent_analytics_v1';
+  const saved=localStorage.getItem(KEY);
+  const banner=document.getElementById('consent-banner');
+  function show(){ banner.style.display='block'; }
+  function hide(){ banner.style.display='none'; }
+  if(!saved){ show(); }
+  document.getElementById('consent-accept').onclick=function(){
+    gtag('consent','update',{ analytics_storage:'granted' });
+    localStorage.setItem(KEY,'granted'); hide();
+  };
+  document.getElementById('consent-reject').onclick=function(){
+    gtag('consent','update',{ analytics_storage:'denied' });
+    localStorage.setItem(KEY,'denied'); hide();
+  };
+})();
+</script>
+
+</body>
 </html>
