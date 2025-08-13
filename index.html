@@ -36,12 +36,12 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
 
-  // Consent por defecto (sin cookies)
+   // Concede medición de Analytics por defecto (Ads siguen denegados)
   gtag('consent', 'default', {
+    analytics_storage: 'granted',
     ad_user_data: 'denied',
     ad_personalization: 'denied',
-    ad_storage: 'denied',
-    analytics_storage: 'denied'
+    ad_storage: 'denied'
   });
 
   gtag('js', new Date());
