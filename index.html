@@ -36,7 +36,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
 
-   // Concede medición de Analytics por defecto (Ads siguen denegados)
+  // Analítica permitida por defecto (ads siguen denegados)
   gtag('consent', 'default', {
     analytics_storage: 'granted',
     ad_user_data: 'denied',
@@ -45,7 +45,7 @@
   });
 
   gtag('js', new Date());
-  gtag('config', 'G-PSHEK3NKRH', { debug_mode: true });
+  gtag('config', 'G-PSHEK3NKRH', { debug_mode: true }); // puedes quitar debug_mode luego
 </script>
    
 <!-- Preconnect para optimizar carga de fuentes -->
