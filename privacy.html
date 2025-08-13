@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tercarioli — Privacidad & Cookies</title>
+
+  <!-- Canonical (apex sin www) -->
+  <link rel="canonical" href="https://tercarioli.com/privacy.html" />
+
+  <!-- Meta básicas -->
+  <meta name="description" content="Política de privacidad y uso de cookies de Tercarioli. Información sobre analítica (GA4), consentimiento y derechos del usuario." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#FF6B3D" />
+
+  <style>
+    :root{
+      --bg:#F6F8EB; --text:#171717; --muted:#505050; --brand:#FF6B3D; --line:#E9E6DE;
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;}
+    .wrap{max-width:860px;margin:0 auto;padding:48px 24px 72px;}
+    h1{font-size:2.4rem;line-height:1.1;margin:0 0 12px;}
+    h2{font-size:1.25rem;margin:32px 0 12px;}
+    p,li{margin:0 0 12px;}
+    a{color:var(--brand);text-decoration:underline;}
+    .muted{color:var(--muted);}
+    .card{border:1px solid var(--line);padding:16px;border-radius:12px;background:#ffffff80;backdrop-filter:saturate(1.1);}
+    .buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .btn{cursor:pointer;border-radius:8px;padding:8px 12px;border:1px solid var(--line);background:#fff}
+    .btn.primary{background:var(--brand);color:#F6F8EB;border:1px solid var(--brand)}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+    .home{font-weight:600;text-decoration:none;color:var(--text);border:1px solid var(--line);padding:6px 10px;border-radius:8px}
+    footer{margin-top:40px;padding-top:12px;border-top:1px solid var(--line)}
+    small{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <a class="home" href="/">← Volver a inicio</a>
+      </div>
+      <div class="muted">Tercarioli</div>
+    </header>
+
+    <h1>Privacidad & Cookies</h1>
+    <p class="muted">Última actualización: 13 de agosto de 2025</p>
+
+    <div class="card">
+      <p>
+        En <strong>Tercarioli</strong> se utiliza analítica web para mejorar la experiencia del sitio.
+        Solo se activa si das tu consentimiento. No se muestran anuncios ni se hace perfilado publicitario.
+      </p>
+    </div>
+
+    <h2>Responsable</h2>
+    <p>
+      Responsable del tratamiento: <strong>Tercarioli</strong> (Jorge Tercarioli).<br/>
+      Contacto: <a href="mailto:jorge@tercarioli.com">jorge@tercarioli.com</a>.
+    </p>
+
+    <h2>Qué datos se recogen y con qué finalidad</h2>
+    <p>
+      <strong>Analítica (Google Analytics 4):</strong> medición de visitas, páginas vistas, interacción con botones
+      (por ejemplo, clics en “Start now”). La base legal es tu <strong>consentimiento</strong>.
+    </p>
+    <p>
+      Al aceptar analítica, Google puede establecer cookies asociadas a GA4 (p. ej., <code>_ga</code>, <code>_ga_*</code>) para
+      distinguir usuarios y sesiones. Si no aceptas, se usa el <em>Consent Mode</em> y no se establecen cookies de analítica.
+    </p>
+
+    <h2>Proveedores y transferencias</h2>
+    <p>
+      La analítica es un servicio de <strong>Google LLC</strong>. Consulta su documentación y políticas en sus sitios oficiales.
+      El alojamiento del sitio es provisto por <strong>Vercel</strong>. Cuando haces clic en “Start now”, serás dirigido a
+      <strong>Usequeue/Stripe</strong> para gestionar el checkout; esos sitios aplican sus propias políticas de privacidad.
+    </p>
+
+    <h2>Conservación</h2>
+    <p>
+      Los datos de analítica se conservan durante el período configurado en GA4. Puedes revocar tu consentimiento cuando quieras.
+    </p>
+
+    <h2>Tus derechos</h2>
+    <p>
+      Puedes solicitar acceso, rectificación, supresión, limitación, portabilidad u oposición. Para ejercerlos o hacer consultas,
+      escribe a <a href="mailto:jorge@tercarioli.com">jorge@tercarioli.com</a>.
+    </p>
+
+    <h2>Gestionar tu consentimiento</h2>
+    <p>
+      Puedes cambiar tu preferencia en cualquier momento con estos botones:
+    </p>
+    <div class="buttons">
+      <button class="btn primary" id="grant-analytics">Aceptar analítica</button>
+      <button class="btn" id="deny-analytics">Rechazar analítica</button>
+      <button class="btn" id="reset-consent">Borrar preferencia</button>
+    </div>
+    <p class="muted">
+      También puedes gestionar cookies desde la configuración de tu navegador.
+    </p>
+
+    <footer>
+      <small>© Tercarioli. Esta página puede actualizarse para reflejar cambios técnicos o legales.</small>
+    </footer>
+  </div>
+
+  <!-- Controles de consentimiento (alineados con el banner que agregaste) -->
+  <script>
+    (function () {
+      // Clave usada en el banner sugerido
+      const KEY = 'consent_analytics_v1';
+
+      function update(value){
+        // Actualiza GA4 Consent Mode
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { analytics_storage: value });
+        }
+        // Guarda preferencia para que el banner no vuelva a mostrarse
+        localStorage.setItem(KEY, value);
+      }
+
+      document.getElementById('grant-analytics')?.addEventListener('click', function(){
+        update('granted');
+        alert('Analítica habilitada.');
+      });
+
+      document.getElementById('deny-analytics')?.addEventListener('click', function(){
+        update('denied');
+        alert('Analítica deshabilitada.');
+      });
+
+      document.getElementById('reset-consent')?.addEventListener('click', function(){
+        localStorage.removeItem(KEY);
+        alert('Preferencia eliminada. Al volver a la Home, verás de nuevo el banner.');
+      });
+    })();
+  </script>
+</body>
+</html>
