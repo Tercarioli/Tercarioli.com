@@ -28,21 +28,26 @@
 <link href="/assets/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="/manifest.json" rel="manifest"/>
-<meta content="#FF6B3D" name="theme-color"/><script async="True" src="https://www.googletagmanager.com/gtag/js?id=G-PSHEK3NKRH"></script><script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){ dataLayer.push(arguments); }
+<meta content="#FF6B3D" name="theme-color"/>
+   
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PSHEK3NKRH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
 
-// Consent Mode (default denied: sin cookies hasta aceptación)
-gtag('consent', 'default', {
-  ad_user_data: 'denied',
-  ad_personalization: 'denied',
-  ad_storage: 'denied',
-  analytics_storage: 'denied'
-});
+  // Consent por defecto (sin cookies)
+  gtag('consent', 'default', {
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    ad_storage: 'denied',
+    analytics_storage: 'denied'
+  });
 
-gtag('js', new Date());
-gtag('config', 'G-PSHEK3NKRH'); // Reemplaza con tu Measurement ID
+  gtag('js', new Date());
+  gtag('config', 'G-PSHEK3NKRH', { debug_mode: true });
 </script>
+   
 <!-- Preconnect para optimizar carga de fuentes -->
 <link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
