@@ -38,9 +38,17 @@
       <!-- Columna 1: Foto + bio + bloque (logo PNG + títulos + links) -->
       <div class="md:col-span-1 space-y-8">
         <!-- Foto -->
-        <div class="w-[76px] h-[76px]">
-          <img src="assets/tercaphoto.png" alt="Jorge Tercarioli" class="w-[76px] h-[76px] object-contain" />
-        </div>
+        <div id="pfp-tilt" class="w-[76px] h-[76px] will-change-transform select-none"
+     style="perspective: 700px;">
+  <img src="assets/tercaphoto.png" alt="Jorge Tercarioli"
+       class="w-[76px] h-[76px] object-contain pointer-events-none block"
+       style="
+         transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+         transition: transform 300ms cubic-bezier(.2,.7,.2,1), filter 300ms;
+         filter: drop-shadow(0px 2px 8px rgba(0,0,0,.25));
+         transform-style: preserve-3d;
+       " />
+</div>
 
         <!-- Bio -->
         <p class="max-w-[22rem] text-[14px] leading-relaxed">
@@ -104,5 +112,80 @@
   </div>
   <!-- /OUTER -->
 
+  <!-- 3) JS: pegá esto antes de </body> -->
+<script>
+(() => {
+  const root   = document.getElementById('pfp-tilt');
+  if (!root) return;
+  const img    = root.querySelector('img');
+  const media  = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const isTouch= 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  if (media.matches || isTouch) return; // desactiva en reduce-motion o touch
+
+  const MAX_RX = 8;   // grados máx en X (sutil)
+  const MAX_RY = 10;  // grados máx en Y (sutil)
+  const MAX_T  = 4;   // px de traslado sutil (parallax)
+  const MAX_SH = 10;  // px de sombra (offset)
+
+  let raf = null;
+  let target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+  let state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+
+  function onMove(e){
+    const rect = root.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;   // 0..1
+    const y = (e.clientY - rect.top)  / rect.height;  // 0..1
+    const sx = (x - 0.5) * 2;  // -1..1
+    const sy = (y - 0.5) * 2;  // -1..1
+
+    target.ry = -sx * MAX_RY;
+    target.rx =  sy * MAX_RX;
+    target.tx =  sx * MAX_T;
+    target.ty =  sy * MAX_T;
+    target.sx =  sx * MAX_SH;
+    target.sy =  sy * MAX_SH;
+
+    if (!raf) raf = requestAnimationFrame(tick);
+  }
+
+  function onLeave(){
+    target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+    if (!raf) raf = requestAnimationFrame(tick);
+  }
+
+  function lerp(a,b,t){ return a + (b-a)*t; }
+
+  function tick(){
+    raf = null;
+    // easing suave
+    state.rx = lerp(state.rx, target.rx, 0.12);
+    state.ry = lerp(state.ry, target.ry, 0.12);
+    state.tx = lerp(state.tx, target.tx, 0.18);
+    state.ty = lerp(state.ty, target.ty, 0.18);
+    state.sx = lerp(state.sx, target.sx, 0.15);
+    state.sy = lerp(state.sy, target.sy, 0.15);
+
+    img.style.transform =
+      `translate3d(${state.tx}px, ${state.ty}px, 0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
+    img.style.filter =
+      `drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
+
+    // cortar cuando está “casi” en el target (evita bucles infinitos)
+    const done =
+      Math.abs(state.rx - target.rx) < 0.01 &&
+      Math.abs(state.ry - target.ry) < 0.01 &&
+      Math.abs(state.tx - target.tx) < 0.01 &&
+      Math.abs(state.ty - target.ty) < 0.01 &&
+      Math.abs(state.sx - target.sx) < 0.01 &&
+      Math.abs(state.sy - target.sy) < 0.01;
+
+    if (!done) raf = requestAnimationFrame(tick);
+  }
+
+  root.addEventListener('mousemove', onMove, { passive:true });
+  root.addEventListener('mouseleave', onLeave, { passive:true });
+})();
+</script>
 </body>
 </html>
