@@ -19,6 +19,9 @@
     body{ font-family:"Work Sans",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; }
     a{ color:var(--fg); }
   </style>
+  <style>
+  #pfp-tilt:hover img { transform: translateZ(0) scale(1.03); }
+</style>
 </head>
 <body class="antialiased">
 
@@ -123,7 +126,7 @@
   const media  = window.matchMedia('(prefers-reduced-motion: reduce)');
   const isTouch= 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-  if (media.matches || isTouch) return; // desactiva en reduce-motion o touch
+  // if (media.matches || isTouch) return; // desactiva en reduce-motion o touch
 
   const MAX_RX = 14;  // antes 8
   const MAX_RY = 16;  // antes 10
