@@ -37,18 +37,20 @@
 
       <!-- Columna 1: Foto + bio + bloque (logo PNG + títulos + links) -->
       <div class="md:col-span-1 space-y-8">
-        <!-- Foto -->
-        <div id="pfp-tilt" class="w-[76px] h-[76px] will-change-transform select-none"
-     style="perspective: 700px;">
+        <!-- Contenedor -->
+<div id="pfp-tilt" class="w-[76px] h-[76px] select-none"
+     style="perspective:900px; transform-style:preserve-3d; will-change:transform, filter;">
   <img src="assets/tercaphoto.png" alt="Jorge Tercarioli"
        class="w-[76px] h-[76px] object-contain pointer-events-none block"
        style="
-         transform: rotateX(0deg) rotateY(0deg) translateZ(0);
-         transition: transform 300ms cubic-bezier(.2,.7,.2,1), filter 300ms;
-         filter: drop-shadow(0px 2px 8px rgba(0,0,0,.25));
+         transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+         /* podés quitar la transición si querés respuesta 100% en RAF */
+         transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
+         filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
          transform-style: preserve-3d;
        " />
 </div>
+
 
         <!-- Bio -->
         <p class="max-w-[22rem] text-[14px] leading-relaxed">
@@ -123,10 +125,10 @@
 
   if (media.matches || isTouch) return; // desactiva en reduce-motion o touch
 
-  const MAX_RX = 8;   // grados máx en X (sutil)
-  const MAX_RY = 10;  // grados máx en Y (sutil)
-  const MAX_T  = 4;   // px de traslado sutil (parallax)
-  const MAX_SH = 10;  // px de sombra (offset)
+  const MAX_RX = 14;  // antes 8
+  const MAX_RY = 16;  // antes 10
+  const MAX_T  = 6;   // antes 4
+  const MAX_SH = 14;  // antes 10
 
   let raf = null;
   let target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
