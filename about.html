@@ -18,10 +18,9 @@
     html,body{ background:var(--bg); color:var(--fg); }
     body{ font-family:"Work Sans",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; }
     a{ color:var(--fg); }
+    /* Sutil boost en hover para percibir el 3D */
+    #pfp-tilt:hover img { transform: translateZ(0) scale(1.03); }
   </style>
-  <style>
-  #pfp-tilt:hover img { transform: translateZ(0) scale(1.03); }
-</style>
 </head>
 <body class="antialiased">
 
@@ -36,26 +35,25 @@
     </nav>
 
     <!-- GRID 4 columnas -->
-    <section class="max-w-[112rem] mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-[18px]">
+    <section class="max-w-[112rem] mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-[18px] items-start">
+      
+      <!-- Columna 1: SOLO foto -->
+      <div class="md:col-span-1">
+        <div id="pfp-tilt" class="w-[76px] h-[76px] select-none"
+             style="perspective:900px; transform-style:preserve-3d; will-change:transform, filter;">
+          <img src="assets/tercaphoto.png" alt="Jorge Tercarioli"
+               class="w-[76px] h-[76px] object-contain pointer-events-none block"
+               style="
+                 transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+                 transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
+                 filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
+                 transform-style: preserve-3d;
+               " />
+        </div>
+      </div>
 
-      <!-- Columna 1: Foto + bio + bloque (logo PNG + títulos + links) -->
-      <div class="md:col-span-1 space-y-8">
-        <!-- Contenedor -->
-<div id="pfp-tilt" class="w-[76px] h-[76px] select-none"
-     style="perspective:900px; transform-style:preserve-3d; will-change:transform, filter;">
-  <img src="assets/tercaphoto.png" alt="Jorge Tercarioli"
-       class="w-[76px] h-[76px] object-contain pointer-events-none block"
-       style="
-         transform: translateZ(0) rotateX(0deg) rotateY(0deg);
-         /* podés quitar la transición si querés respuesta 100% en RAF */
-         transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
-         filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
-         transform-style: preserve-3d;
-       " />
-</div>
-
-
-        <!-- Bio -->
+      <!-- Columna 2: Párrafo -->
+      <div class="md:col-span-1">
         <p class="max-w-[22rem] text-[14px] leading-relaxed">
           Born in Brazil.<br/>
           3x Creative Director of the year.<br/>
@@ -68,129 +66,112 @@
           Illustrated for official Nike football shirts in 2025.<br/>
           Moved to Italy with my family and kept creating.
         </p>
+      </div>
 
-        <!-- BLOQUE (idéntico al footer: logo PNG + títulos) -->
-        <div class="flex flex-col items-start">
-          <div class="flex flex-col items-start gap-4">
-            <img src="assets/logoheroterca.png" alt="Tercarioli Logo" class="w-[156px]">
-            <div class="flex flex-col text-[#F6F8EB]">
-              <p class="m-0 font-normal" style="font-size:16px; letter-spacing:-0.04em; line-height:1.15;">
-                ✦ Creative Director
-              </p>
-              <p class="m-0 font-normal" style="font-size:16px; letter-spacing:-0.04em; line-height:1.15;">
-                ✦ Brand Consultant
-              </p>
-            </div>
-          </div>
+      <!-- Columna 3: Vacía -->
+      <div class="md:col-span-1"></div>
 
-          <!-- Links (X, LinkedIn, Mail) -->
-          <div class="flex flex-col gap-2 mt-8" style="font-size:16px;">
-            <a href="https://x.com/jordanter" target="_blank" rel="noopener noreferrer"
-               class="font-normal no-underline transition-transform duration-200"
-               style="letter-spacing:-0.04em;"
-               onmouseover="this.style.transform='translateY(-2px)'; this.style.textDecoration='underline';"
-               onmouseout="this.style.transform='translateY(0)'; this.style.textDecoration='none';">
-              X
-            </a>
-            <a href="https://www.linkedin.com/in/tercarioli/" target="_blank" rel="noopener noreferrer"
-               class="font-normal no-underline transition-transform duration-200"
-               style="letter-spacing:-0.04em;"
-               onmouseover="this.style.transform='translateY(-2px)'; this.style.textDecoration='underline';"
-               onmouseout="this.style.transform='translateY(0)'; this.style.textDecoration='none';">
-              LinkedIn
-            </a>
-            <a href="mailto:jorge@tercarioli.com"
-               class="font-normal no-underline transition-transform duration-200"
-               style="letter-spacing:-0.04em;"
-               onmouseover="this.style.transform='translateY(-2px)'; this.style.textDecoration='underline';"
-               onmouseout="this.style.transform='translateY(0)'; this.style.textDecoration='none';">
-              Mail
-            </a>
-          </div>
+      <!-- Columna 4: SOLO links -->
+      <div class="md:col-span-1">
+        <div class="flex flex-col gap-2" style="font-size:16px;">
+          <a href="https://x.com/jordanter" target="_blank" rel="noopener noreferrer"
+             class="font-normal no-underline transition-transform duration-200"
+             style="letter-spacing:-0.04em;"
+             onmouseover="this.style.transform='translateY(-2px)'; this.style.textDecoration='underline';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.textDecoration='none';">
+            X
+          </a>
+          <a href="https://www.linkedin.com/in/tercarioli/" target="_blank" rel="noopener noreferrer"
+             class="font-normal no-underline transition-transform duration-200"
+             style="letter-spacing:-0.04em;"
+             onmouseover="this.style.transform='translateY(-2px)'; this.style.textDecoration='underline';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.textDecoration='none';">
+            LinkedIn
+          </a>
+          <a href="mailto:jorge@tercarioli.com"
+             class="font-normal no-underline transition-transform duration-200"
+             style="letter-spacing:-0.04em;"
+             onmouseover="this.style.transform='translateY(-2px)'; this.style.textDecoration='underline';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.textDecoration='none';">
+            Mail
+          </a>
         </div>
       </div>
 
-      <!-- Columnas 2–4 vacías para mantener la grilla -->
-      <div></div><div></div><div></div>
     </section>
 
   </div>
   <!-- /OUTER -->
 
-  <!-- 3) JS: pegá esto antes de </body> -->
-<script>
-(() => {
-  const root   = document.getElementById('pfp-tilt');
-  if (!root) return;
-  const img    = root.querySelector('img');
-  const media  = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const isTouch= 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  <!-- Tilt 3D JS -->
+  <script>
+  (() => {
+    const root   = document.getElementById('pfp-tilt');
+    if (!root) return;
+    const img    = root.querySelector('img');
+    const media  = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // Nota: si querés reactivar la detección de touch, usa el guard más conservador:
+    // const isReallyTouch = matchMedia('(hover: none)').matches && navigator.maxTouchPoints > 0;
+    // if (media.matches || isReallyTouch) return;
+    if (media.matches) return;
 
-  // if (media.matches || isTouch) return; // desactiva en reduce-motion o touch
+    const MAX_RX = 14, MAX_RY = 16, MAX_T = 6, MAX_SH = 14;
+    let raf = null;
+    let target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+    let state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
 
-  const MAX_RX = 14;  // antes 8
-  const MAX_RY = 16;  // antes 10
-  const MAX_T  = 6;   // antes 4
-  const MAX_SH = 14;  // antes 10
+    function onMove(e){
+      const r = root.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;
+      const y = (e.clientY - r.top)  / r.height;
+      const sx = (x - 0.5) * 2;
+      const sy = (y - 0.5) * 2;
 
-  let raf = null;
-  let target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-  let state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+      target.ry = -sx * MAX_RY;
+      target.rx =  sy * MAX_RX;
+      target.tx =  sx * MAX_T;
+      target.ty =  sy * MAX_T;
+      target.sx =  sx * MAX_SH;
+      target.sy =  sy * MAX_SH;
 
-  function onMove(e){
-    const rect = root.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;   // 0..1
-    const y = (e.clientY - rect.top)  / rect.height;  // 0..1
-    const sx = (x - 0.5) * 2;  // -1..1
-    const sy = (y - 0.5) * 2;  // -1..1
+      if (!raf) raf = requestAnimationFrame(tick);
+    }
 
-    target.ry = -sx * MAX_RY;
-    target.rx =  sy * MAX_RX;
-    target.tx =  sx * MAX_T;
-    target.ty =  sy * MAX_T;
-    target.sx =  sx * MAX_SH;
-    target.sy =  sy * MAX_SH;
+    function onLeave(){
+      target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+      if (!raf) raf = requestAnimationFrame(tick);
+    }
 
-    if (!raf) raf = requestAnimationFrame(tick);
-  }
+    const lerp = (a,b,t) => a + (b-a)*t;
 
-  function onLeave(){
-    target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-    if (!raf) raf = requestAnimationFrame(tick);
-  }
+    function tick(){
+      raf = null;
+      state.rx = lerp(state.rx, target.rx, 0.12);
+      state.ry = lerp(state.ry, target.ry, 0.12);
+      state.tx = lerp(state.tx, target.tx, 0.18);
+      state.ty = lerp(state.ty, target.ty, 0.18);
+      state.sx = lerp(state.sx, target.sx, 0.15);
+      state.sy = lerp(state.sy, target.sy, 0.15);
 
-  function lerp(a,b,t){ return a + (b-a)*t; }
+      img.style.transform =
+        `translate3d(${state.tx}px, ${state.ty}px, 0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
+      img.style.filter =
+        `drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
 
-  function tick(){
-    raf = null;
-    // easing suave
-    state.rx = lerp(state.rx, target.rx, 0.12);
-    state.ry = lerp(state.ry, target.ry, 0.12);
-    state.tx = lerp(state.tx, target.tx, 0.18);
-    state.ty = lerp(state.ty, target.ty, 0.18);
-    state.sx = lerp(state.sx, target.sx, 0.15);
-    state.sy = lerp(state.sy, target.sy, 0.15);
+      const done =
+        Math.abs(state.rx - target.rx) < 0.01 &&
+        Math.abs(state.ry - target.ry) < 0.01 &&
+        Math.abs(state.tx - target.tx) < 0.01 &&
+        Math.abs(state.ty - target.ty) < 0.01 &&
+        Math.abs(state.sx - target.sx) < 0.01 &&
+        Math.abs(state.sy - target.sy) < 0.01;
 
-    img.style.transform =
-      `translate3d(${state.tx}px, ${state.ty}px, 0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
-    img.style.filter =
-      `drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
+      if (!done) raf = requestAnimationFrame(tick);
+    }
 
-    // cortar cuando está “casi” en el target (evita bucles infinitos)
-    const done =
-      Math.abs(state.rx - target.rx) < 0.01 &&
-      Math.abs(state.ry - target.ry) < 0.01 &&
-      Math.abs(state.tx - target.tx) < 0.01 &&
-      Math.abs(state.ty - target.ty) < 0.01 &&
-      Math.abs(state.sx - target.sx) < 0.01 &&
-      Math.abs(state.sy - target.sy) < 0.01;
-
-    if (!done) raf = requestAnimationFrame(tick);
-  }
-
-  root.addEventListener('mousemove', onMove, { passive:true });
-  root.addEventListener('mouseleave', onLeave, { passive:true });
-})();
-</script>
+    root.addEventListener('mousemove', onMove, { passive:true });
+    root.addEventListener('mouseleave', onLeave, { passive:true });
+  })();
+  </script>
 </body>
 </html>
