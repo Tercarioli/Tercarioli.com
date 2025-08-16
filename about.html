@@ -52,7 +52,7 @@
 
       <!-- Columna 2: Párrafo -->
       <div class="md:col-span-1">
-        <p class="max-w-[22rem] text-[14px] leading-relaxed">
+        <p class="max-w-[22rem] text-[16px] leading-relaxed">
           Born in Brazil.<br/>
           3x Creative Director of the year.<br/>
           Created for Nike & featured globally.<br/>
@@ -102,74 +102,83 @@
   <!-- /OUTER -->
 
   <!-- Tilt 3D JS -->
-  <script>
-  (() => {
-    const root   = document.getElementById('pfp-tilt');
-    if (!root) return;
-    const img    = root.querySelector('img');
-    const media  = window.matchMedia('(prefers-reduced-motion: reduce)');
-    // Nota: si querés reactivar la detección de touch, usa el guard más conservador:
-    // const isReallyTouch = matchMedia('(hover: none)').matches && navigator.maxTouchPoints > 0;
-    // if (media.matches || isReallyTouch) return;
-    if (media.matches) return;
+  <!-- Tilt 3D JS -->
+<script>
+(() => {
+  const root   = document.getElementById('pfp-tilt');
+  if (!root) return;
+  const img    = root.querySelector('img');
+  const media  = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (media.matches) return;
 
-    const MAX_RX = 14, MAX_RY = 16, MAX_T = 6, MAX_SH = 14;
-    let raf = null;
-    let target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-    let state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+  const MAX_RX = 14, MAX_RY = 16, MAX_T = 6, MAX_SH = 14;
+  let raf = null;
+  let target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+  let state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
 
-    function onMove(e){
-      const r = root.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width;
-      const y = (e.clientY - r.top)  / r.height;
-      const sx = (x - 0.5) * 2;
-      const sy = (y - 0.5) * 2;
+  // Hover: escalar el contenedor sin interferir con la animación del img
+  root.addEventListener('mouseenter', () => {
+    root.style.transition = 'transform 200ms ease';
+    root.style.transform = 'scale(1.03)';
+  });
+  root.addEventListener('mouseleave', () => {
+    root.style.transition = 'transform 200ms ease';
+    root.style.transform = 'scale(1)';
+  });
 
-      target.ry = -sx * MAX_RY;
-      target.rx =  sy * MAX_RX;
-      target.tx =  sx * MAX_T;
-      target.ty =  sy * MAX_T;
-      target.sx =  sx * MAX_SH;
-      target.sy =  sy * MAX_SH;
+  function onMove(e){
+    const r = root.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top)  / r.height;
+    const sx = (x - 0.5) * 2;
+    const sy = (y - 0.5) * 2;
 
-      if (!raf) raf = requestAnimationFrame(tick);
-    }
+    target.ry = -sx * MAX_RY;
+    target.rx =  sy * MAX_RX;
+    target.tx =  sx * MAX_T;
+    target.ty =  sy * MAX_T;
+    target.sx =  sx * MAX_SH;
+    target.sy =  sy * MAX_SH;
 
-    function onLeave(){
-      target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-      if (!raf) raf = requestAnimationFrame(tick);
-    }
+    if (!raf) raf = requestAnimationFrame(tick);
+  }
 
-    const lerp = (a,b,t) => a + (b-a)*t;
+  function onLeave(){
+    target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+    if (!raf) raf = requestAnimationFrame(tick);
+  }
 
-    function tick(){
-      raf = null;
-      state.rx = lerp(state.rx, target.rx, 0.12);
-      state.ry = lerp(state.ry, target.ry, 0.12);
-      state.tx = lerp(state.tx, target.tx, 0.18);
-      state.ty = lerp(state.ty, target.ty, 0.18);
-      state.sx = lerp(state.sx, target.sx, 0.15);
-      state.sy = lerp(state.sy, target.sy, 0.15);
+  const lerp = (a,b,t) => a + (b-a)*t;
 
-      img.style.transform =
-        `translate3d(${state.tx}px, ${state.ty}px, 0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
-      img.style.filter =
-        `drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
+  function tick(){
+    raf = null;
+    state.rx = lerp(state.rx, target.rx, 0.12);
+    state.ry = lerp(state.ry, target.ry, 0.12);
+    state.tx = lerp(state.tx, target.tx, 0.18);
+    state.ty = lerp(state.ty, target.ty, 0.18);
+    state.sx = lerp(state.sx, target.sx, 0.15);
+    state.sy = lerp(state.sy, target.sy, 0.15);
 
-      const done =
-        Math.abs(state.rx - target.rx) < 0.01 &&
-        Math.abs(state.ry - target.ry) < 0.01 &&
-        Math.abs(state.tx - target.tx) < 0.01 &&
-        Math.abs(state.ty - target.ty) < 0.01 &&
-        Math.abs(state.sx - target.sx) < 0.01 &&
-        Math.abs(state.sy - target.sy) < 0.01;
+    img.style.transform =
+      `translate3d(${state.tx}px, ${state.ty}px, 0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
+    img.style.filter =
+      `drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
 
-      if (!done) raf = requestAnimationFrame(tick);
-    }
+    const done =
+      Math.abs(state.rx - target.rx) < 0.01 &&
+      Math.abs(state.ry - target.ry) < 0.01 &&
+      Math.abs(state.tx - target.tx) < 0.01 &&
+      Math.abs(state.ty - target.ty) < 0.01 &&
+      Math.abs(state.sx - target.sx) < 0.01 &&
+      Math.abs(state.sy - target.sy) < 0.01;
 
-    root.addEventListener('mousemove', onMove, { passive:true });
-    root.addEventListener('mouseleave', onLeave, { passive:true });
-  })();
-  </script>
+    if (!done) raf = requestAnimationFrame(tick);
+  }
+
+  root.addEventListener('mousemove', onMove, { passive:true });
+  root.addEventListener('mouseleave', onLeave, { passive:true });
+})();
+</script>
+
 </body>
 </html>
