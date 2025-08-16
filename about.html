@@ -13,11 +13,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
-    :root { --bg:#171717; --fg:#F6F8EB; }
-    html,body{ background:var(--bg); color:var(--fg); }
-    body{ font-family:"Work Sans",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; }
-    a{ color:var(--fg); }
-  </style>
+  :root { --bg:#171717; --fg:#F6F8EB; }
+  html,body{ background:var(--bg); color:var(--fg); }
+  body{ font-family:"Work Sans",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; }
+  a{ color:var(--fg); }
+
+  /* Ajuste para tilt: el scale va al wrapper, no a la img */
+  #pfp-tilt:hover { transform: scale(1.03); }
+  #pfp-tilt img { will-change: transform, filter; }
+</style>
   <style>
   #pfp-tilt:hover img { transform: translateZ(0) scale(1.03); }
 </style>
