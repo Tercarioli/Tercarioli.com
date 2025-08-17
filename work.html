@@ -7,10 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
-    :root { --bg:#171717; --fg:#F6F8EB; }
-    body { background:var(--bg); color:var(--fg); font-family:"Work Sans",sans-serif; }
-
-    /* tilt base */
+    body { background:#F6F8EB; color:#171717; font-family:"Work Sans",sans-serif; }
     .tilt-wrapper:hover { transform: scale(1.02); }
     .tilt-wrapper img { will-change: transform, filter; }
   </style>
@@ -31,14 +28,12 @@
       <div class="md:col-span-1">
         <div class="tilt-wrapper card-tilt w-full h-full select-none"
              style="perspective:900px; transform-style:preserve-3d; will-change:transform, filter;">
-          <img src="assets/cards/card-nike.jpg" alt="Project cover"
+          <img src="assets/cards/card-nike.jpg" alt="Nike Project"
                class="w-full h-full object-cover pointer-events-none block"
-               style="
-                 transform: translateZ(0) rotateX(0deg) rotateY(0deg);
-                 transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
-                 filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
-                 transform-style: preserve-3d;
-               " />
+               style="transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+                      transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
+                      filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
+                      transform-style: preserve-3d;" />
         </div>
       </div>
 
@@ -46,14 +41,12 @@
       <div class="md:col-span-1">
         <div class="tilt-wrapper card-tilt w-full h-full select-none"
              style="perspective:900px; transform-style:preserve-3d; will-change:transform, filter;">
-          <img src="assets/cards/card-nike.jpg" alt="Project cover"
+          <img src="assets/cards/card-meta.jpg" alt="Meta Project"
                class="w-full h-full object-cover pointer-events-none block"
-               style="
-                 transform: translateZ(0) rotateX(0deg) rotateY(0deg);
-                 transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
-                 filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
-                 transform-style: preserve-3d;
-               " />
+               style="transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+                      transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
+                      filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
+                      transform-style: preserve-3d;" />
         </div>
       </div>
 
@@ -61,14 +54,12 @@
       <div class="md:col-span-1">
         <div class="tilt-wrapper card-tilt w-full h-full select-none"
              style="perspective:900px; transform-style:preserve-3d; will-change:transform, filter;">
-          <img src="assets/cards/card-nike.jpg" alt="Project cover"
+          <img src="assets/cards/card-toys.jpg" alt="Toys Project"
                class="w-full h-full object-cover pointer-events-none block"
-               style="
-                 transform: translateZ(0) rotateX(0deg) rotateY(0deg);
-                 transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
-                 filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
-                 transform-style: preserve-3d;
-               " />
+               style="transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+                      transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
+                      filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
+                      transform-style: preserve-3d;" />
         </div>
       </div>
 
@@ -76,89 +67,52 @@
       <div class="md:col-span-1">
         <div class="tilt-wrapper card-tilt w-full h-full select-none"
              style="perspective:900px; transform-style:preserve-3d; will-change:transform, filter;">
-          <img src="assets/cards/card-nike.jpg" alt="Project cover"
+          <img src="assets/cards/card-stomas.jpg" alt="Santo Tomás Project"
                class="w-full h-full object-cover pointer-events-none block"
-               style="
-                 transform: translateZ(0) rotateX(0deg) rotateY(0deg);
-                 transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
-                 filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
-                 transform-style: preserve-3d;
-               " />
+               style="transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+                      transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
+                      filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
+                      transform-style: preserve-3d;" />
         </div>
       </div>
     </section>
   </div>
 
-  <!-- SCRIPT: aplica interacción a todas las tarjetas -->
+  <!-- SCRIPT: tilt effect -->
   <script>
   (() => {
-    const MAX_RX = 5;
-    const MAX_RY = 6;
-    const MAX_T  = 2;
-    const MAX_SH = 5;
-
+    const MAX_RX = 5, MAX_RY = 6, MAX_T = 2, MAX_SH = 5;
     const cards = document.querySelectorAll('.card-tilt');
-    if (!cards.length) return;
-
     function attachTilt(root){
       const img = root.querySelector('img');
-      let raf = null;
-      let target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-      let state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-
+      let raf = null, target={rx:0,ry:0,tx:0,ty:0,sx:0,sy:0}, state={...target};
       function onMove(e){
-        const rect = root.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top)  / rect.height;
-        const sx = (x - 0.5) * 2;
-        const sy = (y - 0.5) * 2;
-
-        target.ry = -sx * MAX_RY;
-        target.rx =  sy * MAX_RX;
-        target.tx =  sx * MAX_T;
-        target.ty =  sy * MAX_T;
-        target.sx =  sx * MAX_SH;
-        target.sy =  sy * MAX_SH;
-
-        if (!raf) raf = requestAnimationFrame(tick);
+        const r = root.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+        const sx=(x-0.5)*2, sy=(y-0.5)*2;
+        target={ry:-sx*MAX_RY, rx:sy*MAX_RX, tx:sx*MAX_T, ty:sy*MAX_T, sx:sx*MAX_SH, sy:sy*MAX_SH};
+        if(!raf) raf=requestAnimationFrame(tick);
       }
-
-      function onLeave(){
-        target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-        if (!raf) raf = requestAnimationFrame(tick);
-      }
-
-      function lerp(a,b,t){ return a + (b-a)*t; }
-
+      function onLeave(){ target={rx:0,ry:0,tx:0,ty:0,sx:0,sy:0}; if(!raf) raf=requestAnimationFrame(tick); }
+      const lerp=(a,b,t)=>a+(b-a)*t;
       function tick(){
-        raf = null;
-        state.rx = lerp(state.rx, target.rx, 0.12);
-        state.ry = lerp(state.ry, target.ry, 0.12);
-        state.tx = lerp(state.tx, target.tx, 0.18);
-        state.ty = lerp(state.ty, target.ty, 0.18);
-        state.sx = lerp(state.sx, target.sx, 0.15);
-        state.sy = lerp(state.sy, target.sy, 0.15);
-
-        img.style.transform =
-          `translate3d(${state.tx}px, ${state.ty}px, 0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
-        img.style.filter =
-          `drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
-
-        const done =
-          Math.abs(state.rx - target.rx) < 0.01 &&
-          Math.abs(state.ry - target.ry) < 0.01 &&
-          Math.abs(state.tx - target.tx) < 0.01 &&
-          Math.abs(state.ty - target.ty) < 0.01 &&
-          Math.abs(state.sx - target.sx) < 0.01 &&
-          Math.abs(state.sy - target.sy) < 0.01;
-
-        if (!done) raf = requestAnimationFrame(tick);
+        raf=null;
+        state.rx=lerp(state.rx,target.rx,0.12);
+        state.ry=lerp(state.ry,target.ry,0.12);
+        state.tx=lerp(state.tx,target.tx,0.18);
+        state.ty=lerp(state.ty,target.ty,0.18);
+        state.sx=lerp(state.sx,target.sx,0.15);
+        state.sy=lerp(state.sy,target.sy,0.15);
+        img.style.transform=`translate3d(${state.tx}px,${state.ty}px,0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
+        img.style.filter=`drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
+        if(Math.abs(state.rx-target.rx)>0.01||Math.abs(state.ry-target.ry)>0.01||
+           Math.abs(state.tx-target.tx)>0.01||Math.abs(state.ty-target.ty)>0.01||
+           Math.abs(state.sx-target.sx)>0.01||Math.abs(state.sy-target.sy)>0.01){
+          raf=requestAnimationFrame(tick);
+        }
       }
-
       root.addEventListener('mousemove', onMove, { passive:true });
       root.addEventListener('mouseleave', onLeave, { passive:true });
     }
-
     cards.forEach(attachTilt);
   })();
   </script>
