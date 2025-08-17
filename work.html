@@ -1,29 +1,71 @@
-<script>
-(() => {
-  // Respeta reduce-motion
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+<!-- WORK PAGE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Work — Tercarioli</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#171717; --fg:#F6F8EB; }
+    body { background:var(--bg); color:var(--fg); font-family:"Work Sans",sans-serif; }
 
-  const MAX_RX = 5, MAX_RY = 6, MAX_T = 2, MAX_SH = 5;
-  const lerp = (a,b,t)=> a + (b-a)*t;
+    /* tilt base */
+    .tilt-wrapper:hover { transform: scale(1.02); }
+    .tilt-wrapper img { will-change: transform, filter; }
+  </style>
+</head>
+<body class="antialiased">
 
-  document.querySelectorAll('.js-tilt').forEach((root) => {
-    const img = root.querySelector('img');
-    if (!img) return;
+  <!-- NAVBAR -->
+  <div class="px-[32px]">
+    <nav class="pt-[32px] pb-[90px] flex items-center justify-between w-full">
+      <a href="index.html" aria-label="Back to Home"
+         class="text-[16px] leading-none hover:opacity-80 transition">←</a>
+      <span></span>
+    </nav>
+
+    <!-- GALERÍA -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-[18px] items-start">
+      <!-- TARJETA 1 -->
+      <div class="md:col-span-1">
+        <div id="card-tilt" class="tilt-wrapper w-full h-full select-none"
+             style="perspective:900px; transform-style:preserve-3d; will-change:transform, filter;">
+          <img src="assets/cards/card-nike.jpg" alt="Nike project"
+               class="w-full h-full object-cover pointer-events-none block"
+               style="
+                 transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+                 transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
+                 filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
+                 transform-style: preserve-3d;
+               " />
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+  (() => {
+    const root = document.getElementById('card-tilt');
+    if (!root) return;
+    const img  = root.querySelector('img');
+
+    const MAX_RX = 5;
+    const MAX_RY = 6;
+    const MAX_T  = 2;
+    const MAX_SH = 5;
 
     let raf = null;
-    const target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-    const state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+    let target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+    let state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
 
-    function onPointerMove(e){
-      // Ignora táctil (no hay hover)
-      if (e.pointerType === 'touch') return;
-      const r = root.getBoundingClientRect();
-      if (!r.width || !r.height) return;
-
-      const x = (e.clientX - r.left) / r.width;   // 0..1
-      const y = (e.clientY - r.top)  / r.height;  // 0..1
-      const sx = (x - 0.5) * 2;                   // -1..1
-      const sy = (y - 0.5) * 2;                   // -1..1
+    function onMove(e){
+      const rect = root.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top)  / rect.height;
+      const sx = (x - 0.5) * 2;
+      const sy = (y - 0.5) * 2;
 
       target.ry = -sx * MAX_RY;
       target.rx =  sy * MAX_RX;
@@ -35,39 +77,42 @@
       if (!raf) raf = requestAnimationFrame(tick);
     }
 
-    function onPointerLeave(){
-      target.rx = target.ry = target.tx = target.ty = target.sx = target.sy = 0;
+    function onLeave(){
+      target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
       if (!raf) raf = requestAnimationFrame(tick);
     }
 
+    function lerp(a,b,t){ return a + (b-a)*t; }
+
     function tick(){
       raf = null;
-      state.rx = lerp(state.rx, target.rx, 0.18);
-      state.ry = lerp(state.ry, target.ry, 0.18);
-      state.tx = lerp(state.tx, target.tx, 0.22);
-      state.ty = lerp(state.ty, target.ty, 0.22);
-      state.sx = lerp(state.sx, target.sx, 0.20);
-      state.sy = lerp(state.sy, target.sy, 0.20);
+      state.rx = lerp(state.rx, target.rx, 0.12);
+      state.ry = lerp(state.ry, target.ry, 0.12);
+      state.tx = lerp(state.tx, target.tx, 0.18);
+      state.ty = lerp(state.ty, target.ty, 0.18);
+      state.sx = lerp(state.sx, target.sx, 0.15);
+      state.sy = lerp(state.sy, target.sy, 0.15);
 
       img.style.transform =
         `translate3d(${state.tx}px, ${state.ty}px, 0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
       img.style.filter =
         `drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
 
-      // sigue animando hasta converger
-      if (Math.abs(state.rx-target.rx) > 0.01 ||
-          Math.abs(state.ry-target.ry) > 0.01 ||
-          Math.abs(state.tx-target.tx) > 0.01 ||
-          Math.abs(state.ty-target.ty) > 0.01 ||
-          Math.abs(state.sx-target.sx) > 0.01 ||
-          Math.abs(state.sy-target.sy) > 0.01) {
-        raf = requestAnimationFrame(tick);
-      }
+      const done =
+        Math.abs(state.rx - target.rx) < 0.01 &&
+        Math.abs(state.ry - target.ry) < 0.01 &&
+        Math.abs(state.tx - target.tx) < 0.01 &&
+        Math.abs(state.ty - target.ty) < 0.01 &&
+        Math.abs(state.sx - target.sx) < 0.01 &&
+        Math.abs(state.sy - target.sy) < 0.01;
+
+      if (!done) raf = requestAnimationFrame(tick);
     }
 
-    // Usa pointer events (mejor que mousemove en trackpads)
-    root.addEventListener('pointermove', onPointerMove, { passive:true });
-    root.addEventListener('pointerleave', onPointerLeave, { passive:true });
-  });
-})();
-</script>
+    root.addEventListener('mousemove', onMove, { passive:true });
+    root.addEventListener('mouseleave', onLeave, { passive:true });
+  })();
+  </script>
+
+</body>
+</html>
