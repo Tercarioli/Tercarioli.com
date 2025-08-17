@@ -79,109 +79,75 @@
   </div>
 
   <!-- SCRIPT: tilt effect -->
-  <script>
+<style>
+  body { background:#F6F8EB; color:#171717; font-family:"Work Sans",sans-serif; }
+  .tilt-wrapper img {
+    will-change: transform, filter;
+    filter: none !important; /* 🔒 fuerza arranque sin sombra */
+  }
+</style>
+
+<script>
 (() => {
-  // Ajustes del efecto
   const MAX_RX = 5, MAX_RY = 6, MAX_T = 2, MAX_SH = 5;
-  const SH_ALPHA = 0.28;   // opacidad de la sombra en hover
-  const SH_BLUR  = 10;     // blur px de la sombra
+  const SH_ALPHA = 0.28, SH_BLUR = 10;
 
   const cards = document.querySelectorAll('.card-tilt');
 
   function attachTilt(root){
     const img = root.querySelector('img');
-    let raf = null;
-    let hovering = false;
-    let target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-    let state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+    let raf = null, hovering = false;
+    let target={rx:0,ry:0,tx:0,ty:0,sx:0,sy:0};
+    let state ={...target};
 
-    // Siempre arrancar SIN sombra ni filtro
-    function hardReset(){
-      img.style.filter = 'none';
-      img.style.transform = 'translate3d(0,0,0) rotateX(0deg) rotateY(0deg)';
-    }
-
-    function onEnter(e){
-      hovering = true;
-      onMove(e);
-    }
-
+    function onEnter(e){ hovering = true; onMove(e); }
     function onMove(e){
       if (!hovering) return;
       const r = root.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width;
-      const y = (e.clientY - r.top)  / r.height;
-      const sx = (x - 0.5) * 2;
-      const sy = (y - 0.5) * 2;
-
-      target.ry = -sx * MAX_RY;
-      target.rx =  sy * MAX_RX;
-      target.tx =  sx * MAX_T;
-      target.ty =  sy * MAX_T;
-      target.sx =  sx * MAX_SH;
-      target.sy =  sy * MAX_SH;
-
-      if (!raf) raf = requestAnimationFrame(tick);
+      const x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+      const sx=(x-0.5)*2, sy=(y-0.5)*2;
+      target={ ry:-sx*MAX_RY, rx:sy*MAX_RX, tx:sx*MAX_T, ty:sy*MAX_T, sx:sx*MAX_SH, sy:sy*MAX_SH };
+      if(!raf) raf=requestAnimationFrame(tick);
     }
-
     function onLeave(){
-      hovering = false;
-      target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-      if (!raf) raf = requestAnimationFrame(tick);
-      // Fuerza quitar sombra al salir
-      img.style.filter = 'none';
+      hovering=false;
+      target={rx:0,ry:0,tx:0,ty:0,sx:0,sy:0};
+      if(!raf) raf=requestAnimationFrame(tick);
+      // 🔒 reset duro tras terminar animación
+      setTimeout(()=>{ if(!hovering) img.style.filter='none'; },220);
     }
 
-    const lerp = (a,b,t) => a + (b-a)*t;
-
+    const lerp=(a,b,t)=>a+(b-a)*t;
     function tick(){
-      raf = null;
-      state.rx = lerp(state.rx, target.rx, 0.12);
-      state.ry = lerp(state.ry, target.ry, 0.12);
-      state.tx = lerp(state.tx, target.tx, 0.18);
-      state.ty = lerp(state.ty, target.ty, 0.18);
-      state.sx = lerp(state.sx, target.sx, 0.15);
-      state.sy = lerp(state.sy, target.sy, 0.15);
+      raf=null;
+      state.rx=lerp(state.rx,target.rx,0.12);
+      state.ry=lerp(state.ry,target.ry,0.12);
+      state.tx=lerp(state.tx,target.tx,0.18);
+      state.ty=lerp(state.ty,target.ty,0.18);
+      state.sx=lerp(state.sx,target.sx,0.15);
+      state.sy=lerp(state.sy,target.sy,0.15);
 
-      img.style.transform =
-        `translate3d(${state.tx}px, ${state.ty}px, 0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
-
-      // Sombra solo si está en hover
-      if (hovering) {
-        img.style.filter =
-          `drop-shadow(${state.sx}px ${state.sy}px ${SH_BLUR}px rgba(0,0,0,${SH_ALPHA}))`;
-      } else {
-        img.style.filter = 'none';
+      img.style.transform=`translate3d(${state.tx}px,${state.ty}px,0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
+      if (hovering){
+        img.style.filter=`drop-shadow(${state.sx}px ${state.sy}px ${SH_BLUR}px rgba(0,0,0,${SH_ALPHA}))`;
       }
 
-      const done =
-        Math.abs(state.rx - target.rx) < 0.01 &&
-        Math.abs(state.ry - target.ry) < 0.01 &&
-        Math.abs(state.tx - target.tx) < 0.01 &&
-        Math.abs(state.ty - target.ty) < 0.01 &&
-        Math.abs(state.sx - target.sx) < 0.01 &&
-        Math.abs(state.sy - target.sy) < 0.01;
-
-      if (!done) raf = requestAnimationFrame(tick);
+      const done = Object.keys(target).every(k => Math.abs(state[k]-target[k])<0.01);
+      if (!done) raf=requestAnimationFrame(tick);
     }
 
-    // Eventos con pointer para cubrir mouse/touch/pen
-    root.addEventListener('pointerenter', onEnter,  { passive:true });
-    root.addEventListener('pointermove',  onMove,   { passive:true });
-    root.addEventListener('pointerleave', onLeave,  { passive:true });
+    root.addEventListener('pointerenter', onEnter, { passive:true });
+    root.addEventListener('pointermove',  onMove,  { passive:true });
+    root.addEventListener('pointerleave', onLeave, { passive:true });
 
-    // Reset duro al montar (evita sombras residuales)
-    hardReset();
-    // Y por si el cursor ya está encima al cargar:
-    // si el pointer arranca sobre la tarjeta, 'pointerenter' se dispara igual al mover 1px
+    // 🔒 reset inicial
+    img.style.filter='none';
   }
-
-  // Reset global de filtros por si quedó alguno inline en el HTML
-  document.querySelectorAll('.card-tilt img').forEach(img => { img.style.filter = 'none'; });
 
   cards.forEach(attachTilt);
 })();
 </script>
+
 
 
 
