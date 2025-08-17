@@ -30,7 +30,7 @@
         background-color: #F6F8EB;
         color: #171717;
       }
-      /* Interacción tarjeta (de index) */
+      /* Interacción tarjeta (tomada de la card Nike del index) */
       .work-card {
         transform: translateZ(0) rotateX(0deg) rotateY(0deg);
         transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
@@ -44,38 +44,45 @@
   </head>
   <body class="min-h-screen flex flex-col">
 
-   <!-- NAVBAR -->
-<nav class="w-full flex items-center justify-between px-[32px] py-6 mb-[90px]">
-  <!-- Flecha back -->
-  <a href="index.html" class="text-xl font-bold">&larr;</a>
+    <!-- NAVBAR -->
+    <header class="w-full px-[32px]">
+      <nav class="pt-[32px] pb-[90px] flex items-center justify-between w-full text-[#171717]">
+        <!-- IZQ: back home -->
+        <a href="index.html" aria-label="Back to Home"
+           class="text-[16px] leading-none hover:opacity-80 transition">
+          ←
+        </a>
 
-  <!-- Contact (mismo estilo Next work en pilsen.html) -->
-  <a href="mailto:jorge@tercarioli.com"
-     class="relative text-[18px] font-normal leading-[110%] tracking-[0.01em] transition-transform duration-200 ease-out hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-[1px] after:bg-[#171717] after:transition-all after:duration-200 hover:after:w-full">
-     Contact
-  </a>
-</nav>
+        <!-- DER: Contact (mismo tamaño/estilo que el snippet, con elevación y subrayado) -->
+        <a href="mailto:jorge@tercarioli.com"
+           class="text-[16px] font-medium transition-transform duration-200 hover:-translate-y-[5px] hover:underline underline-offset-4">
+          Contact
+        </a>
+      </nav>
+    </header>
 
+    <!-- MAIN -->
+    <main class="w-full px-[32px] mb-[180px]">
+      <!-- Fila 1 -->
+      <div class="grid grid-cols-1 md:grid-cols-4 md:gap-[18px] mb-[32px]">
+        <!-- Columna 1: tarjeta (80% del ancho de la columna, alineada a la izquierda) -->
+        <div class="w-[80%]" style="aspect-ratio:1/1.3;">
+          <img
+            src="assets/cards/card-nike.jpg"
+            alt="Nike Project"
+            class="w-full h-full object-cover block work-card pointer-events-none"
+          />
+        </div>
 
-<!-- MAIN GRID -->
-<main class="w-full px-[32px] mb-[180px]">
-  <div class="hidden md:grid md:grid-cols-4 md:gap-[18px] mb-[32px]">
-    <!-- Columna 1: tarjeta -->
-    <div class="w-[80%] ml-0" style="aspect-ratio:1/1.3;">
-      <img
-        src="assets/cards/card-nike.jpg"
-        alt="Nike Project"
-        class="w-full h-full object-cover block work-card pointer-events-none"
-      />
-    </div>
+        <!-- Columnas 2–4 vacías por ahora -->
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
 
-    <!-- Columnas 2–4 vacías por ahora -->
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-</main>
+      <!-- (Cuando confirmes, duplicamos filas como ésta, manteniendo mb-[32px]) -->
 
+    </main>
 
   </body>
 </html>
