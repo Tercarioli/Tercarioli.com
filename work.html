@@ -1,118 +1,186 @@
-<!-- WORK PAGE -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Work — Tercarioli</title>
+  <link rel="canonical" href="https://tercarioli.com/work.html" />
+  <!-- Favicon & Icons -->
+  <link href="/assets/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="/assets/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+  <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+  <link href="/manifest.json" rel="manifest"/>
+  <meta content="#171717" name="theme-color"/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root { --bg:#171717; --fg:#F6F8EB; }
-    body { background:var(--bg); color:var(--fg); font-family:"Work Sans",sans-serif; }
-
-    /* tilt base */
-    .tilt-wrapper:hover { transform: scale(1.02); }
-    .tilt-wrapper img { will-change: transform, filter; }
+    html,body{ background:var(--bg); color:var(--fg); }
+    body{ font-family:"Work Sans",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; }
+    a{ color:var(--fg); }
+    /* Efecto: el scale va al wrapper; el JS controla la img */
+    .tilt-wrap:hover { transform: scale(1.02); transition: transform 180ms ease; }
+    .tilt-wrap img { will-change: transform, filter; }
   </style>
 </head>
 <body class="antialiased">
 
-  <!-- NAVBAR -->
+  <!-- OUTER -->
   <div class="px-[32px]">
+
+    <!-- NAVBAR (solo flecha al home) -->
     <nav class="pt-[32px] pb-[90px] flex items-center justify-between w-full">
       <a href="index.html" aria-label="Back to Home"
          class="text-[16px] leading-none hover:opacity-80 transition">←</a>
       <span></span>
     </nav>
 
-    <!-- GALERÍA -->
-    <section class="grid grid-cols-1 md:grid-cols-4 gap-[18px] items-start">
-      <!-- TARJETA 1 -->
-      <div class="md:col-span-1">
-        <div id="card-tilt" class="tilt-wrapper w-full h-full select-none"
-             style="perspective:900px; transform-style:preserve-3d; will-change:transform, filter;">
-          <img src="assets/cards/card-nike.jpg" alt="Nike project"
-               class="w-full h-full object-cover pointer-events-none block"
-               style="
-                 transform: translateZ(0) rotateX(0deg) rotateY(0deg);
-                 transition: transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms;
-                 filter: drop-shadow(0px 3px 10px rgba(0,0,0,.32));
-                 transform-style: preserve-3d;
-               " />
-        </div>
-      </div>
+    <!-- SECCIÓN 1 -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-[18px] items-start mb-4">
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card"
+             class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
     </section>
-  </div>
 
-  <!-- SCRIPT -->
+    <!-- SECCIÓN 2 -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-[18px] items-start mb-4">
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+    </section>
+
+    <!-- SECCIÓN 3 -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-[18px] items-start mb-4">
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+    </section>
+
+    <!-- SECCIÓN 4 -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-[18px] items-start mb-4">
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+      <div><div class="tilt-wrap js-tilt select-none" style="perspective:900px; transform-style:preserve-3d;">
+        <img src="assets/cards/card-nike.jpg" alt="Work card" class="w-full h-full object-cover pointer-events-none block"
+             style="transform:translateZ(0) rotateX(0deg) rotateY(0deg); transition:transform 200ms cubic-bezier(.2,.7,.2,1), filter 200ms; filter:drop-shadow(0px 3px 10px rgba(0,0,0,.32)); transform-style:preserve-3d;">
+      </div></div>
+    </section>
+
+  </div>
+  <!-- /OUTER -->
+
+  <!-- Tilt 3D para todas las tarjetas -->
   <script>
   (() => {
-    const root = document.getElementById('card-tilt');
-    if (!root) return;
-    const img  = root.querySelector('img');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const MAX_RX = 5;
-    const MAX_RY = 6;
-    const MAX_T  = 2;
-    const MAX_SH = 5;
+    const MAX_RX = 5, MAX_RY = 6, MAX_T = 2, MAX_SH = 5;
+    const lerp = (a,b,t)=> a + (b-a)*t;
 
-    let raf = null;
-    let target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-    let state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+    document.querySelectorAll('.js-tilt').forEach((root) => {
+      const img = root.querySelector('img');
+      let raf = null;
+      const target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+      const state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
 
-    function onMove(e){
-      const rect = root.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top)  / rect.height;
-      const sx = (x - 0.5) * 2;
-      const sy = (y - 0.5) * 2;
+      function onMove(e){
+        const r = root.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top)  / r.height;
+        const sx = (x - 0.5) * 2, sy = (y - 0.5) * 2;
+        target.ry = -sx * MAX_RY;
+        target.rx =  sy * MAX_RX;
+        target.tx =  sx * MAX_T;
+        target.ty =  sy * MAX_T;
+        target.sx =  sx * MAX_SH;
+        target.sy =  sy * MAX_SH;
+        if (!raf) raf = requestAnimationFrame(tick);
+      }
 
-      target.ry = -sx * MAX_RY;
-      target.rx =  sy * MAX_RX;
-      target.tx =  sx * MAX_T;
-      target.ty =  sy * MAX_T;
-      target.sx =  sx * MAX_SH;
-      target.sy =  sy * MAX_SH;
+      function onLeave(){
+        target.rx = target.ry = target.tx = target.ty = target.sx = target.sy = 0;
+        if (!raf) raf = requestAnimationFrame(tick);
+      }
 
-      if (!raf) raf = requestAnimationFrame(tick);
-    }
+      function tick(){
+        raf = null;
+        state.rx = lerp(state.rx, target.rx, 0.14);
+        state.ry = lerp(state.ry, target.ry, 0.14);
+        state.tx = lerp(state.tx, target.tx, 0.20);
+        state.ty = lerp(state.ty, target.ty, 0.20);
+        state.sx = lerp(state.sx, target.sx, 0.18);
+        state.sy = lerp(state.sy, target.sy, 0.18);
 
-    function onLeave(){
-      target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-      if (!raf) raf = requestAnimationFrame(tick);
-    }
+        img.style.transform =
+          `translate3d(${state.tx}px, ${state.ty}px, 0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
+        img.style.filter =
+          `drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
 
-    function lerp(a,b,t){ return a + (b-a)*t; }
+        const done =
+          Math.abs(state.rx-target.rx)<0.01 &&
+          Math.abs(state.ry-target.ry)<0.01 &&
+          Math.abs(state.tx-target.tx)<0.01 &&
+          Math.abs(state.ty-target.ty)<0.01 &&
+          Math.abs(state.sx-target.sx)<0.01 &&
+          Math.abs(state.sy-target.sy)<0.01;
 
-    function tick(){
-      raf = null;
-      state.rx = lerp(state.rx, target.rx, 0.12);
-      state.ry = lerp(state.ry, target.ry, 0.12);
-      state.tx = lerp(state.tx, target.tx, 0.18);
-      state.ty = lerp(state.ty, target.ty, 0.18);
-      state.sx = lerp(state.sx, target.sx, 0.15);
-      state.sy = lerp(state.sy, target.sy, 0.15);
+        if (!done) raf = requestAnimationFrame(tick);
+      }
 
-      img.style.transform =
-        `translate3d(${state.tx}px, ${state.ty}px, 0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
-      img.style.filter =
-        `drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
-
-      const done =
-        Math.abs(state.rx - target.rx) < 0.01 &&
-        Math.abs(state.ry - target.ry) < 0.01 &&
-        Math.abs(state.tx - target.tx) < 0.01 &&
-        Math.abs(state.ty - target.ty) < 0.01 &&
-        Math.abs(state.sx - target.sx) < 0.01 &&
-        Math.abs(state.sy - target.sy) < 0.01;
-
-      if (!done) raf = requestAnimationFrame(tick);
-    }
-
-    root.addEventListener('mousemove', onMove, { passive:true });
-    root.addEventListener('mouseleave', onLeave, { passive:true });
+      root.addEventListener('mousemove', onMove, { passive:true });
+      root.addEventListener('mouseleave', onLeave, { passive:true });
+    });
   })();
   </script>
-
 </body>
 </html>
