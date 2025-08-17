@@ -120,67 +120,79 @@
   <!-- /OUTER -->
 
   <!-- Tilt 3D para todas las tarjetas -->
-  <script>
-  (() => {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+ <script>
+(() => {
+  // Respeta reduce-motion
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const MAX_RX = 5, MAX_RY = 6, MAX_T = 2, MAX_SH = 5;
-    const lerp = (a,b,t)=> a + (b-a)*t;
+  const MAX_RX = 5, MAX_RY = 6, MAX_T = 2, MAX_SH = 5;
+  const lerp = (a,b,t)=> a + (b-a)*t;
 
-    document.querySelectorAll('.js-tilt').forEach((root) => {
-      const img = root.querySelector('img');
-      let raf = null;
-      const target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
-      const state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+  document.querySelectorAll('.js-tilt').forEach((root) => {
+    const img = root.querySelector('img');
+    if (!img) return;
 
-      function onMove(e){
-        const r = root.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width;
-        const y = (e.clientY - r.top)  / r.height;
-        const sx = (x - 0.5) * 2, sy = (y - 0.5) * 2;
-        target.ry = -sx * MAX_RY;
-        target.rx =  sy * MAX_RX;
-        target.tx =  sx * MAX_T;
-        target.ty =  sy * MAX_T;
-        target.sx =  sx * MAX_SH;
-        target.sy =  sy * MAX_SH;
-        if (!raf) raf = requestAnimationFrame(tick);
+    let raf = null;
+    const target = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+    const state  = { rx:0, ry:0, tx:0, ty:0, sx:0, sy:0 };
+
+    function onPointerMove(e){
+      // Ignora táctil (no hay hover)
+      if (e.pointerType === 'touch') return;
+      const r = root.getBoundingClientRect();
+      if (!r.width || !r.height) return;
+
+      const x = (e.clientX - r.left) / r.width;   // 0..1
+      const y = (e.clientY - r.top)  / r.height;  // 0..1
+      const sx = (x - 0.5) * 2;                   // -1..1
+      const sy = (y - 0.5) * 2;                   // -1..1
+
+      target.ry = -sx * MAX_RY;
+      target.rx =  sy * MAX_RX;
+      target.tx =  sx * MAX_T;
+      target.ty =  sy * MAX_T;
+      target.sx =  sx * MAX_SH;
+      target.sy =  sy * MAX_SH;
+
+      if (!raf) raf = requestAnimationFrame(tick);
+    }
+
+    function onPointerLeave(){
+      target.rx = target.ry = target.tx = target.ty = target.sx = target.sy = 0;
+      if (!raf) raf = requestAnimationFrame(tick);
+    }
+
+    function tick(){
+      raf = null;
+      state.rx = lerp(state.rx, target.rx, 0.18);
+      state.ry = lerp(state.ry, target.ry, 0.18);
+      state.tx = lerp(state.tx, target.tx, 0.22);
+      state.ty = lerp(state.ty, target.ty, 0.22);
+      state.sx = lerp(state.sx, target.sx, 0.20);
+      state.sy = lerp(state.sy, target.sy, 0.20);
+
+      img.style.transform =
+        `translate3d(${state.tx}px, ${state.ty}px, 0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
+      img.style.filter =
+        `drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
+
+      // sigue animando hasta converger
+      if (Math.abs(state.rx-target.rx) > 0.01 ||
+          Math.abs(state.ry-target.ry) > 0.01 ||
+          Math.abs(state.tx-target.tx) > 0.01 ||
+          Math.abs(state.ty-target.ty) > 0.01 ||
+          Math.abs(state.sx-target.sx) > 0.01 ||
+          Math.abs(state.sy-target.sy) > 0.01) {
+        raf = requestAnimationFrame(tick);
       }
+    }
 
-      function onLeave(){
-        target.rx = target.ry = target.tx = target.ty = target.sx = target.sy = 0;
-        if (!raf) raf = requestAnimationFrame(tick);
-      }
+    // Usa pointer events (mejor que mousemove en trackpads)
+    root.addEventListener('pointermove', onPointerMove, { passive:true });
+    root.addEventListener('pointerleave', onPointerLeave, { passive:true });
+  });
+})();
+</script>
 
-      function tick(){
-        raf = null;
-        state.rx = lerp(state.rx, target.rx, 0.14);
-        state.ry = lerp(state.ry, target.ry, 0.14);
-        state.tx = lerp(state.tx, target.tx, 0.20);
-        state.ty = lerp(state.ty, target.ty, 0.20);
-        state.sx = lerp(state.sx, target.sx, 0.18);
-        state.sy = lerp(state.sy, target.sy, 0.18);
-
-        img.style.transform =
-          `translate3d(${state.tx}px, ${state.ty}px, 0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
-        img.style.filter =
-          `drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
-
-        const done =
-          Math.abs(state.rx-target.rx)<0.01 &&
-          Math.abs(state.ry-target.ry)<0.01 &&
-          Math.abs(state.tx-target.tx)<0.01 &&
-          Math.abs(state.ty-target.ty)<0.01 &&
-          Math.abs(state.sx-target.sx)<0.01 &&
-          Math.abs(state.sy-target.sy)<0.01;
-
-        if (!done) raf = requestAnimationFrame(tick);
-      }
-
-      root.addEventListener('mousemove', onMove, { passive:true });
-      root.addEventListener('mouseleave', onLeave, { passive:true });
-    });
-  })();
-  </script>
 </body>
 </html>
