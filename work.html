@@ -80,42 +80,80 @@
 
   <!-- SCRIPT: tilt effect -->
   <script>
-  (() => {
-    const MAX_RX = 5, MAX_RY = 6, MAX_T = 2, MAX_SH = 5;
-    const cards = document.querySelectorAll('.card-tilt');
-    function attachTilt(root){
-      const img = root.querySelector('img');
-      let raf = null, target={rx:0,ry:0,tx:0,ty:0,sx:0,sy:0}, state={...target};
-      function onMove(e){
-        const r = root.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
-        const sx=(x-0.5)*2, sy=(y-0.5)*2;
-        target={ry:-sx*MAX_RY, rx:sy*MAX_RX, tx:sx*MAX_T, ty:sy*MAX_T, sx:sx*MAX_SH, sy:sy*MAX_SH};
-        if(!raf) raf=requestAnimationFrame(tick);
-      }
-      function onLeave(){ target={rx:0,ry:0,tx:0,ty:0,sx:0,sy:0}; if(!raf) raf=requestAnimationFrame(tick); }
-      const lerp=(a,b,t)=>a+(b-a)*t;
-      function tick(){
-        raf=null;
-        state.rx=lerp(state.rx,target.rx,0.12);
-        state.ry=lerp(state.ry,target.ry,0.12);
-        state.tx=lerp(state.tx,target.tx,0.18);
-        state.ty=lerp(state.ty,target.ty,0.18);
-        state.sx=lerp(state.sx,target.sx,0.15);
-        state.sy=lerp(state.sy,target.sy,0.15);
-        img.style.transform=`translate3d(${state.tx}px,${state.ty}px,0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
-        img.style.filter=`drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,0.28))`;
-        if(Math.abs(state.rx-target.rx)>0.01||Math.abs(state.ry-target.ry)>0.01||
-           Math.abs(state.tx-target.tx)>0.01||Math.abs(state.ty-target.ty)>0.01||
-           Math.abs(state.sx-target.sx)>0.01||Math.abs(state.sy-target.sy)>0.01){
-          raf=requestAnimationFrame(tick);
-        }
-      }
-      root.addEventListener('mousemove', onMove, { passive:true });
-      root.addEventListener('mouseleave', onLeave, { passive:true });
+(() => {
+  const MAX_RX = 5, MAX_RY = 6, MAX_T = 2, MAX_SH = 5;
+  const cards = document.querySelectorAll('.card-tilt');
+
+  function attachTilt(root){
+    const img = root.querySelector('img');
+    let raf = null;
+    let target={rx:0,ry:0,tx:0,ty:0,sx:0,sy:0,shadow:0};
+    let state ={...target};
+
+    function onMove(e){
+      const r = root.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+      const sx=(x-0.5)*2, sy=(y-0.5)*2;
+
+      target.ry = -sx*MAX_RY;
+      target.rx =  sy*MAX_RX;
+      target.tx =  sx*MAX_T;
+      target.ty =  sy*MAX_T;
+      target.sx =  sx*MAX_SH;
+      target.sy =  sy*MAX_SH;
+      target.shadow = 1; // activa sombra al hover
+
+      if(!raf) raf=requestAnimationFrame(tick);
     }
-    cards.forEach(attachTilt);
-  })();
-  </script>
+
+    function onLeave(){
+      target = {rx:0, ry:0, tx:0, ty:0, sx:0, sy:0, shadow:0}; // sombra vuelve a 0
+      if(!raf) raf=requestAnimationFrame(tick);
+    }
+
+    const lerp=(a,b,t)=>a+(b-a)*t;
+
+    function tick(){
+      raf=null;
+      state.rx=lerp(state.rx,target.rx,0.12);
+      state.ry=lerp(state.ry,target.ry,0.12);
+      state.tx=lerp(state.tx,target.tx,0.18);
+      state.ty=lerp(state.ty,target.ty,0.18);
+      state.sx=lerp(state.sx,target.sx,0.15);
+      state.sy=lerp(state.sy,target.sy,0.15);
+      state.shadow=lerp(state.shadow,target.shadow,0.15);
+
+      img.style.transform=
+        `translate3d(${state.tx}px,${state.ty}px,0) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
+      
+      // Aplica sombra solo si shadow > 0
+      const alpha = 0.28 * state.shadow;
+      img.style.filter=
+        `drop-shadow(${state.sx}px ${state.sy}px 10px rgba(0,0,0,${alpha}))`;
+
+      const done =
+        Math.abs(state.rx-target.rx)<0.01 &&
+        Math.abs(state.ry-target.ry)<0.01 &&
+        Math.abs(state.tx-target.tx)<0.01 &&
+        Math.abs(state.ty-target.ty)<0.01 &&
+        Math.abs(state.sx-target.sx)<0.01 &&
+        Math.abs(state.sy-target.sy)<0.01 &&
+        Math.abs(state.shadow-target.shadow)<0.01;
+
+      if(!done) raf=requestAnimationFrame(tick);
+    }
+
+    root.addEventListener('mousemove', onMove, { passive:true });
+    root.addEventListener('mouseleave', onLeave, { passive:true });
+
+    // Forzar estado inicial sin sombra
+    onLeave();
+  }
+
+  cards.forEach(attachTilt);
+})();
+</script>
+
 
 </body>
 </html>
