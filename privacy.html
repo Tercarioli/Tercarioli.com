@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tercarioli — Privacidad & Cookies</title>
+  <title>Tercarioli — Privacy & Cookies</title>
 
-  <!-- Canonical (apex sin www) -->
+  <!-- Canonical (apex without www) -->
   <link rel="canonical" href="https://tercarioli.com/privacy.html" />
 
-  <!-- Meta básicas -->
-  <meta name="description" content="Política de privacidad y uso de cookies de Tercarioli. Información sobre analítica (GA4), consentimiento y derechos del usuario." />
+  <!-- Basic meta -->
+  <meta name="description" content="Privacy and cookies policy of Tercarioli. Information about analytics (GA4), consent, and user rights." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#FF6B3D" />
 
@@ -38,101 +38,101 @@
   <div class="wrap">
     <header>
       <div>
-        <a class="home" href="/">← Volver a inicio</a>
+        <a class="home" href="/">← Back to home</a>
       </div>
       <div class="muted">Tercarioli</div>
     </header>
 
-    <h1>Privacidad & Cookies</h1>
-    <p class="muted">Última actualización: 13 de agosto de 2025</p>
+    <h1>Privacy & Cookies</h1>
+    <p class="muted">Last updated: August 13, 2025</p>
 
     <div class="card">
       <p>
-        En <strong>Tercarioli</strong> se utiliza analítica web para mejorar la experiencia del sitio.
-        Solo se activa si das tu consentimiento. No se muestran anuncios ni se hace perfilado publicitario.
+        <strong>Tercarioli</strong> uses web analytics to improve the site experience.
+        Analytics is only activated if you give your consent. No ads are shown and no advertising profiles are created.
       </p>
     </div>
 
-    <h2>Responsable</h2>
+    <h2>Controller</h2>
     <p>
-      Responsable del tratamiento: <strong>Tercarioli</strong> (Jorge Tercarioli).<br/>
-      Contacto: <a href="mailto:jorge@tercarioli.com">jorge@tercarioli.com</a>.
+      Data controller: <strong>Tercarioli</strong> (Jorge Tercarioli).<br/>
+      Contact: <a href="mailto:jorge@tercarioli.com">jorge@tercarioli.com</a>.
     </p>
 
-    <h2>Qué datos se recogen y con qué finalidad</h2>
+    <h2>What data is collected and why</h2>
     <p>
-      <strong>Analítica (Google Analytics 4):</strong> medición de visitas, páginas vistas, interacción con botones
-      (por ejemplo, clics en “Start now”). La base legal es tu <strong>consentimiento</strong>.
+      <strong>Analytics (Google Analytics 4):</strong> measurement of visits, page views, and interaction with buttons
+      (for example, clicks on “Start now”). The legal basis is your <strong>consent</strong>.
     </p>
     <p>
-      Al aceptar analítica, Google puede establecer cookies asociadas a GA4 (p. ej., <code>_ga</code>, <code>_ga_*</code>) para
-      distinguir usuarios y sesiones. Si no aceptas, se usa el <em>Consent Mode</em> y no se establecen cookies de analítica.
-    </p>
-
-    <h2>Proveedores y transferencias</h2>
-    <p>
-      La analítica es un servicio de <strong>Google LLC</strong>. Consulta su documentación y políticas en sus sitios oficiales.
-      El alojamiento del sitio es provisto por <strong>Vercel</strong>. Cuando haces clic en “Start now”, serás dirigido a
-      <strong>Usequeue/Stripe</strong> para gestionar el checkout; esos sitios aplican sus propias políticas de privacidad.
+      When accepting analytics, Google may set cookies associated with GA4 (e.g., <code>_ga</code>, <code>_ga_*</code>) to
+      distinguish users and sessions. If you do not accept, <em>Consent Mode</em> is used and no analytics cookies are set.
     </p>
 
-    <h2>Conservación</h2>
+    <h2>Providers and transfers</h2>
     <p>
-      Los datos de analítica se conservan durante el período configurado en GA4. Puedes revocar tu consentimiento cuando quieras.
+      Analytics is a service provided by <strong>Google LLC</strong>. See their official documentation and policies.
+      This site is hosted by <strong>Vercel</strong>. When you click “Start now,” you will be directed to
+      <strong>Usequeue/Stripe</strong> to manage checkout; those sites apply their own privacy policies.
     </p>
 
-    <h2>Tus derechos</h2>
+    <h2>Retention</h2>
     <p>
-      Puedes solicitar acceso, rectificación, supresión, limitación, portabilidad u oposición. Para ejercerlos o hacer consultas,
-      escribe a <a href="mailto:jorge@tercarioli.com">jorge@tercarioli.com</a>.
+      Analytics data is retained for the period configured in GA4. You can revoke your consent at any time.
     </p>
 
-    <h2>Gestionar tu consentimiento</h2>
+    <h2>Your rights</h2>
     <p>
-      Puedes cambiar tu preferencia en cualquier momento con estos botones:
+      You may request access, rectification, erasure, restriction, portability, or objection.  
+      To exercise these rights or make inquiries, email <a href="mailto:jorge@tercarioli.com">jorge@tercarioli.com</a>.
+    </p>
+
+    <h2>Manage your consent</h2>
+    <p>
+      You can change your preference at any time using these buttons:
     </p>
     <div class="buttons">
-      <button class="btn primary" id="grant-analytics">Aceptar analítica</button>
-      <button class="btn" id="deny-analytics">Rechazar analítica</button>
-      <button class="btn" id="reset-consent">Borrar preferencia</button>
+      <button class="btn primary" id="grant-analytics">Accept analytics</button>
+      <button class="btn" id="deny-analytics">Reject analytics</button>
+      <button class="btn" id="reset-consent">Clear preference</button>
     </div>
     <p class="muted">
-      También puedes gestionar cookies desde la configuración de tu navegador.
+      You can also manage cookies from your browser settings.
     </p>
 
     <footer>
-      <small>© Tercarioli. Esta página puede actualizarse para reflejar cambios técnicos o legales.</small>
+      <small>© Tercarioli. This page may be updated to reflect technical or legal changes.</small>
     </footer>
   </div>
 
-  <!-- Controles de consentimiento (alineados con el banner que agregaste) -->
+  <!-- Consent controls (aligned with the banner you added) -->
   <script>
     (function () {
-      // Clave usada en el banner sugerido
+      // Key used in the suggested banner
       const KEY = 'consent_analytics_v1';
 
       function update(value){
-        // Actualiza GA4 Consent Mode
+        // Update GA4 Consent Mode
         if (typeof gtag === 'function') {
           gtag('consent', 'update', { analytics_storage: value });
         }
-        // Guarda preferencia para que el banner no vuelva a mostrarse
+        // Save preference so the banner does not reappear
         localStorage.setItem(KEY, value);
       }
 
       document.getElementById('grant-analytics')?.addEventListener('click', function(){
         update('granted');
-        alert('Analítica habilitada.');
+        alert('Analytics enabled.');
       });
 
       document.getElementById('deny-analytics')?.addEventListener('click', function(){
         update('denied');
-        alert('Analítica deshabilitada.');
+        alert('Analytics disabled.');
       });
 
       document.getElementById('reset-consent')?.addEventListener('click', function(){
         localStorage.removeItem(KEY);
-        alert('Preferencia eliminada. Al volver a la Home, verás de nuevo el banner.');
+        alert('Preference cleared. Returning to Home will show the banner again.');
       });
     })();
   </script>
