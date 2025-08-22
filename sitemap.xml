@@ -17,7 +17,8 @@
 
   <!-- More Work -->
   <url><loc>https://tercarioli.com/work.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-</urlset>
+  <url><loc>https://tercarioli.com/nike-pridetag.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://tercarioli.com/mcdonalds.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   
   <!-- About page -->
   <url><loc>https://tercarioli.com/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
